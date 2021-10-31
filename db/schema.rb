@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_30_155136) do
+ActiveRecord::Schema.define(version: 2021_10_31_195207) do
 
   create_table "prof_reviews", force: :cascade do |t|
     t.text "body", null: false
-    t.float "quality", null: false
-    t.float "difficulty", null: false
+    t.integer "quality"
+    t.integer "difficulty"
     t.string "class", null: false
     t.string "grade", null: false
-    t.string "tag1", null: false
-    t.string "tag2", null: false
-    t.string "tag3", null: false
+    t.string "tag1"
+    t.string "tag2"
+    t.string "tag3"
     t.boolean "take_again"
     t.boolean "for_credit"
     t.boolean "txt_book"
