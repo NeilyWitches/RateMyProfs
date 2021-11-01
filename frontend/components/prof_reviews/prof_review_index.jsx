@@ -18,7 +18,7 @@ class ProfReviewIndex extends React.Component {
             <div>
                 <ul>
                     {
-                        profReviews.map(profReview => <ProfReviewIndexItem profReview={profReview} deleteProfReview={deleteProfReview} />)
+                        profReviews.map(profReview => <ProfReviewIndexItem key={profReview.id} profReview={profReview} deleteProfReview={deleteProfReview} />)
                     }
                 </ul>
                 <Link to="/profReviews/new">New Prof Review</Link>

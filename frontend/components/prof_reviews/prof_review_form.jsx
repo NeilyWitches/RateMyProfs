@@ -13,6 +13,7 @@ class ProfReviewForm extends React.Component {
     };
 
     handleSubmit(e) {
+        e.preventDefault();
         this.props.action(this.state);
     };
 
@@ -20,20 +21,21 @@ class ProfReviewForm extends React.Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 {this.props.formType}
-            <textarea
-                value={this.state.body}
-                onChange={this.update('body')}>
-            </textarea>
-            <input
-                type='text'
-                value={this.state.class}
-                onChange={this.update('class')}>
-            </input>
-            <input
-                type='text'
-                value={this.state.grade}
-                onChange={this.update('grade')}>
-            </input>
+                <textarea
+                    value={this.state.body}
+                    onChange={this.update('body')}>
+                </textarea>
+                <input
+                    type='text'
+                    value={this.state.klass}
+                    onChange={this.update('klass')}>
+                </input>
+                <input
+                    type='text'
+                    value={this.state.grade}
+                    onChange={this.update('grade')}>
+                </input>
+                <input type='submit'></input>
             </form>
         );
     };

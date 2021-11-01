@@ -41,5 +41,5 @@ export const updateProfReview = profReview => dispatch => (
 
 export const deleteProfReview = profReviewId => dispatch => (
     ProfReviewApiUtil.deleteProfReview(profReviewId)
-    .then(deletedProfReview => dispatch(removeProfReview(deletedProfReview.id)))
+    .then(() => dispatch(removeProfReview(profReviewId)))
 );

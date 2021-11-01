@@ -1,55 +1,40 @@
 {
-  "name": "rate-my-prof",
-  "version": "1.0.0",
-  "description": "Neil Pandya App Academy Full Stack Project",
+  "name": "RateMyProfs",
   "private": true,
+  "dependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-react": "^7.16.0",
+    "babel-loader": "^8.2.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^5.3.0",
+    "redux": "^4.1.2",
+    "redux-thunk": "^2.3.0",
+    "webpack": "^5.61.0",
+    "webpack-cli": "^4.9.1"
+  },
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "version": "1.0.0",
+  "main": "index.js",
   "directories": {
+    "lib": "lib",
     "test": "test"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --watch --mode=development"
   },
-  "keywords": [
-    "react",
-    "redux",
-    "assessment"
-  ],
-  "author": "App Academy",
-  "license": "ISC",
-  "dependencies": {
-    "jquery": "^3.1.1",
-    "lodash": "^4.17.15",
-    "node-loader": "^0.6.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-mock-router": "^1.0.15",
-    "react-redux": "^5.1.1",
-    "react-router-dom": "^4.3.1",
-    "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0",
-    "webpack": "^4.20.2"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NeilyWitches/RateMyProfs.git"
   },
-  "devDependencies": {
-    "@babel/core": "^7.4.4",
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/plugin-proposal-export-namespace-from": "^7.2.0",
-    "@babel/plugin-proposal-throw-expressions": "^7.2.0",
-    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/polyfill": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
-    "@babel/preset-react": "^7.0.0",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-eslint": "^8.2.3",
-    "babel-jest": "^25.0.0",
-    "babel-loader": "^8.0.6",
-    "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.13.0",
-    "jest": "^25.0.0",
-    "jest-cli": "^25.0.0",
-    "jest-enzyme": "^7.0.2",
-    "react-test-renderer": "^16.8.6",
-    "redux-mock-store": "^1.5.3",
-    "webpack-cli": "^3.3.9"
-  }
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NeilyWitches/RateMyProfs/issues"
+  },
+  "homepage": "https://github.com/NeilyWitches/RateMyProfs#readme"
 }

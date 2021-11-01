@@ -9,9 +9,10 @@ class Api::ProfReviewsController < ApplicationController
     end
 
     def create
+
         @prof_review = ProfReview.new(prof_review_params)
 
-        if @prof_review.save
+        if @prof_review.save!
             render :show
         else
             render json: @prof_review.errors.full_messages, status: :unprocessable_entity
@@ -19,7 +20,7 @@ class Api::ProfReviewsController < ApplicationController
     end
 
     def update
-        if @prof_review.update(prof_review.params)
+        if @prof_review.update(prof_review_params)
             render :show
         else
             render json: @prof_review.erorrs.full_messages, status: :unprocessable_entity
@@ -40,6 +41,6 @@ class Api::ProfReviewsController < ApplicationController
     end
 
     def prof_review_params
-        params.require(:prof_review).permit(:body, :class, :grade)
+        params.require(:profReview).permit(:body, :klass, :grade)
     end
 end

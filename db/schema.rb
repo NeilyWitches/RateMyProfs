@@ -10,13 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_31_195207) do
+ActiveRecord::Schema.define(version: 2021_11_01_065513) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "prof_reviews", force: :cascade do |t|
     t.text "body", null: false
     t.integer "quality"
     t.integer "difficulty"
-    t.string "class", null: false
+    t.string "klass", null: false
     t.string "grade", null: false
     t.string "tag1"
     t.string "tag2"
@@ -29,27 +32,6 @@ ActiveRecord::Schema.define(version: 2021_10_31_195207) do
     t.integer "prof_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "index_prof_reviews_on_author_id"
-    t.index ["prof_id"], name: "index_prof_reviews_on_prof_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "email", null: false
-    t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.string "password_digest"
-    t.string "session_token"
-    t.integer "grad_yr"
-    t.integer "school_id"
-    t.integer "prof_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["first_name"], name: "index_users_on_first_name"
-    t.index ["last_name"], name: "index_users_on_last_name"
-    t.index ["prof_id"], name: "index_users_on_prof_id"
-    t.index ["school_id"], name: "index_users_on_school_id"
-    t.index ["session_token"], name: "index_users_on_session_token"
   end
 
 end

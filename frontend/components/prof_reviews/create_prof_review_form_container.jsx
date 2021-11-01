@@ -5,7 +5,7 @@ import ProfReviewForm from './prof_review_form';
 const mSTP = state => ({
     profReview: {
         body: '',
-        class: '',
+        klass: '',
         grade: '',
     },
     formType: 'Add Prof Review',

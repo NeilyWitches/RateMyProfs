@@ -22,10 +22,12 @@ class EditProfReviewForm extends React.Component {
 
 }
 
-const mSTP = (state, ownProps) => ({
+const mSTP = (state, ownProps) => {
+    return (
+    {
     profReview: state.profReviews[ownProps.match.params.profReviewId],
-    formType: 'Update Prof Review',
-});
+    formType: 'Update Prof Review',})
+};
 
 const mDTP = dispatch => ({
     requestProfReview: profReviewId => dispatch(requestProfReview(profReviewId)),
