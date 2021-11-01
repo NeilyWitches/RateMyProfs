@@ -24,10 +24,6 @@ class Api::UsersController < ApplicationController
         @user = selected_user
     end
 
-    def index
-        @user = User.all
-    end
-
     def destroy
         @user = selected_user
         if @user
