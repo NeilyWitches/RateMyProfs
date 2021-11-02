@@ -1,3 +1,4 @@
+import React from 'react';
 import { connect } from 'react-redux';
 import { createUser } from '../../actions/session_actions';
 import Signup from './signup';

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default ({ currentUser, logout }) => {
-    const display = currentUser ? (
+export default ({ current_user, logout }) => {
+    const display = current_user ? (
         <div>
-            <h3>Hey, {currentUser.firstName}!</h3>
+            <h3>Hey, {current_user.first_name}!</h3>
             <button onClick={logout}>Logout</button>
         </div>
     ) : (
@@ -15,7 +15,6 @@ export default ({ currentUser, logout }) => {
     );
     return (
         <header>
-            <h1>RATE MY PROFS</h1>
             <div>
                 {display}
             </div>

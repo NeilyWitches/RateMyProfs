@@ -5,15 +5,15 @@ class Signup extends React.Component {
         super(props);
         this.state = {
             email: '',
-            firstName: '',
-            lastName: '',
+            first_name: '',
+            last_name: '',
             password: '',
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit(type) {
+    handleInput(type) {
         return (e) => {
             this.setState({ [type]: e.target.value })
         }
@@ -33,21 +33,22 @@ class Signup extends React.Component {
                     <label>Email:
                         <input
                             type='text'
-                            value={this.handleInput('email')}
+                            value={this.state.email}
+                            onChange={this.handleInput('email')}
                         />
                     </label>
                     <label>First Name:
                         <input 
                             type='text'
-                            value={this.state.email}
-                            onChange={this.handleInput('firstName')}
+                            value={this.state.first_name}
+                            onChange={this.handleInput('first_name')}
                             />
                     </label>
                     <label>Last Name:
                         <input 
                             type='text'
-                            value={this.state.lastName}
-                            onChange={this.handleInput('lastName')}
+                            value={this.state.last_name}
+                            onChange={this.handleInput('last_name')}
                             />
                     </label>
                     <label>Password:
