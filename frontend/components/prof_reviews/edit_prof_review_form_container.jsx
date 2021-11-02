@@ -25,7 +25,7 @@ class EditProfReviewForm extends React.Component {
 const mSTP = (state, ownProps) => {
     return (
     {
-    profReview: state.profReviews[ownProps.match.params.profReviewId],
+    profReview: state.entities.profReviews[ownProps.match.params.profReviewId],
     formType: 'Update Prof Review',})
 };
 

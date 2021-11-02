@@ -11,12 +11,13 @@ class ProfReviewShow extends React.Component {
     };
 
     render() {
+        console.log(this.props);
         return (
             <div>
                 {this.props.profReview.body}
                 {this.props.profReview.klass}
                 {this.props.profReview.grade}
-                <Link to='/'></Link>
+                <Link to='/'>Back</Link>
             </div>
         );
     };
