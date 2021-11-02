@@ -43,5 +43,8 @@
   "bugs": {
     "url": "https://github.com/NeilyWitches/RateMyProfs/issues"
   },
-  "homepage": "https://github.com/NeilyWitches/RateMyProfs#readme"
+  "homepage": "https://github.com/NeilyWitches/RateMyProfs#readme",
+  "devDependencies": {
+    "url-loader": "^4.1.1"
+  }
 }

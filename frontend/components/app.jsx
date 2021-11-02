@@ -13,7 +13,6 @@ import LoginContainer from './session/login_container';
 
 const App = ({ children }) => (
     <div>
-        <h1>Rate My Profs</h1>
         <Route path='/' component={NavBarContainer} />
         <Switch>
             <ProtectedRoute path='/profReviews/:profReviewId/edit' component={EditProfReviewFormContainer} />

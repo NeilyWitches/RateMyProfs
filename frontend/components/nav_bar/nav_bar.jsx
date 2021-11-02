@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// import logo from '../../../app/assets/images/rmp_logo.png';
 
 export default ({ current_user, logout }) => {
     const display = current_user ? (
-        <div>
-            <h3>Hey, {current_user.first_name}!</h3>
+        <div className='nav-bar'>
+            {/* <img src={logo} alt="Logo" /> */}
+            <h3>HEY, {current_user.first_name.toUpperCase()}</h3>
             <button onClick={logout}>Logout</button>
         </div>
     ) : (
