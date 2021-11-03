@@ -9,7 +9,7 @@ import Login from './login';
 
 const mDTP = dispatch => {
     return {
-        login: formUser => dispatch(login(formUser),)
+        login: formUser => dispatch(login(formUser)),
     };
 };
 
