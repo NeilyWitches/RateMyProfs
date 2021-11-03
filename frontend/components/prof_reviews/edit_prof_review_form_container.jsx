@@ -5,14 +5,15 @@ import ProfReviewForm from './prof_review_form';
 
 class EditProfReviewForm extends React.Component {
     render() {
-        const { action, formType, profReview } = this.props;
+        const { action, formType, profReview, history } = this.props;
 
         if (!profReview) return null;
         return (
             <ProfReviewForm
                 action={action}
                 formType={formType}
-                profReview={profReview} />
+                profReview={profReview}
+                history={history} />
         );
     }
 
@@ -23,10 +24,9 @@ class EditProfReviewForm extends React.Component {
 }
 
 const mSTP = (state, ownProps) => {
-    return (
-    {
-    profReview: state.profReviews[ownProps.match.params.profReviewId],
-    formType: 'Update Prof Review',})
+    return {
+    profReview: state.entities.profReviews[ownProps.match.params.profReviewId],
+    formType: 'Update Prof Review'};
 };
 
 const mDTP = dispatch => ({

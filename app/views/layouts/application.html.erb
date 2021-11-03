@@ -4,9 +4,21 @@
     <title>RateMyProfs</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <% if current_user %>
+      <script>
+        window.current_user = {
+          "id": <%= current_user.id %>,
+          "email": "<%= current_user.email %>",
+          "first_name": "<%= current_user.first_name %>",
+          "last_name": "<%= current_user.last_name %>"
+        }
+      </script>
+      <script type='text/javascript'>
+        window.logo="<%= image_url('rmp_logo.png')%>"
+      </script>
+    <% end %>
   </head>
 
   <body>

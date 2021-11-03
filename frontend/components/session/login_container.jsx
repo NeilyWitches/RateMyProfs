@@ -1,0 +1,20 @@
+import React from 'react';
+import { connect } from 'react-redux';
+import { login } from '../../actions/session_actions';
+import Login from './login';
+
+const mSTP = ({ errors }) => {
+    console.log('inside login container');
+    console.log(errors);
+    return {
+        login_errors: errors.session,
+    };
+};
+
+const mDTP = dispatch => {
+    return {
+        login: formUser => dispatch(login(formUser)),
+    };
+};
+
+export default connect(mSTP, mDTP)(Login);

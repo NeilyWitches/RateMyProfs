@@ -7,7 +7,7 @@ import {
 } from '../../actions/prof_review_actions';
 
 const mSTP = state => ({
-    profReviews: Object.values(state.profReviews),
+    profReviews: Object.values(state.entities.profReviews),
 });
 
 const mDTP = dispatch => ({

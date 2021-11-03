@@ -1,0 +1,2 @@
+module Api::ProfReviewsHelper
+end
