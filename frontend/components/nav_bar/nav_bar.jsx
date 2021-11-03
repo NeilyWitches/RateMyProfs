@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import DemoLoginButton from './demo_login_button';
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -22,30 +21,6 @@ class NavBar extends React.Component {
         .then(() => this.props.history.push('/'));
     };
 
-    // render() {
-    //     const { createUser, current_user, logout, location } = this.props;
-    //     const display = current_user ? (
-    //         <div className='nav-bar'>
-    //             <Link to='/'><img src={window.logo} alt="Logo" className='logo' /></Link>
-    //             <h3>HEY, {current_user.first_name.toUpperCase()}</h3>
-    //             <button onClick={logout}>Logout</button>
-    //         </div>
-    //     ) : (
-    //         <div className='nav-bar'>
-    //             <Link to='/'><img src={window.logo} alt="Logo" className='logo' /></Link>
-    //             <Link className='session-form' to='/signup'>Sign Up</Link>
-    //             <Link className='session-form' to='/login'>Log In</Link>
-    //             <button onClick={this.clickDemo}>Demo Login</button>
-    //         </div>
-    //     );
-    //     return (
-    //         <header>
-    //             <div>
-    //                 {display}
-    //             </div>
-    //         </header>
-    //     )
-    // }
     render() {
         const { createUser, current_user, logout, location } = this.props;
         if (current_user) {
@@ -85,6 +60,16 @@ class NavBar extends React.Component {
                         </div>
                     </header>
                 )
+            // } else if (location.pathname === '/404') {
+            //     return (
+            //         <div>
+            //             <div className='nav-bar'>
+            //                 <Link to='/'><img src={window.logo} alt="Logo" className='logo' /></Link>
+            //                 <h3>404 NOT FOUND</h3>
+            //             </div>
+            //         </div>
+            //     )
+            // }
             } else {
                 return (
                     <header>
