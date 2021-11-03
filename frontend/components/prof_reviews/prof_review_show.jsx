@@ -6,9 +6,9 @@ class ProfReviewShow extends React.Component {
         super(props);
     };
 
-    componentDidMount() {
-        this.props.requestProfReview(this.props.profReview.id);
-    };
+    // componentDidMount() {
+    //     this.props.requestProfReview(this.props.profReview.id);
+    // };
 
     render() {
         return (
@@ -16,7 +16,7 @@ class ProfReviewShow extends React.Component {
                 {this.props.profReview.body}
                 {this.props.profReview.klass}
                 {this.props.profReview.grade}
-                <Link to='/'>Back</Link>
+                {/* <Link to='/'>Back</Link> */}
             </div>
         );
     };

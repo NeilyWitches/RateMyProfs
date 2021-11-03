@@ -1,0 +1,1 @@
+json.extract! prof, :id, :first_name, :last_name, :subject, :school_id, :created_at, :updated_at
