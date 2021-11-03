@@ -6,12 +6,8 @@
     "@babel/preset-env": "^7.16.0",
     "@babel/preset-react": "^7.16.0",
     "babel-loader": "^8.2.3",
-<<<<<<< HEAD
-    "express": "^4.17.1",
-=======
     "camelcase": "5.3.1",
     "decamelize": "1.2.0",
->>>>>>> userAuth
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
@@ -34,13 +30,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-<<<<<<< HEAD
     "start": "webpack --watch --mode=development",
     "postinstall": "webpack"
-=======
-    "postinstall": "webpack",
-    "start": "webpack --watch --mode=development"
->>>>>>> userAuth
   },
   "repository": {
     "type": "git",

@@ -4,8 +4,6 @@ import { login } from '../../actions/session_actions';
 import Login from './login';
 
 const mSTP = ({ errors }) => {
-    console.log('inside login container');
-    console.log(errors);
     return {
         login_errors: errors.session,
     };

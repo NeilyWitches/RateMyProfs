@@ -4,8 +4,6 @@ import { createUser } from '../../actions/session_actions';
 import Signup from './signup';
 
 const mSTP = ({ errors }) => {
-    console.log('inside signup container');
-    console.log(errors);
     return {
         signup_errors: errors.session,
     };
