@@ -9,7 +9,7 @@ class NavBar extends React.Component {
             email: 'demouser@demo.com',
             first_name: 'Demo User',
             last_name: 'Demo User',
-            password: 'demouser',
+            password: 'cupcake',
         };
 
         this.clickDemo = this.clickDemo.bind(this);
@@ -17,7 +17,7 @@ class NavBar extends React.Component {
 
     clickDemo(e) {
         e.preventDefault();
-        this.props.createUser(this.state)
+        this.props.login(this.state)
         .then(() => this.props.history.push('/'));
     };
 

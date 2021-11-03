@@ -30,10 +30,8 @@ export const requestProfReview = profReviewId => dispatch => (
 );
 
 export const createProfReview = profReview => dispatch => {
-    debugger
     return ProfReviewApiUtil.createProfReview(profReview)
     .then(createdProfReview => {
-        debugger
         return dispatch(receiveProfReview(createdProfReview))})
 };
 

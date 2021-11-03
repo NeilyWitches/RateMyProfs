@@ -7,7 +7,6 @@ import {
 } from '../../actions/prof_review_actions';
 
 const mSTP = state => {
-    debugger
     return {
         profReviews: Object.values(state.entities.profReviews),
 }};
