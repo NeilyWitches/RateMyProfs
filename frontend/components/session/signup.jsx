@@ -24,10 +24,26 @@ class Signup extends React.Component {
         .then(() => this.props.history.push('/'));
     }
 
+    renderErrors() {
+        if (this.props.signup_errors[0] === 'Invalid credentials') {
+            return null;
+        }
+        return(
+            <ul>
+                {this.props.signup_errors.map((error, i) => (
+                    <li key={`error-${i}`}>
+                        {error}
+                    </li>
+                ))}
+            </ul>
+        );
+    }
+
     render() {
         return (
             <div>
                 <h2>Sign Up!</h2>
+                {this.renderErrors()}
                 <form>
                     <label>Email:
                         <input

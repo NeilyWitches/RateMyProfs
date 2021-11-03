@@ -23,10 +23,26 @@ class Login extends React.Component {
         .then(() => this.props.history.push('/'));
     }
 
+    renderErrors() {
+        if (this.props.login_errors[0] === 'Email has already been taken') {
+            return null;
+        }
+        return(
+            <ul>
+                {this.props.login_errors.map((error, i) => (
+                    <li key={`error-${i}`}>
+                        {error}
+                    </li>
+                ))}
+            </ul>
+        );
+    }
+
     render() {
         return (
             <div>
                 <h2>Log In!</h2>
+                {this.renderErrors()}
                 <form>
                     <label>Email:
                         <input

@@ -3,9 +3,13 @@ import { connect } from 'react-redux';
 import { login } from '../../actions/session_actions';
 import Login from './login';
 
-// const mDTP = dispatch => ({
-//     login: formUser => dispatch(login(formUser)),
-// });
+const mSTP = ({ errors }) => {
+    console.log('inside login container');
+    console.log(errors);
+    return {
+        login_errors: errors.session,
+    };
+};
 
 const mDTP = dispatch => {
     return {
@@ -13,4 +17,4 @@ const mDTP = dispatch => {
     };
 };
 
-export default connect(null, mDTP)(Login);
+export default connect(mSTP, mDTP)(Login);
