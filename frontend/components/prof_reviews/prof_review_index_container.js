@@ -6,9 +6,11 @@ import {
     deleteProfReview
 } from '../../actions/prof_review_actions';
 
-const mSTP = state => ({
-    profReviews: Object.values(state.entities.profReviews),
-});
+const mSTP = state => {
+    debugger
+    return {
+        profReviews: Object.values(state.entities.profReviews),
+}};
 
 const mDTP = dispatch => ({
     requestProfReviews: () => dispatch(requestProfReviews()),

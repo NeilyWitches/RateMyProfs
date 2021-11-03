@@ -29,10 +29,13 @@ export const requestProfReview = profReviewId => dispatch => (
     .then(profReview => dispatch(receiveProfReview(profReview)))
 );
 
-export const createProfReview = profReview => dispatch => (
-    ProfReviewApiUtil.createProfReview(profReview)
-    .then(createdProfReview => dispatch(receiveProfReview(createdProfReview)))
-);
+export const createProfReview = profReview => dispatch => {
+    debugger
+    return ProfReviewApiUtil.createProfReview(profReview)
+    .then(createdProfReview => {
+        debugger
+        return dispatch(receiveProfReview(createdProfReview))})
+};
 
 export const updateProfReview = profReview => dispatch => (
     ProfReviewApiUtil.updateProfReview(profReview)

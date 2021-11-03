@@ -14,6 +14,7 @@ import NotFoundPage from './not_found_page';
 
 const App = ({ children }) => (
     <div>
+        
         <Route path='/' component={NavBarContainer} />
         <Switch>
             

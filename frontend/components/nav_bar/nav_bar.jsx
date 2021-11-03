@@ -60,16 +60,6 @@ class NavBar extends React.Component {
                         </div>
                     </header>
                 )
-            // } else if (location.pathname === '/404') {
-            //     return (
-            //         <div>
-            //             <div className='nav-bar'>
-            //                 <Link to='/'><img src={window.logo} alt="Logo" className='logo' /></Link>
-            //                 <h3>404 NOT FOUND</h3>
-            //             </div>
-            //         </div>
-            //     )
-            // }
             } else {
                 return (
                     <header>
