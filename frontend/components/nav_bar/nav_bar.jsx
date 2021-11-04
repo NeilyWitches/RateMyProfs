@@ -13,6 +13,8 @@ class NavBar extends React.Component {
         };
 
         this.clickDemo = this.clickDemo.bind(this);
+        this.clickSignUp = this.clickSignUp.bind(this);
+        this.clickLogIn = this.clickLogIn.bind(this);
     };
 
     clickDemo(e) {
@@ -20,6 +22,16 @@ class NavBar extends React.Component {
         this.props.login(this.state)
         .then(() => this.props.history.push('/'));
     };
+
+    clickSignUp() {
+        let path = '/signup';
+        this.props.history.push(path);
+    }
+
+    clickLogIn() {
+        let path = '/login';
+        this.props.history.push(path);
+    }
 
     render() {
         const { createUser, current_user, logout, location } = this.props;
@@ -42,7 +54,7 @@ class NavBar extends React.Component {
                         <div>
                             <div className='nav-bar'>
                                 <Link to='/'><img src={window.logo} alt="Logo" className='logo' /></Link>
-                                <Link className='session-form' to='/signup'>Sign Up</Link>
+                                <button onClick={this.clickSignUp}>Sign Up</button>
                                 <button onClick={this.clickDemo}>Demo Login</button>
                             </div>
                         </div>
@@ -54,7 +66,7 @@ class NavBar extends React.Component {
                         <div>
                             <div className='nav-bar'>
                                 <Link to='/'><img src={window.logo} alt="Logo" className='logo' /></Link>
-                                <Link className='session-form' to='/login'>Log In</Link>
+                                <button onClick={this.clickLogIn}>Log In</button>
                                 <button onClick={this.clickDemo}>Demo Login</button>
                             </div>
                         </div>
@@ -66,8 +78,8 @@ class NavBar extends React.Component {
                         <div>
                             <div className='nav-bar'>
                                 <Link to='/'><img src={window.logo} alt="Logo" className='logo' /></Link>
-                                <Link className='session-form' to='/signup'>Sign Up</Link>
-                                <Link className='session-form' to='/login'>Log In</Link>
+                                <button onClick={this.clickSignUp}>Sign Up</button>
+                                <button onClick={this.clickLogIn}>Log In</button>
                                 <button onClick={this.clickDemo}>Demo Login</button>
                             </div>
                         </div>
