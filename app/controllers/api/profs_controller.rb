@@ -26,11 +26,6 @@ class Api::ProfsController < ApplicationController
         end
     end
 
-    def destroy
-        @prof.destroy
-        head :no_content
-    end
-
     private
 
     def set_prof
