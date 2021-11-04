@@ -54,8 +54,10 @@ class NavBar extends React.Component {
                         <div>
                             <div className='nav-bar'>
                                 <Link to='/'><img src={window.logo} alt="Logo" className='logo' /></Link>
-                                <button onClick={this.clickSignUp}>Sign Up</button>
-                                <button onClick={this.clickDemo}>Demo Login</button>
+                                <div className='session-buttons'>
+                                    <button onClick={this.clickSignUp}>Sign Up</button>
+                                    <button onClick={this.clickDemo}>Demo Login</button>
+                                </div>
                             </div>
                         </div>
                     </header>
@@ -66,8 +68,10 @@ class NavBar extends React.Component {
                         <div>
                             <div className='nav-bar'>
                                 <Link to='/'><img src={window.logo} alt="Logo" className='logo' /></Link>
-                                <button onClick={this.clickLogIn}>Log In</button>
-                                <button onClick={this.clickDemo}>Demo Login</button>
+                                <div className='session-buttons'>
+                                    <button onClick={this.clickLogIn}>Log In</button>
+                                    <button onClick={this.clickDemo}>Demo Login</button>
+                                </div>
                             </div>
                         </div>
                     </header>
@@ -78,9 +82,11 @@ class NavBar extends React.Component {
                         <div>
                             <div className='nav-bar'>
                                 <Link to='/'><img src={window.logo} alt="Logo" className='logo' /></Link>
-                                <button onClick={this.clickSignUp}>Sign Up</button>
-                                <button onClick={this.clickLogIn}>Log In</button>
-                                <button onClick={this.clickDemo}>Demo Login</button>
+                                <div className='session-buttons'>
+                                    <button onClick={this.clickSignUp}>Sign Up</button>
+                                    <button onClick={this.clickLogIn}>Log In</button>
+                                    <button onClick={this.clickDemo}>Demo Login</button>
+                                </div>
                             </div>
                         </div>
                     </header>
