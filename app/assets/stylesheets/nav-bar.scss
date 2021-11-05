@@ -38,3 +38,19 @@
 #login-button {
     border: 0px;
 }
+
+#hey-button {
+      border-radius: 20px;
+    background: transparent;
+    color: white;
+    font-weight: 700;
+    height: 100%;
+    cursor: pointer;
+    padding: 8px 16px;
+    transition-duration: 0.4s;
+    font-size: 16px;  
+}
+
+#hey-button:hover {
+    background-color: gray;
+}

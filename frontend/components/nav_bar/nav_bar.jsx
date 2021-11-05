@@ -76,7 +76,7 @@ class NavBar extends React.Component {
                     <div>
                         <div className='nav-bar'>
                             <Link to='/'><img src={window.logo} alt="Logo" className='logo' /></Link>
-                            <button onClick={this.displayProfileLinks}>HEY, {current_user.first_name.toUpperCase()}</button>
+                            <button onClick={this.displayProfileLinks} id='hey-button'>HEY, {current_user.first_name.toUpperCase()}</button>
                             {profile_links}
                         </div>
                     </div>
