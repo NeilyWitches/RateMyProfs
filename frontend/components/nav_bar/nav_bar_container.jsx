@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import NavBar from './nav_bar';
-import { logout, login } from '../../actions/session_actions';
+import { login } from '../../actions/session_actions';
 
 
 const mSTP = state => {
@@ -11,7 +11,6 @@ const mSTP = state => {
 };
 
 const mDTP = dispatch => ({
-    logout: () => dispatch(logout()),
     login: formUser => dispatch(login(formUser)),
 });
 

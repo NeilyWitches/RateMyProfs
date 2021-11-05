@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ProfileNavLinks from './profile_nav_links';
+import ProfileNavLinksContainer from './profile_nav_links_container';
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -56,14 +56,14 @@ class NavBar extends React.Component {
     };
 
     render() {
-        const { createUser, current_user, logout, location } = this.props;
+        const { current_user, location } = this.props;
         let profile_links = null;
         if ( this.state.display_profile_links ) {
             profile_links = (
                 <div>
                     {
                         this.state.profile_links.map((profile_link, index) => {
-                            return <ProfileNavLinks key={profile_link.id}
+                            return <ProfileNavLinksContainer key={profile_link.id}
                                     title={profile_link.title}/>
                         })
                     }
