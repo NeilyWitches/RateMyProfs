@@ -64,7 +64,7 @@ class NavBar extends React.Component {
                     {
                         this.state.profile_links.map((profile_link, index) => {
                             return <ProfileNavLinks key={profile_link.id}
-                                    title={profile_link.title} />
+                                    title={profile_link.title}/>
                         })
                     }
                 </div>
@@ -73,12 +73,14 @@ class NavBar extends React.Component {
         if (current_user) {
             return (
                 <header>
-                    <div>
-                        <div className='nav-bar'>
-                            <Link to='/'><img src={window.logo} alt="Logo" className='logo' /></Link>
-                            <button onClick={this.displayProfileLinks} id='hey-button'>HEY, {current_user.first_name.toUpperCase()}</button>
+                    <div className='nav-bar'>
+                        <Link to='/'><img src={window.logo} alt="Logo" className='logo' /></Link>
+                        <button onClick={this.displayProfileLinks} id='hey-button'>HEY, {current_user.first_name.toUpperCase()}</button>
+                    </div>
+                    <div id='profile-nav-links-container'>
+                        <ul id='profile-nav-links'>
                             {profile_links}
-                        </div>
+                        </ul>
                     </div>
                 </header>
             )

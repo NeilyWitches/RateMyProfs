@@ -1,0 +1,36 @@
+.nav-bar {
+    position: absolute;
+    width: 100%;
+}
+
+#profile-nav-links {
+    border: 1px solid rgb(221, 221, 221);
+    width: auto;
+    display: inline-block;
+    border-radius: 8px;
+    background-color: white;
+    z-index: 1;
+    position: absolute;
+    margin-top: 60px;
+    margin-right: 45px;
+}
+
+#profile-nav-links-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.profile-nav-link {
+    background: none;
+    border: 0px;
+    cursor: pointer;
+    font-weight: 700;
+    padding: 12px 16px;
+    width: 100%;
+    text-align: left;
+    border-radius: 8px;
+}
+
+.profile-nav-link:hover {
+    background-color: blue;
+}
