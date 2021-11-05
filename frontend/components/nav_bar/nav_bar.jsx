@@ -56,7 +56,7 @@ class NavBar extends React.Component {
                                 <Link to='/'><img src={window.logo} alt="Logo" className='logo' /></Link>
                                 <div className='session-buttons'>
                                     <button onClick={this.clickSignUp}>Sign Up</button>
-                                    <button onClick={this.clickDemo}>Demo Login</button>
+                                    <button onClick={this.clickDemo} id='demo-button'>Demo Login</button>
                                 </div>
                             </div>
                         </div>
@@ -69,8 +69,8 @@ class NavBar extends React.Component {
                             <div className='nav-bar'>
                                 <Link to='/'><img src={window.logo} alt="Logo" className='logo' /></Link>
                                 <div className='session-buttons'>
-                                    <button onClick={this.clickLogIn}>Log In</button>
-                                    <button onClick={this.clickDemo}>Demo Login</button>
+                                    <button onClick={this.clickLogIn} id='login-button'>Log In</button>
+                                    <button onClick={this.clickDemo} id='demo-button'>Demo Login</button>
                                 </div>
                             </div>
                         </div>
@@ -83,9 +83,9 @@ class NavBar extends React.Component {
                             <div className='nav-bar'>
                                 <Link to='/'><img src={window.logo} alt="Logo" className='logo' /></Link>
                                 <div className='session-buttons'>
+                                    <button onClick={this.clickLogIn} id='login-button'>Log In</button>
                                     <button onClick={this.clickSignUp}>Sign Up</button>
-                                    <button onClick={this.clickLogIn}>Log In</button>
-                                    <button onClick={this.clickDemo}>Demo Login</button>
+                                    <button onClick={this.clickDemo} id='demo-button'>Demo Login</button>
                                 </div>
                             </div>
                         </div>

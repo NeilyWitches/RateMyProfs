@@ -1,0 +1,120 @@
+#books {
+  max-width: 100%;
+  height: auto;
+  margin-top: 200px;
+  opacity: 0.5;
+  position: absolute;
+}
+
+#logo-big {
+  height: auto;
+  max-width: 30%;
+  z-index: 1;
+  margin-top: 250px;
+}
+
+#on-books {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 1000px;
+}
+
+#get-started {
+    margin: 50px;
+    color: white;
+    font-size: 30px;
+    opacity: 0.999;
+    font-weight: 700px;
+}
+
+#pencil {
+    height: auto;
+    max-width: 40%;
+    margin-left: 50px;
+}
+
+#anon {
+    height: auto;
+    max-width: 70%;
+}
+
+.home-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+#like-dislike {
+    height: auto;
+    max-width: 70%;
+}
+
+.home-info-div {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home-info-txt {
+    margin-top: 50px;
+    font-size: 26px;
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+}
+
+#love-rmp-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+#join-rmp {
+    font-size: 32px;
+    font-family: Poppins, sans-serif;
+    font-weight: 900;
+}
+
+#make-official {
+    font-family: Poppins, sans-serif;
+    font-size: 26px;
+}
+
+#session-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.home-buttons {
+    border-radius: 20px;
+    color: white;
+    font-weight: 700;
+    height: 100%;
+    cursor: pointer;
+    padding: 8px 16px;
+    transition-duration: 0.4s;
+    font-size: 16px;
+    background-color: black;
+}
+
+.home-buttons:hover {
+    background-color: gray;
+}
+
+#home-try-txt {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+#home-try {
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+}
+
+#home-try > * {
+    margin: 20px;
+}

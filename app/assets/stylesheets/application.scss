@@ -10,29 +10,16 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
  */
 
-.nav-bar {
-    display: flex;
-    justify-content: space-between;
-    background-color: black;
-    color: white;
+ 
+@import './reset.scss';
+@import './nav-bar.scss';
+@import './home.scss';
+
+
+body {
+    background-color: tan;
     font-family: HelveticaNeue, arial;
-    font-size: 14px;
-    align-items: center;
-}
-
-.logo {
-    width: 75px;
-    margin-left: 50px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-right: 10px;
-}
-
-.session-form {
-    font-size: large;
-    color: white;
 }

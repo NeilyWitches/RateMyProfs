@@ -1,0 +1,40 @@
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    font-size: 14px;
+    align-items: center;
+}
+
+.logo {
+    width: 75px;
+    margin-left: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.session-buttons > * {
+    border-radius: 20px;
+    background: transparent;
+    color: white;
+    font-weight: 700;
+    height: 100%;
+    cursor: pointer;
+    padding: 8px 16px;
+    transition-duration: 0.4s;
+    font-size: 16px;
+}
+
+.session-buttons > *:hover {
+    background-color: gray;
+}
+
+#demo-button {
+    margin-right: 50px;
+}
+
+#login-button {
+    border: 0px;
+}
