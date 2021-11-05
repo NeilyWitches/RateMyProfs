@@ -38,7 +38,7 @@ class Home extends React.Component {
                     <div id='join-rmp'>Join the RMP Family</div>
                     <div id='make-official'>Love RMP? Let's make it official.</div>
                 </div>
-                <div class='home-info'>
+                <div className='home-info'>
                     <div className='home-info-div'>
                         <img src={window.pencil} alt='Pencil' id='pencil' className='home-info-img'/>
                         <div className='home-info-txt'>Manage and edit your ratings</div>

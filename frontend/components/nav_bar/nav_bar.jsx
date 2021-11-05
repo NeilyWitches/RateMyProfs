@@ -1,25 +1,37 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ProfileNavLinks from './profile_nav_links';
 
 class NavBar extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            email: 'demouser@demo.com',
-            first_name: 'Demo User',
-            last_name: 'Demo User',
-            password: 'cupcake',
+            demouser: {
+                email: 'demouser@demo.com',
+                first_name: 'Demo User',
+                last_name: 'Demo User',
+                password: 'cupcake',
+            },
+            profile_links: [
+                {id: 1, title: 'Profile'},
+                {id: 2, title: 'Account Settings'},
+                {id: 3, title: 'Your Ratings'},
+                {id: 4, title: 'Saved Profs'},
+                {id: 5, title: 'Logout'},
+            ],
+            display_profile_links: false
         };
 
         this.clickDemo = this.clickDemo.bind(this);
         this.clickSignUp = this.clickSignUp.bind(this);
         this.clickLogIn = this.clickLogIn.bind(this);
+       
     };
 
     clickDemo(e) {
         e.preventDefault();
-        this.props.login(this.state)
+        this.props.login(this.state.demouser)
         .then(() => this.props.history.push('/'));
     };
 
@@ -33,16 +45,39 @@ class NavBar extends React.Component {
         this.props.history.push(path);
     }
 
+    componentWillMount() {
+        this.displayProfileLinks = this.displayProfileLinks.bind(this);
+    }
+
+    displayProfileLinks() {
+        this.setState({
+            display_profile_links: !this.state.display_profile_links,
+        });
+    };
+
     render() {
         const { createUser, current_user, logout, location } = this.props;
+        let profile_links = null;
+        if ( this.state.display_profile_links ) {
+            profile_links = (
+                <div>
+                    {
+                        this.state.profile_links.map((profile_link, index) => {
+                            return <ProfileNavLinks key={profile_link.id}
+                                    title={profile_link.title} />
+                        })
+                    }
+                </div>
+            )
+        }
         if (current_user) {
             return (
                 <header>
                     <div>
                         <div className='nav-bar'>
                             <Link to='/'><img src={window.logo} alt="Logo" className='logo' /></Link>
-                            <h3>HEY, {current_user.first_name.toUpperCase()}</h3>
-                            <button onClick={logout}>Logout</button>
+                            <button onClick={this.displayProfileLinks}>HEY, {current_user.first_name.toUpperCase()}</button>
+                            {profile_links}
                         </div>
                     </div>
                 </header>
