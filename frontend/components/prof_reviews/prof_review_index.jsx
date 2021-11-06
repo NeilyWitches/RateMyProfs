@@ -13,9 +13,10 @@ class ProfReviewIndex extends React.Component {
 
     render() {
         const { profReviews } = this.props;
+        if (!profReviews) return null;
         return (
-            <div>
-                <h1></h1>
+            <div id='prof-review-index'>
+                <h1>Prof Review Index</h1>
                 <ul>
                     {
                         profReviews.map(profReview => <ProfReviewShow key={profReview.id} profReview={profReview}/>)
