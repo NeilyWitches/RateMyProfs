@@ -15,12 +15,12 @@ class ProfReviewForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.action(this.state)
-        .then(() => this.props.history.push('/'));
+        .then(() => this.props.history.push(`/profs/${this.state.prof_id}`));
     };
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} id='prof-review-form'>
                 {this.props.formType}
                 <textarea
                     value={this.state.body}

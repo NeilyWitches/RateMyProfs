@@ -4,9 +4,10 @@ class Api::ProfReviewsController < ApplicationController
     def create
 
         @prof_review = ProfReview.new(prof_review_params)
+        @prof = Prof.find(params[:profReview][:prof_id])
 
         if @prof_review.save!
-            render :show
+            render 'api/profs/show'
         else
             render json: @prof_review.errors.full_messages, status: :unprocessable_entity
         end
@@ -34,6 +35,6 @@ class Api::ProfReviewsController < ApplicationController
     end
 
     def prof_review_params
-        params.require(:profReview).permit(:body, :klass, :grade)
+        params.require(:profReview).permit(:body, :klass, :grade, :prof_id)
     end
 end

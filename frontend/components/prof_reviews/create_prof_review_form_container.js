@@ -2,11 +2,12 @@ import { connect } from 'react-redux';
 import { createProfReview } from '../../actions/prof_review_actions';
 import ProfReviewForm from './prof_review_form';
 
-const mSTP = state => ({
+const mSTP = (state, ownProps) => ({
     profReview: {
         body: '',
         klass: '',
         grade: '',
+        prof_id: ownProps.match.params.profId,
     },
     formType: 'Add Prof Review',
 });

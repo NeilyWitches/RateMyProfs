@@ -1,5 +1,5 @@
 import { RECEIVE_PROF } from '../actions/prof_actions';
-import { REMOVE_PROF_REVIEW } from '../actions/prof_review_actions';
+import { RECEIVE_PROF_REVIEW, REMOVE_PROF_REVIEW } from '../actions/prof_review_actions';
 
 const ProfReviewsReducer = (oldState = {}, action) => {
     Object.freeze(oldState);
@@ -7,6 +7,9 @@ const ProfReviewsReducer = (oldState = {}, action) => {
     switch (action.type) {
         case RECEIVE_PROF:
             newState = action.payload.prof_reviews;
+            return newState;
+        case RECEIVE_PROF_REVIEW:
+            newState[action.profReview.id] = action.profReview;
             return newState;
         case REMOVE_PROF_REVIEW:
             delete newState[action.profReviewId];

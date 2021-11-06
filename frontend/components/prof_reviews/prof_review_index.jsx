@@ -19,15 +19,16 @@ class ProfReviewIndex extends React.Component {
 
     render() {
         if (!this.props.prof) return null;
+        const {profReviews} = this.props;
         return (
             <div id='prof-review-index'>
                 <h1>{this.props.prof.first_name}'s Reviews</h1>
                 <ul>
                     {
-                        this.props.profReviews.map(profReview => <ProfReviewShow key={profReview.id} profReview={profReview}/>)
+                        profReviews.map((profReview, index) => <ProfReviewShow key={index} profReview={profReview}/>)
                     }
                 </ul>
-                <Link to="/profReviews/new">New Prof Review</Link>
+                <Link to={`/profReviews/new/${this.props.prof.id}`}>New Prof Review</Link>
             </div>
         );
     };

@@ -17,8 +17,8 @@ const App = ({ children }) => (
         
         <Route path='/' component={NavBarContainer} />
         <Switch>
+            <Route path='/profReviews/new/:profId' component={CreateProfReviewFormContainer} />
             <ProtectedRoute path='/profReviews/:profReviewId/edit' component={EditProfReviewFormContainer} />
-            <Route path='/profReviews/new' component={CreateProfReviewFormContainer} />
             <Route path='/profs/:profId' component={ProfReviewIndexContainer} />
             <Route path='/profs/' component={ProfIndexContainer} />
             <AuthRoute path='/signup' component={SignupContainer} />
