@@ -11,7 +11,7 @@ import ProfShowContainer from './profs/prof_show_container';
 import SignupContainer from './session/signup_container';
 import LoginContainer from './session/login_container';
 import NotFoundPage from './not_found_page';
-import Home from './home';
+import HomeContainer from './home_container';
 
 const App = ({ children }) => (
     <div>
@@ -23,7 +23,7 @@ const App = ({ children }) => (
             <Route path='/profs/:profId' component={ProfShowContainer} />
             <AuthRoute path='/signup' component={SignupContainer} />
             <AuthRoute path='/login' component={LoginContainer} />
-            <Route exact path='/' component={Home} />
+            <Route exact path='/' component={HomeContainer} />
             <Route path='/404' component={NotFoundPage} />
             <Redirect to='/404' />
         </Switch>
