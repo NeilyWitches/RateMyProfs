@@ -2,7 +2,7 @@ class Api::ProfReviewsController < ApplicationController
     before_action :set_prof_review, only: [:show, :update, :destroy]
 
     def index
-        @prof_reviews = ProfReview.all
+        @prof_reviews = ProfReview.where(prof_id: params[:prof_id])
     end
 
     def show

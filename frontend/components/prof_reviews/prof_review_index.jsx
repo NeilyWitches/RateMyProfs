@@ -15,6 +15,7 @@ class ProfReviewIndex extends React.Component {
         const { profReviews } = this.props;
         return (
             <div>
+                <h1></h1>
                 <ul>
                     {
                         profReviews.map(profReview => <ProfReviewShow key={profReview.id} profReview={profReview}/>)
