@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 import ProfIndex from './prof_index';
 import { requestProfs } from '../../actions/prof_actions';
+import { selectProfs } from '../../reducers/selectors';
 
 const mSTP = state => {
     return {
-        profs: Object.values(state.entities.profs),
+        profs: selectProfs(state),
     }
 };
 

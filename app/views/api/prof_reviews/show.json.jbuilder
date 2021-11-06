@@ -1,1 +1,0 @@
-json.partial! 'prof_review', profReview: @prof_review

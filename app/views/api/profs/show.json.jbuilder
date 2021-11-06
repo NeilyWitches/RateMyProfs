@@ -1,1 +1,11 @@
-json.partial! 'prof', prof: @prof
+json.profs do
+    json.extract! @prof, :id, :first_name, :last_name, :subject
+end
+
+json.prof_reviews do
+    @prof.prof_reviews.each do |prof_review|
+        json.set! prof_review.id do
+            json.extract! prof_review, :id, :body, :klass, :grade, :prof_id
+        end
+    end
+end

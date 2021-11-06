@@ -1,13 +1,6 @@
 class Api::ProfReviewsController < ApplicationController
-    before_action :set_prof_review, only: [:show, :update, :destroy]
-
-    def index
-        @prof_reviews = ProfReview.all
-    end
-
-    def show
-    end
-
+    before_action :set_prof_review, only: [:update, :destroy]
+    
     def create
 
         @prof_review = ProfReview.new(prof_review_params)

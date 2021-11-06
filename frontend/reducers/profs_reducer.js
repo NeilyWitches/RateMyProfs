@@ -8,10 +8,9 @@ const ProfsReducer = (oldState = {}, action) => {
     let newState = Object.assign({}, oldState);
     switch (action.type) {
         case RECEIVE_PROFS:
-            newState = action.profs;
-            return newState;
+            return Object.assign({}, action.profs, oldState);
         case RECEIVE_PROF:
-            newState[action.prof.id] = action.prof;
+            newState[action.payload.profs.id] = action.payload.profs;
             return newState;
         default:
             return oldState;

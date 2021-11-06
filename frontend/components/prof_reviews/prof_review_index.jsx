@@ -8,18 +8,22 @@ class ProfReviewIndex extends React.Component {
     };
 
     componentDidMount() {
-        this.props.requestProfReviews();
+        this.props.requestProf(this.props.match.params.profId)
     };
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.match.params.profId !== this.props.match.params.profId){
+            this.props.requestProf(this.props.match.params.profId)
+        }
+    }
+
     render() {
-        const { profReviews } = this.props;
-        if (!profReviews) return null;
         return (
             <div id='prof-review-index'>
-                <h1>Prof Review Index</h1>
+                <h1>{this.props.prof.first_name}'s Reviews</h1>
                 <ul>
                     {
-                        profReviews.map(profReview => <ProfReviewShow key={profReview.id} profReview={profReview}/>)
+                        this.props.profReviews.map(profReview => <ProfReviewShow key={profReview.id} profReview={profReview}/>)
                     }
                 </ul>
                 <Link to="/profReviews/new">New Prof Review</Link>
