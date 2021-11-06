@@ -17,7 +17,7 @@ class ProfShow extends React.Component {
                 {prof.last_name}
                 Subject:
                 {prof.subject}
-                <Link to={`/profs/${prof.id}`}></Link>
+                <Link to={`/profs/${prof.id}`}>{prof.first_name}'s Reviews</Link>
             </div>
         )
     }

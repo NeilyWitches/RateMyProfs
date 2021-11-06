@@ -116,7 +116,6 @@ class NavBar extends React.Component {
             } else {
                 return (
                     <header>
-                        <div>
                             <div className='nav-bar'>
                                 <Link to='/'><img src={window.logo} alt="Logo" className='logo' /></Link>
                                 <div className='session-buttons'>
@@ -125,7 +124,6 @@ class NavBar extends React.Component {
                                     <button onClick={this.clickDemo} id='demo-button'>Demo Login</button>
                                 </div>
                             </div>
-                        </div>
                     </header>
                 )
             }
