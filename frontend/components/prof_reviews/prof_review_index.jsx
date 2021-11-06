@@ -18,6 +18,7 @@ class ProfReviewIndex extends React.Component {
     }
 
     render() {
+        if (!this.props.prof) return null;
         return (
             <div id='prof-review-index'>
                 <h1>{this.props.prof.first_name}'s Reviews</h1>
