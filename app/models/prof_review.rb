@@ -8,6 +8,7 @@ class ProfReview < ApplicationRecord
     validates :attendance, inclusion: [nil, true, false]
 
     belongs_to :author,
+        optional: true,
         foreign_key: :author_id,
         class_name: :User
 

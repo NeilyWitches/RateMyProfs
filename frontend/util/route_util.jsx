@@ -25,11 +25,16 @@ const Protected = ({ component: Component, path, loggedIn }) => (
         />
 );
 
-const ExtraProtected = ({ component: Component, path, current_user }) => {
+const ExtraProtected = ({ component: Component, path, current_user, loggedIn }) => {
     return <Route
         path={path}
         render={props => {
-            return props.match.params.userId == current_user.id ? <Component {...props} /> : <Redirect to='/' />
+            if (current_user) {
+                return props.match.params.userId == current_user.id ? <Component {...props} /> : <Redirect to='/' />
+            } else if (!loggedIn) {
+                return <Redirect to='/signup' />
+            }
+            
         }}
     />
 };

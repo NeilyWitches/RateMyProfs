@@ -27,7 +27,7 @@ class UserRatingsIndex extends React.Component {
                         profReviews.map((profReview, index) =>
                         <div key={index}>
                             <ProfReviewShow profReview={profReview}/>
-                            <Link to={`/profReviews/edit/${profReview.id}`}>Edit</Link>
+                            <Link to={`/profReviews/edit/${profReview.id}/${this.props.match.params.userId}`}>Edit</Link>
                         </div>)
                     }
                 </ul>
