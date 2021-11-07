@@ -12,11 +12,13 @@ import NotFoundPage from './not_found_page';
 import HomeContainer from './home_container';
 import ProfIndexContainer from './profs/prof_index_container';
 import UserRatingsIndexContainer from './user_profile/user_ratings_index_container';
+import Footer from './footer';
 
 const App = ({ children }) => (
     <div>
         
         <Route path='/' component={NavBarContainer} />
+        <Route path='/' component={Footer} />
         <Switch>
             <Route path='/profReviews/new/:profId' component={CreateProfReviewFormContainer} />
             <ExtraProtectedRoute path='/profReviews/edit/:profReviewId/:userId' component={EditProfReviewFormContainer} />
