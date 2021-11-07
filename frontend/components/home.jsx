@@ -16,6 +16,7 @@ class Home extends React.Component {
         this.clickSignUp = this.clickSignUp.bind(this);
         this.clickDemo = this.clickDemo.bind(this);
         this.clickExplore = this.clickExplore.bind(this);
+        this.clickMyRatings = this.clickMyRatings.bind(this);
     }
 
     clickSignUp() {
@@ -31,6 +32,11 @@ class Home extends React.Component {
 
     clickExplore() {
         let path = '/profs';
+        this.props.history.push(path);
+    }
+
+    clickMyRatings() {
+        let path = `/account/ratings/${this.props.current_user.id}`;
         this.props.history.push(path);
     }
 
@@ -99,7 +105,7 @@ class Home extends React.Component {
                         </div>
                     </div>
                     <div id='session-home'>
-                        <button className='home-buttons'>My Ratings</button>
+                        <button onClick={this.clickMyRatings} className='home-buttons'>My Ratings</button>
                     </div>
                 </div>
             )

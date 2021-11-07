@@ -10,9 +10,10 @@ const receiveProfs = profs => ({
 
 const receiveProf = payload => {
     return {
-    type: RECEIVE_PROF,
-    payload,
-}};
+        type: RECEIVE_PROF,
+        payload,
+    }
+};
 
 export const requestProfs = () => dispatch => (
     ProfApiUtil.fetchProfs()
