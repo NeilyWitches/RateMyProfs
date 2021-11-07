@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute, ExtraProtectedRoute } from '../util/route_util';
 import { withRouter } from 'react-router';
 import NavBarContainer from './nav_bar/nav_bar_container';
 import CreateProfReviewFormContainer from './prof_reviews/create_prof_review_form_container';
@@ -22,7 +22,7 @@ const App = ({ children }) => (
             <ProtectedRoute path='/profReviews/edit/:profReviewId' component={EditProfReviewFormContainer} />
             <Route path='/profs/:profId' component={ProfReviewIndexContainer} />
             <Route path='/profs/' component={ProfIndexContainer} />
-            <ProtectedRoute path='/account/ratings/:userId' component={UserRatingsIndexContainer} />
+            <ExtraProtectedRoute path='/account/ratings/:userId' component={UserRatingsIndexContainer} />
             <AuthRoute path='/signup' component={SignupContainer} />
             <AuthRoute path='/login' component={LoginContainer} />
             <Route exact path='/' component={HomeContainer} />
