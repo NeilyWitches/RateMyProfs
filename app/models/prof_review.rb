@@ -7,9 +7,9 @@ class ProfReview < ApplicationRecord
     # validates :take_again, :for_credit, :txt_book inclusion: [true, false]
     validates :attendance, inclusion: [nil, true, false]
 
-    #belongs_to :author,
-        #foreign_key: :author_id,
-        #class_name: :User
+    belongs_to :author,
+        foreign_key: :author_id,
+        class_name: :User
 
     belongs_to :prof,
         foreign_key: :prof_id,

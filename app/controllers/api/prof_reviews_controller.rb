@@ -35,6 +35,6 @@ class Api::ProfReviewsController < ApplicationController
     end
 
     def prof_review_params
-        params.require(:profReview).permit(:body, :klass, :grade, :prof_id)
+        params.require(:profReview).permit(:body, :klass, :grade, :prof_id, :author_id)
     end
 end
