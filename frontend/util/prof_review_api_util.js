@@ -1,8 +1,8 @@
-// export const fetchProfReview = profReviewId => (
-//     $.ajax({
-//         url: `/api/prof_reviews/${profReviewId}`
-//     })
-// );
+export const fetchProfReview = profReviewId => (
+    $.ajax({
+        url: `/api/prof_reviews/${profReviewId}`
+    })
+);
 
 export const createProfReview = profReview => (
     $.ajax({

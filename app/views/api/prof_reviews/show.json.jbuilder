@@ -1,0 +1,1 @@
+json.extract! @prof_review, :id, :body, :klass, :grade

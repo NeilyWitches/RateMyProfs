@@ -13,9 +13,12 @@ const removeProfReview = profReviewId => ({
     profReviewId,
 })
 
-// export const requestProfReview = profReview => dispatch => {
-//     return ProfReviewApiUtil.
-// }
+export const requestProfReview = profReviewId => dispatch => {
+    return ProfReviewApiUtil.fetchProfReview(profReviewId)
+    .then(profReview => {
+        return dispatch(receiveProfReview(profReview))
+    })
+}
 
 export const createProfReview = profReview => dispatch => {
     return ProfReviewApiUtil.createProfReview(profReview)
