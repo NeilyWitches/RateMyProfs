@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { requestProfReview, updateProfReview } from '../../actions/prof_review_actions';
+import { requestProfReview, updateProfReview, deleteProfReview } from '../../actions/prof_review_actions';
 import ProfReviewForm from './prof_review_form';
 
 class EditProfReviewForm extends React.Component {
@@ -9,11 +9,14 @@ class EditProfReviewForm extends React.Component {
 
         if (!profReview) return null;
         return (
-            <ProfReviewForm
-                action={action}
-                formType={formType}
-                profReview={profReview}
-                history={history} />
+            <div>
+                <ProfReviewForm
+                    action={action}
+                    formType={formType}
+                    profReview={profReview}
+                    history={history} />
+                <button onClick={() => this.props.deleteProfReview(this.props.profReview.id)} id='delete-prof-review'>Delete</button>
+            </div>
         );
     }
 
@@ -30,6 +33,7 @@ const mSTP = (state, ownProps) => {
 };
 
 const mDTP = dispatch => ({
+    deleteProfReview: profReviewId => dispatch(deleteProfReview(profReviewId)),
     requestProfReview: profReviewId => dispatch(requestProfReview(profReviewId)),
     action: profReview => dispatch(updateProfReview(profReview)),
 });
