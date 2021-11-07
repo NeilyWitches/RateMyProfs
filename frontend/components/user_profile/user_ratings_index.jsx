@@ -24,10 +24,13 @@ class UserRatingsIndex extends React.Component {
             <div id='user-ratings-index'>
                 <ul>
                     {
-                        profReviews.map((profReview, index) => <ProfReviewShow key={index} profReview={profReview}/>)
+                        profReviews.map((profReview, index) =>
+                        <div>
+                            <ProfReviewShow key={index} profReview={profReview}/>
+                            <Link key={index} to={`/profReviews/edit/${profReview.id}`}>Edit</Link>
+                        </div>)
                     }
                 </ul>
-                {/* <Link to={`/profReviews/edit/${this.props.user.id}`}>Edit</Link> */}
             </div>
         )
     }
