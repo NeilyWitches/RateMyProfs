@@ -20,7 +20,6 @@ class UserRatingsIndex extends React.Component {
     render() {
         if (!this.props.profReviews) return null;
         const {profReviews} = this.props;
-
         return (
             <div id='user-ratings-index'>
                 <ul>

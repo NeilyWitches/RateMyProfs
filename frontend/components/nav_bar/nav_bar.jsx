@@ -16,7 +16,7 @@ class NavBar extends React.Component {
             profile_links: [
                 {id: 1, title: 'Profile'},
                 {id: 2, title: 'Account Settings'},
-                {id: 3, title: 'Your Ratings'},
+                {id: 3, title: 'My Ratings'},
                 {id: 4, title: 'Saved Profs'},
                 {id: 5, title: 'Logout'},
             ],
@@ -64,7 +64,7 @@ class NavBar extends React.Component {
                     {
                         this.state.profile_links.map((profile_link, index) => {
                             return <ProfileNavLinksContainer key={profile_link.id}
-                                    title={profile_link.title}/>
+                                    title={profile_link.title} history={this.props.history}/>
                         })
                     }
                 </div>
