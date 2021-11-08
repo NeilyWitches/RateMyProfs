@@ -3,11 +3,26 @@ import React from 'react';
 class ProfReviewForm extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = this.props.profReview
         this.handleSubmit = this.handleSubmit.bind(this);
-       
+        this.tags = [
+            'GIVES GOOD FEEDBACK', 'RESPECTED', 'LOTS OF HOMEWORK',
+            'ACCESSIBLE OUTSIDE OF CLASS', 'GET READY TO READ',
+            'PARTICIPATION MATTERS', "SKIP CLASS YOU WON'T PASS.",
+            "INSPIRATIONAL", "GRADED BY FEW THINGS", "TEST HEAVY",
+            "GROUP PROJECTS", "CLEAR GRADING CRITERIA", "HILARIOUS",
+            "BEWARE OF POP QUIZZES", "AMAZING LECTURES", "LECTURE HEAVY",
+            "CARING", "EXTRA CREDIT", "SO MANY PAPERS", "TOUGH GRADER"
+        ]
+        // this.populateTagStyles();
     };
+
+    populateTagStyles() {
+
+        for (let i = 0; i < this.tags.length; i++) {
+            this.state.tagStyles.push('gray')
+        }
+    }
 
     update(field) {
         return e => this.setState({ [field]: e.currentTarget.value })
@@ -20,6 +35,16 @@ class ProfReviewForm extends React.Component {
     makeFalse(field) {
         return () => this.setState({ [field]: false })
     }
+
+    changeColor(index) {
+        return () => {
+            if (this.tagStyles[index] === 'gray') {
+                this.tagStyles[index] = 'blue'
+            } else {
+                this.tagStyles[index] = 'gray'
+            }
+        }
+    };
 
     handleSubmit(e) {
         e.preventDefault();
@@ -151,6 +176,10 @@ class ProfReviewForm extends React.Component {
                 Was attendance mandatory? (Optional)
                 <input type='button' style={inputStyleAttendanceYes} onClick={this.makeTrue('attendance')} value='yes' />
                 <input type='button' style={inputStyleAttendanceNo} onClick={this.makeFalse('attendance')} value='no' />
+                Tags:
+                {
+                    this.tags.map((tag, index) => <input key={index} type='button' value={tag} />)
+                }
                 <input type='submit'></input>
             </form>
         );

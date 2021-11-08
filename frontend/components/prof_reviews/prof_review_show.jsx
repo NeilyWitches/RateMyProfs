@@ -17,7 +17,7 @@ class ProfReviewShow extends React.Component {
             attendanceDisplay = 'Attendance: Not Mandatory'
         };
 
-        if (this.props.profReview.grade === 'Select') {
+        if (this.props.profReview.grade === 'Select' || this.props.profReview.grade === '') {
             gradeDisplay = null;
         } else {
             gradeDisplay = `Grade: ${this.props.profReview.grade}`

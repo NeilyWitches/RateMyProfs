@@ -3,7 +3,7 @@ class ProfReview < ApplicationRecord
         'A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 
         'C', 'C-', 'D+', 'D', 'D-', 'F', 
         'Drop/Withdrawal', 'Incomplete', 'Not sure yet', 
-        'Rather not say', 'Audit/No grade', 'Select'
+        'Rather not say', 'Audit / No grade', 'Select', ""
     ]
 
     TAGS = [

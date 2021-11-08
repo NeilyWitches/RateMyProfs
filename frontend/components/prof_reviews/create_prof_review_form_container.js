@@ -19,6 +19,7 @@ const mSTP = (state, ownProps) => {
                 author_id: state.session.current_user.id
             },
             formType: 'Add Prof Review',
+            tagStyles: [],
         }
     } else {
         return {
