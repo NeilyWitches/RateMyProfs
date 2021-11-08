@@ -23,7 +23,6 @@ class ProfReviewForm extends React.Component {
     };
 
     render() {
-        const scores = [0, 1, 2, 3, 4, 5]
         return (
             <form onSubmit={this.handleSubmit} id='prof-review-form'>
                 {this.props.formType}
@@ -41,34 +40,27 @@ class ProfReviewForm extends React.Component {
                     value={this.state.grade}
                     onChange={this.update('grade')}>
                 </input>
-                Quality:
-                {
-                    scores.map((score, index) =>
-                        <label key={index}>                        
-                            <input
-                            type='radio'
-                            value={score}
-                            checked={this.state.quality === score}
-                            onChange={this.updateInt('quality')}
-                        />
-                        {score}
-                        </label>
-                    )
-                }
-                Difficulty:
-                {
-                    scores.map((score, index) =>
-                        <label key={index}>
-                            <input
-                                type='radio'
-                                value={score}
-                                checked={this.state.difficulty === score}
-                                onChange={this.updateInt('difficulty')}
-                            />
-                            {score}
-                        </label>
-                    )
-                }
+                <br/>
+                <label>
+                    Quality: {this.state.quality}
+                    <input
+                        type='range'
+                        // name='quality'
+                        min='0'
+                        max='5'
+                        onChange={this.update('quality')} 
+                    />
+                </label>
+                <label>
+                    Difficulty: {this.state.difficulty}
+                    <input
+                        type='range'
+                        // name='quality'
+                        min='0'
+                        max='5'
+                        onChange={this.update('difficulty')}
+                    />
+                </label>
                 <input type='submit'></input>
             </form>
         );

@@ -9,8 +9,8 @@ const mSTP = (state, ownProps) => {
                 body: '',
                 klass: '',
                 grade: '',
-                quality: 0,
-                difficulty: 0,
+                quality: 5,
+                difficulty: 5,
                 prof_id: ownProps.match.params.profId,
                 author_id: state.session.current_user.id
             },
