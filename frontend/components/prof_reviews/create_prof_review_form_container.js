@@ -16,10 +16,9 @@ const mSTP = (state, ownProps) => {
                 txt_book: true,
                 attendance: null,
                 prof_id: ownProps.match.params.profId,
-                author_id: state.session.current_user.id
+                author_id: state.session.current_user.id,
             },
             formType: 'Add Prof Review',
-            tagStyles: [],
         }
     } else {
         return {

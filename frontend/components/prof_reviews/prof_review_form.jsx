@@ -14,13 +14,14 @@ class ProfReviewForm extends React.Component {
             "BEWARE OF POP QUIZZES", "AMAZING LECTURES", "LECTURE HEAVY",
             "CARING", "EXTRA CREDIT", "SO MANY PAPERS", "TOUGH GRADER"
         ]
-        // this.populateTagStyles();
+        this.tagStyles = [];
+        this.populateTagStyles();
     };
 
     populateTagStyles() {
 
         for (let i = 0; i < this.tags.length; i++) {
-            this.state.tagStyles.push('gray')
+            this.tagStyles.push('gray')
         }
     }
 
@@ -40,8 +41,10 @@ class ProfReviewForm extends React.Component {
         return () => {
             if (this.tagStyles[index] === 'gray') {
                 this.tagStyles[index] = 'blue'
+                this.forceUpdate()
             } else {
                 this.tagStyles[index] = 'gray'
+                this.forceUpdate()
             }
         }
     };
@@ -53,6 +56,7 @@ class ProfReviewForm extends React.Component {
     };
 
     render() {
+        // debugger
         const grades =  [
             'A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+',
             'C', 'C-', 'D+', 'D', 'D-', 'F', 
@@ -178,7 +182,11 @@ class ProfReviewForm extends React.Component {
                 <input type='button' style={inputStyleAttendanceNo} onClick={this.makeFalse('attendance')} value='no' />
                 Tags:
                 {
-                    this.tags.map((tag, index) => <input key={index} type='button' value={tag} />)
+                    this.tags.map((tag, index) => <input 
+                    key={index} type='button' 
+                    style={{backgroundColor: this.tagStyles[index]}} 
+                    onClick={this.changeColor(index)}
+                    value={tag} />)
                 }
                 <input type='submit'></input>
             </form>
