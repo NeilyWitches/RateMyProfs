@@ -76,7 +76,7 @@ class ProfReviewForm extends React.Component {
             }
             this.state.tag1 = this.tags[tag_index[0]];
             this.state.tag2 = this.tags[tag_index[1]];
-            this.state.tag2 = this.tags[tag_index[2]];
+            this.state.tag3 = this.tags[tag_index[2]];
         }
     }
 
