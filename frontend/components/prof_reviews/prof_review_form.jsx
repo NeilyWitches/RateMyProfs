@@ -12,6 +12,10 @@ class ProfReviewForm extends React.Component {
         return e => this.setState({ [field]: e.currentTarget.value })
     };
 
+    updateInt(field) {
+        return e => this.setState({ [field]: parseInt(e.currentTarget.value) })
+    };
+
     handleSubmit(e) {
         e.preventDefault();
         this.props.action(this.state)
@@ -19,6 +23,7 @@ class ProfReviewForm extends React.Component {
     };
 
     render() {
+        const scores = [0, 1, 2, 3, 4, 5]
         return (
             <form onSubmit={this.handleSubmit} id='prof-review-form'>
                 {this.props.formType}
@@ -36,6 +41,34 @@ class ProfReviewForm extends React.Component {
                     value={this.state.grade}
                     onChange={this.update('grade')}>
                 </input>
+                Quality:
+                {
+                    scores.map((score, index) =>
+                        <label key={index}>                        
+                            <input
+                            type='radio'
+                            value={score}
+                            checked={this.state.quality === score}
+                            onChange={this.updateInt('quality')}
+                        />
+                        {score}
+                        </label>
+                    )
+                }
+                Difficulty:
+                {
+                    scores.map((score, index) =>
+                        <label key={index}>
+                            <input
+                                type='radio'
+                                value={score}
+                                checked={this.state.difficulty === score}
+                                onChange={this.updateInt('difficulty')}
+                            />
+                            {score}
+                        </label>
+                    )
+                }
                 <input type='submit'></input>
             </form>
         );

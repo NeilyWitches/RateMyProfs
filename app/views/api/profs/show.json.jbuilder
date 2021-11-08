@@ -6,7 +6,7 @@ if @prof.prof_reviews.length != 0
     json.prof_reviews do
         @prof.prof_reviews.each do |prof_review|
             json.set! prof_review.id do
-                json.extract! prof_review, :id, :body, :klass, :grade, :prof_id
+                json.extract! prof_review, :id, :body, :klass, :grade, :quality, :difficulty, :prof_id
             end
         end
     end

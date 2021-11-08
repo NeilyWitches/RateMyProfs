@@ -14,6 +14,10 @@ class ProfReviewShow extends React.Component {
                 {this.props.profReview.klass}
                 Grade:
                 {this.props.profReview.grade}
+                Quality:
+                {this.props.profReview.quality}
+                Difficuly:
+                {this.props.profReview.difficulty}
             </div>
         );
     };

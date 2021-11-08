@@ -9,6 +9,8 @@ const mSTP = (state, ownProps) => {
                 body: '',
                 klass: '',
                 grade: '',
+                quality: 0,
+                difficulty: 0,
                 prof_id: ownProps.match.params.profId,
                 author_id: state.session.current_user.id
             },
@@ -20,6 +22,8 @@ const mSTP = (state, ownProps) => {
                 body: '',
                 klass: '',
                 grade: '',
+                quality: 0,
+                difficulty: 0,
                 prof_id: ownProps.match.params.profId,
             },
             formType: 'Add Prof Review',
