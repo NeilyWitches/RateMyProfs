@@ -41,6 +41,9 @@ class ProfReviewShow extends React.Component {
                 Textbook:
                 { this.props.profReview.txt_book ? "Yes" : "No" }
                 { attendanceDisplay }
+                { this.props.profReview.tag1 }
+                { this.props.profReview.tag2 }
+                { this.props.profReview.tag3 }
             </div>
         );
     };

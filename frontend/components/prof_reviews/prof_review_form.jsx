@@ -106,7 +106,7 @@ class ProfReviewForm extends React.Component {
                     value={this.state.klass}
                     onChange={this.update('klass')}>
                 </input>
-                Grade:
+                Grade (Optional):
                 <select name='grades' onChange={this.update('grade')} defaultValue={'Select'}>
                     {
                         grades.map((grade, index) => 
