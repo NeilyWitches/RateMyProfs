@@ -76,6 +76,12 @@ class ProfReviewForm extends React.Component {
                         onChange={this.update('difficulty')}
                     />
                 </label>
+                <br/>
+                {/* <label>
+                    Would you take this prof again? {this.state.take_again}
+                    <button onClick={this.setState({take_again: true})}>Yes</button>
+                    <button onClick={this.setState({take_again: false})}>No</button>
+                </label> */}
                 <input type='submit'></input>
             </form>
         );

@@ -11,6 +11,7 @@ const mSTP = (state, ownProps) => {
                 grade: '',
                 quality: 5,
                 difficulty: 5,
+                take_again: true,
                 prof_id: ownProps.match.params.profId,
                 author_id: state.session.current_user.id
             },
@@ -24,6 +25,7 @@ const mSTP = (state, ownProps) => {
                 grade: '',
                 quality: 5,
                 difficulty: 5,
+                take_again: true,
                 prof_id: ownProps.match.params.profId,
             },
             formType: 'Add Prof Review',

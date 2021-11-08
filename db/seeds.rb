@@ -34,7 +34,8 @@ background I never thought I would be interested in physics, but this
 professor really made me want to become an Einstein. This class is HARD. 
 H. A. R. D. but if you put the work in you'll know as much as Newton... 
 And then some!", klass: 'PHY185', grade: 'Rather not say', quality: 3, 
-difficulty: 5, prof_id: 1)
+difficulty: 5, take_again: false, for_credit: true, txt_book: false, 
+prof_id: 1)
 
 neil_review_2 = ProfReview.create(body: "Neil was an admirable professor, 
 with a great power of lucid exposition. His understanding is expressed in 
@@ -42,19 +43,22 @@ how tangible he makes the course content to students.
 I had no prior physics experience and he helped me grasp the concepts 
 with ease. It is a college physics class though and nothing less than 
 your best effort should be exerted.", klass: 'PHY185', grade: 'A+', 
-quality: 5, difficulty: 4, prof_id: 1, author_id: 1)
+quality: 5, difficulty: 4, take_again: true, for_credit: true, 
+txt_book: true, attendance: false, prof_id: 1, author_id: 1)
 
 george_review = ProfReview.create(body: "This is the best Ive professor 
 ever had. This course is online and he is so good with technology, so 
 easy and clear directions for students. He always explains everything so 
 clear, always open for questions, dont hesitate and sign up for his 
-class.", klass: 'MAT040', grade: 'Not sure yet', quality: 5, 
-difficulty: 1, prof_id: 2, author_id: 1)
+class.", klass: 'MAT040', grade: 'Not sure yet', quality: 5,
+difficulty: 1, take_again: true, for_credit: true, txt_book: false,
+attendance: true, prof_id: 2, author_id: 1)
 
 greg_review = ProfReview.create(body: "Corporate Finance was a great 
 class. We did cases each class that were fun and interactive. It made 
 learning easier. However, we also had to do a valuation project that 
 took at least 20 hours. Plus preparing all of those cases meant 
 there was A LOT of homework. But it was worth it. Best class ever!", 
-klass: 'MGMTE2000', grade: 'A-', quality: 5, difficulty: 5, prof_id: 3,
-author_id: 2)
+klass: 'MGMTE2000', grade: 'A-', quality: 5, difficulty: 5, 
+take_again: false, for_credit: true, txt_book: true, attendance: true,
+prof_id: 3, author_id: 2)

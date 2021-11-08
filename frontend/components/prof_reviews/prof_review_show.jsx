@@ -18,6 +18,13 @@ class ProfReviewShow extends React.Component {
                 {this.props.profReview.quality}
                 Difficuly:
                 {this.props.profReview.difficulty}
+                Would Take Again:
+                { this.props.profReview.take_again ? "Yes" : "No" }
+                For Credit:
+                { this.props.profReview.for_credit ? "Yes" : "No" }
+                Textbook:
+                { this.props.profReview.for_credit ? "Yes" : "No" }
+                { this.props.profReview.attendance === true ? "Attendance: Mandatory" : "Attendance: Not Mandatory"}
             </div>
         );
     };

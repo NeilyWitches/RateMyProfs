@@ -1,1 +1,1 @@
-json.extract! @prof_review, :id, :body, :klass, :grade, :quality, :difficulty
+json.extract! @prof_review, :id, :body, :klass, :grade, :quality, :difficulty, :take_again, :for_credit, :txt_book, :attendance, :prof_id
