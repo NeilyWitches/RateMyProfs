@@ -49,8 +49,40 @@ class ProfReviewForm extends React.Component {
         }
     };
 
+    setTags() {
+        let tag_index = [];
+        if (this.num_blues === 0) {
+            return
+        } else if (this.num_blues === 1) {
+            for (let i = 0; i < this.tagStyles.length; i++) {
+                if (this.tagStyles[i] === 'blue') {
+                    tag_index.push(i)
+                }
+            }
+            this.state.tag1 = this.tags[tag_index[0]]
+        } else if (this.num_blues === 2) {
+            for (let i = 0; i < this.tagStyles.length; i++) {
+                if (this.tagStyles[i] === 'blue') {
+                    tag_index.push(i)
+                }
+            }
+            this.state.tag1 = this.tags[tag_index[0]];
+            this.state.tag2 = this.tags[tag_index[1]];
+        } else {
+            for (let i = 0; i < this.tagStyles.length; i++) {
+                if (this.tagStyles[i] === 'blue') {
+                    tag_index.push(i)
+                }
+            }
+            this.state.tag1 = this.tags[tag_index[0]];
+            this.state.tag2 = this.tags[tag_index[1]];
+            this.state.tag2 = this.tags[tag_index[2]];
+        }
+    }
+
     handleSubmit(e) {
         e.preventDefault();
+        this.setTags();
         this.props.action(this.state)
         .then(() => this.props.history.push(`/profs/${this.state.prof_id}`));
     };
