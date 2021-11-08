@@ -7,6 +7,7 @@ class ProfReviewShow extends React.Component {
 
     render() {
         let attendanceDisplay;
+        let gradeDisplay;
 
         if (this.props.profReview.attendance === null) {
             attendanceDisplay = null;
@@ -16,14 +17,19 @@ class ProfReviewShow extends React.Component {
             attendanceDisplay = 'Attendance: Not Mandatory'
         };
 
+        if (this.props.profReview.grade === 'Select') {
+            gradeDisplay = null;
+        } else {
+            gradeDisplay = `Grade: ${this.props.profReview.grade}`
+        }
+
         return (
             <div>
                 Body:
                 {this.props.profReview.body}
                 Class:
                 {this.props.profReview.klass}
-                Grade:
-                {this.props.profReview.grade}
+                {gradeDisplay}
                 Quality:
                 {this.props.profReview.quality}
                 Difficuly:

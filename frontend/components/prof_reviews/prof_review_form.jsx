@@ -33,7 +33,7 @@ class ProfReviewForm extends React.Component {
             'C', 'C-', 'D+', 'D', 'D-', 'F', 
             'Drop / Withdrawal', 'Incomplete', 
             'Not sure yet', 'Rather not say', 
-            'Audit / No grade'
+            'Audit / No grade', 'Select'
         ];
 
         let inputStyleTakeAgainYes;
@@ -42,8 +42,8 @@ class ProfReviewForm extends React.Component {
         let inputStyleForCreditNo;
         let inputStyleTextBookYes;
         let inputStyleTextBookNo;
-        // let inputStyleAttendanceYes;
-        // let inputStyleAttendanceNo;
+        let inputStyleAttendanceYes;
+        let inputStyleAttendanceNo;
 
         if (this.state.take_again) {
             inputStyleTakeAgainYes = { backgroundColor: 'red' }
@@ -81,17 +81,16 @@ class ProfReviewForm extends React.Component {
             inputStyleTextBookNo = { backgroundColor: 'gray' }
         }
 
-        // if (this.state.take_again) {
-        //     inputStyleTakeAgainYes = { backgroundColor: 'red' }
-        // } else {
-        //     inputStyleTakeAgainYes = { backgroundColor: 'gray' }
-        // }
-
-        // if (!this.state.take_again) {
-        //     inputStyleTakeAgainNo = { backgroundColor: 'red' }
-        // } else {
-        //     inputStyleTakeAgainNo = { backgroundColor: 'gray' }
-        // }
+        if (this.state.attendance === null) {
+            inputStyleAttendanceNo = { backgroundColor: 'gray' }
+            inputStyleAttendanceYes = {backgroundColor: 'gray'}
+        } else if (this.state.attendance === true) {
+            inputStyleAttendanceYes = { backgroundColor: 'red' }
+            inputStyleAttendanceNo = { backgroundColor: 'gray' }
+        } else {
+            inputStyleAttendanceYes = { backgroundColor: 'gray' }
+            inputStyleAttendanceNo = { backgroundColor: 'red' }
+        };
 
         return (
             <form onSubmit={this.handleSubmit} id='prof-review-form'>
@@ -108,13 +107,12 @@ class ProfReviewForm extends React.Component {
                     onChange={this.update('klass')}>
                 </input>
                 Grade:
-                <select name='grades' onChange={this.update('grade')}>
+                <select name='grades' onChange={this.update('grade')} defaultValue={'Select'}>
                     {
                         grades.map((grade, index) => 
                             <option 
                                 key={index}
-                                value={grade}
-                                selected={grade === this.state.grade}>
+                                value={grade}>
                                 {grade}
                             </option>)
                     }
@@ -150,6 +148,9 @@ class ProfReviewForm extends React.Component {
                 <input type='button' style={inputStyleTextBookYes} onClick={this.makeTrue('txt_book')} value='yes' />
                 <input type='button' style={inputStyleTextBookNo} onClick={this.makeFalse('txt_book')} value='no' />
                 <br />
+                Was attendance mandatory? (Optional)
+                <input type='button' style={inputStyleAttendanceYes} onClick={this.makeTrue('attendance')} value='yes' />
+                <input type='button' style={inputStyleAttendanceNo} onClick={this.makeFalse('attendance')} value='no' />
                 <input type='submit'></input>
             </form>
         );
