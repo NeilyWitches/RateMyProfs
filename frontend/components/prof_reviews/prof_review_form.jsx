@@ -23,30 +23,46 @@ class ProfReviewForm extends React.Component {
     };
 
     render() {
+        const grades =  [
+                            'A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+',
+                            'C', 'C-', 'D+', 'D', 'D-', 'F', 
+                            'Drop / Withdrawal', 'Incomplete', 
+                            'Not sure yet', 'Rather not say', 
+                            'Audit/No grade'
+                        ];
+
         return (
             <form onSubmit={this.handleSubmit} id='prof-review-form'>
                 {this.props.formType}
+                Body:
                 <textarea
                     value={this.state.body}
                     onChange={this.update('body')}>
                 </textarea>
+                Class:
                 <input
                     type='text'
                     value={this.state.klass}
                     onChange={this.update('klass')}>
                 </input>
-                <input
-                    type='text'
-                    value={this.state.grade}
-                    onChange={this.update('grade')}>
-                </input>
+                Grade:
+                <select name='grades' onChange={this.update('grade')}>
+                    {
+                        grades.map((grade, index) => 
+                            <option 
+                                key={index}
+                                value={grade}
+                                selected={grade === this.state.grade}>
+                                {grade}
+                            </option>)
+                    }
+                </select>
                 <br/>
                 <label>
                     Quality: {this.state.quality}
                     <input
                         type='range'
-                        // name='quality'
-                        min='0'
+                        min='1'
                         max='5'
                         onChange={this.update('quality')} 
                     />
@@ -55,8 +71,7 @@ class ProfReviewForm extends React.Component {
                     Difficulty: {this.state.difficulty}
                     <input
                         type='range'
-                        // name='quality'
-                        min='0'
+                        min='1'
                         max='5'
                         onChange={this.update('difficulty')}
                     />
