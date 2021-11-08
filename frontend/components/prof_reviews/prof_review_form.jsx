@@ -38,6 +38,9 @@ class ProfReviewForm extends React.Component {
     }
 
     changeColor(index) {
+        if(this.num_blues === 3) {
+            return
+        }
         return () => {
             if (this.tagStyles[index] === 'gray') {
                 this.tagStyles[index] = 'blue'
@@ -56,7 +59,13 @@ class ProfReviewForm extends React.Component {
     };
 
     render() {
-        // debugger
+        this.num_blues = 0;
+        for (let i = 0; i < this.tagStyles.length; i++) {
+            if (this.tagStyles[i] === 'blue') {
+                this.num_blues++
+            }
+        }
+
         const grades =  [
             'A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+',
             'C', 'C-', 'D+', 'D', 'D-', 'F', 
