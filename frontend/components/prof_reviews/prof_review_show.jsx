@@ -6,6 +6,16 @@ class ProfReviewShow extends React.Component {
     };
 
     render() {
+        let attendanceDisplay;
+
+        if (this.props.profReview.attendance === null) {
+            attendanceDisplay = null;
+        } else if (this.props.profReview.attendance === true) {
+            attendanceDisplay = 'Attendance: Mandatory'
+        } else {
+            attendanceDisplay = 'Attendance: Not Mandatory'
+        };
+
         return (
             <div>
                 Body:
@@ -23,8 +33,8 @@ class ProfReviewShow extends React.Component {
                 For Credit:
                 { this.props.profReview.for_credit ? "Yes" : "No" }
                 Textbook:
-                { this.props.profReview.for_credit ? "Yes" : "No" }
-                { this.props.profReview.attendance === true ? "Attendance: Mandatory" : "Attendance: Not Mandatory"}
+                { this.props.profReview.txt_book ? "Yes" : "No" }
+                { attendanceDisplay }
             </div>
         );
     };

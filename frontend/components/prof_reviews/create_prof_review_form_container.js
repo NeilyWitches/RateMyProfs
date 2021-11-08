@@ -14,7 +14,7 @@ const mSTP = (state, ownProps) => {
                 take_again: true,
                 for_credit: true,
                 txt_book: true,
-                attendance: true,
+                attendance: null,
                 prof_id: ownProps.match.params.profId,
                 author_id: state.session.current_user.id
             },

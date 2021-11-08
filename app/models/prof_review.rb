@@ -11,7 +11,7 @@ class ProfReview < ApplicationRecord
     validates :klass, :prof_id, presence: true
     validates :grade, inclusion: GRADES
     # validates :tag1, :tag2, :tag3, inclusion: tags
-    # validates :take_again, :for_credit, :txt_book, inclusion: [true, false]
+    validates :take_again, :for_credit, :txt_book, inclusion: [true, false]
     validates :attendance, inclusion: [nil, true, false]
 
     belongs_to :author,
@@ -22,10 +22,6 @@ class ProfReview < ApplicationRecord
     belongs_to :prof,
         foreign_key: :prof_id,
         class_name: :Prof
-
-    def grades
-        
-    end
 
     def tags
         [nil, 'GIVES GOOD FEEDBACK', 'RESPECTED', 'LOTS OF HOMEWORK', 
