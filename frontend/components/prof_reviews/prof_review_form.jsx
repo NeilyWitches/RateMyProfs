@@ -38,11 +38,8 @@ class ProfReviewForm extends React.Component {
     }
 
     changeColor(index) {
-        if(this.num_blues === 3) {
-            return
-        }
         return () => {
-            if (this.tagStyles[index] === 'gray') {
+            if (this.tagStyles[index] === 'gray' && this.num_blues < 3) {
                 this.tagStyles[index] = 'blue'
                 this.forceUpdate()
             } else {
