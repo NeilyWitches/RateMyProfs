@@ -42,6 +42,22 @@ class ProfIndex extends React.Component {
         }
     }
 
+    getTakeAgainRatio() {
+        let profs = this.props.profs;
+        let groupsOfProfReviews = profs.map(prof => prof.prof_reviews);
+        let values = groupsOfProfReviews.map(group => Object.values(group));
+        this.takeAgainRatio = [];
+        for (let i = 0; i < values.length; i++) {
+            let count = 0
+            for (let j = 0; j < values[i].length; j++) {
+                if (values[i][j].take_again === true){
+                    count++
+                }
+            }
+            this.takeAgainRatio.push(count / values[i].length);
+        }
+    }
+
     checkRenderQual() {
         return (this.props.profs.length === 0 ? null : this.getAvgQual() )
     }
@@ -50,19 +66,29 @@ class ProfIndex extends React.Component {
         return (this.props.profs.length === 0 ? null : this.getAvgDifficulty())
     }
 
+    checkRenderTakeAgain() {
+        return (this.props.profs.length === 0 ? null : this.getTakeAgainRatio())
+    }
+
     render() {
         const { profs } = this.props;
         this.checkRenderQual();
         this.checkRenderDifficulty();
+        this.checkRenderTakeAgain();
         const avgQuals = this.avgsQual;
         const avgDiffs = this.avgsDiff;
+        const takeAgRats = this.takeAgainRatio;
 
         return (
             <div id='prof-index'>
                 <h1>Prof Index:</h1>
                 <ul>
                     {
-                        profs.map((prof, index) => <ProfShow key={prof.id} prof={prof} avgQual={avgQuals[index]} avgDiff={avgDiffs[index]} />)
+                        profs.map((prof, index) => <ProfShow 
+                        key={prof.id} prof={prof} 
+                        avgQual={avgQuals[index]} 
+                        avgDiff={avgDiffs[index]} 
+                        takeAgRat={takeAgRats[index]} />)
                     }
                 </ul>
                 <div>Don't see the prof you're looking for?</div>

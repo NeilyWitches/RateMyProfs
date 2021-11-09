@@ -21,6 +21,8 @@ class ProfShow extends React.Component {
                 {this.props.avgQual}
                 Difficulty:
                 {this.props.avgDiff}
+                <br/>
+                {this.props.takeAgRat * 100}% would take again
             </div>
         )
     }
