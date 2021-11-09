@@ -5,7 +5,7 @@ import ProfShow from './prof_show';
 class ProfIndex extends React.Component {
     constructor(props) {
         super(props);
-
+        
     };
 
     componentDidMount() {
@@ -13,10 +13,16 @@ class ProfIndex extends React.Component {
     };
 
     getAvgQual() {
-        // console.log(Object.values(this.props.profs[0].prof_reviews)[0].quality);
         let profs = this.props.profs;
         let groupsOfProfReviews = profs.map(prof => prof.prof_reviews);
-        let values = groupsOfProfReviews.map(group => Object.values(group));
+        let values = [];
+        for (let i = 0; i < groupsOfProfReviews.length; i++) {
+            if (groupsOfProfReviews[i] === undefined) {
+                continue
+            } else {
+                values.push(Object.values(groupsOfProfReviews[i]))
+            }
+        };
         this.avgsQual = [];
         for (let i = 0; i < values.length; i++) {
             let sum = 0
@@ -28,10 +34,17 @@ class ProfIndex extends React.Component {
 
     }
 
-    getAvgDifficulty() {
+    getAvgDiff() {
         let profs = this.props.profs;
         let groupsOfProfReviews = profs.map(prof => prof.prof_reviews);
-        let values = groupsOfProfReviews.map(group => Object.values(group));
+        let values = [];
+        for (let i = 0; i < groupsOfProfReviews.length; i++) {
+            if (groupsOfProfReviews[i] === undefined) {
+                continue
+            } else {
+                values.push(Object.values(groupsOfProfReviews[i]))
+            }
+        };
         this.avgsDiff = [];
         for (let i = 0; i < values.length; i++) {
             let sum = 0
@@ -40,22 +53,31 @@ class ProfIndex extends React.Component {
             }
             this.avgsDiff.push(sum / values[i].length);
         }
+
     }
 
     getTakeAgainRatio() {
         let profs = this.props.profs;
         let groupsOfProfReviews = profs.map(prof => prof.prof_reviews);
-        let values = groupsOfProfReviews.map(group => Object.values(group));
-        this.takeAgainRatio = [];
+        let values = [];
+        for (let i = 0; i < groupsOfProfReviews.length; i++) {
+            if (groupsOfProfReviews[i] === undefined) {
+                continue
+            } else {
+                values.push(Object.values(groupsOfProfReviews[i]))
+            }
+        };
+        this.takeAgRat = [];
         for (let i = 0; i < values.length; i++) {
             let count = 0
             for (let j = 0; j < values[i].length; j++) {
-                if (values[i][j].take_again === true){
+                if (values[i][j] === true) {
                     count++
                 }
             }
-            this.takeAgainRatio.push(count / values[i].length);
+            this.takeAgRat.push(count / values[i].length);
         }
+
     }
 
     checkRenderQual() {
@@ -63,7 +85,7 @@ class ProfIndex extends React.Component {
     }
 
     checkRenderDifficulty() {
-        return (this.props.profs.length === 0 ? null : this.getAvgDifficulty())
+        return (this.props.profs.length === 0 ? null : this.getAvgDiff())
     }
 
     checkRenderTakeAgain() {
@@ -77,7 +99,7 @@ class ProfIndex extends React.Component {
         this.checkRenderTakeAgain();
         const avgQuals = this.avgsQual;
         const avgDiffs = this.avgsDiff;
-        const takeAgRats = this.takeAgainRatio;
+        const takeAgRats = this.takeAgRat;
 
         return (
             <div id='prof-index'>
@@ -85,7 +107,7 @@ class ProfIndex extends React.Component {
                 <ul>
                     {
                         profs.map((prof, index) => <ProfShow 
-                        key={prof.id} prof={prof} 
+                        key={index} prof={prof} 
                         avgQual={avgQuals[index]} 
                         avgDiff={avgDiffs[index]} 
                         takeAgRat={takeAgRats[index]} />)

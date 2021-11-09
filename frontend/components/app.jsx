@@ -13,6 +13,7 @@ import HomeContainer from './home_container';
 import ProfIndexContainer from './profs/prof_index_container';
 import UserRatingsIndexContainer from './user_profile/user_ratings_index_container';
 import Footer from './footer';
+import CreateProfFormContainer from './profs/create_prof_form_container';
 
 const App = ({ children }) => (
     <div>
@@ -22,6 +23,7 @@ const App = ({ children }) => (
         <Switch>
             <Route path='/profReviews/new/:profId' component={CreateProfReviewFormContainer} />
             <ExtraProtectedRoute path='/profReviews/edit/:profReviewId/:userId' component={EditProfReviewFormContainer} />
+            <Route path='/profs/new' component={CreateProfFormContainer} />
             <Route path='/profs/:profId' component={ProfReviewIndexContainer} />
             <Route path='/profs/' component={ProfIndexContainer} />
             <ExtraProtectedRoute path='/account/ratings/:userId' component={UserRatingsIndexContainer} />

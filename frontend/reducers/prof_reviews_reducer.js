@@ -7,7 +7,7 @@ const ProfReviewsReducer = (oldState = {}, action) => {
     let newState = Object.assign({}, oldState);
     switch (action.type) {
         case RECEIVE_PROF:
-            newState = action.payload.prof_reviews;
+            newState = action.payload.profs.prof_reviews;
             return newState;
         case RECEIVE_USER:
             newState = action.payload.prof_reviews;

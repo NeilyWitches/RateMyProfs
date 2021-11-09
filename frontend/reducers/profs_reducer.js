@@ -1,6 +1,7 @@
 import {
     RECEIVE_PROFS,
     RECEIVE_PROF,
+    CREATE_PROF,
 } from '../actions/prof_actions';
 
 const ProfsReducer = (oldState = {}, action) => {
@@ -11,6 +12,9 @@ const ProfsReducer = (oldState = {}, action) => {
             return Object.assign({}, action.profs, oldState);
         case RECEIVE_PROF:
             newState[action.payload.profs.id] = action.payload.profs;
+            return newState;
+        case CREATE_PROF:
+            newState[action.payload.id] = action.payload;
             return newState;
         default:
             return oldState;

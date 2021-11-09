@@ -26,10 +26,12 @@ class EditProfReviewForm extends React.Component {
 
 }
 
-const mSTP = (state, ownProps) => {
+const mSTP = (state, ownProps, { errors }) => {
     return {
-    profReview: state.entities.profReviews[ownProps.match.params.profReviewId],
-    formType: 'Update Prof Review'};
+        profReview: state.entities.profReviews[ownProps.match.params.profReviewId],
+        formType: 'Update Prof Review',
+        prof_review_errors: errors.prof_review,
+    };
 };
 
 const mDTP = dispatch => ({

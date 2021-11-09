@@ -10,9 +10,9 @@ class Api::ProfsController < ApplicationController
 
     def create
         @prof = Prof.new(prof_params)
-
         if @prof.save!
-            render :show
+            @profs = Prof.all
+            render :index
         else
             render json: @prof.errors.full_messages, status: :unprocessable_entity
         end
