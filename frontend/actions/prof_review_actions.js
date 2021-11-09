@@ -26,26 +26,29 @@ export const requestProfReview = profReviewId => dispatch => {
     })
 }
 
-export const createProfReview = profReview => dispatch => {
-    return ProfReviewApiUtil.createProfReview(profReview)
-    .then(createdProfReview => {
-        return dispatch(receiveProfReview(createdProfReview))})
-};
+// export const createProfReview = profReview => dispatch => {
+//     return ProfReviewApiUtil.createProfReview(profReview)
+//     .then(createdProfReview => {
+//         return dispatch(receiveProfReview(createdProfReview))})
+// };
 
-// export const createProfReview = profReview => dispatch => (
-//     ProfReviewApiUtil.createProfReview(profReview)
-//         .then(createdProfReview => (dispatch(receiveProfReview(createdProfReview))),
-//             err => (dispatch(receiveErrors(err.responseJSON)))));
+export const createProfReview = profReview => dispatch => (
+    ProfReviewApiUtil.createProfReview(profReview)
+    .then(createdProfReview => {
+        debugger
+        return dispatch(receiveProfReview(createdProfReview))
+        // return createdProfReview;
+    })
+    .fail(err => {
+        debugger
+        return dispatch(receiveProfReviewErrors(err.responseJSON))
+    })
+)
 
 export const updateProfReview = profReview => dispatch => (
     ProfReviewApiUtil.updateProfReview(profReview)
     .then(updatedProfReview => dispatch(receiveProfReview(updatedProfReview)))
 );
-
-// export const updateProfReview = profReview => dispatch => (
-//     ProfReviewApiUtil.updateProfReview(profReview)
-//         .then(updatedProfReview => (dispatch(receiveProfReview(updatedProfReview))),
-//             err => (dispatch(receiveErrors(err.responseJSON)))));
 
 export const deleteProfReview = profReviewId => dispatch => (
     ProfReviewApiUtil.deleteProfReview(profReviewId)

@@ -16,9 +16,10 @@ class ProfReview < ApplicationRecord
         "CARING", "EXTRA CREDIT", "SO MANY PAPERS", "TOUGH GRADER", nil
     ]
 
-    validates :body, presence: true, length: { maximum: 350 }
+    # validates :body, presence: true, length: { maximum: 350 }
     validates :quality, :difficulty, inclusion: (1..5).to_a
     validates :klass, :prof_id, presence: true
+    # validates :prof_id, presence: true
     validates :grade, inclusion: GRADES
     validates :tag1, :tag2, :tag3, inclusion: TAGS
     validates :take_again, :for_credit, :txt_book, inclusion: [true, false]

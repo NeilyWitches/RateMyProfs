@@ -174,7 +174,7 @@ class ProfReviewForm extends React.Component {
         return (
             <form onSubmit={this.handleSubmit} id='prof-review-form'>
                 {this.props.formType}
-                {/* {this.renderErrors()} */}
+                {this.renderErrors()}
                 Body:
                 <textarea
                     value={this.state.body}
