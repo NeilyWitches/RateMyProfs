@@ -26,12 +26,6 @@ export const requestProfReview = profReviewId => dispatch => {
     })
 }
 
-// export const createProfReview = profReview => dispatch => {
-//     return ProfReviewApiUtil.createProfReview(profReview)
-//     .then(createdProfReview => {
-//         return dispatch(receiveProfReview(createdProfReview))})
-// };
-
 export const createProfReview = profReview => dispatch => (
     ProfReviewApiUtil.createProfReview(profReview)
     .then(createdProfReview => {
@@ -42,10 +36,20 @@ export const createProfReview = profReview => dispatch => (
     })
 )
 
+// export const updateProfReview = profReview => dispatch => (
+//     ProfReviewApiUtil.updateProfReview(profReview)
+//     .then(updatedProfReview => dispatch(receiveProfReview(updatedProfReview)))
+// );
+
 export const updateProfReview = profReview => dispatch => (
     ProfReviewApiUtil.updateProfReview(profReview)
-    .then(updatedProfReview => dispatch(receiveProfReview(updatedProfReview)))
-);
+    .then(updatedProfReview => {
+        return dispatch(receiveProfReview(updatedProfReview))
+    })
+    .fail(err => {
+        return dispatch(receiveProfReviewErrors(err.responseJSON))
+    })
+)
 
 export const deleteProfReview = profReviewId => dispatch => (
     ProfReviewApiUtil.deleteProfReview(profReviewId)

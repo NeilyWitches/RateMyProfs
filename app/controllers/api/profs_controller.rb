@@ -10,7 +10,7 @@ class Api::ProfsController < ApplicationController
 
     def create
         @prof = Prof.new(prof_params)
-        if @prof.save!
+        if @prof.save
             @profs = Prof.all
             render :index
         else

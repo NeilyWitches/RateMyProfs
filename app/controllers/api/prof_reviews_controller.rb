@@ -20,7 +20,7 @@ class Api::ProfReviewsController < ApplicationController
         if @prof_review.update(prof_review_params)
             render :show
         else
-            render json: @prof_review.erorrs.full_messages, status: :unprocessable_entity
+            render json: @prof_review.errors.full_messages, status: :unprocessable_entity
         end
     end
 
@@ -40,6 +40,6 @@ class Api::ProfReviewsController < ApplicationController
     def prof_review_params
         params.require(:profReview).permit(:body, :klass, :grade, :quality, 
         :difficulty, :take_again, :for_credit, :txt_book, :attendance, :tag1, 
-        :tag2, :tag3, :prof_id, :author_id)
+        :tag2, :tag3, :prof_id, :author_id, :id)
     end
 end

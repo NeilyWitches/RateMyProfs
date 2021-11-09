@@ -11,7 +11,7 @@ class EditProfReviewForm extends React.Component {
     }
 
     render() {
-        const { action, formType, profReview, history } = this.props;
+        const { action, formType, profReview, history, prof_review_errors } = this.props;
 
         if (!profReview) return null;
         return (
@@ -20,7 +20,8 @@ class EditProfReviewForm extends React.Component {
                     action={action}
                     formType={formType}
                     profReview={profReview}
-                    history={history} />
+                    history={history} 
+                    prof_review_errors={prof_review_errors}/>
                 <button onClick={this.clickDelete} id='delete-prof-review'>Delete</button>
             </div>
         );
