@@ -87,6 +87,18 @@ class ProfReviewForm extends React.Component {
         .then(() => this.props.history.push(`/profs/${this.state.prof_id}`));
     };
 
+    renderErrors() {
+        return (
+            <ul>
+                {this.props.prof_review_errors.map((error, i) => (
+                    <li key={`error-${i}`}>
+                        {error}
+                    </li>
+                ))}
+            </ul>
+        )
+    }
+
     render() {
         this.num_blues = 0;
         for (let i = 0; i < this.tagStyles.length; i++) {
@@ -162,6 +174,7 @@ class ProfReviewForm extends React.Component {
         return (
             <form onSubmit={this.handleSubmit} id='prof-review-form'>
                 {this.props.formType}
+                {/* {this.renderErrors()} */}
                 Body:
                 <textarea
                     value={this.state.body}

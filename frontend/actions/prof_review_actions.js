@@ -14,7 +14,7 @@ const removeProfReview = profReviewId => ({
     profReviewId,
 })
 
-export const receiveErrors = errors => ({
+export const receiveProfReviewErrors = errors => ({
     type: RECEIVE_PROF_REVIEW_ERRORS,
     errors
 })
@@ -26,26 +26,26 @@ export const requestProfReview = profReviewId => dispatch => {
     })
 }
 
-// export const createProfReview = profReview => dispatch => {
-//     return ProfReviewApiUtil.createProfReview(profReview)
-//     .then(createdProfReview => {
-//         return dispatch(receiveProfReview(createdProfReview))})
-// };
+export const createProfReview = profReview => dispatch => {
+    return ProfReviewApiUtil.createProfReview(profReview)
+    .then(createdProfReview => {
+        return dispatch(receiveProfReview(createdProfReview))})
+};
 
-export const createProfReview = profReview => dispatch => (
-    ProfReviewApiUtil.createProfReview(profReview)
-        .then(createdProfReview => (dispatch(receiveProfReview(createdProfReview))),
-            err => (dispatch(receiveErrors(err.responseJSON)))));
-
-// export const updateProfReview = profReview => dispatch => (
-//     ProfReviewApiUtil.updateProfReview(profReview)
-//     .then(updatedProfReview => dispatch(receiveProfReview(updatedProfReview)))
-// );
+// export const createProfReview = profReview => dispatch => (
+//     ProfReviewApiUtil.createProfReview(profReview)
+//         .then(createdProfReview => (dispatch(receiveProfReview(createdProfReview))),
+//             err => (dispatch(receiveErrors(err.responseJSON)))));
 
 export const updateProfReview = profReview => dispatch => (
     ProfReviewApiUtil.updateProfReview(profReview)
-        .then(updatedProfReview => (dispatch(receiveProfReview(updatedProfReview))),
-            err => (dispatch(receiveErrors(err.responseJSON)))));
+    .then(updatedProfReview => dispatch(receiveProfReview(updatedProfReview)))
+);
+
+// export const updateProfReview = profReview => dispatch => (
+//     ProfReviewApiUtil.updateProfReview(profReview)
+//         .then(updatedProfReview => (dispatch(receiveProfReview(updatedProfReview))),
+//             err => (dispatch(receiveErrors(err.responseJSON)))));
 
 export const deleteProfReview = profReviewId => dispatch => (
     ProfReviewApiUtil.deleteProfReview(profReviewId)

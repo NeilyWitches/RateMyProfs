@@ -21,16 +21,17 @@ class EditProfReviewForm extends React.Component {
     }
 
     componentDidMount() {
-        this.props.requestProfReview(this.props.profReview.id);
+        // debugger
+        this.props.requestProfReview(this.props.match.params.profReviewId);
     };
 
 }
 
-const mSTP = (state, ownProps, { errors }) => {
+const mSTP = (state, ownProps) => {
     return {
         profReview: state.entities.profReviews[ownProps.match.params.profReviewId],
         formType: 'Update Prof Review',
-        prof_review_errors: errors.prof_review,
+        prof_review_errors: state.errors.prof_review,
     };
 };
 

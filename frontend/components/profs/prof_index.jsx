@@ -67,17 +67,16 @@ class ProfIndex extends React.Component {
                 values.push(Object.values(groupsOfProfReviews[i]))
             }
         };
-        this.takeAgRat = [];
+        this.takeAgainRatio = [];
         for (let i = 0; i < values.length; i++) {
             let count = 0
             for (let j = 0; j < values[i].length; j++) {
-                if (values[i][j] === true) {
+                if (values[i][j].take_again === true){
                     count++
                 }
             }
-            this.takeAgRat.push(count / values[i].length);
+            this.takeAgainRatio.push(count / values[i].length);
         }
-
     }
 
     checkRenderQual() {
@@ -99,7 +98,7 @@ class ProfIndex extends React.Component {
         this.checkRenderTakeAgain();
         const avgQuals = this.avgsQual;
         const avgDiffs = this.avgsDiff;
-        const takeAgRats = this.takeAgRat;
+        const takeAgRats = this.takeAgainRatio;
 
         return (
             <div id='prof-index'>
@@ -107,7 +106,7 @@ class ProfIndex extends React.Component {
                 <ul>
                     {
                         profs.map((prof, index) => <ProfShow 
-                        key={index} prof={prof} 
+                        key={prof.id} prof={prof} 
                         avgQual={avgQuals[index]} 
                         avgDiff={avgDiffs[index]} 
                         takeAgRat={takeAgRats[index]} />)

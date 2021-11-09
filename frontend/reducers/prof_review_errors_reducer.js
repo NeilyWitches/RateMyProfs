@@ -7,5 +7,7 @@ export default (state = [], action) => {
     switch (action.type) {
         case RECEIVE_PROF_REVIEW_ERRORS:
             return action.errors
+        default:
+            return state
     }
 };

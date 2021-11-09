@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { createProfReview } from '../../actions/prof_review_actions';
 import ProfReviewForm from './prof_review_form';
 
-const mSTP = (state, ownProps, { errors }) => {
+const mSTP = (state, ownProps) => {
     if (state.session.current_user) {
         return {
             profReview: {
@@ -22,7 +22,7 @@ const mSTP = (state, ownProps, { errors }) => {
                 author_id: state.session.current_user.id,
             },
             formType: 'Add Prof Review',
-            prof_review_errors: errors.prof_review,
+            prof_review_errors: state.errors.prof_review,
         }
     } else {
         return {
@@ -42,7 +42,7 @@ const mSTP = (state, ownProps, { errors }) => {
                 prof_id: ownProps.match.params.profId,
             },
             formType: 'Add Prof Review',
-            prof_review_errors: errors.prof_review,
+            prof_review_errors: state.errors.prof_review,
         }
     }
 };
