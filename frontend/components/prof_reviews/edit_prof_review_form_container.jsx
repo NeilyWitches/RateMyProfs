@@ -4,6 +4,12 @@ import { requestProfReview, updateProfReview, deleteProfReview } from '../../act
 import ProfReviewForm from './prof_review_form';
 
 class EditProfReviewForm extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.clickDelete = this.clickDelete.bind(this);
+    }
+
     render() {
         const { action, formType, profReview, history } = this.props;
 
@@ -15,15 +21,19 @@ class EditProfReviewForm extends React.Component {
                     formType={formType}
                     profReview={profReview}
                     history={history} />
-                <button onClick={() => this.props.deleteProfReview(this.props.profReview.id)} id='delete-prof-review'>Delete</button>
+                <button onClick={this.clickDelete} id='delete-prof-review'>Delete</button>
             </div>
         );
     }
 
     componentDidMount() {
-        // debugger
         this.props.requestProfReview(this.props.match.params.profReviewId);
     };
+
+    clickDelete() {
+        this.props.deleteProfReview(this.props.profReview.id)
+        .then(() => this.props.history.push(`/account/ratings/${this.props.match.params.userId}`))
+    }
 
 }
 
