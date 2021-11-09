@@ -5,14 +5,12 @@ class Api::ProfReviewsController < ApplicationController
     end
     
     def create
-        debugger
         @prof_review = ProfReview.new(prof_review_params)
         @prof = Prof.find(params[:profReview][:prof_id])
 
         if @prof_review.save
             render 'api/profs/show'
         else
-            debugger
             render json: @prof_review.errors.full_messages, status: :unprocessable_entity
             
         end

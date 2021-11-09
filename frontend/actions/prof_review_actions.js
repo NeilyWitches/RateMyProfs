@@ -35,12 +35,9 @@ export const requestProfReview = profReviewId => dispatch => {
 export const createProfReview = profReview => dispatch => (
     ProfReviewApiUtil.createProfReview(profReview)
     .then(createdProfReview => {
-        debugger
         return dispatch(receiveProfReview(createdProfReview))
-        // return createdProfReview;
     })
     .fail(err => {
-        debugger
         return dispatch(receiveProfReviewErrors(err.responseJSON))
     })
 )
