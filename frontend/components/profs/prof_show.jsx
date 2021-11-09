@@ -8,7 +8,6 @@ class ProfShow extends React.Component {
 
     render() {
         const { prof } = this.props;
-
         return (
             <div>
                 First Name:
@@ -18,6 +17,8 @@ class ProfShow extends React.Component {
                 Subject:
                 {prof.subject}
                 <Link to={`/profs/${prof.id}`}>{prof.first_name}'s Reviews</Link>
+                Quality:
+                {this.props.avgQual}
             </div>
         )
     }

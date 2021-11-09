@@ -43,7 +43,7 @@ how tangible he makes the course content to students.
 I had no prior physics experience and he helped me grasp the concepts 
 with ease. It is a college physics class though and nothing less than 
 your best effort should be exerted.", klass: 'PHY185', grade: 'A+', 
-quality: 5, difficulty: 4, take_again: true, for_credit: true, 
+quality: 4, difficulty: 4, take_again: true, for_credit: true, 
 txt_book: true, attendance: false, prof_id: 1, author_id: 1)
 
 george_review = ProfReview.create(body: "This is the best Ive professor 

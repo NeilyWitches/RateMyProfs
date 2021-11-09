@@ -13,7 +13,7 @@ class ProfReview < ApplicationRecord
         "INSPIRATIONAL", "GRADED BY FEW THINGS", "TEST HEAVY", 
         "GROUP PROJECTS", "CLEAR GRADING CRITERIA", "HILARIOUS", 
         "BEWARE OF POP QUIZZES", "AMAZING LECTURES", "LECTURE HEAVY",
-        "CARING", "EXTRA CREDIT", "SO MANY PAPERS", "TOUGH GRADER"
+        "CARING", "EXTRA CREDIT", "SO MANY PAPERS", "TOUGH GRADER", nil
     ]
 
     validates :body, presence: true, length: { maximum: 350 }
