@@ -19,6 +19,8 @@ class ProfShow extends React.Component {
                 <Link to={`/profs/${prof.id}`}>{prof.first_name}'s Reviews</Link>
                 Quality:
                 {this.props.avgQual}
+                Difficulty:
+                {this.props.avgDiff}
             </div>
         )
     }
