@@ -36,11 +36,6 @@ export const createProfReview = profReview => dispatch => (
     })
 )
 
-// export const updateProfReview = profReview => dispatch => (
-//     ProfReviewApiUtil.updateProfReview(profReview)
-//     .then(updatedProfReview => dispatch(receiveProfReview(updatedProfReview)))
-// );
-
 export const updateProfReview = profReview => dispatch => (
     ProfReviewApiUtil.updateProfReview(profReview)
     .then(updatedProfReview => {

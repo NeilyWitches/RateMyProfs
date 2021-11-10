@@ -24,9 +24,6 @@ class Login extends React.Component {
     }
 
     renderErrors() {
-        if (this.props.login_errors[0] === 'Email has already been taken') {
-            return null;
-        }
         return(
             <ul>
                 {this.props.login_errors.map((error, i) => (

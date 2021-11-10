@@ -25,9 +25,6 @@ class Signup extends React.Component {
     }
 
     renderErrors() {
-        if (this.props.signup_errors[0] === 'Invalid credentials') {
-            return null;
-        }
         return(
             <ul>
                 {this.props.signup_errors.map((error, i) => (

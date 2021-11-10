@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { createUser } from '../../actions/session_actions';
 import Signup from './signup';
 
-const mSTP = ({ errors }) => {
+const mSTP = (state) => {
     return {
-        signup_errors: errors.session,
+        signup_errors: state.errors.signup,
     };
 };
 
