@@ -39,39 +39,42 @@ class Signup extends React.Component {
     render() {
         return (
             <div className='session-form'>
-                <h2>Sign Up!</h2>
-                {this.renderErrors()}
-                <form>
-                    <label>Email:
-                        <input
-                            type='text'
-                            value={this.state.email}
-                            onChange={this.handleInput('email')}
-                        />
-                    </label>
-                    <label>First Name:
-                        <input 
-                            type='text'
-                            value={this.state.first_name}
-                            onChange={this.handleInput('first_name')}
+                <h2 id='signup-header'>Create an Account</h2>
+                <div id='signup-form'>
+                    <div id='anonymity-txt'>Signing up will still preserve anonymity!</div>
+                    {this.renderErrors()}
+                    <form>
+                        <label>Email:
+                            <input
+                                type='text'
+                                value={this.state.email}
+                                onChange={this.handleInput('email')}
                             />
-                    </label>
-                    <label>Last Name:
-                        <input 
-                            type='text'
-                            value={this.state.last_name}
-                            onChange={this.handleInput('last_name')}
+                        </label>
+                        <label>First Name:
+                            <input
+                                type='text'
+                                value={this.state.first_name}
+                                onChange={this.handleInput('first_name')}
                             />
-                    </label>
-                    <label>Password:
-                        <input
-                            type='password'
-                            value={this.state.password}
-                            onChange={this.handleInput('password')}
-                        />
-                        <button onClick={this.handleSubmit}>Sign Up!</button>
-                    </label>
-                </form>
+                        </label>
+                        <label>Last Name:
+                            <input
+                                type='text'
+                                value={this.state.last_name}
+                                onChange={this.handleInput('last_name')}
+                            />
+                        </label>
+                        <label>Password:
+                            <input
+                                type='password'
+                                value={this.state.password}
+                                onChange={this.handleInput('password')}
+                            />
+                            <button onClick={this.handleSubmit}>Sign Up!</button>
+                        </label>
+                    </form>
+                </div>
             </div>
         )
     }
