@@ -3,10 +3,11 @@ import * as ProfApiUtil from '../util/prof_api_util';
 export const RECEIVE_PROFS = 'RECEIVE_PROFS';
 export const RECEIVE_PROF = 'RECEIVE_PROF';
 export const CREATE_PROF = 'CREATE_PROF';
+export const RECEIVE_PROF_ERRORS = 'RECEIVE_PROF_ERRORS';
 
 const receiveProfs = profs => ({
     type: RECEIVE_PROFS,
-    profs,
+    profs, 
 });
 
 const receiveProf = payload => {
@@ -23,6 +24,11 @@ const createProf = payload => {
     }
 }
 
+export const receiveProfErrors = errors => ({
+    type: RECEIVE_PROF_ERRORS,
+    errors,
+})
+
 export const requestProfs = () => dispatch => (
     ProfApiUtil.fetchProfs()
     .then(profs => dispatch(receiveProfs(profs)))
@@ -33,12 +39,22 @@ export const requestProf = profId => dispatch => {
         .then(payload => dispatch(receiveProf(payload)))
 };
 
-export const newProf = prof => dispatch => {
-    return ProfApiUtil.createProf(prof)
+// export const newProf = prof => dispatch => {
+//     return ProfApiUtil.createProf(prof)
+//         .then(payload => {
+//             return dispatch(createProf(payload))
+//         })
+// };
+
+export const newProf = prof => dispatch => (
+    ProfApiUtil.createProf(prof)
         .then(payload => {
             return dispatch(createProf(payload))
         })
-};
+        .fail(err => {
+            return dispatch(receiveProfErrors(err.responseJSON))
+        })
+)
 
 export const updateProf = prof => dispatch => (
     ProfApiUtil.updateProf(prof)

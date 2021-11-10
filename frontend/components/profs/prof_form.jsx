@@ -18,10 +18,24 @@ class ProfForm extends React.Component {
         .then(() => this.props.history.push(`/profs`));
     };
 
+    renderErrors() {
+
+        return (
+            <ul>
+                {this.props.prof_errors.map((error, i) => (
+                    <li key={`error-${i}`}>
+                        {error}
+                    </li>
+                ))}
+            </ul>
+        )
+    }
+
     render() {
         return (
             <form onSubmit={this.handleSubmit} id='prof-form'>
                 {this.props.formType}
+                {this.renderErrors()}
                 First Name:
                 <input
                     type='text'
