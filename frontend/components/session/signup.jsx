@@ -28,7 +28,7 @@ class Signup extends React.Component {
         return(
             <ul>
                 {this.props.signup_errors.map((error, i) => (
-                    <li key={`error-${i}`}>
+                    <li key={`error-${i}`} id={`signup-error-${i}`} className='signup-errors'>
                         {error}
                     </li>
                 ))}
@@ -39,40 +39,46 @@ class Signup extends React.Component {
     render() {
         return (
             <div className='session-form'>
-                <h2 id='signup-header'>Create an Account</h2>
+                
                 <div id='signup-form'>
-                    <div id='anonymity-txt'>Signing up will still preserve anonymity!</div>
+                    
                     {this.renderErrors()}
-                    <form>
-                        <label>Email:
+                    <form id='signup-form-proper'>
+                        <div id='signup-left'>
+                            <h2 id='signup-header'>Create an Account</h2>
+                            
+                            <label>EMAIL</label>
+                            <label>FIRST NAME</label>
+                            <label>LAST NAME</label>
+                            <label>PASSWORD</label>
+                        </div>
+                        <div id='signup-right'>
+                            <div id='anonymity-txt'>Signing up will still preserve anonymity!</div>
                             <input
                                 type='text'
                                 value={this.state.email}
                                 onChange={this.handleInput('email')}
                             />
-                        </label>
-                        <label>First Name:
                             <input
                                 type='text'
                                 value={this.state.first_name}
                                 onChange={this.handleInput('first_name')}
                             />
-                        </label>
-                        <label>Last Name:
                             <input
                                 type='text'
                                 value={this.state.last_name}
                                 onChange={this.handleInput('last_name')}
                             />
-                        </label>
-                        <label>Password:
                             <input
                                 type='password'
                                 value={this.state.password}
                                 onChange={this.handleInput('password')}
                             />
-                            <button onClick={this.handleSubmit}>Sign Up!</button>
-                        </label>
+                            <button onClick={this.handleSubmit} id='signup-submit'>Sign Up</button>
+                        </div>
+
+
+                        
                     </form>
                 </div>
             </div>
