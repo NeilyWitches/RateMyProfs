@@ -5,7 +5,6 @@ import ProfReviewIndex from './prof_review_index';
 const mSTP = (state, ownProps) => {
     return {
         prof: state.entities.profs[ownProps.match.params.profId],
-        profReviews: Object.values(state.entities.profReviews),
     }
 };
 

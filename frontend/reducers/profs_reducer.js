@@ -11,7 +11,7 @@ const ProfsReducer = (oldState = {}, action) => {
         case RECEIVE_PROFS:
             return Object.assign({}, action.profs, oldState);
         case RECEIVE_PROF:
-            newState[action.payload.profs.id] = action.payload.profs;
+            newState[action.payload.id] = action.payload;
             return newState;
         case CREATE_PROF:
             newState[action.payload.id] = action.payload;

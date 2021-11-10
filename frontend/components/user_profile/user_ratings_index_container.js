@@ -4,7 +4,7 @@ import UserRatingsIndex from './user_ratings_index';
 
 const mSTP = (state, ownProps) => {
     return {
-        profReviews: Object.values(state.entities.profReviews),
+        user: state.entities.users[ownProps.match.params.userId],
     }
 };
 

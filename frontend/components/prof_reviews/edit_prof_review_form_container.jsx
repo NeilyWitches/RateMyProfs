@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { requestProfReview, updateProfReview, deleteProfReview } from '../../actions/prof_review_actions';
+import { updateProfReview, deleteProfReview } from '../../actions/prof_review_actions';
 import ProfReviewForm from './prof_review_form';
+import { requestUser } from '../../actions/user_actions';
 
 class EditProfReviewForm extends React.Component {
     constructor(props) {
@@ -11,9 +12,10 @@ class EditProfReviewForm extends React.Component {
     }
 
     render() {
-        const { action, formType, profReview, history, prof_review_errors } = this.props;
+        const { action, formType, history, prof_review_errors, user } = this.props;
 
-        if (!profReview) return null;
+        if (!user) return null;
+        const profReview = user.prof_reviews[this.props.match.params.profReviewId];
         return (
             <div>
                 <ProfReviewForm
@@ -28,19 +30,26 @@ class EditProfReviewForm extends React.Component {
     }
 
     componentDidMount() {
-        this.props.requestProfReview(this.props.match.params.profReviewId);
+        this.props.requestUser(this.props.match.params.userId);
     };
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.match.params.userId !== this.props.match.params.userId) {
+            this.props.requestUser(this.props.match.params.userId)
+        }
+    }
+
     clickDelete() {
-        this.props.deleteProfReview(this.props.profReview.id)
+        this.props.deleteProfReview(this.props.match.params.profReviewId)
         .then(() => this.props.history.push(`/account/ratings/${this.props.match.params.userId}`))
     }
 
 }
 
 const mSTP = (state, ownProps) => {
+
     return {
-        profReview: state.entities.profReviews[ownProps.match.params.profReviewId],
+        user: state.entities.users[ownProps.match.params.userId],
         formType: 'Update Prof Review',
         prof_review_errors: state.errors.prof_review,
     };
@@ -48,7 +57,7 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = dispatch => ({
     deleteProfReview: profReviewId => dispatch(deleteProfReview(profReviewId)),
-    requestProfReview: profReviewId => dispatch(requestProfReview(profReviewId)),
+    requestUser: userId => dispatch(requestUser(userId)),
     action: profReview => dispatch(updateProfReview(profReview)),
 });
 

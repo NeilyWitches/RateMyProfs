@@ -18,8 +18,8 @@ class UserRatingsIndex extends React.Component {
     }
 
     render() {
-        if (!this.props.profReviews) return null;
-        const {profReviews} = this.props;
+        if (!this.props.user) return null;
+        const profReviews = Object.values(this.props.user.prof_reviews);
         return (
             <div id='user-ratings-index'>
                 <ul>

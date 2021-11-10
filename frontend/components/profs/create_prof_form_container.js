@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { newProf } from '../../actions/prof_actions';
 import ProfForm from './prof_form';
 
-const mSTP = ({state, ownProps}) => {
+const mSTP = (state, ownProps) => {
     return {
         prof: {
             first_name: '',
