@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&family=Source+Sans+Pro:wght@200;400&display=swap');
+
+#login-header {
+    font-size: 52px;
+    font-family: 'Pathway Gothic One', sans-serif;
+    color: #2e2e2e;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#login-form-proper {
+    display: flex;
+    flex-direction: column;
+}
+
+#login-txt {
+    margin-top: 20px;
+    background: #e7e7de;
+    padding: 10px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 15px;
+    color: #777777;
+    width: 300px;
+    line-height: 17px;
+    font-weight: 700;
+}
+
+#login-signup-link {
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #00adee;
+    margin-top: 20px;
+}
+
+#login-form-proper > input {
+    line-height: 1.1;
+    padding: 10px;
+    font-size: 24px;
+    border: 1px solid #d6d7d2;
+    width: 300px;
+    margin-bottom: 30px;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #2e2e2e;
+}
+
+#login-form-submit {
+    width: 322px;
+    margin-top: 1em;
+    background-color: #000;
+    padding: 10px;
+    color: #fff;
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 28px;
+    line-height: 36px;
+    cursor: pointer;
+    border: none;
+    transition-duration: 0.4s;
+}
+
+#login-form-submit:hover {
+    background: chartreuse;
+}
+
+#error-0 {
+    color: #a12121;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+}

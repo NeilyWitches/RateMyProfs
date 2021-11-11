@@ -41,8 +41,6 @@ class Signup extends React.Component {
             <div className='session-form'>
                 
                 <div id='signup-form'>
-                    
-                    {this.renderErrors()}
                     <form id='signup-form-proper'>
                         <div id='signup-left'>
                             <h2 id='signup-header'>Create an Account</h2>
@@ -76,10 +74,8 @@ class Signup extends React.Component {
                             />
                             <button onClick={this.handleSubmit} id='signup-submit'>Sign Up</button>
                         </div>
-
-
-                        
                     </form>
+                    {this.renderErrors()}
                 </div>
             </div>
         )

@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&family=Source+Sans+Pro:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&family=Source+Sans+Pro:wght@200;400&display=swap');
 
 .session-form {
     position: relative;
@@ -45,10 +45,12 @@
 }
 
 #signup-left > label {
-    margin-bottom: 33px;
+    margin-bottom: 64px;
     position: relative;
-    // left: 170px;
-    top: 8px;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #7d7c77;
+    top: 35px;
+    font-weight: 700;
 }
 
 #signup-right > input {
@@ -78,20 +80,26 @@
     background-color: chartreuse;
 }
 
-#signup-error-1 {
-    position: relative;
-    top: 375px;
-    left: 600px;
-}
-
-#signup-error-0 {
-    position: relative;
-    top: 285px;
-    left: 600px;
+#signup-right > * {
+    margin-bottom: 30px;
 }
 
 .signup-errors {
+
     color: #a12121;
     font-size: 15px;
     font-weight: 700;
+    width: 700px;
 }
+
+// #signup-error-0 {
+//     position: relative;
+//     left: 350px;
+//     bottom: 400px;
+// }
+
+// #signup-error-1 {
+//     position: relative;
+//     left: 250px;
+//     bottom: 155px;
+// }
