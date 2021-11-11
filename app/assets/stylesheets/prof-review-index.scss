@@ -1,25 +1,35 @@
 #prof-review-index {
     position: relative;
     top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #prof-review-index-prof-show {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    // border: 1px solid black;
 }
 
 #prof-show-quality-name {
     display: flex;
+    align-items: center;
 }
 
 #prof-show-avg-qual {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-right: 50px;
 }
 
 #prof-review-index-prof-show-name {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-left: 50px;
 }
 
 #prof-show-other-stats {
@@ -29,8 +39,94 @@
 .prof-show-other-stats {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 #top-tags {
     display: flex;
+}
+
+#prof-show-avg-qual-nums {
+    display: flex; 
+}
+
+#prof-show-avg-qual-proper {
+    font-size: 60px;
+    margin-right: 11px;
+    font-family: Poppins, sans-serif;
+    font-weight: 900;
+}
+
+#out-of-5 {
+    top: 15px;
+    position: relative;
+    color: rgb(152, 152, 152);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+#qual-based-on{
+    font-family: HelveticaNeue, arial;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+#prof-review-index-prof-name {
+    font-size: 40px;
+    font-family: Poppins, sans-serif;
+    font-weight: 900;
+}
+
+.prof-review-index-prof-show-take-again-ratio {
+    font-size: 32px;
+    font-family: Poppins, sans-serif;
+    font-weight: 900;
+}
+
+#prof-review-index-prof-show-take-again {
+    padding-right: 110px;
+    padding-top: 20px;
+}
+
+#prof-review-index-prof-show-difficulty{
+    padding-left: 110px;
+    padding-top: 20px;
+}
+
+#prof-in-dept {
+    position: relative;
+    top: 15px;
+}
+
+#review-prof-button {
+    margin-bottom: 24px;
+    width: 220px;
+    background: rgb(0, 85, 253);
+    border: 0px;
+    border-radius: 100px;
+    color: white;
+    font-weight: 700;
+    line-height: 1.54;
+    padding: 11px 46px;
+    margin-top: 20px;
+    transition-duration: 0.4s;
+}
+
+#review-prof-button:hover{
+    background-color: blue;
+    cursor: pointer;
+}
+
+#top-tags-label {
+    padding: 16px;
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+}
+
+.tag {
+    background-color: rgb(241, 241, 241);
+    border-radius: 14.5px;
+    margin: 0px 16px 8px 0px;
+    padding: 8px 16px;
+    font-weight: 700;
 }

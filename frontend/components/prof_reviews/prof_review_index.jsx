@@ -35,7 +35,7 @@ class ProfReviewIndex extends React.Component {
         for(let i = 0; i < profReviews.length; i++){
             sum += profReviews[i].quality
         }
-        return sum / profReviews.length;
+        return (sum / profReviews.length).toFixed(2);
     }
 
     getAvgDiff(profReviews) {
@@ -44,7 +44,7 @@ class ProfReviewIndex extends React.Component {
         for (let i = 0; i < profReviews.length; i++) {
             sum += profReviews[i].difficulty
         }
-        return sum / profReviews.length;
+        return (sum / profReviews.length).toFixed(2);
     }
 
     getTakeAgRat(profReviews) {
@@ -55,7 +55,7 @@ class ProfReviewIndex extends React.Component {
                 count++
             }
         }
-        return `${count / profReviews.length * 100}%`;
+        return `${(count / profReviews.length).toFixed(2) * 100}%`;
     }
 
     clickRateProf() {
@@ -90,7 +90,7 @@ class ProfReviewIndex extends React.Component {
         console.log(tags_count);
         for (let i = 0; i < sortedCounts.length; i++) {
             for (let j = 0; j < tagsCountTranspose.length; j++) {
-                if (tagsCountTranspose[j][1] === sortedCounts[i] && topTags.length <= 5 && sortedCounts[i] && !topTags.includes(tagsCountTranspose[j][0])) {
+                if (tagsCountTranspose[j][1] === sortedCounts[i] && topTags.length < 5 && sortedCounts[i] && !topTags.includes(tagsCountTranspose[j][0])) {
                     topTags.push(tagsCountTranspose[j][0])
                 } 
             }
@@ -113,29 +113,32 @@ class ProfReviewIndex extends React.Component {
                 <div id='prof-review-index-prof-show'>
                     <div id='prof-show-quality-name'>
                         <div id='prof-show-avg-qual'>
-                            <div>{avgQual}</div>
-                            <div>Overall Quality Based on {profReviews.length} Ratings</div>
+                            <div id='prof-show-avg-qual-nums'>
+                                <div id='prof-show-avg-qual-proper'>{avgQual}</div>
+                                <div id='out-of-5'> / 5.0</div>
+                            </div>
+                            <div id='qual-based-on'>Overall Quality Based on {profReviews.length} Ratings</div>
                         </div>
                         <div id='prof-review-index-prof-show-name'>
-                            <div>{this.props.prof.first_name} {this.props.prof.last_name}</div>
-                            <div>Prof in the {this.props.prof.subject} Department</div>
+                            <div id='prof-review-index-prof-name'>{this.props.prof.first_name} {this.props.prof.last_name}</div>
+                            <div id='prof-in-dept'>Prof in the <strong>{this.props.prof.subject}</strong> Department</div>
                         </div>
                     </div>
                     <div id='prof-show-other-stats'>
-                        <div className='prof-show-other-stats'>
-                            <div>{takeAgRat}</div>
+                        <div className='prof-show-other-stats' id='prof-review-index-prof-show-take-again'>
+                            <div className='prof-review-index-prof-show-take-again-ratio'>{takeAgRat}</div>
                             <div>Would take again</div>
                         </div>
-                        <div className='prof-show-other-stats'>
-                            <div>{avgDiff}</div>
+                        <div className='prof-show-other-stats' id='prof-review-index-prof-show-difficulty'>
+                            <div className='prof-review-index-prof-show-take-again-ratio'>{avgDiff}</div>
                             <div>Level of Difficulty</div>
                         </div>
                     </div>
-                    <button onClick={this.clickRateProf}>Rate Prof {this.props.prof.first_name}</button>
-                    <div>Prof {this.props.prof.first_name}'s Top Tags</div>
+                    <button id='review-prof-button' onClick={this.clickRateProf}>Rate Prof {this.props.prof.first_name}</button>
+                    <div id='top-tags-label'>Prof {this.props.prof.first_name}'s Top Tags</div>
                     <div id='top-tags'>
                         {
-                            topTags.map(tag => <div>{tag}</div>)
+                            topTags.map(tag => <div className='tag'>{tag}</div>)
                         }
                     </div>
                 </div>
