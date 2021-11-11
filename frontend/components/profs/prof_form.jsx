@@ -34,27 +34,29 @@ class ProfForm extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit} id='prof-form'>
-                {this.props.formType}
-                {this.renderErrors()}
-                First Name:
+                <div id='prof-form-header'>{this.props.formType}</div>
+                <div id='prof-form-important'>Important: Please make sure that the professor does not already exist in the "All Profs" page.</div>
+                
+                <label>PROFESSOR'S FIRST NAME</label>
                 <input
                     type='text'
                     value={this.state.first_name}
                     onChange={this.update('first_name')}>
                 </input>
-                Last Name:
+                <label>PROFESSOR'S LAST NAME</label>
                 <input
                     type='text'
                     value={this.state.last_name}
                     onChange={this.update('last_name')}>
                 </input>
-                Department:
+                <label>DEPARTMENT</label>
                 <input
                     type='text'
                     value={this.state.subject}
                     onChange={this.update('subject')}>
                 </input>
-                <input type='submit'></input>
+                <input type='submit' id='prof-form-submit'></input>
+                {this.renderErrors()}
             </form>
         )
     }
