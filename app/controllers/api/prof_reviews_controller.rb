@@ -40,6 +40,6 @@ class Api::ProfReviewsController < ApplicationController
     def prof_review_params
         params.require(:profReview).permit(:body, :klass, :grade, :quality, 
         :difficulty, :take_again, :for_credit, :txt_book, :attendance, :tag1, 
-        :tag2, :tag3, :prof_id, :author_id, :id)
+        :tag2, :tag3, :prof_id, :author_id, :id, :updated_at)
     end
 end

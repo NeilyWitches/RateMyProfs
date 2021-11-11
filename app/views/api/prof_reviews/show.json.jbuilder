@@ -1,1 +1,2 @@
 json.extract! @prof_review, :id, :body, :klass, :grade, :quality, :difficulty, :take_again, :for_credit, :txt_book, :attendance, :tag1, :tag2, :tag3, :prof_id
+json.updatedOn @prof_review.updated_at.strftime("%a, %d %b %Y")

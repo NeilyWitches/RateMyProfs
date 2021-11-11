@@ -4,13 +4,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 200px;
 }
 
 #prof-review-index-prof-show {
     display: flex;
     flex-direction: column;
     align-items: center;
-    // border: 1px solid black;
 }
 
 #prof-show-quality-name {
@@ -129,4 +129,14 @@
     margin: 0px 16px 8px 0px;
     padding: 8px 16px;
     font-weight: 700;
+}
+
+#prof-review-index-label {
+    margin-top: 20px;
+    border-bottom: 2px solid rgb(21, 21, 21);
+    font-size: 14px;
+    font-weight: 700;
+    padding-bottom: 7px;
+    margin-bottom: 15px;
+    width: 875px;
 }

@@ -1,0 +1,114 @@
+#prof-review-show {
+    margin-bottom: 30px;
+    display: flex;
+    width: 875px;
+    padding: 25px;
+    background-color: lightgray;
+}
+
+#prof-review-show-qual-diff {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 45px;
+}
+
+#prof-review-show-quality {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#prof-review-show-difficulty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#prof-review {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#class-date {
+    display: flex;
+    justify-content: space-between;
+}
+
+#tags {
+    display: flex;
+    gap: 20px;
+}
+
+#tags > * {
+    background-color: rgb(241, 241, 241);
+    border-radius: 14.5px;
+    font-stretch: condensed;
+    padding: 8px 16px;
+    font-weight: 700;
+}
+
+#booleans{
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 20px;
+}
+
+#prof-review-show-quality-label {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 14px;
+    margin-bottom: 4px;
+}
+
+#prof-review-show-diff-label {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 14px;
+    margin-bottom: 4px;
+    margin-top: 15px;
+}
+
+#prof-review-show-diff-num {
+    background: rgb(228, 228, 228);
+    height: 64px;
+    margin-bottom: 8px;
+    padding: 10px 10px;
+    width: 72px;
+    font-size: 32px;
+    font-family: Poppins, sans-serif;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#prof-review-show-quality-num {
+    background: rgb(104, 255, 190);
+    height: 64px;
+    margin-bottom: 8px;
+    padding: 10px 10px;
+    width: 72px;
+    font-size: 32px;
+    font-family: Poppins, sans-serif;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+#class {
+    font-size: 16px;
+    font-family: Poppins, sans-serif;
+    font-weight: 900;
+}
+
+#prof-review-date {
+    font-weight: 700;
+}
+
+#booleans > * {
+    margin-right: 20px;
+}

@@ -12,38 +12,50 @@ class ProfReviewShow extends React.Component {
         if (this.props.profReview.attendance === null) {
             attendanceDisplay = null;
         } else if (this.props.profReview.attendance === true) {
-            attendanceDisplay = 'Attendance: Mandatory'
+            attendanceDisplay = <div>Attendance: <strong>Mandataory</strong></div>
         } else {
-            attendanceDisplay = 'Attendance: Not Mandatory'
+            attendanceDisplay = <div>Attendance: <strong>Not Mandatory</strong></div>
         };
 
         if (this.props.profReview.grade === 'Select' || this.props.profReview.grade === '') {
             gradeDisplay = null;
         } else {
-            gradeDisplay = `Grade: ${this.props.profReview.grade}`
+            gradeDisplay = <div>Grade: <strong>{this.props.profReview.grade}</strong></div>
         }
 
         return (
-            <div>
-                Body:
-                {this.props.profReview.body}
-                Class:
-                {this.props.profReview.klass}
-                {gradeDisplay}
-                Quality:
-                {this.props.profReview.quality}
-                Difficuly:
-                {this.props.profReview.difficulty}
-                Would Take Again:
-                { this.props.profReview.take_again ? "Yes" : "No" }
-                For Credit:
-                { this.props.profReview.for_credit ? "Yes" : "No" }
-                Textbook:
-                { this.props.profReview.txt_book ? "Yes" : "No" }
-                { attendanceDisplay }
-                { this.props.profReview.tag1 }
-                { this.props.profReview.tag2 }
-                { this.props.profReview.tag3 }
+            <div id='prof-review-show'>
+                <div id='prof-review-show-qual-diff'>
+                    <div id='prof-review-show-quality'>
+                        <div id='prof-review-show-quality-label'>QUALITY</div>
+                        <div id='prof-review-show-quality-num'>{this.props.profReview.quality}</div>
+                    </div>
+                    <div id='prof-review-show-difficulty'>
+                        <div id='prof-review-show-diff-label'>DIFFICULTY</div>
+                        <div id='prof-review-show-diff-num'>{this.props.profReview.difficulty}</div>
+                    </div>
+                </div>
+                <div id='prof-review'>
+                    <div id='class-date'>
+                        <div id='class'>{this.props.profReview.klass}</div>
+                        <div id='prof-review-date'>{this.props.profReview.updatedOn}</div>
+                    </div>
+                    <div id='booleans'>
+                        <div>For Credit: <strong>{this.props.profReview.for_credit ? "Yes" : "No"}</strong></div>
+                        {attendanceDisplay}
+                        <div>Would take again: <strong>{this.props.profReview.take_again ? "Yes" : "No"}</strong></div>
+                        {gradeDisplay}
+                        <div>Textbook: <strong>{this.props.profReview.txt_book ? "Yes" : "No"}</strong></div>
+                    </div>
+                    <div id='prof-review-comment'>
+                        {this.props.profReview.body}
+                    </div>
+                    <div id='tags'>
+                        { this.props.profReview.tag1 ? <div>{this.props.profReview.tag1}</div> : null }
+                        { this.props.profReview.tag2 ? <div>{this.props.profReview.tag2}</div> : null }
+                        { this.props.profReview.tag3 ? <div>{this.props.profReview.tag3}</div> : null }
+                    </div>
+                </div>
             </div>
         );
     };

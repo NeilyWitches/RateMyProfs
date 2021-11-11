@@ -87,7 +87,6 @@ class ProfReviewIndex extends React.Component {
         }
         let topTags = [];
         let sortedCounts = Object.values(tags_count).sort().reverse();
-        console.log(tags_count);
         for (let i = 0; i < sortedCounts.length; i++) {
             for (let j = 0; j < tagsCountTranspose.length; j++) {
                 if (tagsCountTranspose[j][1] === sortedCounts[i] && topTags.length < 5 && sortedCounts[i] && !topTags.includes(tagsCountTranspose[j][0])) {
@@ -138,15 +137,16 @@ class ProfReviewIndex extends React.Component {
                     <div id='top-tags-label'>Prof {this.props.prof.first_name}'s Top Tags</div>
                     <div id='top-tags'>
                         {
-                            topTags.map(tag => <div className='tag'>{tag}</div>)
+                            topTags.map((tag, index) => <div key={index} className='tag'>{tag}</div>)
                         }
                     </div>
                 </div>
-                {/* <ul>
+                <div id='prof-review-index-label'>{profReviews.length} Student Ratings</div>
+                <ul>
                     {
                         profReviews.map((profReview, index) => <ProfReviewShow key={index} profReview={profReview}/>)
                     }
-                </ul>*/}
+                </ul>
             </div>
         );
     };
