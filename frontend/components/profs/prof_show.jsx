@@ -7,14 +7,12 @@ class ProfShow extends React.Component {
     };
 
     convertNaN() {
-        debugger
         this.avgQual = "N/A";
         this.avgDiff = "N/A";
         this.takeAgRat = "N/A"
     }
 
     setDigits() {
-        debugger
         this.avgQual = this.props.avgQual.toFixed(1);
         this.takeAgRat = `${this.props.takeAgRat.toFixed(2) * 100}%`;
         this.avgDiff = this.props.avgDiff.toFixed(1);
