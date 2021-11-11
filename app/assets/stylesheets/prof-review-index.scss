@@ -2,3 +2,35 @@
     position: relative;
     top: 100px;
 }
+
+#prof-review-index-prof-show {
+    display: flex;
+    flex-direction: column;
+}
+
+#prof-show-quality-name {
+    display: flex;
+}
+
+#prof-show-avg-qual {
+    display: flex;
+    flex-direction: column;
+}
+
+#prof-review-index-prof-show-name {
+    display: flex;
+    flex-direction: column;
+}
+
+#prof-show-other-stats {
+    display: flex;
+}
+
+.prof-show-other-stats {
+    display: flex;
+    flex-direction: column;
+}
+
+#top-tags {
+    display: flex;
+}
