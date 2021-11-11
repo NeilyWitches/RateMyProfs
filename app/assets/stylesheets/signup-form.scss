@@ -19,7 +19,7 @@
 #anonymity-txt {
     background: #e7e7de;
     padding: 10px;
-    width: 250px;
+    width: 350px;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 15px;
     color: #777777;
@@ -49,8 +49,9 @@
     position: relative;
     font-family: 'Source Sans Pro', sans-serif;
     color: #7d7c77;
-    top: 35px;
+    top: 80px;
     font-weight: 700;
+    // left: 400px;
 }
 
 #signup-right > input {
@@ -60,6 +61,7 @@
     padding: 10px;
     font-size: 24px;
     border: 1px solid #d6d7d2;
+    
 }
 
 #signup-submit {
@@ -92,14 +94,17 @@
     width: 700px;
 }
 
-// #signup-error-0 {
-//     position: relative;
-//     left: 350px;
-//     bottom: 400px;
-// }
+#signup-login-txt {
+    text-align: center;
+}
 
-// #signup-error-1 {
-//     position: relative;
-//     left: 250px;
-//     bottom: 155px;
-// }
+#signup-login-button {
+    background-color: #000;
+    padding: 10px;
+    color: #fff;
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 28px;
+    line-height: 36px;
+    border: none;
+    cursor: pointer;
+}

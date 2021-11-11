@@ -10,6 +10,12 @@ class Signup extends React.Component {
             password: '',
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.clickLogIn = this.clickLogIn.bind(this);
+    }
+
+    clickLogIn() {
+        let path = '/login';
+        this.props.history.push(path);
     }
 
     handleInput(type) {
@@ -51,7 +57,7 @@ class Signup extends React.Component {
                             <label>PASSWORD</label>
                         </div>
                         <div id='signup-right'>
-                            <div id='anonymity-txt'>Signing up will still preserve anonymity!</div>
+                            <div id='anonymity-txt'>Signing up will still preserve anonymity! Although anybody can create and view professor ratings, signed in users can edit and delete the reviews they wrote.</div>
                             <input
                                 type='text'
                                 value={this.state.email}
@@ -73,6 +79,8 @@ class Signup extends React.Component {
                                 onChange={this.handleInput('password')}
                             />
                             <button onClick={this.handleSubmit} id='signup-submit'>Sign Up</button>
+                            <div id='signup-login-txt'>OR, ALREADY HAVE AN ACCOUNT?</div>
+                            <button onClick={this.clickLogIn} id='signup-login-button'>Log in</button>
                         </div>
                     </form>
                     {this.renderErrors()}

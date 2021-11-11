@@ -56,7 +56,7 @@ class Login extends React.Component {
                         onChange={this.handleInput('password')}
                         placeholder="PASSWORD"
                     />
-                    <button onClick={this.handleSubmit} id='login-form-submit'>Log in</button>
+                    <button onClick={this.handleSubmit} className='login-form-submit'>Log in</button>
                 </form>
                 {this.renderErrors()}
             </div>
