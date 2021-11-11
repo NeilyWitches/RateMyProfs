@@ -9,20 +9,23 @@ class ProfShow extends React.Component {
     render() {
         const { prof } = this.props;
         return (
-            <div>
-                First Name:
-                {prof.first_name}
-                Last Name:
-                {prof.last_name}
-                Subject:
-                {prof.subject}
-                <Link to={`/profs/${prof.id}`}>{prof.first_name}'s Reviews</Link>
-                Quality:
-                {this.props.avgQual}
-                Difficulty:
-                {this.props.avgDiff}
-                <br/>
-                {this.props.takeAgRat * 100}% would take again
+            <div className='prof-show'>
+                <div className='prof-stats'>
+                    <div className='avg-quality-label'>QUALITY</div>
+                    <div className='avg-quality'>{this.props.avgQual.toFixed(1)}</div>
+                    <div className='num-ratings'>{this.props.numRatings} ratings</div>
+                </div>
+                <div>
+                    <div className='prof-show-name'>{prof.first_name} {prof.last_name}</div>
+                    <div className='prof-show-subject'>{prof.subject}</div>
+                    <div className='take-again-lvl-diff'>
+                        <div className='prof-show-take-again'>{this.props.takeAgRat.toFixed(2) * 100}%</div>
+                        <div className='prof-show-take-again-label'>would take again</div>
+                        <div>|</div>
+                        <div className='prof-show-avg-diff'>{this.props.avgDiff.toFixed(1)}</div>
+                        <div className='prof-show-lvl-diff-label'>level of difficulty</div>
+                    </div>
+                </div>
             </div>
         )
     }

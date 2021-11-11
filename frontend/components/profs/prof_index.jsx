@@ -5,7 +5,8 @@ import ProfShow from './prof_show';
 class ProfIndex extends React.Component {
     constructor(props) {
         super(props);
-        
+
+        this.clickProf = this.clickProf.bind(this);
     };
 
     componentDidMount() {
@@ -91,6 +92,15 @@ class ProfIndex extends React.Component {
         return (this.props.profs.length === 0 ? null : this.getTakeAgainRatio())
     }
 
+    clickProf(prof) {
+        let path = `/profs/${prof.id}`;
+        return () => this.props.history.push(path);
+    }
+
+    getNumOfRatings(prof) {
+        return Object.values(prof.prof_reviews).length
+    }
+
     render() {
         const { profs } = this.props;
         this.checkRenderQual();
@@ -102,14 +112,19 @@ class ProfIndex extends React.Component {
 
         return (
             <div id='prof-index'>
-                <h1>Prof Index:</h1>
+                <h1 id='prof-index-header'>All profs</h1>
                 <ul>
                     {
-                        profs.map((prof, index) => <ProfShow 
-                        key={prof.id} prof={prof} 
-                        avgQual={avgQuals[index]} 
-                        avgDiff={avgDiffs[index]} 
-                        takeAgRat={takeAgRats[index]} />)
+                        profs.map((prof, index) => 
+                            <div id='prof-show-link' onClick={this.clickProf(prof)}>
+                                <ProfShow 
+                                key={prof.id} prof={prof} 
+                                avgQual={avgQuals[index]} 
+                                avgDiff={avgDiffs[index]} 
+                                takeAgRat={takeAgRats[index]} 
+                                numRatings={this.getNumOfRatings(prof)}/>
+                            </div>
+                        )
                     }
                 </ul>
                 <div>Don't see the prof you're looking for?</div>
