@@ -118,7 +118,8 @@ class ProfIndex extends React.Component {
                         profs.map((prof, index) => 
                             <div id='prof-show-link' onClick={this.clickProf(prof)}>
                                 <ProfShow 
-                                key={prof.id} prof={prof} 
+                                key={prof.id} 
+                                prof={prof} 
                                 avgQual={avgQuals[index]} 
                                 avgDiff={avgDiffs[index]} 
                                 takeAgRat={takeAgRats[index]} 
@@ -127,8 +128,10 @@ class ProfIndex extends React.Component {
                         )
                     }
                 </ul>
-                <div>Don't see the prof you're looking for?</div>
-                <Link to='/profs/new'>Add a prof</Link>
+                <div id='add-prof'>
+                    <div>Don't see the prof you're looking for?</div>
+                    <Link to='/profs/new' id='add-prof-link'>Add a prof</Link>
+                </div>
             </div>
         );
     };

@@ -111,3 +111,13 @@
     border: none;
     cursor: pointer;
 }
+
+#blackboard {
+    border-radius: 8px;
+    height: 35%;
+    width: 35%;
+    position: relative;
+    top: 200px;
+    left: 100px;
+    filter: sepia(100%);
+}

@@ -10,6 +10,8 @@
 #login-form {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-right: 150px;
 }
 
 #login-form-proper {
@@ -71,4 +73,15 @@
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 15px;
     font-weight: 700;
+}
+
+#doodles {
+    height: auto;
+    width: 30%;
+    position: relative;
+    left: 600px;
+    bottom: 450px;
+    border-radius: 8px;
+    filter: grayscale(100%);
+    opacity: 0.5;
 }
