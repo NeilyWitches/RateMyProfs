@@ -26,7 +26,15 @@ class ProfReviewForm extends React.Component {
     }
 
     update(field) {
-        return e => this.setState({ [field]: e.currentTarget.value })
+        if (field === 'body') {
+            return e => {
+                return this.setState({
+                [field]: e.currentTarget.value,
+                characters: 350 - e.currentTarget.value.length
+            })}
+        } else {
+            return e => this.setState({ [field]: e.currentTarget.value })
+        }
     };
 
     makeTrue(field) {
@@ -90,7 +98,7 @@ class ProfReviewForm extends React.Component {
     renderErrors() {
         
         return (
-            <ul>
+            <ul id='prof-review-form-errors'>
                 {this.props.prof_review_errors.map((error, i) => (
                     <li key={`error-${i}`}>
                         {error}
@@ -98,6 +106,11 @@ class ProfReviewForm extends React.Component {
                 ))}
             </ul>
         )
+    }
+
+    componentDidMount() {
+        this.setState({ characters: 350 })
+
     }
 
     render() {
@@ -173,75 +186,141 @@ class ProfReviewForm extends React.Component {
         };
 
         return (
-            <form onSubmit={this.handleSubmit} id='prof-review-form'>
-                {this.props.formType}
+            <div id='prof-review-form-container'>
+                <div id='prof-review-form-disclaimer'>
+                    <div id='prof-review-disclaimer-header'>Rating Do's and Don'ts</div>
+                    <div id='prof-review-disclaimer-do-dont'>
+                        <div className='do'>
+                            <div className='do-header'>Do</div>
+                            <div className='do-body'>Discuss the professor’s professional abilities including teaching style and ability to convey the material clearly.</div>
+                        </div>
+                        <div className='do'>
+                            <div className='do-header'>Do</div>
+                            <div className='do-body'>Double check your comments before posting. Course codes must be accurate, and it doesn’t hurt to check grammar.</div>
+                        </div>
+                        <div className='do'>
+                            <div className='do-header'>Don't</div>
+                            <div className='do-body'>Use profanity, name-calling, or derogatory terms. And, don’t claim that the professor shows bias or favoritism for or against students.</div>
+                        </div>
+                    </div>
+                </div>
+                <div id='prof-review-form-header'>{this.props.formType}{this.props.prof.first_name} {this.props.prof.last_name}</div>
+                <form onSubmit={this.handleSubmit} id='prof-review-form'>
+                    <div id='prof-review-form-1' className='prof-review-form-row'>
+                        <div id='prof-review-form-num-1' className='prof-review-form-number'>1</div>
+                        <div id='prof-review-form-1-label'>
+                            <div id='prof-review-form-1-label-header'><strong>COURSE CODE</strong></div>
+                            <div id='prof-review-form-1-label-body'>Please make sure this is accurate, examples: COS126, ECON238</div>
+                        </div>
+                        <input
+                            id='prof-review-form-class-input'
+                            type='text'
+                            value={this.state.klass}
+                            placeholder="Enter code"
+                            onChange={this.update('klass')}>
+                        </input>
+                    </div>
+                    <div id='prof-review-form-2' className='prof-review-form-row'>
+                        <div className='prof-review-form-number'>2</div>
+                        <div className='prof-review-form-label'><strong>RATE YOUR PROFESSOR</strong></div>
+                        <div className='after-label'>
+                            <div className='prof-review-form-state-qual'>{this.state.quality}</div>
+                            <input
+                                className='slider'
+                                type='range'
+                                min='1'
+                                max='5'
+                                onChange={this.update('quality')}
+                            />
+                        </div>
+                    </div>
+                    <div id='prof-review-form-3' className='prof-review-form-row'>
+                        <div className='prof-review-form-number'>3</div>
+                        <div className='prof-review-form-label' id="prof-review-form-label-3"><strong>LEVEL OF DIFFICULTY</strong></div>
+                        <div className='after-label'>
+                            <div id='diff-state' className='prof-review-form-state-qual'>{this.state.difficulty}</div>
+                            <input
+                                className='slider'
+                                type='range'
+                                min='1'
+                                max='5'
+                                onChange={this.update('difficulty')}
+                            />
+                        </div>
+                    </div>
+                    <div id='prof-review-form-4' className='prof-review-form-row'>
+                        <div className='prof-review-form-number'>4</div>
+                        <div className='prof-review-form-label'><strong>WOULD YOU TAKE THIS PROF AGAIN?</strong></div>
+                        <div className='after-label'>
+                            <input type='button' className="boolean-button" style={inputStyleTakeAgainYes} onClick={this.makeTrue('take_again')} value='YEAH' />
+                            <input type='button' className="boolean-button" style={inputStyleTakeAgainNo} onClick={this.makeFalse('take_again')} value='UM, NO.' />
+                        </div>
+                    </div>
+                    <div id='prof-review-form-5' className='prof-review-form-row'>
+                        <div className='prof-review-form-number'>5</div>
+                        <div className='prof-review-form-label'><strong>WAS THIS CLASS TAKEN FOR CREDIT?</strong></div>
+                        <div className='after-label'>
+                            <input className="boolean-button" type='button' style={inputStyleForCreditYes} onClick={this.makeTrue('for_credit')} value='YEAH' />
+                            <input className="boolean-button" type='button' style={inputStyleForCreditNo} onClick={this.makeFalse('for_credit')} value='UM, NO.' />
+                        </div>
+                    </div>
+                    <div id='prof-review-form-6' className='prof-review-form-row'>
+                        <div className='prof-review-form-number'>6</div>
+                        <div className='prof-review-form-label' id='prof-review-form-label-6'><strong>TEXTBOOK USE</strong></div>
+                        <div className='after-label'>
+                            <input className="boolean-button" type='button' style={inputStyleTextBookYes} onClick={this.makeTrue('txt_book')} value='YEAH' />
+                            <input className="boolean-button" type='button' style={inputStyleTextBookNo} onClick={this.makeFalse('txt_book')} value='UM, NO.' />
+                        </div>
+                    </div>
+                    <div id='prof-review-form-7' className='prof-review-form-row'>
+                        <div className='prof-review-form-number'>7</div>
+                        <div className='prof-review-form-label' id='prof-review-form-label-7'><strong>ATTENDANCE</strong> (Optional)</div>
+                        <div className='after-label'>
+                            <input type='button' className="boolean-button" style={inputStyleAttendanceYes} onClick={this.makeTrue('attendance')} value='MANDATORY' />
+                            <input type='button' className="boolean-button" style={inputStyleAttendanceNo} onClick={this.makeFalse('attendance')} value='NOT MANDATORY' />
+                        </div>
+                    </div>
+                    <div id='prof-review-form-8' className='prof-review-form-row'>
+                        <div className='prof-review-form-number'>8</div>
+                        <div className='prof-review-form-label' id='prof-review-form-label-8'><strong>GRADE RECEIVED</strong> (Optional)</div>
+                        <select id='prof-review-form-grades' name='grades' onChange={this.update('grade')} defaultValue={'Select'}>
+                            {
+                                grades.map((grade, index) =>
+                                    <option
+                                        key={index}
+                                        value={grade}>
+                                        {grade}
+                                    </option>)
+                            }
+                        </select>
+                    </div>
+                    <div id='prof-review-form-9'>
+                        <div className='prof-review-form-number'>9</div>
+                        <div className='prof-review-form-label'><strong>SELECT UP TO 3 TAGS THAT BEST DESCRIBE THIS PROF</strong> (Optional) <br/> Choose carefully - the fate of future students lies in your hands.</div>
+                    </div>
+                    <div id='prof-review-form-tags'>
+                        {
+                            this.tags.map((tag, index) => <input
+                                key={index} type='button'
+                                style={{ backgroundColor: this.tagStyles[index] }}
+                                onClick={this.changeColor(index)}
+                                value={tag} />)
+                        }
+                    </div>
+                    <div id='prof-review-form-10'>
+                        <div className='prof-review-form-number'>10</div>
+                        <div className='prof-review-form-label'>HERE'S YOUR CHANCE TO BE MORE SPECIFIC</div>
+                    </div>
+                    <textarea
+                        id='prof-review-form-body'
+                        value={this.state.body}
+                        onChange={this.update('body')}>
+                    </textarea>
+                    <div id='prof-review-form-characters'>{this.state.characters} characters left</div>
+                    <input id='prof-review-form-submit' type='submit'></input>
+                </form>
                 {this.renderErrors()}
-                Body:
-                <textarea
-                    value={this.state.body}
-                    onChange={this.update('body')}>
-                </textarea>
-                Class:
-                <input
-                    type='text'
-                    value={this.state.klass}
-                    onChange={this.update('klass')}>
-                </input>
-                Grade (Optional):
-                <select name='grades' onChange={this.update('grade')} defaultValue={'Select'}>
-                    {
-                        grades.map((grade, index) => 
-                            <option 
-                                key={index}
-                                value={grade}>
-                                {grade}
-                            </option>)
-                    }
-                </select>
-                <br/>
-                <label>
-                    Quality: {this.state.quality}
-                    <input
-                        type='range'
-                        min='1'
-                        max='5'
-                        onChange={this.update('quality')} 
-                    />
-                </label>
-                <label>
-                    Difficulty: {this.state.difficulty}
-                    <input
-                        type='range'
-                        min='1'
-                        max='5'
-                        onChange={this.update('difficulty')}
-                    />
-                </label>
-                Would you take this prof again?
-                <input type='button' style={inputStyleTakeAgainYes} onClick={this.makeTrue('take_again')} value='yes'/>
-                <input type='button' style={inputStyleTakeAgainNo} onClick={this.makeFalse('take_again')} value='no' />
-                <br/>
-                Was this class taken for credit?
-                <input type='button' style={inputStyleForCreditYes} onClick={this.makeTrue('for_credit')} value='yes' />
-                <input type='button' style={inputStyleForCreditNo} onClick={this.makeFalse('for_credit')} value='no' />
-                <br />
-                Was getting the textbook required?
-                <input type='button' style={inputStyleTextBookYes} onClick={this.makeTrue('txt_book')} value='yes' />
-                <input type='button' style={inputStyleTextBookNo} onClick={this.makeFalse('txt_book')} value='no' />
-                <br />
-                Was attendance mandatory? (Optional)
-                <input type='button' style={inputStyleAttendanceYes} onClick={this.makeTrue('attendance')} value='yes' />
-                <input type='button' style={inputStyleAttendanceNo} onClick={this.makeFalse('attendance')} value='no' />
-                Tags:
-                {
-                    this.tags.map((tag, index) => <input 
-                    key={index} type='button' 
-                    style={{backgroundColor: this.tagStyles[index]}} 
-                    onClick={this.changeColor(index)}
-                    value={tag} />)
-                }
-                <input type='submit'></input>
-            </form>
+            </div>
         );
     };
 };

@@ -22,7 +22,7 @@ const App = ({ children }) => (
         <Route path='/' component={Footer} />
         <Switch>
             <Route path='/profReviews/new/:profId' component={CreateProfReviewFormContainer} />
-            <ExtraProtectedRoute path='/profReviews/edit/:profReviewId/:userId' component={EditProfReviewFormContainer} />
+            <ExtraProtectedRoute path='/profReviews/edit/:profReviewId/:userId/:profId' component={EditProfReviewFormContainer} />
             <Route path='/profs/new' component={CreateProfFormContainer} />
             <Route path='/profs/:profId' component={ProfReviewIndexContainer} />
             <Route path='/profs/' component={ProfIndexContainer} />
