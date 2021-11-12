@@ -38,6 +38,7 @@ Another difficulty arose in building the algorithm for **asterisks** feature. Re
 
 A third challenge was rendering a statistical summary of all of the reviews written about a prof right there on the prof *index* page. The index page needed to grab information about all of each prof's reviews in order to calculate the stats on each (all agorithms from scratch as I have a background in statistics.) The very nature of this task is problematic in that a user may create a new prof without writing any reviews for that prof. The implication of this is that to get, say the ratio of the number of reviewers who would take the prof again, poses a divide by zero operation. Javascript as a result will print 'NaN' rather than something the user will understand. In order to provide a more user-friendly experience, I had to implement a check on the length of reviews and render the appropriate response accordingly.
 
-![rmp selecting tags](https://user-images.githubusercontent.com/59269773/141491101-d4a8cb31-cdcc-46f8-9338-0038842ce781.gif)
+![rmp character count](https://user-images.githubusercontent.com/59269773/141492102-05b9ffdd-348b-42f5-816a-eff861b0067e.gif)
+
 
 The last difficulty I will mention, although I'd run into a host of many more was character count. At first I was taking the previous state and decrementing by one each time the input field encountered a change, i.e. upon every stroke of the keyboard. This seemed appropriate at first until I hit backspace. The display on the number of characters left kept on decrementing! So after thinking about how the number of characters is calculated, I came to realize it was a matter of subtracting the character limit (350) by the length of the value inside the text box.
