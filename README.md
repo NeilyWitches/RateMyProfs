@@ -17,7 +17,7 @@ The site stores its data i.e. "prof reviews", "profs," "schools", "users," etc. 
 + Webpack
 + Git
 
-###CRUD
+### CRUD
 
 + CREATION of profs and prof reviews.
 + READING of said reviews and summaries of profs.
