@@ -7,7 +7,24 @@
 
 The site stores its data i.e. "prof reviews", "profs," "schools", "users," etc. on a postgreSQL database. On the backend, the database is quereied through the codebase built on a *Ruby on Rails* framework. On the frontend, I used a *React-Redux* framework to dynamically rerender the page upon update of the React store or React local state.
 
-###Challenges###
++ React
++ Redux
++ JavaScript
++ HTML5
++ CSS3
++ Ruby on Rails
++ PostgreSQL
++ Webpack
++ Git
+
+###CRUD
+
++ CREATION of profs and prof reviews.
++ READING of said reviews and summaries of profs.
++ UPDATING reviews, profs, user info depending on user credentials.
++ DELETION of the same.
+
+### Challenges
 
 ![rmp selecting tags](https://user-images.githubusercontent.com/59269773/141484821-2839028e-d8a0-4d0d-b936-8f0a8ba015bb.gif)
 
@@ -16,3 +33,11 @@ Selecting tags was certainly a challenge. There were many reasons for this. Sele
 <img width="1113" alt="rmp top tags" src="https://user-images.githubusercontent.com/59269773/141486258-8389a853-09c2-4964-94a1-5e5ae64e22ad.png">
 
 Another difficulty arose in building the algorithm for **asterisks** feature. Replicating the styling on *Rate My Professors* was easy thanks to Google Chrome's dev tools, but replicating their algorithms requires experience and natural problem solving skills. In order to implement top tags, I created a hash of the the counts of all the tags of one "prof." Javascript objects, however, like all hashes, cannot be sorted as there is no information about the order in which the items were stored to decreased time complexity in querying the hash. Therefore, it must be converted into an array. Doing so, breaks the associations between tag and count, and so the dilemma appears to be paradoxical. Taking the transpose of the array maintains the associations and once sorted, the tags can be matched with their counts. I had to remember to limit the number of 5, make sure not to consider any repeats, and make sure that if a prof had no tags or under 5, that nothing was rendered on the screen rather than a blank div. 
+
+<img width="1090" alt="prof index rmp" src="https://user-images.githubusercontent.com/59269773/141487870-e0c7be22-c113-4596-8200-4e2f8c945429.png">
+
+A third challenge was rendering a statistical summary of all of the reviews written about a prof right there on the prof *index* page. The index page needed to grab information about all of each prof's reviews in order to calculate the stats on each (all agorithms from scratch as I have a background in statistics.) The very nature of this task is problematic in that a user may create a new prof without writing any reviews for that prof. The implication of this is that to get, say the ratio of the number of reviewers who would take the prof again, poses a divide by zero operation. Javascript as a result will print 'NaN' rather than something the user will understand. In order to provide a more user-friendly experience, I had to implement a check on the length of reviews and render the appropriate response accordingly.
+
+![rmp selecting tags](https://user-images.githubusercontent.com/59269773/141491101-d4a8cb31-cdcc-46f8-9338-0038842ce781.gif)
+
+The last difficulty I will mention, although I'd run into a host of many more was character count. At first I was taking the previous state and decrementing by one each time the input field encountered a change, i.e. upon every stroke of the keyboard. This seemed appropriate at first until I hit backspace. The display on the number of characters left kept on decrementing! So after thinking about how the number of characters is calculated, I came to realize it was a matter of subtracting the character limit (350) by the length of the value inside the text box.
