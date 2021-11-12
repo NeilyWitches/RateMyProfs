@@ -1,9 +1,20 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 class ProfReviewShow extends React.Component {
     constructor(props) {
         super(props);
     };
+
+    displayEdit() {
+        return (
+            <div>
+                <Link
+                    to={`/profReviews/edit/${this.props.profReview.id}/${this.props.userId}/${this.props.profReview.prof_id}`}
+                    id='edit-prof-review-link'><i id='edit-icon' className="fas fa-pencil-alt"></i>Edit</Link>
+            </div>
+        )
+    }
 
     render() {
         let attendanceDisplay;
@@ -38,6 +49,7 @@ class ProfReviewShow extends React.Component {
                 <div id='prof-review'>
                     <div id='class-date'>
                         <div id='class'>{this.props.profReview.klass}</div>
+                        {this.props.mayEdit ? this.displayEdit() : null}
                         <div id='prof-review-date'>{this.props.profReview.updatedOn}</div>
                     </div>
                     <div id='booleans'>

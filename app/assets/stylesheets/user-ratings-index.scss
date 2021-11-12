@@ -1,4 +1,25 @@
 #user-ratings-index {
     position: relative;
     top: 100px;
+    margin-bottom: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#user-ratings-index-header {
+    font-size: 32px;
+    font-family: Poppins, sans-serif;
+    font-weight: 900;
+    margin-bottom: 50px;
+}
+
+#edit-prof-review-link {
+    font-weight: 700;
+    text-decoration: none;
+    color: black;
+}
+
+#edit-icon {
+    margin-right: 10px;
 }

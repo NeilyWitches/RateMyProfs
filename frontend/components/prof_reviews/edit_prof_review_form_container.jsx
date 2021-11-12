@@ -13,7 +13,7 @@ class EditProfReviewForm extends React.Component {
     }
 
     render() {
-        const { action, formType, history, prof_review_errors, user, prof } = this.props;
+        const { action, formType, history, prof_review_errors, user, prof, match } = this.props;
 
         if (!user) return null;
         if (!prof) return null;

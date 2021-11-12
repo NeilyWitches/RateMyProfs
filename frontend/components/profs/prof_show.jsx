@@ -19,6 +19,7 @@ class ProfShow extends React.Component {
     }
 
     render() {
+
         const { prof } = this.props;
         if (Object.values(prof.prof_reviews).length === 0) {
             this.convertNaN();

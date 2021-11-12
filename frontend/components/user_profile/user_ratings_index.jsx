@@ -22,12 +22,14 @@ class UserRatingsIndex extends React.Component {
         const profReviews = Object.values(this.props.user.prof_reviews);
         return (
             <div id='user-ratings-index'>
+                <div id='user-ratings-index-header'>Hey, {this.props.user.first_name}</div>
                 <ul>
                     {
                         profReviews.map((profReview, index) =>
                         <div key={index}>
-                            <ProfReviewShow profReview={profReview}/>
-                            <Link to={`/profReviews/edit/${profReview.id}/${this.props.match.params.userId}/${profReview.prof_id}`}>Edit</Link>
+                            <ProfReviewShow profReview={profReview} 
+                            mayEdit={true}
+                            userId={this.props.match.params.userId}/>
                         </div>)
                     }
                 </ul>
