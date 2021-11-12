@@ -11,7 +11,7 @@ class CreateProfReviewForm extends React.Component {
     }
 
     render() {
-        const { action, formType, history, prof_review_errors, prof } = this.props;
+        const { action, formType, history, prof_review_errors, prof, match } = this.props;
         const profReview = this.props.profReview;
 
         if (!prof) return null;
@@ -19,6 +19,7 @@ class CreateProfReviewForm extends React.Component {
         return (
             <div>
                 <ProfReviewForm
+                    match={match}
                     action={action}
                     formType={formType}
                     profReview={profReview}

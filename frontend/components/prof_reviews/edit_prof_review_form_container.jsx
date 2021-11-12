@@ -21,6 +21,7 @@ class EditProfReviewForm extends React.Component {
         return (
             <div>
                 <ProfReviewForm
+                    match={match}
                     action={action}
                     formType={formType}
                     profReview={profReview}
