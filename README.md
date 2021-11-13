@@ -19,9 +19,9 @@ The site stores its data i.e. "prof reviews", "profs," "schools", "users," etc. 
 
 ### CRUD
 
-+ CREATION of profs and prof reviews.
++ CREATION of profs, prof, reviews, and user accounts.
 + READING of said reviews and summaries of profs.
-+ UPDATING reviews, profs, user info depending on user credentials.
++ UPDATING reviews depending on user credentials.
 + DELETION of the same.
 
 ### Challenges
