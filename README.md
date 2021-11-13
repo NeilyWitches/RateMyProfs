@@ -5,7 +5,7 @@
 
 ### Tools Used to build this website clone.
 
-The site stores its data i.e. "prof reviews", "profs," "schools", "users," etc. on a postgreSQL database. On the backend, the database is quereied through the codebase built on a *Ruby on Rails* framework. On the frontend, I used a *React-Redux* framework to dynamically rerender the page upon update of the React store or React local state.
+The site stores its data i.e. "prof reviews", "profs," "schools", "users," etc. on a postgreSQL database. On the backend, the database is quereied through the codebase built on a *Ruby on Rails* framework. On the frontend, I used a *React-Redux* framework to dynamically rerender the page upon update of the Redux store or React local state.
 
 + React
 + Redux
