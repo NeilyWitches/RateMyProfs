@@ -3,6 +3,9 @@
 
 <img width="1440" alt="Screen Shot 2021-11-12 at 9 20 51 AM" src="https://user-images.githubusercontent.com/59269773/141481889-ba7b6aac-1b4e-4bef-90f3-d14d8c2b7975.png">
 
+### Summary ###
+Rate My Profs is a pixel perfect clone of Rate My Professors save some UI design choices I had made. It is a site where users go to review professors  and schools in order to better inform prospecting students.
+
 ### Tools Used to build this website clone.
 
 The site stores its data i.e. "prof reviews", "profs," "schools", "users," etc. on a postgreSQL database. On the backend, the database is quereied through the codebase built on a *Ruby on Rails* framework. On the frontend, I used a *React-Redux* framework to dynamically rerender the page upon update of the Redux store or React local state.
