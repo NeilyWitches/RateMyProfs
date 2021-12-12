@@ -20,7 +20,6 @@ class ProfReviewForm extends React.Component {
     };
 
     populateTagStyles() {
-
         for (let i = 0; i < this.tags.length; i++) {
             this.tagStyles.push('gray')
         }
