@@ -7,6 +7,10 @@
     color: #2e2e2e;
 }
 
+.form-errors {
+    // margin-bottom: 100px;
+}
+
 #login-form {
     display: flex;
     flex-direction: column;
@@ -80,6 +84,6 @@
     font-size: 16px;
     line-height: 23px;
     padding-top: 10px;
-    margin-bottom: 100px;
+    // margin-bottom: 100px;
     width: 322px;
 }

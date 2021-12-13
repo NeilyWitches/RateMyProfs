@@ -12,6 +12,10 @@ class Login extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount() {
+        this.props.clearErrors();
+    }
+
     handleInput(type) {
         return(e) => {
             this.setState({ [type]: e.target.value });
@@ -26,7 +30,7 @@ class Login extends React.Component {
 
     renderErrors() {
         return(
-            <ul>
+            <ul className='form-errors'>
                 {this.props.login_errors.map((error, i) => (
                     <li key={`error-${i}`} id={`error-${i}`}>
                         {error}
@@ -58,7 +62,7 @@ class Login extends React.Component {
                     />
                     <button onClick={this.handleSubmit} className='login-form-submit'>Log in</button>
                 </form>
-                <div id='login-agreement'>You are logging into RateMyProfs, which is designed for and targeted to U.S. audiences and is governed by and operated in accordance with U.S. laws. By clicking the log in button, you (1) acknowledge that you have read and hereby agree to this site's Terms of Use and (2) consent to the collection, use and disclosure of information as described in this site's Privacy Policy.</div>
+                <div id='login-agreement' >You are logging into RateMyProfs, which is designed for and targeted to U.S. audiences and is governed by and operated in accordance with U.S. laws. By clicking the log in button, you (1) acknowledge that you have read and hereby agree to this site's Terms of Use and (2) consent to the collection, use and disclosure of information as described in this site's Privacy Policy.</div>
                 {this.renderErrors()}
             </div>
         )

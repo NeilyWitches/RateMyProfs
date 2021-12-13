@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
 import { createProfReview } from '../../actions/prof_review_actions';
-import ProfReviewForm from './prof_review_form';
 import { requestProf } from '../../actions/prof_actions';
 import React from 'react';
+import { clearErrors } from '../../actions/clear_errors';
+import ProfReviewForm from './prof_review_form';
 
 class CreateProfReviewForm extends React.Component {
     constructor(props) {
@@ -31,6 +32,7 @@ class CreateProfReviewForm extends React.Component {
     }
 
     componentDidMount() {
+        this.props.clearErrors();
         this.props.requestProf(this.props.match.params.profId)
     }
 }
@@ -82,9 +84,12 @@ const mSTP = (state, ownProps) => {
     }
 };
 
-const mDTP = dispatch => ({
-    action: profReview => dispatch(createProfReview(profReview)),
-    requestProf: profId => dispatch(requestProf(profId)),
-});
+const mDTP = dispatch => {
+    return {
+        action: profReview => dispatch(createProfReview(profReview)),
+        requestProf: profId => dispatch(requestProf(profId)),
+        clearErrors: () => dispatch(clearErrors()),
+    }
+};
 
 export default connect(mSTP, mDTP)(CreateProfReviewForm);

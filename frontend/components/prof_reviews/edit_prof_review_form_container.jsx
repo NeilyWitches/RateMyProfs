@@ -4,6 +4,7 @@ import { updateProfReview, deleteProfReview } from '../../actions/prof_review_ac
 import ProfReviewForm from './prof_review_form';
 import { requestUser } from '../../actions/user_actions';
 import { requestProf } from '../../actions/prof_actions';
+import { clearErrors } from '../../actions/clear_errors';
 
 class EditProfReviewForm extends React.Component {
     constructor(props) {
@@ -35,7 +36,7 @@ class EditProfReviewForm extends React.Component {
     }
 
     componentDidMount() {
-
+        this.props.clearErrors();
         this.props.requestUser(this.props.match.params.userId);
         this.props.requestProf(this.props.match.params.profId)
     };
@@ -67,6 +68,7 @@ const mDTP = dispatch => ({
     requestUser: userId => dispatch(requestUser(userId)),
     action: profReview => dispatch(updateProfReview(profReview)),
     requestProf: profId => dispatch(requestProf(profId)),
+    clearErrors: () => dispatch(clearErrors()),
 });
 
 export default connect(mSTP, mDTP)(EditProfReviewForm);

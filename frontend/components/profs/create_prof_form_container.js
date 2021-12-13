@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { newProf } from '../../actions/prof_actions';
 import ProfForm from './prof_form';
+import { clearErrors } from '../../actions/clear_errors';
 
 const mSTP = (state, ownProps) => {
     return {
@@ -16,6 +17,7 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = dispatch => ({
     action: prof => dispatch(newProf(prof)),
+    clearErrors: () => dispatch(clearErrors()),
 });
 
 export default connect(mSTP, mDTP)(ProfForm);

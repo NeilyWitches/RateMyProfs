@@ -13,6 +13,10 @@ class Signup extends React.Component {
         this.clickLogIn = this.clickLogIn.bind(this);
     }
 
+    componentDidMount() {
+        this.props.clearErrors();
+    }
+
     clickLogIn() {
         let path = '/login';
         this.props.history.push(path);

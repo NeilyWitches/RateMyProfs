@@ -1,3 +1,4 @@
+import { CLEAR_ERRORS } from '../actions/clear_errors';
 import {
     RECEIVE_PROF_REVIEW_ERRORS,
 } from '../actions/prof_review_actions';
@@ -7,6 +8,8 @@ export default (state = [], action) => {
     switch (action.type) {
         case RECEIVE_PROF_REVIEW_ERRORS:
             return action.errors
+        case CLEAR_ERRORS:
+            return [];
         default:
             return state
     }

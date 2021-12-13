@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { login } from '../../actions/session_actions';
 import Login from './login';
+import { clearErrors } from '../../actions/clear_errors';
 
 const mSTP = (state) => {
     return {
@@ -12,6 +13,7 @@ const mSTP = (state) => {
 const mDTP = dispatch => {
     return {
         login: formUser => dispatch(login(formUser)),
+        clearErrors: () => dispatch(clearErrors()),
     };
 };
 

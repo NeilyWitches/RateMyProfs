@@ -18,6 +18,10 @@ class ProfForm extends React.Component {
         .then(() => this.props.history.push(`/profs`));
     };
 
+    componentDidMount() {
+        this.props.clearErrors();
+    }
+
     renderErrors() {
 
         return (
