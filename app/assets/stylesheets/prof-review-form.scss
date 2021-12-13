@@ -15,12 +15,12 @@
     bottom: 150px;
     left: 690px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
 #delete-prof-review-txt {
-    position: relative;
-    bottom: 173px;
-    left: 710px;
+    margin-left: 2%;
 }
 
 #prof-review-form-disclaimer {

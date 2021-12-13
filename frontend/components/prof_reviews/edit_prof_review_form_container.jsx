@@ -29,8 +29,10 @@ class EditProfReviewForm extends React.Component {
                     history={history} 
                     prof_review_errors={prof_review_errors}
                     prof={prof}/>
-                <i onClick={this.clickDelete} id='delete-prof-review' class="fas fa-trash-alt"></i>
-                <div id='delete-prof-review-txt'>Delete</div>
+                <div id='delete-prof-review' onClick={this.clickDelete}>
+                    <i class="fas fa-trash-alt"></i>
+                    <div id='delete-prof-review-txt'>Delete</div>
+                </div>
             </div>
         );
     }
