@@ -25,22 +25,32 @@ class ProfReviewShow extends React.Component {
         )
     }
 
+    styleQuality(qual) {
+        if (qual < 3) {
+            return 'rgb(255, 156, 156)'
+        } else if (qual === 3) {
+            return 'rgb(255, 254, 104)'
+        }
+    }
+
     render() {
+        let { attendance, grade, quality, difficulty, klass, updatedOn, for_credit, take_again, txt_book, body, tag1, tag2, tag3, } = this.props.profReview;
+
         let attendanceDisplay;
         let gradeDisplay;
 
-        if (this.props.profReview.attendance === null) {
+        if (attendance === null) {
             attendanceDisplay = null;
-        } else if (this.props.profReview.attendance === true) {
+        } else if (attendance === true) {
             attendanceDisplay = <div>Attendance: <strong>Mandataory</strong></div>
         } else {
             attendanceDisplay = <div>Attendance: <strong>Not Mandatory</strong></div>
         };
 
-        if (this.props.profReview.grade === 'Select' || this.props.profReview.grade === '') {
+        if (grade === 'Select' || grade === '') {
             gradeDisplay = null;
         } else {
-            gradeDisplay = <div>Grade: <strong>{this.props.profReview.grade}</strong></div>
+            gradeDisplay = <div>Grade: <strong>{grade}</strong></div>
         }
 
         return (
@@ -48,34 +58,34 @@ class ProfReviewShow extends React.Component {
                 <div id='prof-review-show-qual-diff'>
                     <div id='prof-review-show-quality'>
                         <div id='prof-review-show-quality-label'>QUALITY</div>
-                        <div id='prof-review-show-quality-num'>{this.props.profReview.quality}</div>
+                        <div id='prof-review-show-quality-num' style={{backgroundColor: this.styleQuality(quality)}}>{quality}</div>
                     </div>
                     <div id='prof-review-show-difficulty'>
                         <div id='prof-review-show-diff-label'>DIFFICULTY</div>
-                        <div id='prof-review-show-diff-num'>{this.props.profReview.difficulty}</div>
+                        <div id='prof-review-show-diff-num'>{difficulty}</div>
                     </div>
                 </div>
                 <div id='prof-review'>
                     <div id='class-date'>
-                        <div id='class'>{this.props.profReview.klass}</div>
+                        <div id='class'>{klass}</div>
                         {this.props.mayEdit ? this.displayEdit() : null}
                         {this.props.mayDelete ? this.displayDelete() : null}
-                        <div id='prof-review-date'>{this.props.profReview.updatedOn}</div>
+                        <div id='prof-review-date'>{updatedOn}</div>
                     </div>
                     <div id='booleans'>
-                        <div>For Credit: <strong>{this.props.profReview.for_credit ? "Yes" : "No"}</strong></div>
+                        <div>For Credit: <strong>{for_credit ? "Yes" : "No"}</strong></div>
                         {attendanceDisplay}
-                        <div>Would take again: <strong>{this.props.profReview.take_again ? "Yes" : "No"}</strong></div>
+                        <div>Would take again: <strong>{take_again ? "Yes" : "No"}</strong></div>
                         {gradeDisplay}
-                        <div>Textbook: <strong>{this.props.profReview.txt_book ? "Yes" : "No"}</strong></div>
+                        <div>Textbook: <strong>{txt_book ? "Yes" : "No"}</strong></div>
                     </div>
                     <div id='prof-review-comment'>
-                        {this.props.profReview.body}
+                        {body}
                     </div>
                     <div id='tags'>
-                        { this.props.profReview.tag1 ? <div>{this.props.profReview.tag1}</div> : null }
-                        { this.props.profReview.tag2 ? <div>{this.props.profReview.tag2}</div> : null }
-                        { this.props.profReview.tag3 ? <div>{this.props.profReview.tag3}</div> : null }
+                        { tag1 ? <div>{tag1}</div> : null }
+                        { tag2 ? <div>{tag2}</div> : null }
+                        { tag3 ? <div>{tag3}</div> : null }
                     </div>
                 </div>
             </div>
