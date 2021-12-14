@@ -16,7 +16,7 @@ const ProfReviewsReducer = (oldState = {}, action) => {
             newState[action.profReview.id] = action.profReview;
             return newState;
         case REMOVE_PROF_REVIEW:
-            delete newState[action.profReviewId];
+            delete newState.prof_reviews[action.profReviewId];
             return newState;
         default:
             return oldState;

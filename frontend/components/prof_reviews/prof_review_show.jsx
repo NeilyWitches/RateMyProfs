@@ -16,6 +16,15 @@ class ProfReviewShow extends React.Component {
         )
     }
 
+    displayDelete() {
+        return (
+            <div id='delete-prof-review' onClick={this.props.clickDelete(this.props.profReview.id)}>
+                <i className="fas fa-trash-alt"></i>
+                <div id='delete-prof-review-txt'>Delete</div>
+            </div>
+        )
+    }
+
     render() {
         let attendanceDisplay;
         let gradeDisplay;
@@ -50,6 +59,7 @@ class ProfReviewShow extends React.Component {
                     <div id='class-date'>
                         <div id='class'>{this.props.profReview.klass}</div>
                         {this.props.mayEdit ? this.displayEdit() : null}
+                        {this.props.mayDelete ? this.displayDelete() : null}
                         <div id='prof-review-date'>{this.props.profReview.updatedOn}</div>
                     </div>
                     <div id='booleans'>

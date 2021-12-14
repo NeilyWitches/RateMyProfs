@@ -20,9 +20,8 @@ export const updateProfReview = profReview => (
     })
 );
 
-export const deleteProfReview = profReviewId => (
-    $.ajax({
+export const deleteProfReview = profReviewId => {  
+    return $.ajax({
         url: `/api/prof_reviews/${profReviewId}`,
         method: `DELETE`,
-    })
-);
+    })}

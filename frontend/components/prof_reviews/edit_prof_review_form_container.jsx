@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateProfReview, deleteProfReview } from '../../actions/prof_review_actions';
+import { updateProfReview } from '../../actions/prof_review_actions';
 import ProfReviewForm from './prof_review_form';
 import { requestUser } from '../../actions/user_actions';
 import { requestProf } from '../../actions/prof_actions';
@@ -9,8 +9,6 @@ import { clearErrors } from '../../actions/clear_errors';
 class EditProfReviewForm extends React.Component {
     constructor(props) {
         super(props);
-
-        this.clickDelete = this.clickDelete.bind(this);
     }
 
     render() {
@@ -29,10 +27,6 @@ class EditProfReviewForm extends React.Component {
                     history={history} 
                     prof_review_errors={prof_review_errors}
                     prof={prof}/>
-                <div id='delete-prof-review' onClick={this.clickDelete}>
-                    <i class="fas fa-trash-alt"></i>
-                    <div id='delete-prof-review-txt'>Delete</div>
-                </div>
             </div>
         );
     }
@@ -49,11 +43,6 @@ class EditProfReviewForm extends React.Component {
         }
     }
 
-    clickDelete() {
-        this.props.deleteProfReview(this.props.match.params.profReviewId)
-        .then(() => this.props.history.push(`/account/ratings/${this.props.match.params.userId}`))
-    }
-
 }
 
 const mSTP = (state, ownProps) => {
@@ -66,7 +55,6 @@ const mSTP = (state, ownProps) => {
 };
 
 const mDTP = dispatch => ({
-    deleteProfReview: profReviewId => dispatch(deleteProfReview(profReviewId)),
     requestUser: userId => dispatch(requestUser(userId)),
     action: profReview => dispatch(updateProfReview(profReview)),
     requestProf: profId => dispatch(requestProf(profId)),
