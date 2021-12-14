@@ -6,6 +6,10 @@ class ProfReviewIndex extends React.Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            selectedKlass: 'All courses'
+        }
+
         this.tags = [
             'GIVES GOOD FEEDBACK', 'RESPECTED', 'LOTS OF HOMEWORK',
             'ACCESSIBLE OUTSIDE OF CLASS', 'GET READY TO READ',
@@ -97,6 +101,40 @@ class ProfReviewIndex extends React.Component {
         return topTags;
     }
 
+    update(field) {
+        if (field === 'selectedKlass') {
+            return e => {
+                return this.setState({
+                    [field]: e.currentTarget.value,
+                })
+            }
+        }
+    }
+
+    getKlasses(profReviews) {
+        let klasses = ['All courses'];
+
+        for (let i = 0; i < profReviews.length; i++) {
+            if (!klasses.includes(profReviews[i].klass)) {
+                klasses.push(profReviews[i].klass)
+            }
+        }
+
+        return klasses;
+    }
+
+    filterProfReviews(profReviews) {
+        let filteredProfReviews = [];
+        if (this.state.selectedKlass === "All courses") {
+            return profReviews
+        }
+        for (let i = 0; i < profReviews.length; i++) {
+            if (profReviews[i].klass === this.state.selectedKlass) {
+                filteredProfReviews.push(profReviews[i])
+            }
+        }
+        return filteredProfReviews
+    }
 
     render() {
         if (!this.props.prof) return null;
@@ -106,6 +144,8 @@ class ProfReviewIndex extends React.Component {
         const avgDiff = this.getAvgDiff(profReviews);
         const takeAgRat = this.getTakeAgRat(profReviews);
         const topTags = this.getTopTags(profReviews);
+        const klasses = this.getKlasses(profReviews);
+        const filteredProfReviews = this.filterProfReviews(profReviews)
 
         return (
             <div id='prof-review-index'>
@@ -141,10 +181,22 @@ class ProfReviewIndex extends React.Component {
                         }
                     </div>
                 </div>
-                <div id='prof-review-index-label'>{profReviews.length} Student Ratings</div>
+                <div id='prof-review-index-ratings-dropdown'>
+                    <div id='prof-review-index-label'>{profReviews.length} Student Ratings</div>
+                    <select id='courses-dropdown' name='klasses' onChange={this.update('selectedKlass')} defaultValue={'All courses'}>
+                        {
+                            klasses.map((klass, index) =>
+                                <option
+                                    key={index}
+                                    value={klass}>
+                                    {klass}
+                                </option>)
+                        }
+                    </select>
+                </div>
                 <ul>
                     {
-                        profReviews.map((profReview, index) => <ProfReviewShow key={index} profReview={profReview}/>)
+                        filteredProfReviews.map((profReview, index) => <ProfReviewShow key={index} profReview={profReview}/>)
                     }
                 </ul>
             </div>
