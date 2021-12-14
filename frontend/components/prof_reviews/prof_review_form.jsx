@@ -110,8 +110,6 @@ class ProfReviewForm extends React.Component {
 
     componentDidMount() {
         this.setState({ characters: 350 })
-        // console.log(this.props)
-        // this.props.clearErrors();
     }
 
     render() {
