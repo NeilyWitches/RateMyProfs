@@ -1,6 +1,5 @@
 import { REMOVE_PROF_REVIEW } from '../actions/prof_review_actions';
-import {
-    RECEIVE_USER } from '../actions/user_actions';
+import { RECEIVE_USER } from '../actions/user_actions';
 import { merge } from 'lodash';
 
 const UsersReducer = (oldState = {}, action) => {

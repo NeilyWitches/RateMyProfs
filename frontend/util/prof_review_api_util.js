@@ -24,4 +24,5 @@ export const deleteProfReview = profReviewId => {
     return $.ajax({
         url: `/api/prof_reviews/${profReviewId}`,
         method: `DELETE`,
-    })}
+    })
+}

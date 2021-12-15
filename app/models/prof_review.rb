@@ -34,4 +34,7 @@ class ProfReview < ApplicationRecord
         foreign_key: :prof_id,
         class_name: :Prof
 
+    has_many :likes,
+        foreign_key: :review_id,
+        class_name: :Like
 end

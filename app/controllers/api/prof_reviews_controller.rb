@@ -12,7 +12,6 @@ class Api::ProfReviewsController < ApplicationController
             render 'api/profs/show'
         else
             render json: @prof_review.errors.full_messages, status: :unprocessable_entity
-            
         end
     end
 

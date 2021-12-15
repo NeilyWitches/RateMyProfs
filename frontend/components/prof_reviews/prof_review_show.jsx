@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import Likes from '../likes/likes';
 
 class ProfReviewShow extends React.Component {
     constructor(props) {
@@ -87,6 +88,14 @@ class ProfReviewShow extends React.Component {
                         { tag2 ? <div>{tag2}</div> : null }
                         { tag3 ? <div>{tag3}</div> : null }
                     </div>
+                    { this.props.showLikes ? 
+
+                    <Likes createLike={this.props.createLike} 
+                    currentUser={this.props.currentUser}
+                    profReview={this.props.profReview}
+                    prof={this.props.prof}/> :
+                    
+                    null}
                 </div>
             </div>
         );

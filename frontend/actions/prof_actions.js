@@ -39,13 +39,6 @@ export const requestProf = profId => dispatch => {
         .then(payload => dispatch(receiveProf(payload)))
 };
 
-// export const newProf = prof => dispatch => {
-//     return ProfApiUtil.createProf(prof)
-//         .then(payload => {
-//             return dispatch(createProf(payload))
-//         })
-// };
-
 export const newProf = prof => dispatch => (
     ProfApiUtil.createProf(prof)
         .then(payload => {

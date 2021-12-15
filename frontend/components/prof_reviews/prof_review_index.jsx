@@ -196,7 +196,14 @@ class ProfReviewIndex extends React.Component {
                 </div>
                 <ul>
                     {
-                        filteredProfReviews.map((profReview, index) => <ProfReviewShow key={index} profReview={profReview}/>)
+                        filteredProfReviews.map((profReview, index) => 
+                        <ProfReviewShow 
+                        key={index} 
+                        profReview={profReview} 
+                        createLike={this.props.createLike}
+                        currentUser={this.props.currentUser}
+                        prof={this.props.prof}
+                        showLikes={true}/>)
                     }
                 </ul>
             </div>
