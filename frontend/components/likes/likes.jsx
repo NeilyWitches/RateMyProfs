@@ -7,12 +7,6 @@ class Likes extends React.Component {
         this.state = {
             likeCount: this.countLikes(),
             dislikeCount: this.countDislikes(),
-            // like: {
-            //     like_type: true,
-            //     liker_id: this.props.currentUser ? this.props.currentUser.id : null,
-            //     review_id: this.props.profReview.id,
-            //     prof_id: this.props.prof.id,
-            // },
             liked: this.props.currentUser ? this.hasLiked() : false,
             disliked: this.props.currentUser ? this.hasDisliked() : false,
         }
