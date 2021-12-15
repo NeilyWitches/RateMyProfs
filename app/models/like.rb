@@ -1,5 +1,5 @@
 class Like < ApplicationRecord
-    validates :like_type, :liker_id, :review_id, :prof_id, presence: true
+    validates :liker_id, :review_id, :prof_id, presence: true
     validates :liker_id, uniqueness: { scope: :review_id }
     validates :like_type, inclusion: [true, false]
 
