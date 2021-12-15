@@ -39,6 +39,9 @@ class Likes extends React.Component {
     }
 
     clickLike() {
+        if (!this.props.currentUser) {
+            
+        }
         this.props.createLike(this.state.like)
     }
 
@@ -57,11 +60,13 @@ class Likes extends React.Component {
         return (
             <div id='likes'>
                 <div className="thumb-count">
-                    <i onClick={this.clickLike} className="far fa-thumbs-up fa-lg" style={this.state.liked ? {color: '#68ffbe'} : null}></i>
+                    {/* <i onClick={this.clickLike} className="far fa-thumbs-up fa-lg" style={this.state.liked ? {color: '#68ffbe'} : null}></i> */}
+                    <i onClick={this.clickLike} className="far fa-thumbs-up fa-lg" style={this.state.liked ? {color: '#68ffbe'} : null}>Thumbs Up</i>
                     <div className="likes-count">{this.state.likeCount}</div>
                 </div>
                 <div className="thumb-count">
-                    <i className="far fa-thumbs-down fa-lg"></i>
+                    {/* <i className="far fa-thumbs-down fa-lg"></i> */}
+                    <i className="far fa-thumbs-down fa-lg">Thumbs Down</i>
                     <div className="likes-count">{this.state.dislikeCount}</div>
                 </div>
             </div>
