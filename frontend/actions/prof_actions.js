@@ -5,9 +5,9 @@ export const RECEIVE_PROF = 'RECEIVE_PROF';
 export const CREATE_PROF = 'CREATE_PROF';
 export const RECEIVE_PROF_ERRORS = 'RECEIVE_PROF_ERRORS';
 
-const receiveProfs = profs => ({
+const receiveProfs = payload => ({
     type: RECEIVE_PROFS,
-    profs, 
+    payload, 
 });
 
 const receiveProf = payload => {

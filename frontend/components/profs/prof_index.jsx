@@ -98,14 +98,15 @@ class ProfIndex extends React.Component {
     }
 
     getNumOfRatings(prof) {
+    
         return Object.values(prof.prof_reviews).length
     }
 
     render() {
         const { profs } = this.props;
-        this.checkRenderQual();
-        this.checkRenderDifficulty();
-        this.checkRenderTakeAgain();
+        // this.checkRenderQual();
+        // this.checkRenderDifficulty();
+        // this.checkRenderTakeAgain();
         const avgQuals = this.avgsQual;
         const avgDiffs = this.avgsDiff;
         const takeAgRats = this.takeAgainRatio;
@@ -120,10 +121,11 @@ class ProfIndex extends React.Component {
                                 <ProfShow 
                                 key={prof.id} 
                                 prof={prof} 
-                                avgQual={avgQuals[index]} 
-                                avgDiff={avgDiffs[index]} 
-                                takeAgRat={takeAgRats[index]} 
-                                numRatings={this.getNumOfRatings(prof)}/>
+                                // avgQual={avgQuals[index]} 
+                                // avgDiff={avgDiffs[index]} 
+                                // takeAgRat={takeAgRats[index]} 
+                                // numRatings={this.getNumOfRatings(prof)}
+                                />
                             </div>
                         )
                     }

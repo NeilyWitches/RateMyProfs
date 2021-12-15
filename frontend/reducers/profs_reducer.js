@@ -11,7 +11,7 @@ const ProfsReducer = (oldState = {}, action) => {
     let newState = merge({}, oldState);
     switch (action.type) {
         case RECEIVE_PROFS:
-            return merge({}, action.profs, oldState);
+            return merge({}, action.payload.profs, oldState);
         case RECEIVE_PROF:
             newState[action.payload.id] = action.payload;
             return newState;

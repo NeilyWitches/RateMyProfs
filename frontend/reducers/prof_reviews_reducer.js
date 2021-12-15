@@ -1,11 +1,15 @@
-import { RECEIVE_PROF } from '../actions/prof_actions';
+import { RECEIVE_PROF, RECEIVE_PROFS } from '../actions/prof_actions';
 import { RECEIVE_PROF_REVIEW, REMOVE_PROF_REVIEW } from '../actions/prof_review_actions';
 import { RECEIVE_USER } from '../actions/user_actions';
+import { merge } from 'lodash'
 
 const ProfReviewsReducer = (oldState = {}, action) => {
     Object.freeze(oldState);
-    let newState = Object.assign({}, oldState);
+    let newState = merge({}, oldState);
     switch (action.type) {
+        case RECEIVE_PROFS:
+            newState = action.payload.prof_reviews
+            return newState;
         case RECEIVE_PROF:
             newState = action.payload.profs.prof_reviews;
             return newState;

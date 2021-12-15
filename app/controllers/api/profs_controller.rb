@@ -2,7 +2,7 @@ class Api::ProfsController < ApplicationController
     before_action :set_prof, only: [:show, :update, :destroy]
 
     def index
-        @profs = Prof.all
+        @profs = Prof.includes(:prof_reviews).all
     end
 
     def show
