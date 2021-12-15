@@ -4,43 +4,49 @@ import  { Link } from 'react-router-dom';
 class ProfShow extends React.Component {
     constructor(props) {
         super(props);
+
+        this.clickProf = this.clickProf.bind(this);
     };
 
-    convertNaN() {
-        this.avgQual = "N/A";
-        this.avgDiff = "N/A";
-        this.takeAgRat = "N/A"
+    getStats(profReviews, numReviews) {
+        let sumQual = 0;
+        let sumDiff = 0;
+        let count = 0
+        for (let i = 0; i < numReviews; i++) {
+            sumQual += profReviews[i].quality;
+            sumDiff += profReviews[i].difficulty;
+            if (profReviews[i].take_again) {
+                count ++
+            }
+        }
+        return [sumQual, sumDiff, count].map(num => num / numReviews)
     }
 
-    setDigits() {
-        this.avgQual = this.props.avgQual.toFixed(1);
-        this.takeAgRat = `${this.props.takeAgRat.toFixed(2) * 100}%`;
-        this.avgDiff = this.props.avgDiff.toFixed(1);
+    clickProf(prof) {
+        let path = `/profs/${prof.id}`;
+        return () => this.props.history.push(path);
     }
 
     render() {
+        const {prof, profReviews} = this.props;
+        let numReviews = profReviews.length;
+        const stats = this.getStats(profReviews, numReviews)
 
-        const { prof } = this.props;
-        if (Object.values(prof.prof_reviews).length === 0) {
-            this.convertNaN();
-        } else {
-            this.setDigits();
-        }
         return (
-            <div className='prof-show'>
+            <div className='prof-show' onClick={this.clickProf(prof)}>
                 <div className='prof-stats'>
                     <div className='avg-quality-label'>QUALITY</div>
-                    <div className='avg-quality'>{this.avgQual}</div>
-                    <div className='num-ratings'>{this.props.numRatings} ratings</div>
+                    <div className='avg-quality'>{numReviews === 0 ? "N/A" : stats[0].toFixed(1)}</div>
+                    <div className='num-ratings'>{numReviews} ratings</div>
                 </div>
                 <div>
                     <div className='prof-show-name'>{prof.first_name} {prof.last_name}</div>
                     <div className='prof-show-subject'>{prof.subject}</div>
                     <div className='take-again-lvl-diff'>
-                        <div className='prof-show-take-again'>{this.takeAgRat}</div>
+                        <div className='prof-show-take-again'>{numReviews === 0 ? "N/A" : `${stats[2].toFixed(2) * 100}%`}</div>
                         <div className='prof-show-take-again-label'>would take again</div>
                         <div>|</div>
-                        <div className='prof-show-avg-diff'>{this.avgDiff}</div>
+                        <div className='prof-show-avg-diff'>{numReviews === 0 ? "N/A" : stats[1].toFixed(1)}</div>
                         <div className='prof-show-lvl-diff-label'>level of difficulty</div>
                     </div>
                 </div>

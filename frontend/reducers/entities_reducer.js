@@ -8,4 +8,3 @@ export default combineReducers({
     users: UsersReducer,
     prof_reviews: ProfReviewsReducer,
 });
-

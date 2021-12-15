@@ -7,7 +7,7 @@ export const RECEIVE_PROF_ERRORS = 'RECEIVE_PROF_ERRORS';
 
 const receiveProfs = payload => ({
     type: RECEIVE_PROFS,
-    payload, 
+    payload,
 });
 
 const receiveProf = payload => {
@@ -31,7 +31,7 @@ export const receiveProfErrors = errors => ({
 
 export const requestProfs = () => dispatch => (
     ProfApiUtil.fetchProfs()
-    .then(profs => dispatch(receiveProfs(profs)))
+    .then(payload => dispatch(receiveProfs(payload)))
 );
 
 export const requestProf = profId => dispatch => {
