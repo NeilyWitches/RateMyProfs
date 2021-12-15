@@ -90,10 +90,13 @@ class ProfReviewShow extends React.Component {
                     </div>
                     { this.props.showLikes ? 
 
-                    <Likes createLike={this.props.createLike} 
+                    <Likes 
+                    createLike={this.props.createLike} 
+                    deleteLike={this.props.deleteLike}
                     currentUser={this.props.currentUser}
                     profReview={this.props.profReview}
-                    prof={this.props.prof}/> :
+                    prof={this.props.prof}
+                    history={this.props.history}/> :
                     
                     null}
                 </div>

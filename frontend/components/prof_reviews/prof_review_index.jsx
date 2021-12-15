@@ -201,9 +201,11 @@ class ProfReviewIndex extends React.Component {
                         key={index} 
                         profReview={profReview} 
                         createLike={this.props.createLike}
+                        deleteLike={this.props.deleteLike}
                         currentUser={this.props.currentUser}
                         prof={this.props.prof}
-                        showLikes={true}/>)
+                        showLikes={true}
+                        history={this.props.history}/>)
                     }
                 </ul>
             </div>

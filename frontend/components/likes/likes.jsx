@@ -22,6 +22,7 @@ class Likes extends React.Component {
     componentDidUpdate(prevProps) {
         if (prevProps.profReview.likes !== this.props.profReview.likes) {
             this.setState({likeCount: this.countLikes()})
+            this.setState({liked: this.props.currentUser ? this.hasLiked() : false})
         } 
         if (prevProps.currentUser !== this.props.currentUser) {
             this.setState({liked: this.props.currentUser ? this.hasLiked() : false})
@@ -40,9 +41,20 @@ class Likes extends React.Component {
 
     clickLike() {
         if (!this.props.currentUser) {
-            
+            let path = '/signup';
+            this.props.history.push(path);
         }
-        this.props.createLike(this.state.like)
+        let likes = Object.values(this.props.profReview.likes);
+        if (this.state.liked) {
+            for (let i = 0; i < likes.length; i++) {
+                if ( likes[i].liker_id === this.props.currentUser.id && likes[i].like_type === true) {
+                    this.props.deleteLike(likes[i].id, likes[i].review_id, likes[i].prof_id)
+                    return
+                }
+            }
+        } else {
+            this.props.createLike(this.state.like)
+        }
     }
 
     countLikes() {
@@ -60,13 +72,11 @@ class Likes extends React.Component {
         return (
             <div id='likes'>
                 <div className="thumb-count">
-                    {/* <i onClick={this.clickLike} className="far fa-thumbs-up fa-lg" style={this.state.liked ? {color: '#68ffbe'} : null}></i> */}
-                    <i onClick={this.clickLike} className="far fa-thumbs-up fa-lg" style={this.state.liked ? {color: '#68ffbe'} : null}>Thumbs Up</i>
+                    <i onClick={this.clickLike} className="far fa-thumbs-up fa-lg" style={this.state.liked ? {color: '#68ffbe'} : null}></i>
                     <div className="likes-count">{this.state.likeCount}</div>
                 </div>
                 <div className="thumb-count">
-                    {/* <i className="far fa-thumbs-down fa-lg"></i> */}
-                    <i className="far fa-thumbs-down fa-lg">Thumbs Down</i>
+                    <i className="far fa-thumbs-down fa-lg"></i>
                     <div className="likes-count">{this.state.dislikeCount}</div>
                 </div>
             </div>

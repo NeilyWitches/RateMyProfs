@@ -22,13 +22,7 @@ const ProfsReducer = (oldState = {}, action) => {
             newState[action.like.prof_id].prof_reviews[action.like.review_id].likes[action.like.id] = action.like
             return newState;
         case REMOVE_LIKE:
-            console.log('inside REMOVE_LIKE')
-            console.log('below is oldState') 
-            console.log(oldState)
-            console.log('below is newState')
-            console.log(newState)
-            console.log('below is action')
-            console.log(action)
+            delete newState[action.profId].prof_reviews[action.reviewId].likes[action.likeId]
             return newState
         default:
             return oldState;
