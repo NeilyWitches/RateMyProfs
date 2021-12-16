@@ -41,8 +41,8 @@ export const requestProf = profId => dispatch => {
 
 export const newProf = prof => dispatch => (
     ProfApiUtil.createProf(prof)
-        .then(payload => {
-            return dispatch(receiveProfs(payload))
+        .then(prof => {
+            return dispatch(receiveProf(prof))
         })
         .fail(err => {
             return dispatch(receiveProfErrors(err.responseJSON))
