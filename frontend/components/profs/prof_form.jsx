@@ -22,7 +22,6 @@ class ProfForm extends React.Component {
     }
 
     renderErrors() {
-
         return (
             <ul>
                 {this.props.prof_errors.map((error, i) => (
