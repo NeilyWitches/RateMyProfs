@@ -9,12 +9,12 @@ const LikesReducer = (oldState = {}, action) => {
         case RECEIVE_PROF:
             newState = action.payload.likes;
             return newState;
-        // case RECEIVE_LIKE:
-        //     newState[action.like.id] = action.like;
-        //     return newState;
-        // case REMOVE_LIKE:
-        //     delete newState.likes[action.likeId];
-        //     return newState;
+        case RECEIVE_LIKE:
+            newState[action.like.id] = action.like;
+            return newState;
+        case REMOVE_LIKE:
+            delete newState.likes[action.likeId];
+            return newState;
         default:
             return oldState;
     }
