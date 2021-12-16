@@ -27,12 +27,6 @@ class ProfReviewIndex extends React.Component {
         this.props.requestProf(this.props.match.params.profId)
     };
 
-    // componentDidUpdate(prevProps) {
-    //     if (prevProps.match.params.profId !== this.props.match.params.profId){
-    //         this.props.requestProf(this.props.match.params.profId)
-    //     }
-    // }
-
     groupLikes(profReviews, likes) {
         let groupedLikes = {}
         for (let i = 0; i < profReviews.length; i++) {

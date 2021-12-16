@@ -37,11 +37,11 @@ class EditProfReviewForm extends React.Component {
         this.props.requestProf(this.props.match.params.profId)
     };
 
-    componentDidUpdate(prevProps) {
-        if (prevProps.match.params.userId !== this.props.match.params.userId) {
-            this.props.requestUser(this.props.match.params.userId)
-        }
-    }
+    // componentDidUpdate(prevProps) {
+    //     if (prevProps.match.params.userId !== this.props.match.params.userId) {
+    //         this.props.requestUser(this.props.match.params.userId)
+    //     }
+    // }
 
 }
 

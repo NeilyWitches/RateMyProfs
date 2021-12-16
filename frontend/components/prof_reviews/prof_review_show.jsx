@@ -5,6 +5,8 @@ import Likes from '../likes/likes';
 class ProfReviewShow extends React.Component {
     constructor(props) {
         super(props);
+
+        this.clickDelete = this.clickDelete.bind(this)
     };
 
     displayEdit() {
@@ -17,9 +19,13 @@ class ProfReviewShow extends React.Component {
         )
     }
 
+    clickDelete() {
+        this.props.deleteProfReview(this.props.profReview.id)
+    }
+
     displayDelete() {
         return (
-            <div id='delete-prof-review' onClick={this.props.clickDelete(this.props.profReview.id)}>
+            <div id='delete-prof-review' onClick={this.clickDelete}>
                 <i className="fas fa-trash-alt"></i>
                 <div id='delete-prof-review-txt'>Delete</div>
             </div>

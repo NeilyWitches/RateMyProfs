@@ -37,7 +37,7 @@ class Api::UsersController < ApplicationController
     private
 
     def selected_user
-        User.find(params[:id])
+        User.includes(:prof_reviews).find(params[:id])
     end
 
     def user_params

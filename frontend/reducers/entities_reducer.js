@@ -6,7 +6,7 @@ import UsersReducer from './users_reducer';
 
 export default combineReducers({
     profs: ProfsReducer,
-    users: UsersReducer,
+    user: UsersReducer,
     prof_reviews: ProfReviewsReducer,
     likes: LikesReducer,
 });
