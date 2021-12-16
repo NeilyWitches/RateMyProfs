@@ -8,11 +8,9 @@ const receiveLike = like => ({
     like,
 });
 
-const removeLike = (likeId, reviewId, profId) => ({
+const removeLike = (likeId) => ({
     type: REMOVE_LIKE,
     likeId,
-    reviewId,
-    profId
 })
 
 export const createLike = like => dispatch => (

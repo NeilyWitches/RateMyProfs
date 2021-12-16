@@ -13,7 +13,7 @@ const LikesReducer = (oldState = {}, action) => {
             newState[action.like.id] = action.like;
             return newState;
         case REMOVE_LIKE:
-            delete newState.likes[action.likeId];
+            delete newState[action.likeId];
             return newState;
         default:
             return oldState;
