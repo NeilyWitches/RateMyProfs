@@ -70,7 +70,6 @@ class NavBar extends React.Component {
             )
         }
         if (current_user) {
-            console.log(current_user)
             return (
                 <header>
                     <div className='nav-bar'>

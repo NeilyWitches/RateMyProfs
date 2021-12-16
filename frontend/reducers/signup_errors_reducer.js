@@ -1,7 +1,5 @@
 import { CLEAR_ERRORS } from '../actions/clear_errors';
-import {
-    RECEIVE_SIGNUP_ERRORS,
-} from '../actions/session_actions';
+import { RECEIVE_SIGNUP_ERRORS, } from '../actions/session_actions';
 
 export default (state = [], action) => {
     Object.freeze(state);

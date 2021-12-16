@@ -1,5 +1,4 @@
 import React from 'react';
-import ProfReviewForm from '../prof_reviews/prof_review_form';
 
 class ProfForm extends React.Component {
     constructor(props) {
