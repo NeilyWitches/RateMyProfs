@@ -7,12 +7,6 @@ class NavBar extends React.Component {
         super(props);
 
         this.state = {
-            demouser: {
-                email: 'demouser@demo.com',
-                first_name: 'Demo User',
-                last_name: 'Demo User',
-                password: 'cupcake',
-            },
             profile_links: [
                 {id: 1, title: 'Profile'},
                 {id: 2, title: 'Account Settings'},
@@ -31,8 +25,13 @@ class NavBar extends React.Component {
 
     clickDemo(e) {
         e.preventDefault();
-        this.props.login(this.state.demouser)
-        .then(() => this.props.history.push('/'));
+        this.props.login({
+                email: 'demouser@demo.com',
+                first_name: 'Demo User',
+                last_name: 'Demo User',
+                password: 'cupcake',
+            })
+        // .then(() => this.props.history.push('/'));
     };
 
     clickSignUp() {
@@ -71,6 +70,7 @@ class NavBar extends React.Component {
             )
         }
         if (current_user) {
+            console.log(current_user)
             return (
                 <header>
                     <div className='nav-bar'>
