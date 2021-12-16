@@ -153,7 +153,7 @@ class ProfReviewIndex extends React.Component {
                     <div id='prof-show-quality-name'>
                         <div id='prof-show-avg-qual'>
                             <div id='prof-show-avg-qual-nums'>
-                                <div id='prof-show-avg-qual-proper'>{stats[0]}</div>
+                                <div id='prof-show-avg-qual-proper'>{ numReviews === 0 ? "N/A" : stats[0].toFixed(1) }</div>
                                 <div id='out-of-5'> / 5.0</div>
                             </div>
                             <div id='qual-based-on'>Overall Quality Based on {numReviews} Ratings</div>
@@ -165,11 +165,11 @@ class ProfReviewIndex extends React.Component {
                     </div>
                     <div id='prof-show-other-stats'>
                         <div className='prof-show-other-stats' id='prof-review-index-prof-show-take-again'>
-                            <div className='prof-review-index-prof-show-take-again-ratio'>{stats[2]}</div>
+                            <div className='prof-review-index-prof-show-take-again-ratio'>{numReviews === 0 ? "N/A" : `${stats[2].toFixed(2) * 100}%`}</div>
                             <div>Would take again</div>
                         </div>
                         <div className='prof-show-other-stats' id='prof-review-index-prof-show-difficulty'>
-                            <div className='prof-review-index-prof-show-take-again-ratio'>{stats[1]}</div>
+                            <div className='prof-review-index-prof-show-take-again-ratio'>{numReviews === 0 ? "N/A" : stats[1].toFixed(1)}</div>
                             <div>Level of Difficulty</div>
                         </div>
                     </div>
