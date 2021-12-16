@@ -88,7 +88,7 @@ class ProfReviewShow extends React.Component {
                         { tag2 ? <div>{tag2}</div> : null }
                         { tag3 ? <div>{tag3}</div> : null }
                     </div>
-                    { this.props.showLikes ? 
+                    {/* { this.props.showLikes ? 
 
                     <Likes 
                     createLike={this.props.createLike} 
@@ -99,7 +99,7 @@ class ProfReviewShow extends React.Component {
                     history={this.props.history}
                     likes={this.props.likes}/> :
                     
-                    null}
+                    null} */}
                 </div>
             </div>
         );

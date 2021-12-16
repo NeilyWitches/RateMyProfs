@@ -8,6 +8,7 @@ const mSTP = (state, ownProps) => {
         prof: state.entities.profs[ownProps.match.params.profId],
         profReviews: Object.values(state.entities.prof_reviews),
         likes: Object.values(state.entities.likes),
+        currentUser: state.session.current_user,
     }
 };
 
