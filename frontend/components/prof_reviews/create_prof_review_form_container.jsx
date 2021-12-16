@@ -12,8 +12,7 @@ class CreateProfReviewForm extends React.Component {
     }
 
     render() {
-        const { action, formType, history, prof_review_errors, prof, match } = this.props;
-        const profReview = this.props.profReview;
+        const { action, formType, history, prof_review_errors, prof, match, profReview } = this.props;
 
         if (!prof) return null;
 

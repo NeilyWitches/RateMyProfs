@@ -2,7 +2,7 @@ class ProfReview < ApplicationRecord
     GRADES = [  
         'A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 
         'C', 'C-', 'D+', 'D', 'D-', 'F', 
-        'Drop/Withdrawal', 'Incomplete', 'Not sure yet', 
+        'Drop / Withdrawal', 'Incomplete', 'Not sure yet', 
         'Rather not say', 'Audit / No grade', 'Select', ""
     ]
 

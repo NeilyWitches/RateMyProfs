@@ -10,19 +10,12 @@ const receiveProfs = payload => ({
     payload,
 });
 
-const receiveProf = prof => {
+const receiveProf = payload => {
     return {
         type: RECEIVE_PROF,
-        prof,
-    }
-};
-
-const createProf = payload => {
-    return {
-        type: CREATE_PROF,
         payload,
     }
-}
+};
 
 export const receiveProfErrors = errors => ({
     type: RECEIVE_PROF_ERRORS,
@@ -36,7 +29,7 @@ export const requestProfs = () => dispatch => (
 
 export const requestProf = profId => dispatch => {
     return ProfApiUtil.fetchProf(profId)
-    .then(prof => dispatch(receiveProf(prof)))
+    .then(payload => dispatch(receiveProf(payload)))
 };
 
 export const newProf = prof => dispatch => (
