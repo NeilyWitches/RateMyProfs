@@ -25,9 +25,8 @@ class ProfIndex extends React.Component {
     }
 
     render() {
-        const { profs, prof_reviews } = this.props;
-        if (profs.length === 0 || prof_reviews.length === 0) return null
-        let groupedReviews = this.groupReviews(profs, prof_reviews)
+        const { profs, profReviews, history } = this.props;
+        const groupedReviews = this.groupReviews(profs, profReviews)
 
         return (
             <div id='prof-index'>
@@ -39,7 +38,7 @@ class ProfIndex extends React.Component {
                             key={prof.id} 
                             prof={prof} 
                             profReviews={groupedReviews[prof.id]}
-                            history={this.props.history}
+                            history={history}
                             />
                         )
                     }

@@ -10,18 +10,15 @@ const ProfReviewsReducer = (oldState = {}, action) => {
         case RECEIVE_PROFS:
             newState = action.payload.prof_reviews
             return newState;
-        case RECEIVE_PROF:
-            newState = action.payload.profs.prof_reviews;
-            return newState;
-        case RECEIVE_USER:
-            newState = action.payload.prof_reviews;
-            return newState;
         case RECEIVE_PROF_REVIEW:
             newState[action.profReview.id] = action.profReview;
             return newState;
         case REMOVE_PROF_REVIEW:
             delete newState.prof_reviews[action.profReviewId];
             return newState;
+        case RECEIVE_PROF:
+            newState = action.payload.prof_reviews
+            return newState
         default:
             return oldState;
     }

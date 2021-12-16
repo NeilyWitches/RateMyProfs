@@ -4,4 +4,8 @@ class Prof < ApplicationRecord
     has_many :prof_reviews,
         foreign_key: :prof_id,
         class_name: :ProfReview
+
+    has_many :likes,
+        through: :prof_reviews,
+        source: :likes
 end

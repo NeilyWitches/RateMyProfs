@@ -27,39 +27,38 @@ class ProfReviewIndex extends React.Component {
         this.props.requestProf(this.props.match.params.profId)
     };
 
-    componentDidUpdate(prevProps) {
-        if (prevProps.match.params.profId !== this.props.match.params.profId){
-            this.props.requestProf(this.props.match.params.profId)
-        }
-    }
+    // componentDidUpdate(prevProps) {
+    //     if (prevProps.match.params.profId !== this.props.match.params.profId){
+    //         this.props.requestProf(this.props.match.params.profId)
+    //     }
+    // }
 
-    getAvgQual(profReviews) {
-        let sum = 0;
-        if (profReviews.length === 0) return "N/A"
-        for(let i = 0; i < profReviews.length; i++){
-            sum += profReviews[i].quality
-        }
-        return (sum / profReviews.length).toFixed(2);
-    }
-
-    getAvgDiff(profReviews) {
-        let sum = 0;
-        if (profReviews.length === 0) return "N/A"
+    groupLikes(profReviews, likes) {
+        let groupedLikes = {}
         for (let i = 0; i < profReviews.length; i++) {
-            sum += profReviews[i].difficulty
-        }
-        return (sum / profReviews.length).toFixed(2);
-    }
-
-    getTakeAgRat(profReviews) {
-        let count = 0;
-        if (profReviews.length === 0) return "N/A"
-        for (let i = 0; i < profReviews.length; i++) {
-            if (profReviews[i].take_again) {
-                count++
+            if (!groupedLikes[profReviews[i].id]) {
+                groupedLikes[profReviews[i].id] = []
             }
         }
-        return `${(count / profReviews.length).toFixed(2) * 100}%`;
+        for (let i = 0; i < likes.length; i++) {
+            groupedLikes[likes[i].review_id].push(likes[i])
+        }
+
+        return groupedLikes
+    }
+
+    getStats(profReviews, numReviews) {
+        let sumQual = 0;
+        let sumDiff = 0;
+        let count = 0
+        for (let i = 0; i < numReviews; i++) {
+            sumQual += profReviews[i].quality;
+            sumDiff += profReviews[i].difficulty;
+            if (profReviews[i].take_again) {
+                count ++
+            }
+        }
+        return [sumQual, sumDiff, count].map(num => num / numReviews)
     }
 
     clickRateProf() {
@@ -137,12 +136,13 @@ class ProfReviewIndex extends React.Component {
     }
 
     render() {
-        if (!this.props.prof) return null;
-        const profReviews = Object.values(this.props.prof.prof_reviews);
-        
-        const avgQual = this.getAvgQual(profReviews);
-        const avgDiff = this.getAvgDiff(profReviews);
-        const takeAgRat = this.getTakeAgRat(profReviews);
+        const { prof, profReviews, likes, currentUser, createLike, deleteLike, history } = this.props;
+        if (!prof) return null
+        const numReviews = profReviews.length;
+        const stats = this.getStats(profReviews, numReviews);
+
+        const groupedLikes = this.groupLikes(profReviews, likes)
+
         const topTags = this.getTopTags(profReviews);
         const klasses = this.getKlasses(profReviews);
         const filteredProfReviews = this.filterProfReviews(profReviews)
@@ -153,28 +153,28 @@ class ProfReviewIndex extends React.Component {
                     <div id='prof-show-quality-name'>
                         <div id='prof-show-avg-qual'>
                             <div id='prof-show-avg-qual-nums'>
-                                <div id='prof-show-avg-qual-proper'>{avgQual}</div>
+                                <div id='prof-show-avg-qual-proper'>{stats[0]}</div>
                                 <div id='out-of-5'> / 5.0</div>
                             </div>
-                            <div id='qual-based-on'>Overall Quality Based on {profReviews.length} Ratings</div>
+                            <div id='qual-based-on'>Overall Quality Based on {numReviews} Ratings</div>
                         </div>
                         <div id='prof-review-index-prof-show-name'>
-                            <div id='prof-review-index-prof-name'>{this.props.prof.first_name} {this.props.prof.last_name}</div>
-                            <div id='prof-in-dept'>Prof in the <strong>{this.props.prof.subject}</strong> Department</div>
+                            <div id='prof-review-index-prof-name'>{prof.first_name} {prof.last_name}</div>
+                            <div id='prof-in-dept'>Prof in the <strong>{prof.subject}</strong> Department</div>
                         </div>
                     </div>
                     <div id='prof-show-other-stats'>
                         <div className='prof-show-other-stats' id='prof-review-index-prof-show-take-again'>
-                            <div className='prof-review-index-prof-show-take-again-ratio'>{takeAgRat}</div>
+                            <div className='prof-review-index-prof-show-take-again-ratio'>{stats[2]}</div>
                             <div>Would take again</div>
                         </div>
                         <div className='prof-show-other-stats' id='prof-review-index-prof-show-difficulty'>
-                            <div className='prof-review-index-prof-show-take-again-ratio'>{avgDiff}</div>
+                            <div className='prof-review-index-prof-show-take-again-ratio'>{stats[1]}</div>
                             <div>Level of Difficulty</div>
                         </div>
                     </div>
-                    <button id='review-prof-button' onClick={this.clickRateProf}>Rate Prof {this.props.prof.first_name}</button>
-                    <div id='top-tags-label'>Prof {this.props.prof.first_name}'s Top Tags</div>
+                    <button id='review-prof-button' onClick={this.clickRateProf}>Rate Prof {prof.first_name}</button>
+                    <div id='top-tags-label'>Prof {prof.first_name}'s Top Tags</div>
                     <div id='top-tags'>
                         {
                             topTags.map((tag, index) => <div key={index} className='tag'>{tag}</div>)
@@ -182,7 +182,7 @@ class ProfReviewIndex extends React.Component {
                     </div>
                 </div>
                 <div id='prof-review-index-ratings-dropdown'>
-                    <div id='prof-review-index-label'>{profReviews.length} Student Ratings</div>
+                    <div id='prof-review-index-label'>{numReviews} Student Ratings</div>
                     <select id='courses-dropdown' name='klasses' onChange={this.update('selectedKlass')} defaultValue={'All courses'}>
                         {
                             klasses.map((klass, index) =>
@@ -200,12 +200,13 @@ class ProfReviewIndex extends React.Component {
                         <ProfReviewShow 
                         key={index} 
                         profReview={profReview} 
-                        createLike={this.props.createLike}
-                        deleteLike={this.props.deleteLike}
-                        currentUser={this.props.currentUser}
-                        prof={this.props.prof}
+                        createLike={createLike}
+                        deleteLike={deleteLike}
+                        currentUser={currentUser}
+                        prof={prof}
                         showLikes={true}
-                        history={this.props.history}/>)
+                        history={history}
+                        likes={groupedLikes[profReview.id]}/>)
                     }
                 </ul>
             </div>

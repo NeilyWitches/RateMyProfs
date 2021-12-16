@@ -36,7 +36,7 @@ export const requestProfs = () => dispatch => (
 
 export const requestProf = profId => dispatch => {
     return ProfApiUtil.fetchProf(profId)
-        .then(payload => dispatch(receiveProf(payload)))
+    .then(payload => dispatch(receiveProf(payload)))
 };
 
 export const newProf = prof => dispatch => (

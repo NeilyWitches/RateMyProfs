@@ -6,14 +6,16 @@ import { createLike, deleteLike } from '../../actions/like_actions'
 const mSTP = (state, ownProps) => {
     return {
         prof: state.entities.profs[ownProps.match.params.profId],
-        currentUser: state.session.current_user,
+        profReviews: Object.values(state.entities.prof_reviews),
+        likes: Object.values(state.entities.likes),
+        currentUser: Object.values(state.session.current_user),
     }
 };
 
 const mDTP = dispatch => ({
     requestProf: (profId) => dispatch(requestProf(profId)),
     createLike: (like) => dispatch(createLike(like)),
-    deleteLike: (likeId, reviewId, profId) => dispatch(deleteLike(likeId, reviewId, profId)),
+    deleteLike: (likeId) => dispatch(deleteLike(likeId)),
 });
 
 export default connect(mSTP, mDTP)(ProfReviewIndex);

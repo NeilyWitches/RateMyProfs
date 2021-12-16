@@ -29,9 +29,8 @@ class Likes extends React.Component {
     }
 
     hasLiked() {
-        let likes = Object.values(this.props.profReview.likes);
-        for (let i = 0; i < likes.length; i++) {
-            if (likes[i].liker_id === this.props.currentUser.id && likes[i].like_type === true) {
+        for (let i = 0; i < this.props.likes.length; i++) {
+            if (this.props.likes[i].liker_id === this.props.currentUser.id && this.props.likes[i].like_type === true) {
                 return true
             }
         }
@@ -39,9 +38,8 @@ class Likes extends React.Component {
     }
 
     hasDisliked() {
-        let likes = Object.values(this.props.profReview.likes);
-        for (let i = 0; i < likes.length; i++) {
-            if ( likes[i].liker_id === this.props.currentUser.id && likes[i].like_type === false) {
+        for (let i = 0; i < this.props.likes.length; i++) {
+            if ( this.props.likes[i].liker_id === this.props.currentUser.id && this.props.likes[i].like_type === false) {
                 return true
             }
         }
@@ -56,11 +54,10 @@ class Likes extends React.Component {
         if (this.state.disliked) {
             return
         } else {
-            let likes = Object.values(this.props.profReview.likes);
             if (this.state.liked) {
-                for (let i = 0; i < likes.length; i++) {
-                    if ( likes[i].liker_id === this.props.currentUser.id) {
-                        this.props.deleteLike(likes[i].id, likes[i].review_id, likes[i].prof_id)
+                for (let i = 0; i < this.props.likes.length; i++) {
+                    if ( this.props.likes[i].liker_id === this.props.currentUser.id) {
+                        this.props.deleteLike(this.props.likes[i].id)
                         return
                     }
                 }
@@ -69,7 +66,6 @@ class Likes extends React.Component {
                     like_type: true,
                     liker_id: this.props.currentUser.id,
                     review_id: this.props.profReview.id,
-                    prof_id: this.props.prof.id,
                 })
             }
         }
@@ -83,11 +79,10 @@ class Likes extends React.Component {
         if (this.state.liked) {
             return
         } else {
-            let likes = Object.values(this.props.profReview.likes);
             if (this.state.disliked) {
-                for (let i = 0; i < likes.length; i++) {
-                    if ( likes[i].liker_id === this.props.currentUser.id) {
-                        this.props.deleteLike(likes[i].id, likes[i].review_id, likes[i].prof_id)
+                for (let i = 0; i < this.props.likes.length; i++) {
+                    if ( this.props.likes[i].liker_id === this.props.currentUser.id) {
+                        this.props.deleteLike(this.props.likes[i].id)
                         return
                     }
                 }
@@ -96,17 +91,15 @@ class Likes extends React.Component {
                     like_type: false,
                     liker_id: this.props.currentUser.id,
                     review_id: this.props.profReview.id,
-                    prof_id: this.props.prof.id,
                 })
             }
         }
     }
 
     countLikes() {
-        let likes = Object.values(this.props.profReview.likes);
         let count = 0
-        for (let i = 0; i < likes.length; i++) {
-            if (likes[i].like_type === true) {
+        for (let i = 0; i < this.props.likes.length; i++) {
+            if (this.props.likes[i].like_type === true) {
                 count++
             }
         }
@@ -114,10 +107,9 @@ class Likes extends React.Component {
     }
 
     countDislikes() {
-        let likes = Object.values(this.props.profReview.likes);
         let count = 0
-        for (let i = 0; i < likes.length; i++) {
-            if (likes[i].like_type === false) {
+        for (let i = 0; i < this.props.likes.length; i++) {
+            if (this.props.likes[i].like_type === false) {
                 count++
             }
         }

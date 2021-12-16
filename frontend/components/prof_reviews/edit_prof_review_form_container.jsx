@@ -38,9 +38,7 @@ class EditProfReviewForm extends React.Component {
     };
 
     componentDidUpdate(prevProps) {
-        console.log('inside component did update, outside conditional')
         if (prevProps.match.params.userId !== this.props.match.params.userId) {
-            console.log('inside component did update, inside conditional')
             this.props.requestUser(this.props.match.params.userId)
         }
     }

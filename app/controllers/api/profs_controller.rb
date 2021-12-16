@@ -1,5 +1,5 @@
 class Api::ProfsController < ApplicationController
-    before_action :set_prof, only: [:show, :update, :destroy]
+    before_action :set_prof, only: [:show]
 
     def index
         @profs = Prof.includes(:prof_reviews).all
@@ -9,7 +9,6 @@ class Api::ProfsController < ApplicationController
     end
 
     def create
-        
         @prof = Prof.new(prof_params)
         if @prof.save
             @profs = Prof.all
@@ -19,18 +18,10 @@ class Api::ProfsController < ApplicationController
         end
     end
 
-    def update
-        if @prof.update(prof_params)
-            render :show
-        else
-            render json: @prof.errors.full_messages, status: :unprocessable_entity
-        end
-    end
-
     private
 
     def set_prof
-        @prof = Prof.find(params[:id])
+        @prof = Prof.includes(:prof_reviews).find(params[:id])
     rescue
         render json: ['Prof not found'], status: :not_found
     end
