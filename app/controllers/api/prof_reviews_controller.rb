@@ -6,10 +6,9 @@ class Api::ProfReviewsController < ApplicationController
     
     def create
         @prof_review = ProfReview.new(prof_review_params)
-        @prof = Prof.find(params[:profReview][:prof_id])
 
         if @prof_review.save
-            render 'api/profs/show'
+            render :show
         else
             render json: @prof_review.errors.full_messages, status: :unprocessable_entity
         end

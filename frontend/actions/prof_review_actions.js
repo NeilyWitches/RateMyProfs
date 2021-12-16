@@ -28,8 +28,8 @@ export const requestProfReview = profReviewId => dispatch => {
 
 export const createProfReview = profReview => dispatch => (
     ProfReviewApiUtil.createProfReview(profReview)
-    .then(createdProfReview => {
-        return dispatch(receiveProfReview(createdProfReview))
+    .then(profReview => {
+        return dispatch(receiveProfReview(profReview))
     })
     .fail(err => {
         return dispatch(receiveProfReviewErrors(err.responseJSON))

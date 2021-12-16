@@ -18,7 +18,6 @@ class CreateProfReviewForm extends React.Component {
         if (!prof) return null;
 
         return (
-            <div>
                 <ProfReviewForm
                     match={match}
                     action={action}
@@ -27,7 +26,6 @@ class CreateProfReviewForm extends React.Component {
                     history={history}
                     prof_review_errors={prof_review_errors}
                     prof={prof} />
-            </div>
         );
     }
 
