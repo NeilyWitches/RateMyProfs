@@ -21,7 +21,7 @@ class Api::ProfsController < ApplicationController
     private
 
     def set_prof
-        @prof = Prof.includes(:prof_reviews, :likes).find(params[:id])
+        @prof = Prof.find(params[:id])
     rescue
         render json: ['Prof not found'], status: :not_found
     end

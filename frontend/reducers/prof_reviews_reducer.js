@@ -1,5 +1,5 @@
-import { RECEIVE_PROF, RECEIVE_PROFS } from '../actions/prof_actions';
-import { RECEIVE_PROF_REVIEW, REMOVE_PROF_REVIEW } from '../actions/prof_review_actions';
+import { RECEIVE_PROFS } from '../actions/prof_actions';
+import { RECEIVE_PROF_REVIEW, REMOVE_PROF_REVIEW, RECEIVE_PROF_REVIEWS } from '../actions/prof_review_actions';
 import { RECEIVE_USER } from '../actions/user_actions';
 import { merge } from 'lodash'
 
@@ -16,7 +16,7 @@ const ProfReviewsReducer = (oldState = {}, action) => {
         case REMOVE_PROF_REVIEW:
             delete newState[action.profReviewId]
             return newState;
-        case RECEIVE_PROF:
+        case RECEIVE_PROF_REVIEWS:
             newState = action.payload.prof_reviews
             return newState
         case RECEIVE_USER:

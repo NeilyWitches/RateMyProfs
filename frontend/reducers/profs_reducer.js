@@ -1,4 +1,4 @@
-import { RECEIVE_PROFS, RECEIVE_PROF, CREATE_PROF, } from '../actions/prof_actions';
+import { RECEIVE_PROFS, RECEIVE_PROF } from '../actions/prof_actions';
 import { merge } from 'lodash';
 
 const ProfsReducer = (oldState = {}, action) => {
@@ -9,11 +9,8 @@ const ProfsReducer = (oldState = {}, action) => {
             newState = action.payload.profs
             return newState;
         case RECEIVE_PROF:
-            newState = action.payload.profs;
+            newState[action.prof.id] = action.prof;
             return newState;
-        // case CREATE_PROF:
-        //     newState[action.payload.id] = action.payload;
-        //     return newState;
         default:
             return oldState;
     }

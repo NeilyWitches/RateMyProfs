@@ -3,6 +3,10 @@ class Api::ProfReviewsController < ApplicationController
 
     def show
     end
+
+    def index
+        @prof = Prof.includes(:prof_reviews, :likes).find(params[:profId])
+    end
     
     def create
         @prof_review = ProfReview.new(prof_review_params)
