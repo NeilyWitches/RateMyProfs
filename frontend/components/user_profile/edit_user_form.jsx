@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom'
 
 class EditUserForm extends React.Component {
     constructor(props) {
@@ -64,6 +65,13 @@ class EditUserForm extends React.Component {
                             type='submit' id='edit-user-form-submit' 
                             value='Update Email'>
                         </input>
+                    </div>
+                    <div className="edit-user-form-input-row" id='edit-user-form-submit-row'>
+                        <Link 
+                            id='edit-user-form-cancel'
+                            to={`/account/${user.id}`}
+                            className="link">Cancel
+                        </Link>
                     </div>
                 </form>
                 {this.renderErrors()}

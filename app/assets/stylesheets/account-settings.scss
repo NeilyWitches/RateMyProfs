@@ -12,19 +12,18 @@
     height: 70px;
     align-items: center;
     justify-content: space-between;
-    // width: 600px;
 }
 
 .edit-user-form-label {
     font-family: Avenir-Heavy, Avenir, Helvetica, sans-serif;
     font-size: 16px;
     text-align: left;
-    width: 550px;
 }
 
 #edit-user-form-proper {
     display: flex;
     flex-direction: column;
+    width: 755px;
 }
 
 .edit-user-form-header {
@@ -42,13 +41,14 @@
     outline: none;
     padding: 12px 8px;
     background-color: lightblue;
-    // width: 300px;
+    width: 360px;
 }
 
 #edit-user-form-submit {
     font-size: 16px;
     height: 48px;
     margin-top: 56px;
+    margin-bottom: 18px;
     width: 240px;
     background: black;
     border: 0px;
@@ -60,4 +60,17 @@
 #edit-user-form-submit-row {
     display: flex;
     justify-content: flex-end;
+}
+
+#edit-user-form-cancel {
+    width: 240px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 14px;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
 }
