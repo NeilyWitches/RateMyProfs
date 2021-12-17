@@ -17,7 +17,7 @@ class EditUserForm extends React.Component {
         return e => this.setState({ [field]: e.currentTarget.value })
     }
 
-    handleSubmit(e) {
+    handleSubmitEmail(e) {
         e.preventDefault();
         this.props.updateUser(this.state)
         .then(() => this.props.history.push(`/account/${this.props.user.id}`));
@@ -40,7 +40,7 @@ class EditUserForm extends React.Component {
         return (
             <div className="page">
                 <div className="account-header">Hey, {user.first_name}</div>
-                <form onSubmit={this.handleSubmit} id='edit-user-form-proper'>
+                <form onSubmit={this.handleSubmitEmail} id='edit-user-form-proper'>
                     <div className='edit-user-form-header'>Update Email</div>
                     <div className='edit-user-form-input-row'>
                         <div className='edit-user-form-label'>New Email</div>
@@ -73,8 +73,12 @@ class EditUserForm extends React.Component {
                             className="link">Cancel
                         </Link>
                     </div>
+                    {this.renderErrors()}
+                    <div id='edit-user-form-border'></div>
                 </form>
-                {this.renderErrors()}
+                <form onSubmit={this.handleSubmitPassword}>
+
+                </form>
             </div>
         )
     }
