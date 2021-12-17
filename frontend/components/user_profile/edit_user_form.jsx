@@ -5,21 +5,30 @@ class EditUserForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            id: this.props.user.id,
-            email: this.props.user.email,
-            password: ''
+            emailChange: {
+                id: this.props.user.id,
+                email: this.props.user.email,
+                password: ''
+            },
+            passwordChange: {
+
+            }
         }
 
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.changeEmail = this.changeEmail.bind(this);
     };
 
-    update(field) {
-        return e => this.setState({ [field]: e.currentTarget.value })
+    updateEmailForm(field) {
+        let emailChange = {...this.state.emailChange}
+        return e => {
+            emailChange[field] = e.currentTarget.value;
+            this.setState({emailChange})
+        }
     }
 
-    handleSubmitEmail(e) {
+    changeEmail(e) {
         e.preventDefault();
-        this.props.updateUser(this.state)
+        this.props.updateUser(this.state.emailChange)
         .then(() => this.props.history.push(`/account/${this.props.user.id}`));
     }
 
@@ -40,14 +49,14 @@ class EditUserForm extends React.Component {
         return (
             <div className="page">
                 <div className="account-header">Hey, {user.first_name}</div>
-                <form onSubmit={this.handleSubmitEmail} id='edit-user-form-proper'>
+                <form onSubmit={this.changeEmail} id='edit-user-form-proper'>
                     <div className='edit-user-form-header'>Update Email</div>
                     <div className='edit-user-form-input-row'>
                         <div className='edit-user-form-label'>New Email</div>
                         <input 
                             type='text'
-                            value={this.state.email}
-                            onChange={this.update('email')}
+                            value={this.state.emailChange.email}
+                            onChange={this.updateEmailForm('email')}
                             className="edit-user-form-input">
                         </input>
                     </div>
@@ -55,8 +64,8 @@ class EditUserForm extends React.Component {
                         <div className='edit-user-form-label'>Password</div>
                         <input 
                             type='password'
-                            value={this.state.password}
-                            onChange={this.update('password')}
+                            value={this.state.emailChange.password}
+                            onChange={this.updateEmailForm('password')}
                             className="edit-user-form-input">
                         </input>
                     </div>
