@@ -28,7 +28,16 @@ export const receiveSignUpErrors = errors => ({
 export const createUser = formUser => dispatch => (
     SessionApiUtil.createUser(formUser)
     .then(user => (dispatch(receiveCurrentUser(user))),
-    err => (dispatch(receiveSignUpErrors(err.responseJSON)))));
+    err => (dispatch(receiveSignUpErrors(err.responseJSON))
+    ))
+);
+
+export const editUser = formUser => dispatch => (
+    SessionApiUtil.updateUser(formUser)
+    .then(user => (dispatch(receiveCurrentUser(user))),
+    err => (dispatch(receiveSignUpErrors(err.responseJSON))
+    ))
+)
 
 export const login = formUser => dispatch => (
     SessionApiUtil.createSession(formUser).then(user => (

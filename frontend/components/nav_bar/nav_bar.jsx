@@ -31,7 +31,6 @@ class NavBar extends React.Component {
                 last_name: 'Demo User',
                 password: 'cupcake',
             })
-        // .then(() => this.props.history.push('/'));
     };
 
     clickSignUp() {

@@ -3,7 +3,7 @@ import { newProf } from '../../actions/prof_actions';
 import ProfForm from './prof_form';
 import { clearErrors } from '../../actions/clear_errors';
 
-const mSTP = (state, ownProps) => {
+const mSTP = (state) => {
     return {
         prof: {
             first_name: '',

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :profs, except: [:new, :edit, :delete, :update, :destroy]
     resources :prof_reviews, only: [:create, :update, :destroy, :index, :show]
     resource :session, only: [:create, :destroy]
-    resources :users, only: [:create, :update, :show, :destroy]
+    resources :users, only: [:create, :update, :show]
     resources :likes, only: [:create, :destroy]
   end
 

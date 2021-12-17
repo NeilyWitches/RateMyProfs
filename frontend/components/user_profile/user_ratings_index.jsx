@@ -15,7 +15,7 @@ class UserRatingsIndex extends React.Component {
         if (!user) return null;
         return (
             <div id='user-ratings-index'>
-                <div id='user-ratings-index-header'>Hey, {this.props.user.first_name}</div>
+                <div className='account-header'>Hey, {user.first_name}</div>
                 <ul>
                     {
                         profReviews.map((profReview, index) =>

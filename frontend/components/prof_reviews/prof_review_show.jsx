@@ -11,11 +11,10 @@ class ProfReviewShow extends React.Component {
 
     displayEdit() {
         return (
-            <div>
-                <Link
-                    to={`/profReviews/edit/${this.props.userId}/${this.props.profReview.prof_id}/${this.props.profReview.id}`}
-                    id='edit-prof-review-link'><i id='edit-icon' className="fas fa-pencil-alt"></i>Edit</Link>
-            </div>
+            <Link
+                to={`/profReviews/edit/${this.props.userId}/${this.props.profReview.prof_id}/${this.props.profReview.id}`}
+                id='edit-prof-review-link'><i id='edit-icon' className="fas fa-pencil-alt"></i>Edit
+            </Link>
         )
     }
 

@@ -14,6 +14,8 @@ import ProfIndexContainer from './profs/prof_index_container';
 import UserRatingsIndexContainer from './user_profile/user_ratings_index_container';
 import Footer from './footer';
 import CreateProfFormContainer from './profs/create_prof_form_container';
+import EditUserContainer from './user_profile/edit_user_container';
+import AccountInfoContainer from './user_profile/account_info_container';
 
 const App = ({ children }) => (
     <div>
@@ -27,6 +29,8 @@ const App = ({ children }) => (
             <Route path='/profs/:profId' component={ProfReviewIndexContainer} />
             <Route path='/profs/' component={ProfIndexContainer} />
             <ExtraProtectedRoute path='/account/ratings/:userId' component={UserRatingsIndexContainer} />
+            <ExtraProtectedRoute path='/account/edit/:userId' component={EditUserContainer} />
+            <ExtraProtectedRoute path='/account/:userId' component={AccountInfoContainer} />
             <AuthRoute path='/signup' component={SignupContainer} />
             <AuthRoute path='/login' component={LoginContainer} />
             <Route exact path='/' component={HomeContainer} />

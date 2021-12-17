@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import Home from './home';
 import { login } from '../actions/session_actions';
