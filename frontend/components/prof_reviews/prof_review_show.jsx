@@ -13,7 +13,7 @@ class ProfReviewShow extends React.Component {
         return (
             <div>
                 <Link
-                    to={`/profReviews/edit/${this.props.profReview.id}/${this.props.userId}/${this.props.profReview.prof_id}`}
+                    to={`/profReviews/edit/${this.props.userId}/${this.props.profReview.prof_id}/${this.props.profReview.id}`}
                     id='edit-prof-review-link'><i id='edit-icon' className="fas fa-pencil-alt"></i>Edit</Link>
             </div>
         )

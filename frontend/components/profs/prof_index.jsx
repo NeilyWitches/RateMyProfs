@@ -19,13 +19,16 @@ class ProfIndex extends React.Component {
             }
         }
         for (let i = 0; i < profReviews.length; i++) {
-            groupedReviews[profReviews[i].prof_id].push(profReviews[i])
+            groupedReviews[profReviews[i].prof_id]?.push(profReviews[i])
         }
         return groupedReviews
     }
 
     render() {
         const { profs, profReviews, history } = this.props;
+
+        if (profs.length === 0) return null
+
         const groupedReviews = this.groupReviews(profs, profReviews)
 
         return (

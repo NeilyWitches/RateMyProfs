@@ -36,7 +36,7 @@ class ProfReviewIndex extends React.Component {
             }
         }
         for (let i = 0; i < likes.length; i++) {
-            groupedLikes[likes[i].review_id].push(likes[i])
+            groupedLikes[likes[i].review_id]?.push(likes[i])
         }
 
         return groupedLikes
@@ -134,10 +134,8 @@ class ProfReviewIndex extends React.Component {
         const { prof, profReviews, likes, currentUser, createLike, deleteLike, history } = this.props;
         if (!prof) return null
         const numReviews = profReviews.length;
+        let groupedLikes = this.groupLikes(profReviews, likes)
         const stats = this.getStats(profReviews, numReviews);
-
-        const groupedLikes = this.groupLikes(profReviews, likes)
-
         const topTags = this.getTopTags(profReviews);
         const klasses = this.getKlasses(profReviews);
         const filteredProfReviews = this.filterProfReviews(profReviews)

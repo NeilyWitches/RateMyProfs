@@ -10,16 +10,9 @@ class UserRatingsIndex extends React.Component {
         this.props.requestUser(this.props.match.params.userId)
     };
 
-    componentDidUpdate(prevProps) {
-        if (prevProps.prof_reviews !== this.props.prof_reviews) {
-            this.props.requestUser(this.props.match.params.userId)
-        }
-    }
-
     render() {
         const { user, profReviews, deleteProfReview } = this.props;
         if (!user) return null;
-
         return (
             <div id='user-ratings-index'>
                 <div id='user-ratings-index-header'>Hey, {this.props.user.first_name}</div>

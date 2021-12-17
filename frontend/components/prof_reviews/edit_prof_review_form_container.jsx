@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateProfReview } from '../../actions/prof_review_actions';
+import { requestProfReview, updateProfReview } from '../../actions/prof_review_actions';
 import ProfReviewForm from './prof_review_form';
-import { requestUser } from '../../actions/user_actions';
 import { requestProf } from '../../actions/prof_actions';
 import { clearErrors } from '../../actions/clear_errors';
 
@@ -12,11 +11,10 @@ class EditProfReviewForm extends React.Component {
     }
 
     render() {
-        const { action, formType, history, prof_review_errors, user, prof, match } = this.props;
+        const { action, formType, history, prof_review_errors, prof, match, profReview } = this.props;
 
-        if (!user) return null;
-        if (!prof) return null;
-        const profReview = user.prof_reviews[this.props.match.params.profReviewId];
+        if (!prof || !profReview) return null;
+
         return (
             <div>
                 <ProfReviewForm
@@ -32,30 +30,24 @@ class EditProfReviewForm extends React.Component {
     }
 
     componentDidMount() {
-        this.props.clearErrors();
-        this.props.requestUser(this.props.match.params.userId);
+        this.props.requestProfReview(this.props.match.params.profReviewId)
         this.props.requestProf(this.props.match.params.profId)
+        this.props.clearErrors();
     };
-
-    // componentDidUpdate(prevProps) {
-    //     if (prevProps.match.params.userId !== this.props.match.params.userId) {
-    //         this.props.requestUser(this.props.match.params.userId)
-    //     }
-    // }
 
 }
 
 const mSTP = (state, ownProps) => {
-    return {
-        user: state.entities.users[ownProps.match.params.userId],
-        formType: 'Edit Your Rating of Prof ',
-        prof_review_errors: state.errors.prof_review,
-        prof: state.entities.profs[ownProps.match.params.profId],
-    };
+        return {
+            profReview: state.entities.prof_reviews[ownProps.match.params.profReviewId],
+            formType: 'Edit Your Rating of Prof ',
+            prof_review_errors: state.errors.prof_review,
+            prof: state.entities.profs[ownProps.match.params.profId],
+        };
 };
 
 const mDTP = dispatch => ({
-    requestUser: userId => dispatch(requestUser(userId)),
+    requestProfReview: profReviewId => dispatch(requestProfReview(profReviewId)),
     action: profReview => dispatch(updateProfReview(profReview)),
     requestProf: profId => dispatch(requestProf(profId)),
     clearErrors: () => dispatch(clearErrors()),
