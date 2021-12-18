@@ -39,6 +39,13 @@ export const editUser = formUser => dispatch => (
     ))
 )
 
+export const deleteUser = userId => dispatch => (
+    SessionApiUtil.deleteUser(userId)
+    .then(() => {
+        return dispatch(logoutCurrentUser())
+    })
+);
+
 export const login = formUser => dispatch => (
     SessionApiUtil.createSession(formUser).then(user => (
         dispatch(receiveCurrentUser(user))

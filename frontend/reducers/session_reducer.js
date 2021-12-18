@@ -16,4 +16,3 @@ export default (state = _nullSession, action) => {
             return state;
     }
 };
-

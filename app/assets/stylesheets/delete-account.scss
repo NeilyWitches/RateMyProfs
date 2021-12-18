@@ -1,0 +1,67 @@
+#delete-account-header {
+    width: 783px;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+#delete-account-list {
+    list-style: outside;
+    width: 755px;
+    margin-bottom: 40px;
+}
+
+.delete-account-row {
+    width: 783px;
+    font-family: Avenir-Heavy, Avenir, Helvetica, sans-serif;
+    font-size: 16px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#delete-account-password {
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 3px;
+    font-size: 16px;
+    height: 40px;
+    outline: none;
+    padding-left: 8px;
+    font-family: Avenir-Heavy, Avenir, Helvetica, sans-serif;
+    letter-spacing: 4px;
+    width: 360px;
+    // background-color: lightblue;
+}
+
+#delete-account-final-row {
+    display: flex;
+    justify-content: flex-end;
+    width: 783px;
+    margin-top: 98px;
+}
+
+#delete-account-final-row-contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 360px;
+}
+
+#delete-account-button {
+    font-size: 16px;
+    margin-bottom: 14px;
+    width: 241px;
+    background: rgb(255, 89, 89);
+    border: 0px;
+    border-radius: 100px;
+    color: white;
+    font-weight: 700;
+    padding: 11px 46px;
+    line-height: 1.54;
+    transition-duration: 0.2s;
+}
+
+.edit-user-button:hover {
+    transform: scale(1.1);
+}

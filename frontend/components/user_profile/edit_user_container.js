@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { clearErrors } from '../../actions/clear_errors';
-import { editUser } from '../../actions/session_actions'
+import { editUser} from '../../actions/session_actions'
 import EditUserForm from './edit_user_form';
 
 const mSTP = (state) => {

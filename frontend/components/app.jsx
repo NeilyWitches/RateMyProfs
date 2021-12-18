@@ -16,6 +16,7 @@ import Footer from './footer';
 import CreateProfFormContainer from './profs/create_prof_form_container';
 import EditUserContainer from './user_profile/edit_user_container';
 import AccountInfoContainer from './user_profile/account_info_container';
+import DeleteUserContainer from './user_profile/delete_account_container';
 
 const App = ({ children }) => (
     <div>
@@ -30,6 +31,7 @@ const App = ({ children }) => (
             <Route path='/profs/' component={ProfIndexContainer} />
             <ExtraProtectedRoute path='/account/ratings/:userId' component={UserRatingsIndexContainer} />
             <ExtraProtectedRoute path='/account/edit/:userId' component={EditUserContainer} />
+            <ExtraProtectedRoute path='/account/delete/:userId' component={DeleteUserContainer} />
             <ExtraProtectedRoute path='/account/:userId' component={AccountInfoContainer} />
             <AuthRoute path='/signup' component={SignupContainer} />
             <AuthRoute path='/login' component={LoginContainer} />

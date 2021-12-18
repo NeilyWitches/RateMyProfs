@@ -10,7 +10,6 @@ class Api::UsersController < ApplicationController
     end
 
     def update
-        
         if user_params[:updatingEmail]
             @user = User.find(user_params[:id])
             if @user.is_password?(user_params[:password])
@@ -32,7 +31,13 @@ class Api::UsersController < ApplicationController
                 render json: ['Invalid password'], status: 401
             end
         end
-        
+    end
+
+    def destroy
+        @user = User.find(params[:id])
+        @user.destroy
+        head :no_content
+    else
         
     end
 

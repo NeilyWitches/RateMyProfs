@@ -65,8 +65,7 @@ class EditUserForm extends React.Component {
     }
 
     render() {
-        console.log(this.state)
-        const { user} = this.props;
+        const {user} = this.props;
         return (
             <div className="page">
                 <div className="account-header">Hey, {user.first_name}</div>
@@ -93,7 +92,7 @@ class EditUserForm extends React.Component {
                     <div className="edit-user-form-input-row edit-user-form-submit-row">
                         <input 
                             type='submit' 
-                            className='edit-user-form-submit' 
+                            className='edit-user-form-submit edit-user-button' 
                             value='Update Email'>
                         </input>
                     </div>
@@ -129,7 +128,7 @@ class EditUserForm extends React.Component {
                     <div className="edit-user-form-input-row edit-user-form-submit-row">
                         <input 
                             type='submit' 
-                            className='edit-user-form-submit' 
+                            className='edit-user-form-submit edit-user-button' 
                             value='Update Password'>
                         </input>
                     </div>
@@ -141,6 +140,13 @@ class EditUserForm extends React.Component {
                     </div>
                     {this.renderErrors()}
                     <div className='edit-user-form-border'></div>
+                    <div className="edit-user-form-header">Delete Account</div>
+                    <Link 
+                        to={`/account/delete/${user.id}`}
+                        id='edit-user-form-delete'
+                        className="link">
+                        <i className="fas fa-trash-alt" id='delete-icon'></i>Delete Account
+                    </Link>
                 </form>
             </div>
         )
