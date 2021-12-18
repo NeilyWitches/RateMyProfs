@@ -34,9 +34,15 @@ class Api::UsersController < ApplicationController
     end
 
     def destroy
-        @user = User.find(params[:id])
-        @user.destroy
-        head :no_content
+        @user = User.find(user_params[:id])
+        if @user.is_password?(user_params[:password])
+            @user.destroy
+            head :no_content
+        elsif !@user
+            render json: ['Could not locate user'], status: 400
+        else
+            render json: ['Invalid password'], status: 401
+        end
     else
         
     end

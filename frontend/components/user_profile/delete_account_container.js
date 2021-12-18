@@ -5,11 +5,13 @@ import DeleteAccount from './delete_account';
 const mSTP = (state) => {
     return {
         user: state.session.current_user,
+        userErrors: state.errors.signup
     }
 };
 
 const mDTP = dispatch => ({
-    deleteUser: userId => dispatch(deleteUser(userId)),
-})
+    deleteUser: user => dispatch(deleteUser(user)),
+    clearErrors: () => dispatch(clearErrors()),
+});
 
 export default connect(mSTP, mDTP)(DeleteAccount)

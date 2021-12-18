@@ -39,11 +39,13 @@ export const editUser = formUser => dispatch => (
     ))
 )
 
-export const deleteUser = userId => dispatch => (
-    SessionApiUtil.deleteUser(userId)
+export const deleteUser = user => dispatch => (
+    SessionApiUtil.deleteUser(user)
     .then(() => {
         return dispatch(logoutCurrentUser())
-    })
+    },
+    err => (dispatch(receiveSignUpErrors(err.responseJSON))
+    ))
 );
 
 export const login = formUser => dispatch => (

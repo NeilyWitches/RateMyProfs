@@ -5,13 +5,41 @@ class DeleteAccount extends React.Component {
     constructor(props) {
         super(props)
 
-        
+        this.state = {
+            id: this.props.user.id,
+            password: '',
+        }
+
+        this.deleteAccount = this.deleteAccount.bind(this)
+        this.update = this.update.bind(this)
+    }
+
+    deleteAccount(e) {
+        e.preventDefault()
+        this.props.deleteUser(this.state)
+        .then(() => this.props.history.push(`/signup`));
+    }
+
+    update(e) {
+        this.setState({password: e.currentTarget.value})
+    }
+
+    renderErrors() {
+        return (
+            <ul>
+                {this.props.userErrors.map((error, i) => (
+                    <li key={`error-${i}`}>
+                        {error}
+                    </li>
+                ))}
+            </ul>
+        )
     }
 
     render() {
         const {user} = this.props;
         return (
-            <div className='page'>
+            <form className='page' onSubmit={this.deleteAccount}>
                 <div className="account-header">Hey, {user.first_name}</div>
                 <div id='delete-account-header'>Are you sure you want to delete your account?</div>
                 <ul id='delete-account-list'>
@@ -24,7 +52,9 @@ class DeleteAccount extends React.Component {
                     Enter your password to confirm
                     <input 
                         type='password'
-                        id='delete-account-password'>
+                        id='delete-account-password'
+                        value={this.state.password}
+                        onChange={this.update}>
                     </input>
                 </div>
                 <div id='delete-account-final-row'>
@@ -41,7 +71,8 @@ class DeleteAccount extends React.Component {
                         </Link>
                     </div>
                 </div>
-            </div>
+                {this.renderErrors()}
+            </form>
         )
     }
 }

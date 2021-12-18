@@ -14,9 +14,9 @@ export const updateUser = user => (
     })
 )
 
-export const deleteUser = userId => (
+export const deleteUser = user => (
     $.ajax({
-        url: `/api/users/${userId}`,
+        url: `/api/users/${user.id}`,
         method: 'DELETE',
         data: { user }
     })
