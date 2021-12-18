@@ -10,14 +10,30 @@ class Api::UsersController < ApplicationController
     end
 
     def update
-        @user = User.find(user_params[:id])
-        if @user.is_password?(user_params[:password]) && @user.update(user_params)
-            render 'api/sessions/show'
-        elsif !@user
-            render json: ['Could not locate user'], status: 400
-        else
-            render json: ['Invalid password'], status: 401
+        
+        if user_params[:updatingEmail]
+            @user = User.find(user_params[:id])
+            if @user.is_password?(user_params[:password])
+                @user = User.update(user_params[:id], :email => user_params[:email])
+                render 'api/sessions/show'
+            elsif !@user
+                render json: ['Could not locate user'], status: 400
+            else
+                render json: ['Invalid password'], status: 401
+            end
+        elsif user_params[:updatingPassword]
+            @user = User.find(user_params[:id])
+            if @user.is_password?(user_params[:oldPassword])
+                @user = User.update(user_params[:id], :password => user_params[:newPassword])
+                render 'api/sessions/show'
+            elsif !@user
+                render json: ['Could not locate user'], status: 400
+            else
+                render json: ['Invalid password'], status: 401
+            end
         end
+        
+        
     end
 
     def show
@@ -31,6 +47,6 @@ class Api::UsersController < ApplicationController
     end
 
     def user_params
-        params.require(:user).permit(:id, :email, :first_name, :last_name, :password)
+        params.require(:user).permit(:id, :email, :first_name, :last_name, :password, :newPassword, :oldPassword, :updatingEmail, :updatingPassword)
     end
 end

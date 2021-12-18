@@ -20,7 +20,7 @@
     text-align: left;
 }
 
-#edit-user-form-proper {
+.edit-user-form-proper {
     display: flex;
     flex-direction: column;
     width: 755px;
@@ -44,7 +44,7 @@
     width: 360px;
 }
 
-#edit-user-form-submit {
+.edit-user-form-submit {
     font-size: 16px;
     height: 48px;
     margin-top: 56px;
@@ -57,12 +57,12 @@
     font-weight: 700;
 }
 
-#edit-user-form-submit-row {
+.edit-user-form-submit-row {
     display: flex;
     justify-content: flex-end;
 }
 
-#edit-user-form-cancel {
+.edit-user-form-cancel {
     width: 240px;
     text-align: center;
     font-weight: 700;
@@ -75,7 +75,8 @@
     color: black;
 }
 
-#edit-user-form-border {
+.edit-user-form-border {
     border-bottom: 1px solid rgb(152, 152, 152);
     padding-top: 50px;
+    margin-bottom: 50px;
 }
