@@ -1,4 +1,5 @@
 import React from 'react';
+import { deleteProfSave } from '../../util/prof_save_api_util';
 import ProfShow from '../profs/prof_show';
 
 class SavedProfs extends React.Component {
@@ -52,7 +53,9 @@ class SavedProfs extends React.Component {
                             key={prof.id}
                             prof={prof}
                             profReviews={groupedReviews[prof.id]}
-                            history={history}/>)
+                            history={history}
+                            createProfSave={this.props.createProfSave}
+                            deleteProfSave={this.props.deleteProfSave}/>)
                         }
                     </ul>
                 </div>
