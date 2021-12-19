@@ -11,4 +11,11 @@ export const deleteProfSave = profSaveId => (
         url: `/api/prof_saves/${profSaveId}`,
         method: `DELETE`,
     })
+);
+
+export const fetchSavedProfs = userId => (
+    $.ajax({
+        url: `/api/users/`,
+        data: {userId}
+    })
 )

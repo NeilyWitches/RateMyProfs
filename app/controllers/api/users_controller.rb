@@ -51,6 +51,12 @@ class Api::UsersController < ApplicationController
         @user = selected_user
     end
 
+    def index
+        user = User.find(params[:userId])
+        @profs = user.profs_saved.includes(:prof_reviews)
+        render 'api/profs/index'
+    end
+
     private
 
     def selected_user

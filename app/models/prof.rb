@@ -8,4 +8,12 @@ class Prof < ApplicationRecord
     has_many :likes,
         through: :prof_reviews,
         source: :likes
+
+    has_many :prof_saves,
+        foreign_key: :prof_saved_id,
+        class_name: :ProfSave
+
+    has_many :savers,
+        through: :prof_saves,
+        source: :saver
 end

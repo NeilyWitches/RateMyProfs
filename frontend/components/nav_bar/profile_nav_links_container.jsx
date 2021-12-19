@@ -8,6 +8,7 @@ class ProfileNavLinks extends React.Component {
 
         this.clickMyRatings = this.clickMyRatings.bind(this);
         this.clickAccountSettings = this.clickAccountSettings.bind(this);
+        this.clickSavedProfs = this.clickSavedProfs.bind(this);
     };
 
     clickMyRatings() {
@@ -17,6 +18,11 @@ class ProfileNavLinks extends React.Component {
 
     clickAccountSettings() {
         let path = `/account/${this.props.current_user.id}`; 
+        this.props.history.push(path);
+    }
+
+    clickSavedProfs() {
+        let path = `/account/profs/${this.props.current_user.id}`; 
         this.props.history.push(path);
     }
 
@@ -32,6 +38,11 @@ class ProfileNavLinks extends React.Component {
         } else if (this.props.title === 'Account Settings') {
             return (
                 <li><button className='profile-nav-link' onClick={this.clickAccountSettings}>{this.props.title}</button></li>
+            )
+        }
+        else if (this.props.title === "Saved Profs") {
+            return (
+                <li><button className='profile-nav-link' onClick={this.clickSavedProfs}>{this.props.title}</button></li>
             )
         }
         else {
