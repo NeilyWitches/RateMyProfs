@@ -106,11 +106,27 @@ class Likes extends React.Component {
         return (
             <div id='likes'>
                 <div className="thumb-count">
-                    <i className="far fa-thumbs-up fa-lg" onClick={this.clickLike} style={this.state.liked ? {color: '#68ffbe'} : null}></i>
+                    <div className='icon-hint'>
+                        <i className="far fa-thumbs-up fa-lg 
+                        icon-with-hint 
+                        thumb" 
+                        onClick={this.clickLike}
+                        style={this.state.liked ? 
+                        {color: '#68ffbe'} : null}></i>
+                        <div className='hint'>Helpful</div>
+                    </div>
                     <div className="likes-count">{this.state.numLikes}</div>
                 </div>
                 <div className="thumb-count">
-                    <i className="far fa-thumbs-down fa-lg" onClick={this.clickDislike} style={this.state.disliked ? {color: 'rgb(255, 156, 156)'} : null}></i>
+                    <div className='icon-hint'>
+                        <i className="far fa-thumbs-down 
+                        fa-lg icon-with-hint
+                        thumb" 
+                        onClick={this.clickDislike} 
+                        style={this.state.disliked ? 
+                        {color: 'rgb(255, 156, 156)'} : null}></i>
+                        <div className='hint'>Not helpful</div>
+                    </div>
                     <div className="likes-count">{this.state.numDislikes}</div>
                 </div>
             </div>

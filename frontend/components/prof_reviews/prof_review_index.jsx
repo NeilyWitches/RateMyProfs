@@ -171,10 +171,14 @@ class ProfReviewIndex extends React.Component {
                             <div id='prof-review-index-prof-name'>
                                 {prof.first_name} {prof.last_name} &nbsp;
                                 { this.state.profSave ?
-                                <i className="fas fa-bookmark" id='saved' onClick={this.clickUnsave}></i> :
-                                <i className="far fa-bookmark" id='unsaved' onClick={this.clickSave}></i> }
-                                <div className='hint' id='save-prof'>Save Prof</div>
-                                <div className='hint' id='unsave-prof'>Unsave Prof</div>
+                                <div className='icon-hint'>
+                                    <i className="fas fa-bookmark icon-with-hint" id='saved' onClick={this.clickUnsave}></i>
+                                    <div className='hint'>Unsave Prof</div>
+                                </div> :
+                                <div className='icon-hint'>
+                                    <i className="far fa-bookmark icon-with-hint" id='unsaved' onClick={this.clickSave}></i>
+                                    <div className='hint'>Save Prof</div>
+                                </div> }
                             </div>
                             <div id='prof-in-dept'>Prof in the <strong>{prof.subject}</strong> Department</div>
                         </div>

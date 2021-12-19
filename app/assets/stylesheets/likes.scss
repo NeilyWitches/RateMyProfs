@@ -6,13 +6,14 @@
 .thumb-count {
     display: flex;
     margin-right: 16px;
+    align-items: center;
 }
 
-.thumb-count > i {
+.thumb {
     margin-right: 5px;
 }
 
-.thumb-count > i:hover {
+.thumb:hover {
     cursor: pointer;
 }
 
