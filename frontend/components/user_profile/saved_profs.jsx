@@ -7,7 +7,13 @@ class SavedProfs extends React.Component {
     };
 
     componentDidMount() {
-        this.props.requestSavedProfs(this.props.user.id)
+        this.props.requestSavedProfs(this.props.user.id);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.match.params.userId !== this.props.match.params.userId) {
+            this.props.requestSavedProfs(this.props.user.id)
+        }
     }
 
     groupReviews(profs, profReviews) {
