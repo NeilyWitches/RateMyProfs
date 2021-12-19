@@ -6,6 +6,7 @@ class Api::ProfReviewsController < ApplicationController
 
     def index
         @prof = Prof.includes(:prof_reviews, :likes).find(params[:profId])
+        @prof_save = Prof.find_by({})
     end
     
     def create

@@ -5,8 +5,9 @@
     color: white;
     font-size: 14px;
     align-items: center;
-    position: absolute;
+    position: fixed;
     width: 100%;
+    z-index: 10;
 }
 
 .logo {

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import ProfReviewShow from './prof_review_show';
 
 class ProfReviewIndex extends React.Component {
@@ -21,12 +20,17 @@ class ProfReviewIndex extends React.Component {
         ]
 
         this.clickRateProf = this.clickRateProf.bind(this);
+        this.clickSave = this.clickSave.bind(this);
     };
 
     componentDidMount() {
         this.props.requestProf(this.props.match.params.profId)
         this.props.requestProfReviews(this.props.match.params.profId)
     };
+
+    clickSave() {
+        this.props.createProfSave({saver_id: this.props.currentUser.id, prof_saved_id: this.props.prof.id})
+    }
 
     groupLikes(profReviews, likes) {
         let groupedLikes = {}
@@ -130,6 +134,8 @@ class ProfReviewIndex extends React.Component {
         return filteredProfReviews
     }
 
+
+
     render() {
         const { prof, profReviews, likes, currentUser, createLike, deleteLike, history } = this.props;
         if (!prof) return null
@@ -152,7 +158,10 @@ class ProfReviewIndex extends React.Component {
                             <div id='qual-based-on'>Overall Quality Based on {numReviews} Ratings</div>
                         </div>
                         <div id='prof-review-index-prof-show-name'>
-                            <div id='prof-review-index-prof-name'>{prof.first_name} {prof.last_name}</div>
+                            <div id='prof-review-index-prof-name'>
+                                {prof.first_name} {prof.last_name} &nbsp;
+                                <i class="far fa-bookmark" id='bookmark' onClick={this.clickSave}></i>
+                            </div>
                             <div id='prof-in-dept'>Prof in the <strong>{prof.subject}</strong> Department</div>
                         </div>
                     </div>

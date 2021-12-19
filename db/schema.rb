@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_15_201450) do
+ActiveRecord::Schema.define(version: 2021_12_18_200830) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 2021_12_15_201450) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "prof_id"
+  end
+
+  create_table "prof_saves", force: :cascade do |t|
+    t.integer "saver_id", null: false
+    t.integer "prof_saved_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["prof_saved_id"], name: "index_prof_saves_on_prof_saved_id"
+    t.index ["saver_id"], name: "index_prof_saves_on_saver_id"
   end
 
   create_table "profs", force: :cascade do |t|

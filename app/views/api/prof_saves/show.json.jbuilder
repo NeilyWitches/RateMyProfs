@@ -1,0 +1,1 @@
+json.extract! @prof_save, :id, :saver_id, :prof_saved_id

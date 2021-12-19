@@ -3,6 +3,7 @@ import { requestProf } from '../../actions/prof_actions';
 import ProfReviewIndex from './prof_review_index';
 import { createLike, deleteLike } from '../../actions/like_actions'
 import { requestProfReviews } from '../../actions/prof_review_actions';
+import { createProfSave } from '../../actions/prof_save_actions';
 
 const mSTP = (state, ownProps) => {
     return {
@@ -18,6 +19,7 @@ const mDTP = dispatch => ({
     requestProfReviews: profId => dispatch(requestProfReviews(profId)),
     createLike: (like) => dispatch(createLike(like)),
     deleteLike: (likeId) => dispatch(deleteLike(likeId)),
+    createProfSave: (profSave) => dispatch(createProfSave(profSave)),
 });
 
 export default connect(mSTP, mDTP)(ProfReviewIndex);
