@@ -7,9 +7,7 @@ class ProfReviewIndex extends React.Component {
 
         this.state = {
             selectedKlass: 'All courses',
-            profSave: this.props.profSave,
-            savedStyle: {color: "blue"},
-            savedHintStyle: {display: "none"}
+            profSave: this.props.profSave
         }
 
         this.tags = [
@@ -25,8 +23,6 @@ class ProfReviewIndex extends React.Component {
         this.clickRateProf = this.clickRateProf.bind(this);
         this.clickSave = this.clickSave.bind(this);
         this.clickUnsave = this.clickUnsave.bind(this);
-        this.mouseEntersSaved = this.mouseEntersSaved.bind(this);
-        this.mouseLeavesSaved = this.mouseLeavesSaved.bind(this);
     };
 
     componentDidMount() {
@@ -150,15 +146,6 @@ class ProfReviewIndex extends React.Component {
         return filteredProfReviews
     }
 
-    mouseEntersSaved() {
-        this.setState({savedStyle: {color: "black", cursor: "pointer"}, 
-        savedHintStyle: {display: "block"}})
-    }
-
-    mouseLeavesSaved() {
-        this.setState({savedStyle: {color: "blue"}})
-    }
-
     render() {
         const { prof, profReviews, likes, currentUser, createLike, deleteLike, history } = this.props;
         if (!prof) return null
@@ -184,18 +171,10 @@ class ProfReviewIndex extends React.Component {
                             <div id='prof-review-index-prof-name'>
                                 {prof.first_name} {prof.last_name} &nbsp;
                                 { this.state.profSave ?
-                                <i className="fas fa-bookmark" id='saved'
-                                onClick={this.clickUnsave} 
-                                onMouseEnter={this.mouseEntersSaved}
-                                onMouseLeave={this.mouseLeavesSaved}
-                                style={this.state.savedStyle}></i> :
-                                <i className="far fa-bookmark" 
-                                id='unsaved' 
-                                onClick={this.clickSave}
-                                // onMouseEnter={this.hover}
-                                ></i> }
-                                {/* <div className='hint' id='save-prof'>Save Prof</div> */}
-                                <div className='hint' id='unsave-prof' style={this.state.savedHintStyle}>Unsave Prof</div>
+                                <i className="fas fa-bookmark" id='saved' onClick={this.clickUnsave}></i> :
+                                <i className="far fa-bookmark" id='unsaved' onClick={this.clickSave}></i> }
+                                <div className='hint' id='save-prof'>Save Prof</div>
+                                <div className='hint' id='unsave-prof'>Unsave Prof</div>
                             </div>
                             <div id='prof-in-dept'>Prof in the <strong>{prof.subject}</strong> Department</div>
                         </div>
