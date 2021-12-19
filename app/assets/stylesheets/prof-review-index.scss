@@ -155,16 +155,22 @@
     color: gray;
 }
 
-#saved {
-    color: blue;
-}
+// #saved {
+//     color: blue;
+// }
 
-#saved:hover {
-    cursor: pointer;
-    color: black;
-}
+// #saved:hover {
+//     cursor: pointer;
+//     color: black;
+// }
 
-#unsaved:hover {
-    cursor: pointer;
-    color: black 
+// #unsaved:hover {
+//     cursor: pointer;
+//     color: black 
+// }
+
+.hint {
+    border: 1px solid black;
+    position: absolute;
+    z-index: 1;
 }
