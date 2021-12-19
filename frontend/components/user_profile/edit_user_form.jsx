@@ -24,6 +24,10 @@ class EditUserForm extends React.Component {
         this.changePassword = this.changePassword.bind(this);
     };
 
+    componentDidMount() {
+        this.props.clearErrors();
+    }
+
     updateEmailForm(field) {
         let emailChange = {...this.state.emailChange}
         return e => {
