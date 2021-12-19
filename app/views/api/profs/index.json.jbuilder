@@ -10,7 +10,7 @@ else
     json.profs ({})
 end
 
-if @profs.length != 0
+if @profs.length != 0 && @profs.any?{|prof| prof.prof_reviews.length != 0}
     json.prof_reviews do
         @profs.each do |prof|
             prof.prof_reviews.each do |prof_review|
