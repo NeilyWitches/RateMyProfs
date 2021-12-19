@@ -28,7 +28,7 @@ class Api::UsersController < ApplicationController
             elsif !@user
                 render json: ['Could not locate user'], status: 400
             else
-                render json: ['Invalid password'], status: 401
+                render json: ['The old password was incorrect'], status: 401
             end
         end
     end
