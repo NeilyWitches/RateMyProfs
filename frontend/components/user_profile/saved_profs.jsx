@@ -1,5 +1,4 @@
 import React from 'react';
-import { deleteProfSave } from '../../util/prof_save_api_util';
 import ProfShow from '../profs/prof_show';
 
 class SavedProfs extends React.Component {

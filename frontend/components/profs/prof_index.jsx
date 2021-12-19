@@ -9,6 +9,7 @@ class ProfIndex extends React.Component {
 
     componentDidMount() {
         this.props.requestProfs();
+        this.props.requestProfSaves(this.props.currentUser.id)
     };
 
     groupReviews(profs, profReviews) {
@@ -24,12 +25,26 @@ class ProfIndex extends React.Component {
         return groupedReviews
     }
 
+    groupProfSaves(profs, profSaves) {
+        let groupedSaves = {}
+        for (let i = 0; i < profs.length; i++) {
+            for (let j = 0; j < profSaves.length; j++) {
+                    if (profSaves[j]?.prof_saved_id === profs[i]?.id) {
+                        groupedSaves[profs[i]?.id] = profSaves[j]
+                    }
+            }
+        }
+        return groupedSaves
+    }
+
     render() {
-        const { profs, profReviews, history } = this.props;
+        const { profs, profReviews, history, profSaves, createProfSave, deleteProfSave } = this.props;
 
         if (profs.length === 0) return null
 
         const groupedReviews = this.groupReviews(profs, profReviews)
+        const groupedProfSaves = this.groupProfSaves(profs, profSaves)
+        console.log(profSaves)
 
         return (
             <div id='prof-index'>
@@ -41,7 +56,10 @@ class ProfIndex extends React.Component {
                             key={prof.id} 
                             prof={prof} 
                             profReviews={groupedReviews[prof.id]}
+                            profSave={groupedProfSaves[prof.id]}
                             history={history}
+                            createProfSave={createProfSave}
+                            deleteProfSave={deleteProfSave}
                             />
                         )
                     }

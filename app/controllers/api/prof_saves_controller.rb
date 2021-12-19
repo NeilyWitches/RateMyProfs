@@ -16,6 +16,11 @@ class Api::ProfSavesController < ApplicationController
         head :no_content
     end
 
+    def index 
+        @prof_saves = ProfSave.where(saver_id: params[:userId])
+        render :index
+    end
+
     private
 
     def set_prof_save

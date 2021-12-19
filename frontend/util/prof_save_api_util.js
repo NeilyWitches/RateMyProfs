@@ -19,3 +19,10 @@ export const fetchSavedProfs = userId => (
         data: {userId}
     })
 )
+
+export const fetchProfSaves = userId => (
+    $.ajax({
+        url: `/api/prof_saves/`,
+        data: {userId}
+    })
+)

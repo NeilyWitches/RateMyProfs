@@ -1,4 +1,4 @@
-import { RECEIVE_PROF_SAVE, REMOVE_PROF_SAVE } from "../actions/prof_save_actions";
+import { RECEIVE_PROF_SAVE, RECEIVE_PROF_SAVES, REMOVE_PROF_SAVE } from "../actions/prof_save_actions";
 import { RECEIVE_PROF_REVIEWS } from "../actions/prof_review_actions";
 import { merge } from 'lodash';
 
@@ -15,6 +15,9 @@ const ProfSavesReducer = (oldState = {}, action) => {
         case REMOVE_PROF_SAVE:
             delete newState[action.profSaveId]
             return newState;
+        case RECEIVE_PROF_SAVES:
+            newState = action.payload.prof_saves
+            return newState
         default:
             return oldState;
     }

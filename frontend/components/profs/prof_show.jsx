@@ -5,6 +5,12 @@ class ProfShow extends React.Component {
         super(props);
 
         this.clickProf = this.clickProf.bind(this);
+        this.state = {
+            profSave: this.props.profSave
+        }
+
+        this.clickSave = this.clickSave.bind(this);
+        this.clickUnsave = this.clickUnsave.bind(this);
     };
 
     getStats(profReviews, numReviews) {
@@ -26,6 +32,20 @@ class ProfShow extends React.Component {
         return () => this.props.history.push(path);
     }
 
+    clickSave() {
+        this.props.createProfSave({saver_id: this.props.currentUser.id, prof_saved_id: this.props.prof.id})
+    }
+
+    clickUnsave() {
+        this.props.deleteProfSave(this.props.profSave.id)
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.profSave !== this.props.profSave) {
+            this.setState({profSave: this.props.profSave})
+        }
+    }
+
     render() {
         const {prof, profReviews} = this.props;
         let numReviews = profReviews.length;
@@ -39,7 +59,18 @@ class ProfShow extends React.Component {
                     <div className='num-ratings'>{numReviews} ratings</div>
                 </div>
                 <div>
-                    <div className='prof-show-name'>{prof.first_name} {prof.last_name}</div>
+                    <div className='prof-show-name-bookmark'>
+                        <div className='prof-show-name'>{prof.first_name} {prof.last_name}</div>
+                        { this.state.profSave ?
+                        <div className='icon-hint'>
+                            <i className="fas fa-bookmark icon-with-hint" id='saved' onClick={this.clickUnsave}></i>
+                            <div className='hint'>Unsave Prof</div>
+                        </div> :
+                        <div className='icon-hint'>
+                            <i className="far fa-bookmark icon-with-hint" id='unsaved' onClick={this.clickSave}></i>
+                            <div className='hint'>Save Prof</div>
+                        </div> }
+                    </div>
                     <div className='prof-show-subject'>{prof.subject}</div>
                     <div className='take-again-lvl-diff'>
                         <div className='prof-show-take-again'>{numReviews === 0 ? "N/A" : `${stats[2].toFixed(2) * 100}%`}</div>
