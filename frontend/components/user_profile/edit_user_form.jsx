@@ -46,20 +46,32 @@ class EditUserForm extends React.Component {
 
     changeEmail(e) {
         e.preventDefault();
-        this.props.updateUser(this.state.emailChange)
+        this.props.updateEmail(this.state.emailChange)
         .then(() => this.props.history.push(`/account/${this.props.user.id}`));
     }
 
     changePassword(e) {
         e.preventDefault();
-        this.props.updateUser(this.state.passwordChange)
+        this.props.updatePassword(this.state.passwordChange)
         .then(() => this.props.history.push(`/account/${this.props.user.id}`));
     }
 
-    renderErrors() {
+    renderEmailErrors() {
         return (
             <ul>
-                {this.props.userErrors.map((error, i) => (
+                {this.props.changeEmailErrors.map((error, i) => (
+                    <li key={`error-${i}`}>
+                        {error}
+                    </li>
+                ))}
+            </ul>
+        )
+    }
+
+    renderPasswordErrors() {
+        return (
+            <ul>
+                {this.props.changePasswordErrors.map((error, i) => (
                     <li key={`error-${i}`}>
                         {error}
                     </li>
@@ -106,7 +118,7 @@ class EditUserForm extends React.Component {
                             to={`/account/${user.id}`}>Cancel
                         </Link>
                     </div>
-                    {this.renderErrors()}
+                    {this.renderEmailErrors()}
                     <div className='edit-user-form-border'></div>
                 </form>
                 <form onSubmit={this.changePassword} className='edit-user-form-proper'>
@@ -142,7 +154,7 @@ class EditUserForm extends React.Component {
                             to={`/account/${user.id}`}>Cancel
                         </Link>
                     </div>
-                    {this.renderErrors()}
+                    {this.renderPasswordErrors()}
                     <div className='edit-user-form-border'></div>
                     <div className="edit-user-form-header">Delete Account</div>
                     <Link 

@@ -1,18 +1,20 @@
 import { connect } from 'react-redux';
 import { clearErrors } from '../../actions/clear_errors';
-import { editUser} from '../../actions/session_actions'
+import { editEmail, editPassword } from '../../actions/session_actions'
 import EditUserForm from './edit_user_form';
 
 const mSTP = (state) => {
     return {
         user: state.session.current_user,
-        userErrors: state.errors.signup
+        changeEmailErrors: state.errors.change_email,
+        changePasswordErrors: state.errors.change_password,
     }
 };
 
 const mDTP = dispatch => ({
-    updateUser: user => dispatch(editUser(user)),
+    updateEmail: user => dispatch(editEmail(user)),
     clearErrors: () => dispatch(clearErrors()),
+    updatePassword: user => dispatch(editPassword(user))
 });
 
 export default connect(mSTP, mDTP)(EditUserForm)
