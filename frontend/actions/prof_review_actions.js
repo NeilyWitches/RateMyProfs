@@ -32,8 +32,8 @@ export const requestProfReview = profReviewId => dispatch => {
     })
 }
 
-export const requestProfReviews = profId => dispatch => {
-    return ProfReviewApiUtil.fetchProfReviews(profId)
+export const requestProfReviews = (profId, userId) => dispatch => {
+    return ProfReviewApiUtil.fetchProfReviews(profId, userId)
     .then(payload => {
         return dispatch(receiveProfReviews(payload))
     })

@@ -5,3 +5,10 @@ export const createProfSave = profSave => (
         data: { profSave }
     })
 );
+
+export const deleteProfSave = profSaveId => (
+    $.ajax({
+        url: `/api/prof_saves/${profSaveId}`,
+        method: `DELETE`,
+    })
+)

@@ -22,3 +22,13 @@ if @prof.likes.length != 0
 else
     json.likes ({})
 end
+
+if @prof_save
+    json.prof_saves do
+        json.set! @prof_save.id do
+            json.extract! @prof_save, :id, :saver_id, :prof_saved_id
+        end
+    end
+else
+    json.prof_saves ({})
+end

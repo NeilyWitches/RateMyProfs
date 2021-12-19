@@ -151,11 +151,20 @@
     padding-left: 5px;
 }
 
-#bookmark {
+#unsaved {
     color: gray;
 }
 
-#bookmark:hover {
+#saved {
+    color: blue;
+}
+
+#saved:hover {
     cursor: pointer;
     color: black;
+}
+
+#unsaved:hover {
+    cursor: pointer;
+    color: black 
 }

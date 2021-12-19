@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :users, only: [:create, :update, :show, :destroy]
     resources :likes, only: [:create, :destroy]
-    resource :prof_saves, only: [:create, :destroy]
+    resources :prof_saves, only: [:create, :destroy]
   end
 
   

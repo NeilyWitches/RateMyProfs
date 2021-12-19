@@ -6,7 +6,8 @@ class ProfReviewIndex extends React.Component {
         super(props);
 
         this.state = {
-            selectedKlass: 'All courses'
+            selectedKlass: 'All courses',
+            profSave: this.props.profSave
         }
 
         this.tags = [
@@ -21,15 +22,26 @@ class ProfReviewIndex extends React.Component {
 
         this.clickRateProf = this.clickRateProf.bind(this);
         this.clickSave = this.clickSave.bind(this);
+        this.clickUnsave = this.clickUnsave.bind(this);
     };
 
     componentDidMount() {
         this.props.requestProf(this.props.match.params.profId)
-        this.props.requestProfReviews(this.props.match.params.profId)
+        this.props.requestProfReviews(this.props.match.params.profId, this.props.currentUser.id)
     };
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.profSave !== this.props.profSave) {
+            this.setState({profSave: this.props.profSave})
+        }
+    }
 
     clickSave() {
         this.props.createProfSave({saver_id: this.props.currentUser.id, prof_saved_id: this.props.prof.id})
+    }
+
+    clickUnsave() {
+        this.props.deleteProfSave(this.props.profSave.id)
     }
 
     groupLikes(profReviews, likes) {
@@ -160,7 +172,9 @@ class ProfReviewIndex extends React.Component {
                         <div id='prof-review-index-prof-show-name'>
                             <div id='prof-review-index-prof-name'>
                                 {prof.first_name} {prof.last_name} &nbsp;
-                                <i class="far fa-bookmark" id='bookmark' onClick={this.clickSave}></i>
+                                { this.state.profSave ?
+                                <i className="fas fa-bookmark" id='saved' onClick={this.clickUnsave}></i> :
+                                <i className="far fa-bookmark" id='unsaved' onClick={this.clickSave}></i> }
                             </div>
                             <div id='prof-in-dept'>Prof in the <strong>{prof.subject}</strong> Department</div>
                         </div>

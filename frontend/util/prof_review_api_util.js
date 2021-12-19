@@ -4,10 +4,10 @@ export const fetchProfReview = profReviewId => (
     })
 );
 
-export const fetchProfReviews = profId => (
+export const fetchProfReviews = (profId, userId) => (
     $.ajax({
         url: `/api/prof_reviews/`,
-        data: { profId }
+        data: { profId, userId }
     })
 )
 
