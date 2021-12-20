@@ -7,6 +7,13 @@
     align-items: center;
 }
 
+#no-authored-reviews {
+    margin-top: 85px;
+    font-size: 26px;
+    font-family: HelveticaNeue, arial;
+    font-weight: 700;
+}
+
 .account-header {
     font-size: 32px;
     font-family: Poppins, sans-serif;
@@ -23,4 +30,10 @@
 
 #edit-icon {
     margin-right: 10px;
+}
+
+#no-authored-reviews-subtext {
+    font-family: HelveticaNeue, arial;
+    font-size: 16px;
+    margin-top: 3%
 }

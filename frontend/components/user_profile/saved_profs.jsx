@@ -49,8 +49,8 @@ class SavedProfs extends React.Component {
             return (
                 <div className='page'>
                     <div className='account-header'>Hey, {currentUser.first_name}</div>
-                    <img src={window.logo} alt="Logo" className='logo' />
-                    <div>You don't have any saved profs yet</div>
+                    <img src={window.prof_save_gif} alt="ProfSaveGif" id='prof-save-gif' />
+                    <div id='no-saved-profs'>You don't have any saved profs yet</div>
                 </div>
             )
         } else {

@@ -5,12 +5,57 @@ import ProfShow from './prof_show';
 class ProfIndex extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            selectedSubject: 'Select...'
+        }
     };
+
+    getSubjects(profs) {
+        let subjects = ['Select...'];
+
+        for (let i = 0; i < profs.length; i++) {
+            if (!subjects.includes(profs[i].subject)) {
+                subjects.push(profs[i].subject)
+            }
+        }
+
+        return subjects;
+    }
+
+    filterProfs(profs) {
+        let filteredProfs = [];
+        if (this.state.selectedSubject === "Select...") {
+            return profs
+        }
+        for (let i = 0; i < profs.length; i++) {
+            if (profs[i].subject === this.state.selectedSubject) {
+                filteredProfs.push(profs[i])
+            }
+        }
+        return filteredProfs
+    }
+
+    update(field) {
+        if (field === 'selectedSubject') {
+            return e => {
+                return this.setState({
+                    [field]: e.currentTarget.value,
+                })
+            }
+        }
+    }
 
     componentDidMount() {
         this.props.requestProfs();
-        this.props.requestProfSaves(this.props.currentUser.id)
+        this.props.requestProfSaves(this.props.currentUser?.id)
     };
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.currentUser !== this.props.currentUser) {
+            this.props.requestProfSaves(this.props.currentUser?.id)
+        }
+    }
 
     groupReviews(profs, profReviews) {
         let groupedReviews = {}
@@ -44,13 +89,28 @@ class ProfIndex extends React.Component {
 
         const groupedReviews = this.groupReviews(profs, profReviews)
         const groupedProfSaves = this.groupProfSaves(profs, profSaves)
+        const subjects = this.getSubjects(profs);
+        const filteredProfs = this.filterProfs(profs)
 
         return (
             <div id='prof-index'>
                 <h1 id='prof-index-header'>All profs</h1>
+                <div id='dept-dropdown-container'>
+                    <div id='dept-dropdown-label'>Department</div>
+                    <select id='dept-dropdown' name='subjects' onChange={this.update('selectedSubject')} defaultValue={'Select...'}>
+                            {
+                                subjects.map((subject, index) =>
+                                    <option
+                                        key={index}
+                                        value={subject}>
+                                        {subject}
+                                    </option>)
+                            }
+                    </select>
+                </div>
                 <ul>
                     {
-                        profs.map((prof) => 
+                        filteredProfs.map((prof) => 
                             <ProfShow
                             key={prof.id} 
                             prof={prof} 

@@ -12,7 +12,16 @@ class UserRatingsIndex extends React.Component {
 
     render() {
         const { user, profReviews, deleteProfReview } = this.props;
-        if (!user) return null;
+
+        if (profReviews.length === 0) {
+            return (
+                <div className='page'>
+                    <div className='account-header'>Hey, {user?.first_name}</div>
+                    <div id='no-authored-reviews'>You haven’t rated any professors yet.</div>
+                    <div id='no-authored-reviews-subtext'>Find your favorite professor and let them know what a difference they’ve made!</div>
+                </div>
+            )
+        }
         return (
             <div id='user-ratings-index'>
                 <div className='account-header'>Hey, {user.first_name}</div>
