@@ -38,13 +38,12 @@ class ProfIndex extends React.Component {
     }
 
     render() {
-        const { profs, profReviews, history, profSaves, createProfSave, deleteProfSave } = this.props;
+        const { profs, profReviews, history, profSaves, createProfSave, deleteProfSave, currentUser } = this.props;
 
         if (profs.length === 0) return null
 
         const groupedReviews = this.groupReviews(profs, profReviews)
         const groupedProfSaves = this.groupProfSaves(profs, profSaves)
-        console.log(profSaves)
 
         return (
             <div id='prof-index'>
@@ -60,6 +59,7 @@ class ProfIndex extends React.Component {
                             history={history}
                             createProfSave={createProfSave}
                             deleteProfSave={deleteProfSave}
+                            currentUser={currentUser}
                             />
                         )
                     }

@@ -32,11 +32,15 @@ class ProfShow extends React.Component {
         return () => this.props.history.push(path);
     }
 
-    clickSave() {
+    clickSave(event) {
+        event.cancelBubble = true;
+        if(event.stopPropagation) event.stopPropagation();
         this.props.createProfSave({saver_id: this.props.currentUser.id, prof_saved_id: this.props.prof.id})
     }
 
-    clickUnsave() {
+    clickUnsave(event) {
+        event.cancelBubble = true;
+        if(event.stopPropagation) event.stopPropagation();
         this.props.deleteProfSave(this.props.profSave.id)
     }
 
@@ -63,11 +67,11 @@ class ProfShow extends React.Component {
                         <div className='prof-show-name'>{prof.first_name} {prof.last_name}</div>
                         { this.state.profSave ?
                         <div className='icon-hint'>
-                            <i className="fas fa-bookmark icon-with-hint" id='saved' onClick={this.clickUnsave}></i>
+                            <i className="fas fa-bookmark icon-with-hint prof-show-bookmark" id='saved' onClick={this.clickUnsave}></i>
                             <div className='hint'>Unsave Prof</div>
                         </div> :
                         <div className='icon-hint'>
-                            <i className="far fa-bookmark icon-with-hint" id='unsaved' onClick={this.clickSave}></i>
+                            <i className="far fa-bookmark icon-with-hint prof-show-bookmark" id='unsaved' onClick={this.clickSave}></i>
                             <div className='hint'>Save Prof</div>
                         </div> }
                     </div>

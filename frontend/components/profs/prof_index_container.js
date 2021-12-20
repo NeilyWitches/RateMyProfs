@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
 import ProfIndex from './prof_index';
 import { requestProfs } from '../../actions/prof_actions';
-import { requestProfSaves } from '../../actions/prof_save_actions';
-import { createProfSave, deleteProfSave } from '../../actions/prof_save_actions';
+import { createProfSave, deleteProfSave, requestProfSaves } from '../../actions/prof_save_actions';
 
 const mSTP = state => {
     return {

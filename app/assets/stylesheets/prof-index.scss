@@ -75,10 +75,16 @@
 .prof-show-name-bookmark {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    width: 700px;
 }
 
 .prof-show-subject {
     margin-bottom: 11px;
+}
+
+.prof-show-bookmark {
+    font-size: 20px;
 }
 
 .take-again-lvl-diff {
