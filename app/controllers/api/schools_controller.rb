@@ -8,6 +8,11 @@ class Api::SchoolsController < ApplicationController
         end
     end
 
+    def index
+        @schools = School.all
+        render :index
+    end
+
     private
 
     def school_params

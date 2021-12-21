@@ -19,6 +19,13 @@ berta.password=('cupcake')
 berta.save!
 
 
+bergen = School.create(name: 'Bergen Community College', state: 'NJ', city: 'Paramus', website: "https://bergen.edu/")
+harvard = School.create(name: 'Harvard University', state: 'MA', city: 'Cambridge', website: "https://www.harvard.edu/")
+ucsb = School.create(name: 'University of California Santa Barbara', state: 'CA', city: 'Santa Barbara', website: 'https://www.ucsb.edu/')
+cuny = School.create(name: 'CUNY Queens College', state: 'NY', city: 'Flushing', website: 'https://www.qc.cuny.edu/Pages/home.aspx')
+chicago = School.create(name: 'University of Chicago', state: 'IL', city: 'Chicago', website: 'https://www.uchicago.edu/')
+
+
 neil_p = Prof.create(first_name: 'Neil', last_name: 'Pandya', 
 subject: 'Physics')
 george = Prof.create(first_name: 'George', last_name: 'Haramuniz', 

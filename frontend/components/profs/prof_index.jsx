@@ -94,7 +94,7 @@ class ProfIndex extends React.Component {
 
         return (
             <div id='prof-index'>
-                <h1 id='prof-index-header'>All profs</h1>
+                <h1 id='prof-index-header'>All Profs</h1>
                 <div id='dept-dropdown-container'>
                     <div id='dept-dropdown-label'>Department</div>
                     <select id='dept-dropdown' name='subjects' onChange={this.update('selectedSubject')} defaultValue={'Select...'}>

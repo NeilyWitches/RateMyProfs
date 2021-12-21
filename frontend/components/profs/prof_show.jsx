@@ -13,6 +13,16 @@ class ProfShow extends React.Component {
         this.clickUnsave = this.clickUnsave.bind(this);
     };
 
+    styleQuality(qual) {
+        if (qual < 3) {
+            return 'rgb(255, 156, 156)'
+        } else if (qual >= 4) {
+            return '#68ffbe'
+        } else {
+            return 'rgb(255, 254, 104)'
+        }
+    }
+
     getStats(profReviews, numReviews) {
         let sumQual = 0;
         let sumDiff = 0;
@@ -63,7 +73,7 @@ class ProfShow extends React.Component {
             <div className='prof-show' onClick={this.clickProf(prof)}>
                 <div className='prof-stats'>
                     <div className='avg-quality-label'>QUALITY</div>
-                    <div className='avg-quality'>{numReviews === 0 ? "N/A" : stats[0].toFixed(1)}</div>
+                    <div className='avg-quality' style={{backgroundColor: this.styleQuality(stats[0])}}>{numReviews === 0 ? "N/A" : stats[0].toFixed(1)}</div>
                     <div className='num-ratings'>{numReviews} ratings</div>
                 </div>
                 <div>

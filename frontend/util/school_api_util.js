@@ -5,3 +5,9 @@ export const createSchool = school => (
         data: {school},
     })
 );
+
+export const fetchSchools = () => (
+    $.ajax({
+        url: `/api/schools`,
+    })
+)

@@ -2,6 +2,7 @@ import * as SchoolApiUtil from '../util/school_api_util';
 
 export const RECEIVE_SCHOOL = 'RECEIVE_SCHOOL';
 export const RECEIVE_SCHOOL_ERRORS = 'RECEIVE_SCHOOL_ERRORS';
+export const RECEIVE_SCHOOLS = 'RECEIVE_SCHOOLS';
 
 const receiveSchool = payload => {
     return {
@@ -9,6 +10,11 @@ const receiveSchool = payload => {
         payload,
     }
 }
+
+const receiveSchools = payload => ({
+    type: RECEIVE_SCHOOLS,
+    payload,
+});
 
 export const receiveSchoolErrors = errors => ({
     type: RECEIVE_SCHOOL_ERRORS,
@@ -24,3 +30,8 @@ export const newSchool = school => dispatch => (
         return dispatch(receiveSchoolErrors(err.responseJSON))
     })
 )
+
+export const requestSchools = () => dispatch => (
+    SchoolApiUtil.fetchSchools()
+    .then(payload => dispatch(receiveSchools(payload)))
+);

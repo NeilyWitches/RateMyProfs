@@ -44,7 +44,7 @@ class DeleteAccount extends React.Component {
                 <div id='delete-account-header'>Are you sure you want to delete your account?</div>
                 <ul id='delete-account-list'>
                     <li>Deleting your account is permanent</li>
-                    <li>The ratings you've already submited will not be deleted</li>
+                    <li>The ratings you've already submitted will not be deleted</li>
                     <li>You will no longer be able to edit your ratings</li>
                 </ul>
                 <div className='delete-account-row'>Delete this account:</div>
