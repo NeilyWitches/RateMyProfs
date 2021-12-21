@@ -18,6 +18,8 @@ import EditUserContainer from './user_profile/edit_user_container';
 import AccountInfoContainer from './user_profile/account_info_container';
 import DeleteUserContainer from './user_profile/delete_account_container';
 import SavedProfsContainer from './user_profile/saved_profs_container';
+import CreateSchoolFormContainer from './schools/create_school_form_container';
+import SchoolIndexContainer from './schools/school_index_container';
 
 const App = ({ children }) => (
     <div>
@@ -25,6 +27,8 @@ const App = ({ children }) => (
         <Route path='/' component={NavBarContainer} />
         <Route path='/' component={Footer} />
         <Switch>
+            <Route path='/schools/new' component={CreateSchoolFormContainer} />
+            <Route path='/schools' component={SchoolIndexContainer} />
             <Route path='/profReviews/new/:profId' component={CreateProfReviewFormContainer} />
             <ExtraProtectedRoute path='/profReviews/edit/:userId/:profId/:profReviewId' component={EditProfReviewFormContainer} />
             <Route path='/profs/new' component={CreateProfFormContainer} />

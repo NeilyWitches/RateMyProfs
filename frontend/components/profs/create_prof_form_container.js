@@ -10,7 +10,6 @@ const mSTP = (state) => {
             last_name: '',
             subject: '',
         },
-        formType: 'Add a Prof',
         prof_errors: state.errors.prof,
     }
 };

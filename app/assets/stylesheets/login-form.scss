@@ -32,7 +32,7 @@
     color: #777777;
     width: 300px;
     line-height: 17px;
-    font-weight: 700;
+    font-weight: 300;
 }
 
 #login-signup-link {
@@ -65,10 +65,9 @@
     line-height: 36px;
     cursor: pointer;
     border: none;
-    transition-duration: 0.4s;
 }
 
-#login-form-submit:hover {
+.login-form-submit:hover {
     background: chartreuse;
 }
 

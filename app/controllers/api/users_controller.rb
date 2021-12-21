@@ -1,34 +1,40 @@
 class Api::UsersController < ApplicationController
     def create
-        @user = User.new(user_params)
-        if @user.save
+        @user = User.new({email: user_params[:email], first_name: user_params[:first_name], password: user_params[:password]})
+        passwords_match = user_params[:password] == user_params[:password_confirm]
+        emails_match = (user_params[:email] == user_params[:email_confirm])
+        if passwords_match && emails_match && @user.save
             login!(@user)
             render 'api/sessions/show'
         else
-            render json: @user.errors.full_messages, status: 401
+            errors = @user.errors.full_messages
+            errors.push('Password does not match') if !passwords_match
+            errors.push('Email does not match') if !emails_match
+            render json: errors, status: 401
         end
     end
 
     def update
+        errors = []
         if user_params[:updatingEmail]
             @user = User.find(user_params[:id])
-            if @user.is_password?(user_params[:password])
+            errors << 'Email cannot be blank' if user_params[:email] == ""
+            errors << 'Incorrect password' if !@user.is_password?(user_params[:password])
+            if errors.length == 0
                 @user = User.update(user_params[:id], :email => user_params[:email])
                 render 'api/sessions/show'
-            elsif !@user
-                render json: ['Could not locate user'], status: 400
             else
-                render json: ['Invalid password'], status: 401
+                render json: errors, status: 401
             end
         elsif user_params[:updatingPassword]
             @user = User.find(user_params[:id])
-            if @user.is_password?(user_params[:oldPassword])
+            errors << 'Password is too short, must be at least 6 characters' if user_params[:newPassword].length < 6
+            errors << 'Incorrect passowrd' if !@user.is_password?(user_params[:oldPassword])
+            if errors.length == 0
                 @user = User.update(user_params[:id], :password => user_params[:newPassword])
                 render 'api/sessions/show'
-            elsif !@user
-                render json: ['Could not locate user'], status: 400
             else
-                render json: ['The old password was incorrect'], status: 401
+                render json: errors, status: 401
             end
         end
     end
@@ -64,6 +70,6 @@ class Api::UsersController < ApplicationController
     end
 
     def user_params
-        params.require(:user).permit(:id, :email, :first_name, :last_name, :password, :newPassword, :oldPassword, :updatingEmail, :updatingPassword)
+        params.require(:user).permit(:id, :email, :first_name, :password, :newPassword, :oldPassword, :updatingEmail, :updatingPassword, :email_confirm, :password_confirm)
     end
 end

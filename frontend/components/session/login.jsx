@@ -62,7 +62,6 @@ class Login extends React.Component {
                     />
                     <button onClick={this.handleSubmit} className='login-form-submit'>Log in</button>
                 </form>
-                <div id='login-agreement' >You are logging into RateMyProfs, which is designed for and targeted to U.S. audiences and is governed by and operated in accordance with U.S. laws. By clicking the log in button, you (1) acknowledge that you have read and hereby agree to this site's Terms of Use and (2) consent to the collection, use and disclosure of information as described in this site's Privacy Policy.</div>
                 {this.renderErrors()}
             </div>
         )

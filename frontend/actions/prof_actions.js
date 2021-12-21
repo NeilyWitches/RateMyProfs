@@ -2,7 +2,6 @@ import * as ProfApiUtil from '../util/prof_api_util';
 
 export const RECEIVE_PROFS = 'RECEIVE_PROFS';
 export const RECEIVE_PROF = 'RECEIVE_PROF';
-export const CREATE_PROF = 'CREATE_PROF';
 export const RECEIVE_PROF_ERRORS = 'RECEIVE_PROF_ERRORS';
 
 const receiveProfs = payload => ({

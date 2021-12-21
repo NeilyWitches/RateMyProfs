@@ -37,6 +37,10 @@ class ProfReviewIndex extends React.Component {
     }
 
     clickSave() {
+        if (!this.props.currentUser) {
+            let path = '/signup';
+            this.props.history.push(path);
+        }
         this.props.createProfSave({saver_id: this.props.currentUser.id, prof_saved_id: this.props.prof.id})
     }
 

@@ -6,22 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.destroy_all
-Prof.destroy_all
-ProfReview.destroy_all
-
-demo_user = User.create(email: 'demouser@demo.com', first_name: 'Demo User', 
-last_name: 'Demo User')
+demo_user = User.create(email: 'demouser@demo.com', first_name: 'Demo User')
 demo_user.password=('cupcake')
 demo_user.save!
 
-neil_u = User.create(email: 'neildusk@gmail.com', first_name: 'Neil', 
-last_name: 'Pandya')
+neil_u = User.create(email: 'neildusk@gmail.com', first_name: 'Neil')
 neil_u.password=('cupcake')
 neil_u.save!
 
-berta = User.create(email: 'bmarani@gmail.com', first_name: 'Berta', 
-last_name: 'Marani')
+berta = User.create(email: 'bmarani@gmail.com', first_name: 'Berta')
 berta.password=('cupcake')
 berta.save!
 
@@ -139,3 +132,17 @@ tag2: "CLEAR GRADING CRITERIA", tag3: "TOUGH GRADER", prof_id: greg.id)
 tamsen_review_1 = ProfReview.create(body: "Best lectures of my life. This class--Contemporary Drama--is amazing.",
 klass: "ENG356", grade: "", quality: 5, difficulty: 4, take_again: true,
 for_credit: true, txt_book: false, attendance: true, prof_id: tamsen.id)
+
+demo_likes_neil_rev_1 = Like.create(like_type: true, liker_id: demo_user.id, review_id: neil_review_1.id)
+demo_likes_neil_rev_2 = Like.create(like_type: true, liker_id: demo_user.id, review_id: neil_review_2.id)
+demo_likes_neil_rev_3 = Like.create(like_type: false, liker_id: demo_user.id, review_id: neil_review_5.id)
+
+neil_u_likes_neil_rev_1 = Like.create(like_type: true, liker_id: neil_u.id, review_id: neil_review_1.id)
+neil_u_likes_neil_rev_2 = Like.create(like_type: true, liker_id: neil_u.id, review_id: neil_review_4.id)
+neil_u_likes_neil_rev_3 = Like.create(like_type: false, liker_id: neil_u.id, review_id: neil_review_5.id)
+
+
+demo_saves_neil = ProfSave.create(saver_id: demo_user.id, prof_saved_id: neil_p.id)
+demo_saves_greg = ProfSave.create(saver_id: demo_user.id, prof_saved_id: greg.id)
+
+berta_saves_george = ProfSave.create(saver_id: berta.id, prof_saved_id: george.id)

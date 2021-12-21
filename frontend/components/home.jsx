@@ -8,14 +8,14 @@ class Home extends React.Component {
             demo_user: {
                 email: 'demouser@demo.com',
                 first_name: 'Demo User',
-                last_name: 'Demo User',
                 password: 'cupcake',
             }
         }
 
         this.clickSignUp = this.clickSignUp.bind(this);
         this.clickDemo = this.clickDemo.bind(this);
-        this.clickExplore = this.clickExplore.bind(this);
+        this.clickExploreProfs = this.clickExploreProfs.bind(this);
+        this.clickExploreSchools = this.clickExploreSchools.bind(this);
         this.clickMyRatings = this.clickMyRatings.bind(this);
     }
 
@@ -30,8 +30,13 @@ class Home extends React.Component {
         .then(() => this.props.history.push('/'));
     }
 
-    clickExplore() {
+    clickExploreProfs() {
         let path = '/profs';
+        this.props.history.push(path);
+    }
+
+    clickExploreSchools() {
+        let path = '/schools';
         this.props.history.push(path);
     }
 
@@ -49,7 +54,8 @@ class Home extends React.Component {
                         <img src={window.books} alt='Books' id='books' />
                         <img src={window.logo_big} alt='Big Logo' id='logo-big' />
                         <div id='get-started'>Click to see a list of profs.</div>
-                        <button onClick={this.clickExplore} id='explore-button'>Explore</button>
+                        <button onClick={this.clickExploreProfs} id='explore-button'>Explore Profs</button>
+                        <button onClick={this.clickExploreSchools} id='explore-button'>Explore Schools</button>
                     </div>
                     <div id='love-rmp-text'>
                         <div id='join-rmp'>Join the RMP Family</div>
@@ -85,7 +91,8 @@ class Home extends React.Component {
                         <img src={window.books} alt='Books' id='books' />
                         <img src={window.logo_big} alt='Big Logo' id='logo-big' />
                         <div id='get-started'>Click to see a list of profs.</div>
-                        <button onClick={this.clickExplore} id='explore-button'>Explore</button>
+                        <button onClick={this.clickExploreProfs} id='explore-button'>Explore Profs</button>
+                        <button onClick={this.clickExploreSchools} id='explore-button'>Explore Schools</button>
                     </div>
                     <div id='love-rmp-text'>
                         <div id='join-rmp'>Welcome back!</div>
