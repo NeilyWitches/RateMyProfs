@@ -105,18 +105,18 @@ class EditUserForm extends React.Component {
                             className="edit-user-form-input">
                         </input>
                     </div>
-                    <div className="edit-user-form-input-row edit-user-form-submit-row">
-                        <input 
-                            type='submit' 
-                            className='edit-user-form-submit edit-user-button' 
-                            value='Update Email'>
-                        </input>
-                    </div>
-                    <div className="edit-user-form-input-row edit-user-form-submit-row">
-                        <Link 
-                            className='edit-user-form-cancel link'
-                            to={`/account/${user.id}`}>Cancel
-                        </Link>
+                    <div className='edit-user-form-submit-cancel-row'>
+                        <div className='edit-user-form-submit-cancel-col'>
+                            <input 
+                                type='submit' 
+                                className='edit-user-form-submit edit-user-button' 
+                                value='Update Email'>
+                            </input>
+                            <Link 
+                                className='edit-user-form-cancel link'
+                                to={`/account/{user.id}`}>Cancel
+                            </Link>
+                        </div>
                     </div>
                     {this.renderEmailErrors()}
                     <div className='edit-user-form-border'></div>
@@ -141,18 +141,18 @@ class EditUserForm extends React.Component {
                             className="edit-user-form-input">
                         </input>
                     </div>
-                    <div className="edit-user-form-input-row edit-user-form-submit-row">
-                        <input 
-                            type='submit' 
-                            className='edit-user-form-submit edit-user-button' 
-                            value='Update Password'>
-                        </input>
-                    </div>
-                    <div className="edit-user-form-input-row edit-user-form-submit-row">
-                        <Link 
-                            className='edit-user-form-cancel link'
-                            to={`/account/${user.id}`}>Cancel
-                        </Link>
+                    <div className='edit-user-form-submit-cancel-row'>
+                        <div className='edit-user-form-submit-cancel-col'>
+                            <input 
+                                type='submit' 
+                                className='edit-user-form-submit edit-user-button' 
+                                value='Update Password'>
+                            </input>
+                            <Link 
+                                className='edit-user-form-cancel link'
+                                to={`/account/{user.id}`}>Cancel
+                            </Link>
+                        </div>
                     </div>
                     {this.renderPasswordErrors()}
                     <div className='edit-user-form-border'></div>

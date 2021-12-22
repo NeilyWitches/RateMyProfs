@@ -40,7 +40,7 @@ class Api::UsersController < ApplicationController
             # debugger
             @user = User.find(user_params[:id])
             # debugger
-            school = User.find(user_params[:school_id])
+            school = School.find_by(name: user_params[:schoolName])
             # debugger
             errors << 'Name cannot be blank' if user_params[:first_name] === ""
             # debugger
@@ -48,7 +48,7 @@ class Api::UsersController < ApplicationController
             # debugger
             if errors.length == 0
                 # debugger
-                @user = User.update(user_params[:id], first_name: user_params[:first_name], school_id: user_params[:school_id])
+                @user = User.update(user_params[:id], first_name: user_params[:first_name], school_id: school.id)
                 # debugger
                 render 'api/sessions/show'
                 # debugger
@@ -58,7 +58,6 @@ class Api::UsersController < ApplicationController
                 # debugger
             end
         end
-        # debugger
     end
 
     def destroy
@@ -92,6 +91,6 @@ class Api::UsersController < ApplicationController
     end
 
     def user_params
-        params.require(:user).permit(:id, :email, :first_name, :password, :newPassword, :oldPassword, :updatingEmail, :updatingPassword, :email_confirm, :password_confirm, :updatingProfile, :school_id)
+        params.require(:user).permit(:id, :email, :first_name, :password, :newPassword, :oldPassword, :updatingEmail, :updatingPassword, :email_confirm, :password_confirm, :updatingProfile, :school_id, :schoolName)
     end
 end
