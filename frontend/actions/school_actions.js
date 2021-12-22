@@ -35,3 +35,8 @@ export const requestSchools = () => dispatch => (
     SchoolApiUtil.fetchSchools()
     .then(payload => dispatch(receiveSchools(payload)))
 );
+
+export const requestSchool = schoolId => dispatch => (
+    SchoolApiUtil.fetchSchool(schoolId)
+    .then(payload => dispatch(receiveSchool(payload)))
+);

@@ -6,24 +6,23 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-demo_user = User.new(email: 'demouser@demo.com', first_name: 'Demo User')
-demo_user.password=('cupcake')
-demo_user.save!
-
-neil_u = User.new(email: 'neildusk@gmail.com', first_name: 'Neil')
-neil_u.password=('cupcake')
-neil_u.save!
-
-berta = User.new(email: 'bmarani@gmail.com', first_name: 'Berta')
-berta.password=('cupcake')
-berta.save!
-
-
 bergen = School.create!(name: 'Bergen Community College', state: 'NJ', city: 'Paramus', website: "https://bergen.edu/")
 harvard = School.create!(name: 'Harvard University', state: 'MA', city: 'Cambridge', website: "https://www.harvard.edu/")
 ucsb = School.create!(name: 'University of California Santa Barbara', state: 'CA', city: 'Santa Barbara', website: 'https://www.ucsb.edu/')
 cuny = School.create!(name: 'CUNY Queens College', state: 'NY', city: 'Flushing', website: 'https://www.qc.cuny.edu/Pages/home.aspx')
 chicago = School.create!(name: 'University of Illinois at Chicago', state: 'IL', city: 'Chicago', website: 'https://www.uchicago.edu/')
+
+demo_user = User.new(email: 'demouser@demo.com', first_name: 'Demo User', school_id: harvard.id)
+demo_user.password=('cupcake')
+demo_user.save!
+
+neil_u = User.new(email: 'neildusk@gmail.com', first_name: 'Neil', school_id: bergen.id)
+neil_u.password=('cupcake')
+neil_u.save!
+
+berta = User.new(email: 'bmarani@gmail.com', first_name: 'Berta', school_id: bergen.id)
+berta.password=('cupcake')
+berta.save!
 
 
 neil_p = Prof.create!(first_name: 'Neil', last_name: 'Pandya', subject: 'Physics', school_id: bergen.id)

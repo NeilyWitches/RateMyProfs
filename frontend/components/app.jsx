@@ -20,6 +20,7 @@ import DeleteUserContainer from './user_profile/delete_account_container';
 import SavedProfsContainer from './user_profile/saved_profs_container';
 import CreateSchoolFormContainer from './schools/create_school_form_container';
 import SchoolIndexContainer from './schools/school_index_container';
+import ProfileInfoContainer from './user_profile/profile_info_container';
 
 const App = ({ children }) => (
     <div>
@@ -38,6 +39,7 @@ const App = ({ children }) => (
             <ExtraProtectedRoute path='/account/edit/:userId' component={EditUserContainer} />
             <ExtraProtectedRoute path='/account/delete/:userId' component={DeleteUserContainer} />
             <ExtraProtectedRoute path='/account/profs/:userId' component={SavedProfsContainer} />
+            <ExtraProtectedRoute path='/account/profile/:userId' component={ProfileInfoContainer} />
             <ExtraProtectedRoute path='/account/:userId' component={AccountInfoContainer} />
             <AuthRoute path='/signup' component={SignupContainer} />
             <AuthRoute path='/login' component={LoginContainer} />

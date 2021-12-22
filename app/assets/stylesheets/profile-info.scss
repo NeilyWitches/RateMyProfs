@@ -1,0 +1,41 @@
+#edit-user-profile-button {
+    display: flex;
+    justify-content: flex-end;
+    width: 755px;
+    align-items: center;
+    font-family: HelveticaNeue, arial;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.profile-info {
+    width: 755px;
+    display: flex;
+}
+
+.profile-info {
+    display: flex;
+}
+
+.profile-info-labels {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.profile-info-infos {
+    width: 455px;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-info-label {
+    font-family: Avenir-Heavy, Avenir, Helvetica, sans-serif;
+    font-size: 16px;
+    margin-bottom: 70px;
+}
+
+.profile-info-info {
+    margin-bottom: 70px;
+}

@@ -11,3 +11,10 @@ export const fetchSchools = () => (
         url: `/api/schools`,
     })
 )
+
+export const fetchSchool = (schoolId) => (
+    $.ajax({
+        url: `/api/schools/${schoolId}`,
+        data: {schoolId}
+    })
+)
