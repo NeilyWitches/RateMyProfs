@@ -26,15 +26,20 @@ class ProfShow extends React.Component {
     getStats(profReviews, numReviews) {
         let sumQual = 0;
         let sumDiff = 0;
-        let count = 0
+        let numWouldTakeAgain = 0;
+        let numWouldNotTakeAgain = 0;
         for (let i = 0; i < numReviews; i++) {
             sumQual += profReviews[i].quality;
             sumDiff += profReviews[i].difficulty;
-            if (profReviews[i].take_again) {
-                count ++
+            if (profReviews[i].take_again === true) {
+                numWouldTakeAgain ++
+            } else if (profReviews[i].take_again === false) {
+                numWouldNotTakeAgain ++
             }
         }
-        return [sumQual, sumDiff, count].map(num => num / numReviews)
+        let stats = [sumQual, sumDiff].map(num => num / numReviews)
+        stats.push(numWouldTakeAgain / (numWouldTakeAgain + numWouldNotTakeAgain));
+        return stats;
     }
 
     clickProf(prof) {
@@ -73,7 +78,7 @@ class ProfShow extends React.Component {
             <div className='prof-show' onClick={this.clickProf(prof)}>
                 <div className='prof-stats'>
                     <div className='avg-quality-label'>QUALITY</div>
-                    <div className='avg-quality' style={{backgroundColor: this.styleQuality(stats[0])}}>{numReviews === 0 ? "N/A" : stats[0].toFixed(1)}</div>
+                    <div className='avg-quality' style={{backgroundColor: this.styleQuality(stats[0])}}>{numReviews === 0 ? "N/A" : stats[0]?.toFixed(1)}</div>
                     <div className='num-ratings'>{numReviews} ratings</div>
                 </div>
                 <div>
@@ -91,10 +96,10 @@ class ProfShow extends React.Component {
                     </div>
                     <div className='prof-show-subject'>{prof.subject}</div>
                     <div className='take-again-lvl-diff'>
-                        <div className='prof-show-take-again'>{numReviews === 0 ? "N/A" : `${stats[2].toFixed(2) * 100}%`}</div>
+                        <div className='prof-show-take-again'>{isNaN(stats[2]) ? "N/A" : `${stats[2]?.toFixed(2) * 100}%`}</div>
                         <div className='prof-show-take-again-label'>would take again</div>
                         <div>|</div>
-                        <div className='prof-show-avg-diff'>{numReviews === 0 ? "N/A" : stats[1].toFixed(1)}</div>
+                        <div className='prof-show-avg-diff'>{numReviews === 0 ? "N/A" : stats[1]?.toFixed(1)}</div>
                         <div className='prof-show-lvl-diff-label'>level of difficulty</div>
                     </div>
                 </div>

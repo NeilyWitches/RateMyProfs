@@ -13,7 +13,7 @@ class ProfReviewIndex extends React.Component {
         this.tags = [
             'GIVES GOOD FEEDBACK', 'RESPECTED', 'LOTS OF HOMEWORK',
             'ACCESSIBLE OUTSIDE OF CLASS', 'GET READY TO READ',
-            'PARTICIPATION MATTERS', "SKIP CLASS YOU WON'T PASS.",
+            'PARTICIPATION MATTERS', "SKIP CLASS? YOU WON'T PASS.",
             "INSPIRATIONAL", "GRADED BY FEW THINGS", "TEST HEAVY",
             "GROUP PROJECTS", "CLEAR GRADING CRITERIA", "HILARIOUS",
             "BEWARE OF POP QUIZZES", "AMAZING LECTURES", "LECTURE HEAVY",
@@ -33,6 +33,9 @@ class ProfReviewIndex extends React.Component {
     componentDidUpdate(prevProps) {
         if (prevProps.profSave !== this.props.profSave) {
             this.setState({profSave: this.props.profSave})
+        }
+        if (prevProps.currentUser !== this.props.currentUser) {
+            this.props.requestProfReviews(this.props.match.params.profId, this.props.currentUser?.id)
         }
     }
 
@@ -65,15 +68,20 @@ class ProfReviewIndex extends React.Component {
     getStats(profReviews, numReviews) {
         let sumQual = 0;
         let sumDiff = 0;
-        let count = 0
+        let numWouldTakeAgain = 0;
+        let numWouldNotTakeAgain = 0;
         for (let i = 0; i < numReviews; i++) {
             sumQual += profReviews[i].quality;
             sumDiff += profReviews[i].difficulty;
-            if (profReviews[i].take_again) {
-                count ++
+            if (profReviews[i].take_again === true) {
+                numWouldTakeAgain ++
+            } else if (profReviews[i].take_again === false) {
+                numWouldNotTakeAgain ++
             }
         }
-        return [sumQual, sumDiff, count].map(num => num / numReviews)
+        let stats = [sumQual, sumDiff].map(num => num / numReviews)
+        stats.push(numWouldTakeAgain / (numWouldTakeAgain + numWouldNotTakeAgain));
+        return stats;
     }
 
     clickRateProf() {
@@ -166,7 +174,7 @@ class ProfReviewIndex extends React.Component {
                     <div id='prof-show-quality-name'>
                         <div id='prof-show-avg-qual'>
                             <div id='prof-show-avg-qual-nums'>
-                                <div id='prof-show-avg-qual-proper'>{ numReviews === 0 ? "N/A" : stats[0].toFixed(1) }</div>
+                                <div id='prof-show-avg-qual-proper'>{ numReviews === 0 ? "N/A" : stats[0]?.toFixed(1) }</div>
                                 <div id='out-of-5'> / 5.0</div>
                             </div>
                             <div id='qual-based-on'>Overall Quality Based on {numReviews} Ratings</div>
@@ -189,11 +197,11 @@ class ProfReviewIndex extends React.Component {
                     </div>
                     <div id='prof-show-other-stats'>
                         <div className='prof-show-other-stats' id='prof-review-index-prof-show-take-again'>
-                            <div className='prof-review-index-prof-show-take-again-ratio'>{numReviews === 0 ? "N/A" : `${stats[2].toFixed(2) * 100}%`}</div>
+                            <div className='prof-review-index-prof-show-take-again-ratio'>{isNaN(stats[2]) ? "N/A" : `${stats[2]?.toFixed(2) * 100}%`}</div>
                             <div>Would take again</div>
                         </div>
                         <div className='prof-show-other-stats' id='prof-review-index-prof-show-difficulty'>
-                            <div className='prof-review-index-prof-show-take-again-ratio'>{numReviews === 0 ? "N/A" : stats[1].toFixed(1)}</div>
+                            <div className='prof-review-index-prof-show-take-again-ratio'>{numReviews === 0 ? "N/A" : stats[1]?.toFixed(1)}</div>
                             <div>Level of Difficulty</div>
                         </div>
                     </div>

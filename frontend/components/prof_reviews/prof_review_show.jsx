@@ -44,6 +44,8 @@ class ProfReviewShow extends React.Component {
 
         let attendanceDisplay;
         let gradeDisplay;
+        let forCreditDisplay;
+        let take_again_display;
 
         if (attendance === null) {
             attendanceDisplay = null;
@@ -51,6 +53,22 @@ class ProfReviewShow extends React.Component {
             attendanceDisplay = <div>Attendance: <strong>Mandataory</strong></div>
         } else {
             attendanceDisplay = <div>Attendance: <strong>Not Mandatory</strong></div>
+        };
+
+        if (for_credit === null) {
+            forCreditDisplay = null;
+        } else if (for_credit === true) {
+            forCreditDisplay = <div>Attendance: <strong>Mandataory</strong></div>
+        } else {
+            forCreditDisplay = <div>Attendance: <strong>Not Mandatory</strong></div>
+        };
+
+        if (take_again === null) {
+            take_again_display = null;
+        } else if (take_again === true) {
+            take_again_display = <div>Would Take Again: <strong>Yes</strong></div>
+        } else {
+            take_again_display = <div>Would Take Again: <strong>No</strong></div>
         };
 
         if (grade === 'Select' || grade === '') {
@@ -79,9 +97,9 @@ class ProfReviewShow extends React.Component {
                         <div id='prof-review-date'>{updatedOn}</div>
                     </div>
                     <div id='booleans'>
-                        <div>For Credit: <strong>{for_credit ? "Yes" : "No"}</strong></div>
+                        {forCreditDisplay}
                         {attendanceDisplay}
-                        <div>Would take again: <strong>{take_again ? "Yes" : "No"}</strong></div>
+                        {take_again_display}
                         {gradeDisplay}
                         <div>Textbook: <strong>{txt_book ? "Yes" : "No"}</strong></div>
                     </div>

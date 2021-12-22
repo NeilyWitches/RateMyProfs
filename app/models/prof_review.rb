@@ -9,7 +9,7 @@ class ProfReview < ApplicationRecord
     TAGS = [
         "", 'GIVES GOOD FEEDBACK', 'RESPECTED', 'LOTS OF HOMEWORK', 
         'ACCESSIBLE OUTSIDE OF CLASS', 'GET READY TO READ', 
-        'PARTICIPATION MATTERS', "SKIP CLASS YOU WON'T PASS.", 
+        'PARTICIPATION MATTERS', "SKIP CLASS? YOU WON'T PASS.", 
         "INSPIRATIONAL", "GRADED BY FEW THINGS", "TEST HEAVY", 
         "GROUP PROJECTS", "CLEAR GRADING CRITERIA", "HILARIOUS", 
         "BEWARE OF POP QUIZZES", "AMAZING LECTURES", "LECTURE HEAVY",
@@ -22,7 +22,7 @@ class ProfReview < ApplicationRecord
     validates :prof_id, presence: true
     validates :grade, inclusion: GRADES
     validates :tag1, :tag2, :tag3, inclusion: TAGS
-    validates :take_again, :for_credit, :txt_book, inclusion: [true, false]
+    validates :take_again, :for_credit, :txt_book, inclusion: [true, false, nil]
     validates :attendance, inclusion: [nil, true, false]
 
     belongs_to :author,
