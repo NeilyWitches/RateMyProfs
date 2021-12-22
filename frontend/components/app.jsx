@@ -21,6 +21,7 @@ import SavedProfsContainer from './user_profile/saved_profs_container';
 import CreateSchoolFormContainer from './schools/create_school_form_container';
 import SchoolIndexContainer from './schools/school_index_container';
 import ProfileInfoContainer from './user_profile/profile_info_container';
+import EditProfileContainer from './user_profile/edit_profile_container';
 
 const App = ({ children }) => (
     <div>
@@ -35,6 +36,7 @@ const App = ({ children }) => (
             <Route path='/profs/new' component={CreateProfFormContainer} />
             <Route path='/profs/:profId' component={ProfReviewIndexContainer} />
             <Route path='/profs/' component={ProfIndexContainer} />
+            <ExtraProtectedRoute path='/account/profile/edit/:userId' component={EditProfileContainer} />
             <ExtraProtectedRoute path='/account/ratings/:userId' component={UserRatingsIndexContainer} />
             <ExtraProtectedRoute path='/account/edit/:userId' component={EditUserContainer} />
             <ExtraProtectedRoute path='/account/delete/:userId' component={DeleteUserContainer} />

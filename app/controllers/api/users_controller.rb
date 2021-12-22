@@ -36,7 +36,29 @@ class Api::UsersController < ApplicationController
             else
                 render json: errors, status: 401
             end
+        elsif user_params[:updatingProfile]
+            # debugger
+            @user = User.find(user_params[:id])
+            # debugger
+            school = User.find(user_params[:school_id])
+            # debugger
+            errors << 'Name cannot be blank' if user_params[:first_name] === ""
+            # debugger
+            errors << 'School not found' if !school
+            # debugger
+            if errors.length == 0
+                # debugger
+                @user = User.update(user_params[:id], first_name: user_params[:first_name], school_id: user_params[:school_id])
+                # debugger
+                render 'api/sessions/show'
+                # debugger
+            else
+                # debugger
+                render json: errors, status: 401
+                # debugger
+            end
         end
+        # debugger
     end
 
     def destroy
@@ -70,6 +92,6 @@ class Api::UsersController < ApplicationController
     end
 
     def user_params
-        params.require(:user).permit(:id, :email, :first_name, :password, :newPassword, :oldPassword, :updatingEmail, :updatingPassword, :email_confirm, :password_confirm)
+        params.require(:user).permit(:id, :email, :first_name, :password, :newPassword, :oldPassword, :updatingEmail, :updatingPassword, :email_confirm, :password_confirm, :updatingProfile, :school_id)
     end
 end

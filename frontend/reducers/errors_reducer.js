@@ -6,6 +6,7 @@ import prof from './prof_errors_reducer';
 import change_email from './change_email_reducer';
 import change_password from './change_password_reducer';
 import school from './school_errors_reducer';
+import update_profile from './update_profile_reducer';
 
 export default combineReducers({
     login,
@@ -15,4 +16,5 @@ export default combineReducers({
     change_email,
     change_password,
     school,
+    update_profile,
 });

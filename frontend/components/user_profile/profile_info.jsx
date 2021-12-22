@@ -17,7 +17,7 @@ class ProfileInfo extends React.Component {
             <div className='page'>
                 <div className='account-header'>Hey, {user.first_name}</div>
                 <Link 
-                    to={`/account/edit/${user.id}`} 
+                    to={`/account/profile/edit/${user.id}`} 
                     id='edit-user-profile-button'
                     className='link'>
                     <i id='edit-icon' className="fas fa-pencil-alt"></i>Edit
