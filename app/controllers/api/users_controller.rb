@@ -65,7 +65,10 @@ class Api::UsersController < ApplicationController
     end
 
     def show
-        @user = selected_user
+        user = selected_user
+        @prof_reviews = user.prof_reviews
+        @profs = user.profs_written_about
+        @schools = user.schools_of_profs_written_about
     end
 
     def index
@@ -77,7 +80,7 @@ class Api::UsersController < ApplicationController
     private
 
     def selected_user
-        User.includes(:prof_reviews).find(params[:id])
+        User.includes(:prof_reviews, :profs_written_about, :schools_of_profs_written_about).find(params[:id])
     end
 
     def user_params

@@ -7,7 +7,9 @@ import { deleteProfReview } from '../../actions/prof_review_actions';
 const mSTP = (state, ownProps) => {
     return {
         user: state.session.current_user,
-        profReviews: Object.values(state.entities.prof_reviews)
+        profReviews: Object.values(state.entities.prof_reviews),
+        profs: state.entities.profs,
+        schools: state.entities.schools
     }
 };
 

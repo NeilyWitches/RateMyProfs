@@ -9,26 +9,8 @@ class ProfReviewShow extends React.Component {
         this.clickDelete = this.clickDelete.bind(this)
     };
 
-    displayEdit() {
-        return (
-            <Link
-                to={`/profReviews/edit/${this.props.userId}/${this.props.profReview.prof_id}/${this.props.profReview.id}`}
-                id='edit-prof-review-link'><i id='edit-icon' className="fas fa-pencil-alt"></i>Edit
-            </Link>
-        )
-    }
-
     clickDelete() {
         this.props.deleteProfReview(this.props.profReview.id)
-    }
-
-    displayDelete() {
-        return (
-            <div id='delete-prof-review' onClick={this.clickDelete}>
-                <i className="fas fa-trash-alt"></i>
-                <div id='delete-prof-review-txt'>Delete</div>
-            </div>
-        )
     }
 
     styleQuality(qual) {
@@ -37,6 +19,31 @@ class ProfReviewShow extends React.Component {
         } else if (qual === 3) {
             return 'rgb(255, 254, 104)'
         }
+    }
+
+    displayMayEditHeader() {
+        return (
+            <div className='may-edit-header'>
+                <div className='prof-review-show-prof-school'>
+                    <strong className='prof-review-show-prof-name'>
+                        {this.props.profWrittenAbout.first_name} &nbsp;
+                        {this.props.profWrittenAbout.last_name}
+                    </strong>
+                    <div>•</div>
+                    <div className='prof-review-show-prof-name'>{this.props.school?.name}</div>
+                </div>
+                <div className='prof-review-show-edit-delete'>
+                    <Link
+                        to={`/profReviews/edit/${this.props.userId}/${this.props.profReview.prof_id}/${this.props.profReview.id}`}
+                        id='edit-prof-review-link'>
+                        <i id='edit-icon' className="fas fa-pencil-alt"></i>Edit
+                    </Link>
+                    <div id='delete-prof-review' onClick={this.clickDelete}>
+                        <i id='delete-icon' className="fas fa-trash-alt"></i>Delete
+                    </div>
+                </div>
+            </div>
+        )
     }
 
     render() {
@@ -90,10 +97,9 @@ class ProfReviewShow extends React.Component {
                     </div>
                 </div>
                 <div id='prof-review'>
+                    {this.props.mayEdit ? this.displayMayEditHeader() : null}
                     <div id='class-date'>
                         <div id='class'>{klass}</div>
-                        {this.props.mayEdit ? this.displayEdit() : null}
-                        {this.props.mayDelete ? this.displayDelete() : null}
                         <div id='prof-review-date'>{updatedOn}</div>
                     </div>
                     <div id='booleans'>

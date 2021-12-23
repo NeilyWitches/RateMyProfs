@@ -1,4 +1,5 @@
 import { RECEIVE_SCHOOL, RECEIVE_SCHOOLS } from '../actions/school_actions';
+import {RECEIVE_USER} from '../actions/user_actions';
 import {merge} from 'lodash';
 
 const SchoolsReducer = (oldState = {}, action) => {
@@ -9,6 +10,9 @@ const SchoolsReducer = (oldState = {}, action) => {
             newState = action.payload.schools
             return newState;
         case RECEIVE_SCHOOLS:
+            newState = action.payload.schools
+            return newState;
+        case RECEIVE_USER:
             newState = action.payload.schools
             return newState;
         default:

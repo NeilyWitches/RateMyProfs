@@ -12,12 +12,15 @@ class UserRatingsIndex extends React.Component {
     };
 
     render() {
-        const { user, profReviews, deleteProfReview } = this.props;
+        const { user, profReviews, deleteProfReview, profs, schools } = this.props;
 
         if (profReviews.length === 0) {
             return (
                 <div className='page'>
                     <div className='account-header'>Hey, {user?.first_name}</div>
+                    <AccountLinks 
+                    location={this.props.match.path}
+                    user={user}/>
                     <div id='no-authored-reviews'>You haven’t rated any professors yet.</div>
                     <div id='no-authored-reviews-subtext'>Find your favorite professor and let them know what a difference they’ve made!</div>
                 </div>
@@ -34,11 +37,12 @@ class UserRatingsIndex extends React.Component {
                         profReviews.map((profReview, index) =>
                         <div key={index}>
                             <ProfReviewShow 
-                            profReview={profReview} 
+                            profReview={profReview}
                             mayEdit={true}
                             userId={this.props.match.params.userId}
-                            mayDelete={true}
-                            deleteProfReview={deleteProfReview}/>
+                            deleteProfReview={deleteProfReview}
+                            profWrittenAbout={profs[profReview.prof_id]}
+                            school={schools[profs[profReview.prof_id].school_id]}/>
                         </div>)
                     }
                 </ul>

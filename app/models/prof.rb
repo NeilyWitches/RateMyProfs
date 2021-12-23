@@ -16,4 +16,8 @@ class Prof < ApplicationRecord
     has_many :savers,
         through: :prof_saves,
         source: :saver
+
+    belongs_to :school,
+        foreign_key: :school_id,
+        class_name: :School
 end
