@@ -1,0 +1,45 @@
+.edit-profile-school-search {
+    width: 380px;
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+    height: 200px;
+    overflow-y: auto;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px lightgrey;
+}
+
+.school {
+    width: 100%;
+}
+
+.edit-profile-school-search-container {
+    width: 755px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.school-li-name {
+    font-weight: 700;
+}
+
+.school-li-location {
+    font-size: 14px;
+    color: gray;
+}
+
+.school-li {
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+.school-li:hover {
+    background-color: blue;
+    color: white
+}
+
+.school-li:hover .school-li-location {
+   color: white
+}

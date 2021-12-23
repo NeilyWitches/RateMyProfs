@@ -10,21 +10,19 @@ class AccountLinks extends React.Component {
 
     render() {
         const {user, location} = this.props;
-        console.log(location)
 
         return (
             <div className='account-links'>
                 <Link 
                     className='link account-link'
                     to={`/account/profile/${user.id}`}
-                    // style={makeBoldOrNah('/account/profile/:userId')}
                     style={location === `/account/profile/:userId` || location === '/account/profile/edit/:userId' ? {fontWeight: '700'} : null }
                     >Profile
                 </Link>
                 <Link 
                     className='link account-link'
                     to={`/account/${user.id}`}
-                    style={location === `/account/:userId` || location === '/account/edit/:userId' ? {fontWeight: '700'} : null }
+                    style={location === `/account/:userId` || location === '/account/edit/:userId' || location === '/account/delete/:userId' ? {fontWeight: '700'} : null }
                     >Account Settings
                 </Link>
                 <Link 

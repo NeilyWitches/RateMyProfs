@@ -14,11 +14,15 @@ class EditProfile extends React.Component {
                 updatingProfile: true,
                 schoolName: ""
             },
+            searchDisplay: 'none'
         }
 
         this.editProfile = this.editProfile.bind(this)
         this.updateName = this.updateName.bind(this)
         this.updateSchool = this.updateSchool.bind(this)
+        this.displaySearch = this.displaySearch.bind(this)
+        this.hideSearch = this.hideSearch.bind(this)
+        this.clickSchool = this.clickSchool.bind(this)
     }
 
     componentDidMount() {
@@ -64,8 +68,36 @@ class EditProfile extends React.Component {
         )
     }
 
+    displaySearch() {
+        this.setState({searchDisplay: 'block'})
+    }
+
+    hideSearch() {
+        setTimeout(() => {
+            this.setState({searchDisplay: 'none'})
+        }, 250);
+    }
+
+    filterSchools(schools) {
+        let filterdSchools = []
+        for (let i = 0; i < schools.length; i++) {
+            if (schools[i].name.includes(this.state.profile.schoolName)) {
+                filterdSchools.push(schools[i])
+            }
+        }
+        return filterdSchools
+    }
+
+    clickSchool(e) {
+        let profile = {...this.state.profile}
+        profile.schoolName = e.currentTarget.children[0].innerText;
+        this.setState({profile})
+    }
+
     render() {
         const { user, schools } = this.props;
+        const schoolList = Object.values(schools);
+        let filteredSchools = this.filterSchools(schoolList);
 
         return (
             <div className='page'>
@@ -85,12 +117,27 @@ class EditProfile extends React.Component {
                     </div>
                     <div className='edit-user-form-input-row'>
                         <div className='edit-user-form-label'>School</div>
-                        <input 
+                        <input
+                            onFocus={this.displaySearch}
+                            onBlur={this.hideSearch}
                             type='text'
                             value={this.state.profile.schoolName}
                             onChange={this.updateSchool}
                             className="edit-user-form-input">
                         </input>
+                    </div>
+                    <div className='edit-profile-school-search-container'>
+                        <ul className='edit-profile-school-search'
+                            style={{display: this.state.searchDisplay}}>{
+                            filteredSchools.map((school) => 
+                            <li 
+                                key={school.id}
+                                className='school-li'
+                                onClick={this.clickSchool}>
+                                <div className='school-li-name'>{school.name}</div>
+                                <div className='school-li-location'>{school.city}, {school.state}</div>
+                            </li>)
+                        }</ul>
                     </div>
                     <div className='edit-user-form-submit-cancel-row'>
                         <div className='edit-user-form-submit-cancel-col'>
