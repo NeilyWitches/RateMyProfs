@@ -1,0 +1,12 @@
+.account-links {
+    width: 755px;
+    border-bottom: 1px solid black;
+    margin-bottom: 20px;
+    display: flex;
+    padding-bottom: 10px;
+    gap: 60px;
+}
+
+.account-link:hover {
+    color: gray;
+}

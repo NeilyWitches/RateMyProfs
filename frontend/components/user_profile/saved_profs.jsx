@@ -1,5 +1,6 @@
 import React from 'react';
 import ProfShow from '../profs/prof_show';
+import AccountLinks from './account_links';
 
 class SavedProfs extends React.Component {
     constructor(props) {
@@ -49,6 +50,9 @@ class SavedProfs extends React.Component {
             return (
                 <div className='page'>
                     <div className='account-header'>Hey, {currentUser.first_name}</div>
+                    <AccountLinks 
+                    location={this.props.match.path}
+                    user={currentUser}/>
                     <img src={window.prof_save_gif} alt="ProfSaveGif" id='prof-save-gif' />
                     <div id='no-saved-profs'>You don't have any saved profs yet</div>
                 </div>
@@ -59,6 +63,9 @@ class SavedProfs extends React.Component {
             return (
                 <div className='page'>
                     <div className='account-header'>Hey, {currentUser.first_name}</div>
+                    <AccountLinks 
+                    location={this.props.match.path}
+                    user={currentUser}/>
                     <ul>
                         {
                             profs.map((prof) =>

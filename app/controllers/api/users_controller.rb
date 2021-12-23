@@ -37,25 +37,15 @@ class Api::UsersController < ApplicationController
                 render json: errors, status: 401
             end
         elsif user_params[:updatingProfile]
-            # debugger
             @user = User.find(user_params[:id])
-            # debugger
             school = School.find_by(name: user_params[:schoolName])
-            # debugger
             errors << 'Name cannot be blank' if user_params[:first_name] === ""
-            # debugger
             errors << 'School not found' if !school
-            # debugger
             if errors.length == 0
-                # debugger
                 @user = User.update(user_params[:id], first_name: user_params[:first_name], school_id: school.id)
-                # debugger
                 render 'api/sessions/show'
-                # debugger
             else
-                # debugger
                 render json: errors, status: 401
-                # debugger
             end
         end
     end

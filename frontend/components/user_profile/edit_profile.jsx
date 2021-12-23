@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import AccountLinks from './account_links';
 
 class EditProfile extends React.Component {
     constructor(props) {
@@ -69,6 +70,9 @@ class EditProfile extends React.Component {
         return (
             <div className='page'>
                 <div className='account-header'>Hey, {user.first_name}</div>
+                <AccountLinks 
+                location={this.props.match.path}
+                user={user}/>
                 <form onSubmit={this.editProfile} className='edit-user-form-proper'>
                     <div className='edit-user-form-input-row'>
                         <div className='edit-user-form-label'>Name</div>

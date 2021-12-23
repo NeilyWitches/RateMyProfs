@@ -1,5 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import AccountLinks from './account_links';
 
 class DeleteAccount extends React.Component {
     constructor(props) {
@@ -41,6 +42,9 @@ class DeleteAccount extends React.Component {
         return (
             <form className='page' onSubmit={this.deleteAccount}>
                 <div className="account-header">Hey, {user.first_name}</div>
+                <AccountLinks 
+                location={this.props.match.path}
+                user={user}/>
                 <div id='delete-account-header'>Are you sure you want to delete your account?</div>
                 <ul id='delete-account-list'>
                     <li>Deleting your account is permanent</li>

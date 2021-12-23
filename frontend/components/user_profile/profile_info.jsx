@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import AccountLinks from './account_links';
 
 class ProfileInfo extends React.Component {
     constructor(props) {
@@ -16,6 +17,9 @@ class ProfileInfo extends React.Component {
         return (
             <div className='page'>
                 <div className='account-header'>Hey, {user.first_name}</div>
+                <AccountLinks 
+                location={this.props.match.path}
+                user={user}/>
                 <Link 
                     to={`/account/profile/edit/${user.id}`} 
                     id='edit-user-profile-button'

@@ -1,5 +1,6 @@
 import React from 'react';
 import ProfReviewShow from '../prof_reviews/prof_review_show';
+import AccountLinks from './account_links';
 
 class UserRatingsIndex extends React.Component {
     constructor(props) {
@@ -25,6 +26,9 @@ class UserRatingsIndex extends React.Component {
         return (
             <div id='user-ratings-index'>
                 <div className='account-header'>Hey, {user?.first_name}</div>
+                <AccountLinks 
+                location={this.props.match.path}
+                user={user}/>
                 <ul>
                     {
                         profReviews.map((profReview, index) =>
