@@ -19,6 +19,14 @@
     justify-content: flex-end;
 }
 
+.prof-form-school-search-container {
+    width: 645px;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    bottom: 20px;
+}
+
 .school-li-name {
     font-weight: 700;
 }

@@ -9,11 +9,17 @@ class Api::ProfsController < ApplicationController
     end
 
     def create
-        @prof = Prof.new(prof_params)
-        if @prof.save
+        errors = []
+        school = School.find_by(name: prof_params[:school_name])
+        errors << 'School not found' if !school
+        errors << 'First name cannot be blank' if prof_params[:first_name] == ""
+        errors << 'Last name cannot be blank' if prof_params[:last_name] == ""
+        errors << 'Department cannot be blank' if prof_params[:subject] == ""
+        if errors.length == 0
+            @prof = Prof.create(first_name: prof_params[:first_name], last_name: prof_params[:last_name], subject: prof_params[:subject], school_id: school.id)
             render :show
         else
-            render json: @prof.errors.full_messages, status: :unprocessable_entity
+            render json: errors, status: :unprocessable_entity
         end
     end
 
@@ -26,6 +32,6 @@ class Api::ProfsController < ApplicationController
     end
 
     def prof_params
-        params.require(:prof).permit(:first_name, :last_name, :subject)
+        params.require(:prof).permit(:first_name, :last_name, :subject, :school_name)
     end
 end

@@ -2,7 +2,7 @@ if @profs.length != 0
     json.profs do
         @profs.each do |prof|
             json.set! prof.id do
-                json.extract! prof, :id, :first_name, :last_name, :subject
+                json.extract! prof, :id, :first_name, :last_name, :subject, :school_id
             end
         end
     end

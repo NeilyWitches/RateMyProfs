@@ -39,7 +39,7 @@ class Api::UsersController < ApplicationController
         elsif user_params[:updatingProfile]
             @user = User.find(user_params[:id])
             school = School.find_by(name: user_params[:schoolName])
-            errors << 'Name cannot be blank' if user_params[:first_name] === ""
+            errors << 'Name cannot be blank' if user_params[:first_name] == ""
             errors << 'School not found' if !school
             if errors.length == 0
                 @user = User.update(user_params[:id], first_name: user_params[:first_name], school_id: school.id)
