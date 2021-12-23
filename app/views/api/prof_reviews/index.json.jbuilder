@@ -32,3 +32,9 @@ if @prof_save
 else
     json.prof_saves ({})
 end
+
+json.schools do
+    json.set! @school.id do
+        json.extract! @school, :id, :name
+    end
+end

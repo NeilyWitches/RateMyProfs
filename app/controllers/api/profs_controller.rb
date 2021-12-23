@@ -3,6 +3,7 @@ class Api::ProfsController < ApplicationController
 
     def index
         @profs = Prof.includes(:prof_reviews).all
+        @schools = School.all
     end
 
     def show

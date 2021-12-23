@@ -9,6 +9,7 @@ const mSTP = state => {
         profReviews: Object.values(state.entities.prof_reviews),
         profSaves: Object.values(state.entities.prof_saves),
         currentUser: state.session.current_user,
+        schools: state.entities.schools
     }
 };
 

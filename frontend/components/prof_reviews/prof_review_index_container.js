@@ -11,7 +11,8 @@ const mSTP = (state, ownProps) => {
         profReviews: Object.values(state.entities.prof_reviews),
         likes: Object.values(state.entities.likes),
         currentUser: state.session.current_user,
-        profSave: Object.values(state.entities.prof_saves)[0]
+        profSaves: Object.values(state.entities.prof_saves),
+        schools: Object.values(state.entities.schools),
     }
 };
 

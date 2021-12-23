@@ -83,7 +83,7 @@ class ProfIndex extends React.Component {
     }
 
     render() {
-        const { profs, profReviews, history, profSaves, createProfSave, deleteProfSave, currentUser } = this.props;
+        const { profs, profReviews, history, profSaves, createProfSave, deleteProfSave, currentUser, schools } = this.props;
 
         if (profs.length === 0) return null
 
@@ -120,6 +120,7 @@ class ProfIndex extends React.Component {
                             createProfSave={createProfSave}
                             deleteProfSave={deleteProfSave}
                             currentUser={currentUser}
+                            school={schools[prof.school_id]}
                             />
                         )
                     }

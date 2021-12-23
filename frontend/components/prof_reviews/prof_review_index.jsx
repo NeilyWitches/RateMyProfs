@@ -7,7 +7,7 @@ class ProfReviewIndex extends React.Component {
 
         this.state = {
             selectedKlass: 'All courses',
-            profSave: this.props.profSave
+            profSave: null
         }
 
         this.tags = [
@@ -31,8 +31,8 @@ class ProfReviewIndex extends React.Component {
     };
 
     componentDidUpdate(prevProps) {
-        if (prevProps.profSave !== this.props.profSave) {
-            this.setState({profSave: this.props.profSave})
+        if (prevProps.profSaves !== this.props.profSaves) {
+            this.setState({profSave: this.findProfSave(this.props.profSaves, this.props.prof.id, this.props.currentUser.id)})
         }
         if (prevProps.currentUser !== this.props.currentUser) {
             this.props.requestProfReviews(this.props.match.params.profId, this.props.currentUser?.id)
@@ -48,7 +48,7 @@ class ProfReviewIndex extends React.Component {
     }
 
     clickUnsave() {
-        this.props.deleteProfSave(this.props.profSave.id)
+        this.props.deleteProfSave(this.state.profSave.id)
     }
 
     groupLikes(profReviews, likes) {
@@ -158,8 +158,28 @@ class ProfReviewIndex extends React.Component {
         return filteredProfReviews
     }
 
+    findProfSave(profSaves, profId, userId) {
+        for (let i = 0; i < profSaves.length; i++) {
+            if (profSaves[i].saver_id === userId && profSaves[i].prof_saved_id === profId) {
+                return profSaves[i]
+            }
+        }
+        
+        return null
+    }
+
+    findSchool(schools, school_id) {
+        for (let i = 0; i < schools.length; i++) {
+            if (schools[i].id === school_id) {
+                return schools[i]
+            }
+        }
+
+        return null
+    }
+
     render() {
-        const { prof, profReviews, likes, currentUser, createLike, deleteLike, history } = this.props;
+        const { prof, profReviews, likes, currentUser, createLike, deleteLike, history, schools, profSaves } = this.props;
         if (!prof) return null
         const numReviews = profReviews.length;
         let groupedLikes = this.groupLikes(profReviews, likes)
@@ -167,6 +187,7 @@ class ProfReviewIndex extends React.Component {
         const topTags = this.getTopTags(profReviews);
         const klasses = this.getKlasses(profReviews);
         const filteredProfReviews = this.filterProfReviews(profReviews)
+        const school = this.findSchool(schools, prof.school_id);
 
         return (
             <div id='prof-review-index'>
@@ -192,7 +213,7 @@ class ProfReviewIndex extends React.Component {
                                     <div className='hint'>Save Prof</div>
                                 </div> }
                             </div>
-                            <div id='prof-in-dept'>Prof in the <strong>{prof.subject}</strong> Department</div>
+                            <div id='prof-in-dept'>Prof in the <strong>{prof.subject}</strong> Department at <strong>{school?.name}</strong></div>
                         </div>
                     </div>
                     <div id='prof-show-other-stats'>
