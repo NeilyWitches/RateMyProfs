@@ -97,16 +97,19 @@ class ProfForm extends React.Component {
                 </div>
                 <div className='prof-form-school-search-container'>
                     <ul className='edit-profile-school-search'
-                        style={{display: this.state.searchDisplay}}>{
-                        filteredSchools.map((school) => 
-                        <li 
-                            key={school.id}
-                            className='school-li'
-                            onClick={this.clickSchool}>
-                            <div className='school-li-name'>{school.name}</div>
-                            <div className='school-li-location'>{school.city}, {school.state}</div>
-                        </li>)
-                    }</ul>
+                        style={{display: this.state.searchDisplay}}>
+                        {
+                            filteredSchools.map((school) => 
+                            <li 
+                                key={school.id}
+                                className='school-li'
+                                onClick={this.clickSchool}>
+                                <div className='school-li-name'>{school.name}</div>
+                                <div className='school-li-location'>{school.city}, {school.state}</div>
+                            </li>)
+                        }
+                        <Link to='/schools/new' className='school-search-add-school'>DON'T SEE YOUR SCHOOL? CLICK HERE TO ADD IT TO RMP!</Link>
+                    </ul>
                 </div>
                 <div className='school-prof-form-row'>
                     <div className='school-prof-form-label'>PROFESSOR'S FIRST NAME</div>
