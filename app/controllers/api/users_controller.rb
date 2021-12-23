@@ -74,6 +74,7 @@ class Api::UsersController < ApplicationController
     def index
         user = User.find(params[:userId])
         @profs = user.profs_saved.includes(:prof_reviews)
+        @schools = user.schools_of_profs_saved
         render 'api/profs/index'
     end
 

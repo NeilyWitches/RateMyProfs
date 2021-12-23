@@ -44,7 +44,7 @@ class SavedProfs extends React.Component {
     }
 
     render() {
-        const { profs, currentUser, profReviews, history, profSaves, createProfSave, deleteProfSave } = this.props;
+        const { profs, currentUser, profReviews, history, profSaves, createProfSave, deleteProfSave, schools } = this.props;
 
         if (profs.length === 0) {
             return (
@@ -71,12 +71,13 @@ class SavedProfs extends React.Component {
                             profs.map((prof) =>
                             <ProfShow
                             key={prof.id}
+                            school={schools[prof.school_id]}
                             prof={prof}
                             profReviews={groupedReviews[prof.id]}
                             profSave={groupedProfSaves[prof.id]}
                             history={history}
-                            createProfSave={this.props.createProfSave}
-                            deleteProfSave={this.props.deleteProfSave}
+                            createProfSave={createProfSave}
+                            deleteProfSave={deleteProfSave}
                             currentUser={currentUser}/>)
                         }
                     </ul>

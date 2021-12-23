@@ -1,6 +1,7 @@
 import { RECEIVE_SCHOOL, RECEIVE_SCHOOLS } from '../actions/school_actions';
 import {RECEIVE_USER} from '../actions/user_actions';
 import {merge} from 'lodash';
+import { RECEIVE_SAVED_PROFS } from '../actions/prof_save_actions';
 
 const SchoolsReducer = (oldState = {}, action) => {
     Object.freeze(oldState);
@@ -13,6 +14,9 @@ const SchoolsReducer = (oldState = {}, action) => {
             newState = action.payload.schools
             return newState;
         case RECEIVE_USER:
+            newState = action.payload.schools
+            return newState;
+        case RECEIVE_SAVED_PROFS:
             newState = action.payload.schools
             return newState;
         default:

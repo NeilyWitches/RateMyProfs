@@ -23,3 +23,15 @@ if @profs.length != 0 && @profs.any?{|prof| prof.prof_reviews.length != 0}
 else
     json.prof_reviews ({})
 end
+
+if @schools.length != 0
+    json.schools do
+        @schools.each do |school|
+            json.set! school.id do
+                json.extract! school, :id, :name
+            end
+        end
+    end
+else
+    json.schools ({})
+end

@@ -102,6 +102,7 @@
     color: rgb(21, 21, 21);
     display: flex;
     justify-content: space-between;
+    font-family: Poppins, sans-serif;
 }
 
 .prof-show-name-bookmark {
@@ -113,6 +114,12 @@
 
 .prof-show-subject {
     margin-bottom: 11px;
+}
+
+.prof-show-school {
+    color: rgb(100, 100, 100);
+    line-height: 16px;
+    margin-bottom: 8px;
 }
 
 .prof-show-bookmark {
@@ -159,3 +166,4 @@
     text-decoration: underline;
     color: rgb(21, 21, 21);
 }
+

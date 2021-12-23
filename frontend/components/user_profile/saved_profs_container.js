@@ -8,6 +8,7 @@ const mSTP = (state, ownProps) => {
         profs: Object.values(state.entities.profs),
         profReviews: Object.values(state.entities.prof_reviews),
         profSaves: Object.values(state.entities.prof_saves),
+        schools: state.entities.schools,
     }
 };
 

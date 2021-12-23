@@ -70,7 +70,7 @@ class ProfShow extends React.Component {
     }
 
     render() {
-        const {prof, profReviews} = this.props;
+        const {prof, profReviews, school} = this.props;
         let numReviews = profReviews.length;
         const stats = this.getStats(profReviews, numReviews)
 
@@ -95,6 +95,7 @@ class ProfShow extends React.Component {
                         </div> }
                     </div>
                     <div className='prof-show-subject'>{prof.subject}</div>
+                    <div className='prof-show-school'>{school.name}</div>
                     <div className='take-again-lvl-diff'>
                         <div className='prof-show-take-again'>{isNaN(stats[2]) ? "N/A" : `${stats[2]?.toFixed(2) * 100}%`}</div>
                         <div className='prof-show-take-again-label'>would take again</div>

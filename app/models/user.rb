@@ -32,6 +32,10 @@ class User < ApplicationRecord
         through: :profs_written_about,
         source: :school
 
+    has_many :schools_of_profs_saved,
+        through: :profs_saved,
+        source: :school
+
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
 
