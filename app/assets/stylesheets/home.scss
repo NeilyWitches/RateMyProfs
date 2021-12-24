@@ -1,9 +1,10 @@
 #books {
-  max-width: 100%;
-  height: auto;
-  margin-top: 200px;
-  opacity: 0.30;
-  position: absolute;
+    max-width: 100%;
+    height: auto;
+    margin-top: 200px;
+    //   opacity: 0.30;
+    filter: blur(4px);
+    position: absolute;
 }
 
 #logo-big {
@@ -22,7 +23,7 @@
 
 #get-started {
     margin: 50px;
-    color: black;
+    color: white;
     font-size: 30px;
     opacity: 0.999;
     font-weight: 700px;

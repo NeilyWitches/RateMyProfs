@@ -216,8 +216,8 @@ class Signup extends React.Component {
                                 key={index}
                                 className='school-li'
                                 onClick={this.clickProf}>
-                                <div className='school-li-name'>{prof.name}</div>
-                                <div className='school-li-location'>{schools[prof.school_id].name}</div>
+                                <div className='school-li-name'>{prof?.name}</div>
+                                <div className='school-li-location'>{schools[prof.school_id]?.name}</div>
                             </li>)
                         }
                         <Link to='/profs/new' className='school-search-add-school'>DON'T SEE YOUR NAME LISTED AS A PROF? CLICK HERE TO ADD IT TO RMP!</Link>
