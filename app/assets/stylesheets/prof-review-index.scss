@@ -102,7 +102,7 @@
 
 #review-prof-button {
     margin-bottom: 24px;
-    width: 220px;
+    width: fit-content;
     background: rgb(0, 85, 253);
     border: 0px;
     border-radius: 100px;
@@ -112,6 +112,13 @@
     padding: 11px 46px;
     margin-top: 20px;
     transition-duration: 0.4s;
+}
+
+.edit-prof-link {
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 #review-prof-button:hover{

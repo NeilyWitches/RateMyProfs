@@ -85,7 +85,7 @@ class ProfIndex extends React.Component {
     render() {
         const { profs, profReviews, history, profSaves, createProfSave, deleteProfSave, currentUser, schools } = this.props;
 
-        if (profs.length === 0) return null
+        if (profs.length === 0 || schools.length === 0) return null
 
         const groupedReviews = this.groupReviews(profs, profReviews)
         const groupedProfSaves = this.groupProfSaves(profs, profSaves)

@@ -7,7 +7,7 @@ class ProfReviewIndex extends React.Component {
 
         this.state = {
             selectedKlass: 'All courses',
-            profSave: null
+            profSave: null,
         }
 
         this.tags = [
@@ -23,6 +23,7 @@ class ProfReviewIndex extends React.Component {
         this.clickRateProf = this.clickRateProf.bind(this);
         this.clickSave = this.clickSave.bind(this);
         this.clickUnsave = this.clickUnsave.bind(this);
+        this.clickEditProf = this.clickEditProf.bind(this);
     };
 
     componentDidMount() {
@@ -36,6 +37,15 @@ class ProfReviewIndex extends React.Component {
         }
         if (prevProps.currentUser !== this.props.currentUser) {
             this.props.requestProfReviews(this.props.match.params.profId, this.props.currentUser?.id)
+        }
+    }
+
+    clickEditProf() {
+        if (this.props.currentUser.prof_id == this.props.prof.id) {
+            let path = `/profs/edit/${this.props.prof.id}`
+            this.props.history.push(path);
+        } else {
+            alert(`You are not signed in as Prof ${this.props.prof.last_name}!`)
         }
     }
 
@@ -226,8 +236,13 @@ class ProfReviewIndex extends React.Component {
                             <div>Level of Difficulty</div>
                         </div>
                     </div>
-                    <button id='review-prof-button' onClick={this.clickRateProf}>Rate Prof {prof.first_name}</button>
-                    <div id='top-tags-label'>Prof {prof.first_name}'s Top Tags</div>
+                    <button id='review-prof-button' onClick={this.clickRateProf}>Rate Prof {prof.last_name}</button>
+                    <div 
+                        onClick={this.clickEditProf}
+                        className='edit-prof-link'>
+                        Are you signed in as Prof {prof.last_name}? Click here to make a correction.
+                    </div>
+                    <div id='top-tags-label'>Prof {prof.last_name}'s Top Tags</div>
                     <div id='top-tags'>
                         {
                             topTags.map((tag, index) => <div key={index} className='tag'>{tag}</div>)

@@ -189,8 +189,8 @@ class Signup extends React.Component {
                                 key={school.id}
                                 className='school-li'
                                 onClick={this.clickSchool}>
-                                <div className='school-li-name'>{school.name}</div>
-                                <div className='school-li-location'>{school.city}, {school.state}</div>
+                                <div className='school-li-name'>{school?.name}</div>
+                                <div className='school-li-location'>{school?.city}, {school?.state}</div>
                             </li>)
                         }
                         <Link to='/schools/new' className='school-search-add-school'>DON'T SEE YOUR SCHOOL? CLICK HERE TO ADD IT TO RMP!</Link>

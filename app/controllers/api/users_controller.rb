@@ -1,79 +1,45 @@
 class Api::UsersController < ApplicationController
     def create
-        # debugger
         errors = [];
-        # debugger
         errors << "School cannot be blank" if user_params[:school_name] == ""
-        # debugger
         errors << "Name cannot be blank" if user_params[:user_name] == ""
-        # debugger
         errors << "Email cannot be blank" if user_params[:email] == ""
-        # debugger
         errors << "Email does not match" if user_params[:email] != user_params[:email_confirm]
-        # debugger
         errors << "Password must be a minimum of 6 characters" if user_params[:password].length < 6
-        # debugger
         errors << "Password does not match" if user_params[:password_confirm] != user_params[:password]
-        # debugger
         errors << 'An account with this email already already exists.' if User.find_by({email: user_params[:email]})
 
         names = user_params[:user_name].split()
-        # debugger
         first_name = names[0]
-        # debugger
         last_name = names[1]
-        # debugger
 
         school = School.find_by(name: user_params[:school_name])
-        # debugger
 
         errors << "School not found." if !school
-        # debugger
 
         if errors.length == 0
-            # debugger
             if user_params[:signingInAsProf] == "false"
-                # debugger
                 @user = User.new({email: user_params[:email], first_name: first_name, school_id: school.id})
-                # debugger
                 @user.password=(user_params[:password])
-                # debugger
                 @user.save
-                # debugger
                 login!(@user)
-                # debugger
                 render 'api/sessions/show'
-                # debugger
             elsif user_params[:signingInAsProf] == "true"
-                # debugger
                 errors << "Must include last name" if !last_name
-                # debugger
                 prof = Prof.find_by({first_name: first_name, last_name: last_name, school_id: school.id})
-                # debugger
                 errors << "Prof not found" if !prof
-                # debugger
                 errors << "This prof already has an account with Rate My Profs." if User.find_by({prof_id: prof.id})
-                # debugger
                 if errors.length == 0
-                    # debugger
                     @user = User.new({email: user_params[:email], first_name: first_name, school_id: school.id, prof_id: prof.id})
-                    # debugger
                     @user.password=(user_params[:password])
-                    # debugger
                     @user.save
-                    # debugger
                     login!(@user)
-                    # debugger
                     render 'api/sessions/show'
-                    # debugger
                 else
-                    # debugger
                     render json: errors, status: 401
-                    # debugger
                 end
             end
         else
-            # debugger
             render json: errors, status: 401
         end
     end

@@ -82,7 +82,7 @@ class ProfForm extends React.Component {
 
         return (
             <form onSubmit={this.handleSubmit} className='page school-prof-form'>
-                <div className='school-prof-form-header'>Add New Prof</div>
+                <div className='school-prof-form-header'>{this.props.formType}</div>
                 <div className='school-prof-form-important'>Important: Please use the search bar above to make sure that the professor does not already exist at this school.</div>
                 <div className='school-prof-form-row'>
                     <div className='school-prof-form-label'>NAME OF SCHOOL</div>

@@ -14,6 +14,7 @@ const mSTP = (state) => {
         },
         prof_errors: state.errors.prof,
         schools: Object.values(state.entities.schools),
+        formType: "Add a New Prof",
     }
 };
 

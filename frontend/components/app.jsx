@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { AuthRoute, ProtectedRoute, ExtraProtectedRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute, ExtraProtectedRoute, ProfEditRoute } from '../util/route_util';
 import { withRouter } from 'react-router';
 import NavBarContainer from './nav_bar/nav_bar_container';
 import CreateProfReviewFormContainer from './prof_reviews/create_prof_review_form_container';
@@ -22,6 +22,7 @@ import CreateSchoolFormContainer from './schools/create_school_form_container';
 import SchoolIndexContainer from './schools/school_index_container';
 import ProfileInfoContainer from './user_profile/profile_info_container';
 import EditProfileContainer from './user_profile/edit_profile_container';
+import EditProfFormContainer from './profs/edit_prof_form_container';
 
 const App = ({ children }) => (
     <div>
@@ -33,6 +34,7 @@ const App = ({ children }) => (
             <Route path='/schools' component={SchoolIndexContainer} />
             <Route path='/profReviews/new/:profId' component={CreateProfReviewFormContainer} />
             <ExtraProtectedRoute path='/profReviews/edit/:userId/:profId/:profReviewId' component={EditProfReviewFormContainer} />
+            <ProfEditRoute path='/profs/edit/:profId' component={EditProfFormContainer} />
             <Route path='/profs/new' component={CreateProfFormContainer} />
             <Route path='/profs/:profId' component={ProfReviewIndexContainer} />
             <Route path='/profs/' component={ProfIndexContainer} />

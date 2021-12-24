@@ -39,6 +39,21 @@ const ExtraProtected = ({ component: Component, path, current_user, loggedIn }) 
     />
 };
 
+const ProfEdit = ({ component: Component, path, current_user, loggedIn }) => {
+    return <Route
+            path={path}
+            render={props => {
+            if (current_user) {
+                return props.match.params.profId == current_user.prof_id ? <Component {...props} /> : <Redirect to='/' />
+            } else if (!loggedIn) {
+                return <Redirect to='/signup' />
+            }
+            
+        }}
+    />
+};
+
 export const AuthRoute = withRouter(connect(mSTP)(Auth));
 export const ProtectedRoute = withRouter(connect(mSTP, undefined)(Protected));
 export const ExtraProtectedRoute = withRouter(connect(mSTP, undefined)(ExtraProtected));
+export const ProfEditRoute = withRouter(connect(mSTP, undefined)(ProfEdit));
