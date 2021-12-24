@@ -32,7 +32,7 @@ class ProfReviewIndex extends React.Component {
 
     componentDidUpdate(prevProps) {
         if (prevProps.profSaves !== this.props.profSaves) {
-            this.setState({profSave: this.findProfSave(this.props.profSaves, this.props.prof.id, this.props.currentUser.id)})
+            this.setState({profSave: this.findProfSave(this.props.profSaves, this.props.prof.id, this.props.currentUser?.id)})
         }
         if (prevProps.currentUser !== this.props.currentUser) {
             this.props.requestProfReviews(this.props.match.params.profId, this.props.currentUser?.id)
@@ -179,7 +179,7 @@ class ProfReviewIndex extends React.Component {
     }
 
     render() {
-        const { prof, profReviews, likes, currentUser, createLike, deleteLike, history, schools, profSaves } = this.props;
+        const { prof, profReviews, likes, currentUser, createLike, deleteLike, history, schools } = this.props;
         if (!prof) return null
         const numReviews = profReviews.length;
         let groupedLikes = this.groupLikes(profReviews, likes)

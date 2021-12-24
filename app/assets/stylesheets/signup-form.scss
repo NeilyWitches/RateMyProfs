@@ -138,3 +138,10 @@
 #signup-login-button:hover {
     background-color: chartreuse;
 }
+
+.account-type-buttons {
+    width: 364px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}

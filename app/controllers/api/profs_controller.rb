@@ -2,8 +2,13 @@ class Api::ProfsController < ApplicationController
     before_action :set_prof, only: [:show]
 
     def index
-        @profs = Prof.includes(:prof_reviews).all
-        @schools = School.all
+        if params[:onlyProfs]
+            @profs = Prof.all
+            render 'api/profs/only_profs'
+        else
+            @profs = Prof.includes(:prof_reviews).all
+            @schools = School.all
+        end
     end
 
     def show
