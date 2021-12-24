@@ -3,6 +3,7 @@ class User < ApplicationRecord
     validates :password_digest, presence: true
     validates :password, length: { minimum: 6, allow_nil: true }
     validates :first_name, presence: true
+    validates :prof_id, uniqueness: true
 
     attr_reader :password
 
