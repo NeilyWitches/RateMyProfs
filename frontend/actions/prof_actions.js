@@ -52,7 +52,12 @@ export const newProf = prof => dispatch => (
         })
 )
 
-export const updateProf = prof => dispatch => (
+export const editProf = prof => dispatch => (
     ProfApiUtil.updateProf(prof)
-        .then(updatedProf => dispatch(receiveProf(updatedProf)))
-);
+        .then(prof => {
+            return dispatch(receiveProf(prof))
+        })
+        .fail(err => {
+            return dispatch(receiveProfErrors(err.responseJSON))
+        })
+)

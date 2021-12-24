@@ -9,7 +9,7 @@ export const fetchProf = profId => {
     return $.ajax({
         url: `/api/profs/${profId}`
     })
-};
+}; 
 
 export const createProf = prof => (
     $.ajax({

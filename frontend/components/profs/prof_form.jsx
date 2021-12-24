@@ -4,15 +4,24 @@ import {Link} from 'react-router-dom';
 class ProfForm extends React.Component {
     constructor(props) {
         super(props);
+        //debugger
         this.state = {
+            // prof: {
+            //     first_name: this.props.prof.first_name,
+            //     last_name: this.props.prof.last_name,
+            //     subject: this.props.prof.subject,
+            //     school_name: this.props.prof.school_name,
+            // },
             prof: {
-                first_name: this.props.prof.first_name,
-                last_name: this.props.prof.last_name,
-                subject: this.props.prof.subject,
-                school_name: this.props.prof.school_name,
+                id: null,
+                first_name: "",
+                last_name: "",
+                subject: "",
+                school_name: "",
             },
             searchDisplay: 'none'
         }
+        //debugger
         this.handleSubmit = this.handleSubmit.bind(this);
         this.clickSchool = this.clickSchool.bind(this)
         this.displaySearch = this.displaySearch.bind(this)
@@ -40,8 +49,25 @@ class ProfForm extends React.Component {
     };
 
     componentDidMount() {
+        //debugger
+        if (this.props.match.path === "/profs/edit/:profId") {
+            //debugger
+            this.props.requestProf(this.props.match.params.profId)
+            //debugger
+        }
         this.props.requestSchools()
+        //debugger
         this.props.clearErrors();
+        //debugger
+    }
+
+    componentDidUpdate(prevProps) {
+        //debugger
+        if (this.props.prof.first_name && prevProps.prof !== this.props.prof) {
+            //debugger
+            this.setState({prof: this.props.prof})
+            //debugger
+        }
     }
 
     renderErrors() {
@@ -77,8 +103,10 @@ class ProfForm extends React.Component {
     }
 
     render() {
+        //debugger
         const { schools } = this.props;
         let filteredSchools = this.filterSchools(schools);
+        //debugger
 
         return (
             <form onSubmit={this.handleSubmit} className='page school-prof-form'>

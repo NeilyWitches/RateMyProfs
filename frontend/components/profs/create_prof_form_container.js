@@ -7,6 +7,7 @@ import { requestSchools } from '../../actions/school_actions';
 const mSTP = (state) => {
     return {
         prof: {
+            id: null,
             first_name: '',
             last_name: '',
             subject: '',
