@@ -18,13 +18,25 @@ class SchoolIndex extends React.Component {
 
     componentDidMount() {
         this.props.requestSchools();
+        this.props.requestSchoolRatings();
     };
 
-
+    groupRatings(schoolRatings) {
+        let groupedRatings = {};
+        for (let i = 0; i < schoolRatings.length; i++) {
+            if (!groupedRatings[schoolRatings[i].school_id]) {
+                groupedRatings[schoolRatings[i].school_id] = []
+            }
+            groupedRatings[schoolRatings[i].school_id].push(schoolRatings[i])
+        }
+        return groupedRatings
+    }
 
     render() {
-        const { schools, history } = this.props;
-        if (schools.length === 0) return null
+        const { schools, history, schoolRatings } = this.props;
+        if (schools.length === 0 || schoolRatings.length === 0) return null
+
+        let groupedRatings = this.groupRatings(schoolRatings)
 
         return (
             <div className='page'>
@@ -35,7 +47,8 @@ class SchoolIndex extends React.Component {
                             <SchoolShow
                             key={school.id}
                             school={school}
-                            history={history}/>
+                            history={history}
+                            schoolRatings={groupedRatings[school.id]}/>
                         )
                     }
                 </ul>
