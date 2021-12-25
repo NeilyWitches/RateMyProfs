@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_21_112307) do
+ActiveRecord::Schema.define(version: 2021_12_25_144828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,24 @@ ActiveRecord::Schema.define(version: 2021_12_21_112307) do
     t.index ["first_name"], name: "index_profs_on_first_name"
     t.index ["last_name"], name: "index_profs_on_last_name"
     t.index ["school_id"], name: "index_profs_on_school_id"
+  end
+
+  create_table "school_ratings", force: :cascade do |t|
+    t.integer "internet", null: false
+    t.integer "facilities", null: false
+    t.integer "reputation", null: false
+    t.integer "opprtunities", null: false
+    t.integer "location", null: false
+    t.integer "food", null: false
+    t.integer "clubs", null: false
+    t.integer "social", null: false
+    t.integer "happiness", null: false
+    t.text "comment", null: false
+    t.integer "school_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "safety", null: false
+    t.index ["school_id"], name: "index_school_ratings_on_school_id"
   end
 
   create_table "schools", force: :cascade do |t|
