@@ -7,8 +7,8 @@ class SchoolShow extends React.Component {
         // this.clickSchool = this.clickSchool.bind(this);
     }
 
-    // clickSchool(school) {
-    //     let path = `/school/${school.id}`;
+    // clickSchool() {
+    //     let path = `/school/${this.props.school.id}`;
     //     return () => this.props.history.push(path);    
     // }
 

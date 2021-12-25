@@ -23,6 +23,7 @@ import SchoolIndexContainer from './schools/school_index_container';
 import ProfileInfoContainer from './user_profile/profile_info_container';
 import EditProfileContainer from './user_profile/edit_profile_container';
 import EditProfFormContainer from './profs/edit_prof_form_container';
+// import SchoolRatingIndexContainer from './school_ratings/school_ratings_index_container';
 
 const App = ({ children }) => (
     <div>
@@ -31,6 +32,7 @@ const App = ({ children }) => (
         <Route path='/' component={Footer} />
         <Switch>
             <Route path='/schools/new' component={CreateSchoolFormContainer} />
+            {/* <Route path='/schools/:schoolId' component={SchoolRatingIndexContainer} /> */}
             <Route path='/schools' component={SchoolIndexContainer} />
             <Route path='/profReviews/new/:profId' component={CreateProfReviewFormContainer} />
             <ExtraProtectedRoute path='/profReviews/edit/:userId/:profId/:profReviewId' component={EditProfReviewFormContainer} />
