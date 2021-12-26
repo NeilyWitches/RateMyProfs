@@ -122,7 +122,7 @@ class Signup extends React.Component {
     filterProfs(profs) {
         let filterdProfs = []
         for (let i = 0; i < profs.length; i++) {
-            if (profs[i].name.includes(this.state.account.user_name)) {
+            if (profs[i].name.toLowerCase().includes(this.state.account.user_name.toLowerCase())) {
                 filterdProfs.push(profs[i])
             }
         }
@@ -132,7 +132,7 @@ class Signup extends React.Component {
     filterSchools(schools) {
         let filterdSchools = []
         for (let i = 0; i < schools.length; i++) {
-            if (schools[i].name.includes(this.state.account.school_name)) {
+            if (schools[i].name.toLowerCase().includes(this.state.account.school_name.toLowerCase())) {
                 filterdSchools.push(schools[i])
             }
         }

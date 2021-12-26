@@ -84,7 +84,7 @@ class ProfForm extends React.Component {
     filterSchools(schools) {
         let filterdSchools = []
         for (let i = 0; i < schools.length; i++) {
-            if (schools[i].name.includes(this.state.prof.school_name)) {
+            if (schools[i].name.toLowerCase().includes(this.state.prof.school_name.toLowerCase())) {
                 filterdSchools.push(schools[i])
             }
         }

@@ -146,7 +146,7 @@ class Home extends React.Component {
     filterSchools(schools) {
         let filterdSchools = []
         for (let i = 0; i < schools.length; i++) {
-            if (schools[i].name.includes(this.state.search.schoolName)) {
+            if (schools[i].name.toLowerCase().includes(this.state.search.schoolName.toLowerCase())) {
                 filterdSchools.push(schools[i])
             }
         }
@@ -155,17 +155,24 @@ class Home extends React.Component {
 
     filterProfs(profs, schools) {
         let schoolId;
+        let filterdProfs = []
         if (this.state.selectedSchool === 'all schools') {
-            return profs
+            for (let i = 0; i < profs.length; i++) {
+                if (profs[i].name.toLowerCase().includes(this.state.search.profName.toLowerCase())) {
+                    filterdProfs.push(profs[i])
+                }
+            }
+            return filterdProfs
         }
+
         for (let i = 0; i < schools.length; i++) {
             if (schools[i].name === this.state.selectedSchool) {
                 schoolId = schools[i].id
             }
         }
-        let filterdProfs = []
+
         for (let i = 0; i < profs.length; i++) {
-            if (profs[i].name.includes(this.state.search.profName) && profs[i].school_id === schoolId) {
+            if (profs[i].name.toLowerCase().includes(this.state.search.profName.toLowerCase()) && profs[i].school_id === schoolId) {
                 filterdProfs.push(profs[i])
             }
         }

@@ -86,7 +86,7 @@ class EditProfile extends React.Component {
     filterSchools(schools) {
         let filterdSchools = []
         for (let i = 0; i < schools.length; i++) {
-            if (schools[i].name.includes(this.state.profile.schoolName)) {
+            if (schools[i].name.toLowerCase().includes(this.state.profile.schoolName.toLowerCase())) {
                 filterdSchools.push(schools[i])
             }
         }
