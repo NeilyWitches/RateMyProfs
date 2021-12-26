@@ -17,8 +17,7 @@ class SchoolIndex extends React.Component {
     }
 
     componentDidMount() {
-        this.props.requestSchools();
-        this.props.requestSchoolRatings();
+        this.props.requestSchoolsWithRatings(this.props.match.params.query);
     };
 
     groupRatings(schoolRatings) {
@@ -34,13 +33,25 @@ class SchoolIndex extends React.Component {
 
     render() {
         const { schools, history, schoolRatings } = this.props;
-        if (schools.length === 0 || schoolRatings.length === 0) return null
+        let numSchools = schools.length;
+        if (numSchools === 0 || schoolRatings.length === 0) {
+            return (
+                <div className='page'>
+                    <div className='no-search-results'>No school with <strong>"{this.props.match.params.query}"</strong> in its name.</div>
+                    <div className='no-search-results-subtext'>Use the search bar above and check the spelling or try an alternate spelling.</div>
+                    <div id='add-prof'>
+                        <div>Don't see the school you're looking for?</div>
+                        <Link to='/schools/new' id='add-prof-link'>Add a school</Link>
+                    </div>
+                </div>
+            )
+        }
 
         let groupedRatings = this.groupRatings(schoolRatings)
 
         return (
             <div className='page'>
-                <h1 id='prof-index-header'>All Schools</h1>
+                <div className='search-header'>{numSchools} schools with <strong>"{this.props.match.params.query}"</strong> in its name.</div>
                 <ul>
                     {
                         schools.map((school) =>

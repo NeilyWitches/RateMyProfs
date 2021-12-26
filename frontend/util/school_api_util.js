@@ -6,9 +6,10 @@ export const createSchool = school => (
     })
 );
 
-export const fetchSchools = () => (
+export const fetchSchools = (schoolQuery) => (
     $.ajax({
         url: `/api/schools`,
+        data: {schoolQuery}
     })
 )
 

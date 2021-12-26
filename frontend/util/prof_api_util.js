@@ -1,7 +1,7 @@
-export const fetchProfs = (onlyProfs) => (
+export const fetchProfs = (onlyProfs, schoolName, profQuery) => (
     $.ajax({
         url: `/api/profs`,
-        data: {onlyProfs}
+        data: {onlyProfs, schoolName, profQuery}
     })
 );
 

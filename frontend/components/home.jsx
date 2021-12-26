@@ -30,16 +30,23 @@ class Home extends React.Component {
         this.hideProfSearch = this.hideProfSearch.bind(this)
         this.searchProfs = this.searchProfs.bind(this)
         this.searchSchools = this.searchSchools.bind(this)
+        this.selectAllSchools = this.selectAllSchools.bind(this)
     }
 
     searchProfs(e) {
         e.preventDefault();
-        console.log(this.state.search)
+        if (this.state.search.profName.length > 0) {
+            let path = `/profs/${this.state.search.schoolName}/${this.state.search.profName}`;
+            this.props.history.push(path);
+        }
     }
 
     searchSchools(e) {
         e.preventDefault();
-        console.log(this.state.search)
+        if (this.state.search.schoolName.length > 0) {
+            let path = `/schools/${this.state.search.schoolName}`;
+            this.props.history.push(path);
+        }
     }
 
     componentDidUpdate(prevProps) {
@@ -54,6 +61,10 @@ class Home extends React.Component {
 
     clickDiffSchool() {
         this.setState({selectedSchool: null})
+    }
+
+    selectAllSchools() {
+        this.setState({selectedSchool: "all schools"})
     }
 
     clickSchool(e) {
@@ -144,6 +155,9 @@ class Home extends React.Component {
 
     filterProfs(profs, schools) {
         let schoolId;
+        if (this.state.selectedSchool === 'all schools') {
+            return profs
+        }
         for (let i = 0; i < schools.length; i++) {
             if (schools[i].name === this.state.selectedSchool) {
                 schoolId = schools[i].id
@@ -256,6 +270,7 @@ class Home extends React.Component {
                                 }
                                 <Link to='/schools/new' className='school-search-add-school'>DON'T SEE YOUR SCHOOL? CLICK HERE TO ADD IT TO RMP!</Link>
                             </ul>
+                            <div onClick={this.selectAllSchools} className='home-diff-school'>I'd like to look up a professor by name</div>
                         </div>
                         <div id='love-rmp-text'>
                             <div id='join-rmp'>Join the RMP Family</div>
@@ -372,6 +387,7 @@ class Home extends React.Component {
                                 }
                                 <Link to='/schools/new' className='school-search-add-school'>DON'T SEE YOUR SCHOOL? CLICK HERE TO ADD IT TO RMP!</Link>
                             </ul>
+                            <div onClick={this.selectAllSchools} className='home-diff-school'>I'd like to look up a professor by name</div>
                         </div>
                         <div id='love-rmp-text'>
                             <div id='join-rmp'>Welcome back!</div>

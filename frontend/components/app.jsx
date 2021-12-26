@@ -32,14 +32,14 @@ const App = ({ children }) => (
         <Route path='/' component={Footer} />
         <Switch>
             <Route path='/schools/new' component={CreateSchoolFormContainer} />
-            {/* <Route path='/schools/:schoolId' component={SchoolRatingIndexContainer} /> */}
-            <Route path='/schools' component={SchoolIndexContainer} />
+            <Route path='/schools/:query' component={SchoolIndexContainer} />
             <Route path='/profReviews/new/:profId' component={CreateProfReviewFormContainer} />
             <ExtraProtectedRoute path='/profReviews/edit/:userId/:profId/:profReviewId' component={EditProfReviewFormContainer} />
             <ProfEditRoute path='/profs/edit/:profId' component={EditProfFormContainer} />
             <Route path='/profs/new' component={CreateProfFormContainer} />
+            <Route path='/profs/:schoolName/:query' component={ProfIndexContainer} />
             <Route path='/profs/:profId' component={ProfReviewIndexContainer} />
-            <Route path='/profs/' component={ProfIndexContainer} />
+            {/* <Route path='/profs/' component={ProfIndexContainer} /> */}
             <ExtraProtectedRoute path='/account/profile/edit/:userId' component={EditProfileContainer} />
             <ExtraProtectedRoute path='/account/ratings/:userId' component={UserRatingsIndexContainer} />
             <ExtraProtectedRoute path='/account/edit/:userId' component={EditUserContainer} />

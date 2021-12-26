@@ -1,4 +1,5 @@
 import { RECEIVE_SCHOOL_RATINGS } from "../actions/school_rating_actions";
+import {RECEIVE_SCHOOLS_AND_RATINGS} from '../actions/school_actions';
 import {merge} from 'lodash';
 
 const SchoolRatingsReducer = (oldState = {}, action) => {
@@ -6,6 +7,9 @@ const SchoolRatingsReducer = (oldState = {}, action) => {
     let newState = merge({}, oldState);
     switch (action.type) {
         case RECEIVE_SCHOOL_RATINGS:
+            newState = action.payload.school_ratings
+            return newState;
+        case RECEIVE_SCHOOLS_AND_RATINGS:
             newState = action.payload.school_ratings
             return newState;
         default:

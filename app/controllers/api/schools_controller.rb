@@ -14,8 +14,13 @@ class Api::SchoolsController < ApplicationController
     end
 
     def index
-        @schools = School.all
-        render :index
+        if !params[:schoolQuery]
+            @schools = School.all
+            render :index
+        else
+            @schools = School.includes(:school_ratings).where("lower(name) like ?", "%" + params[:schoolQuery].downcase() + "%")
+            render 'api/schools/search'
+        end
     end
 
     private

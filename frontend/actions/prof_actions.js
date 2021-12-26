@@ -27,8 +27,8 @@ export const receiveProfErrors = errors => ({
     errors,
 })
 
-export const requestProfs = () => dispatch => (
-    ProfApiUtil.fetchProfs()
+export const requestProfs = (schoolName, profQuery) => dispatch => (
+    ProfApiUtil.fetchProfs(false, schoolName, profQuery)
     .then(payload => dispatch(receiveProfs(payload)))
 );
 

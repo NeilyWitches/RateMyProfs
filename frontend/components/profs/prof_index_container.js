@@ -14,7 +14,7 @@ const mSTP = state => {
 };
 
 const mDTP = dispatch => ({
-    requestProfs: () => dispatch(requestProfs()),
+    requestProfs: (schoolName, profQuery) => dispatch(requestProfs(schoolName, profQuery)),
     requestProfSaves: (userId) => dispatch(requestProfSaves(userId)),
     createProfSave: profSave => dispatch(createProfSave(profSave)),
     deleteProfSave: profSaveId => dispatch(deleteProfSave(profSaveId)),

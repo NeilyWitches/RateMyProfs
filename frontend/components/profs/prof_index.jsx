@@ -47,7 +47,7 @@ class ProfIndex extends React.Component {
     }
 
     componentDidMount() {
-        this.props.requestProfs();
+        this.props.requestProfs(this.props.match.params.schoolName, this.props.match.params.query);
         this.props.requestProfSaves(this.props.currentUser?.id)
     };
 
@@ -85,7 +85,20 @@ class ProfIndex extends React.Component {
     render() {
         const { profs, profReviews, history, profSaves, createProfSave, deleteProfSave, currentUser, schools } = this.props;
 
-        if (profs.length === 0 || schools.length === 0) return null
+        let numProfs = profs.length;
+
+        if (numProfs === 0 || schools.length === 0) {
+            return (
+               <div className='page'>
+                    <div className='no-search-results'>No profs with <strong>"{this.props.match.params.query}"</strong> in their name at <strong>{this.props.match.params.schoolName}</strong>.</div>
+                    <div className='no-search-results-subtext'>Use the search bar above and check the spelling or try an alternate spelling.</div>
+                    <div id='add-prof'>
+                        <div>Don't see the prof you're looking for?</div>
+                        <Link to='/profs/new' id='add-prof-link'>Add a prof</Link>
+                    </div>
+                </div> 
+            )
+        }
 
         const groupedReviews = this.groupReviews(profs, profReviews)
         const groupedProfSaves = this.groupProfSaves(profs, profSaves)
@@ -94,7 +107,7 @@ class ProfIndex extends React.Component {
 
         return (
             <div id='prof-index'>
-                <h1 id='prof-index-header'>All Profs</h1>
+                <div className='search-header'>{numProfs} profs with <strong>"{this.props.match.params.query}"</strong> in their name at <strong>{this.props.match.params.schoolName}</strong>.</div>
                 <div id='dept-dropdown-container'>
                     <div id='dept-dropdown-label'>Department</div>
                     <select id='dept-dropdown' name='subjects' onChange={this.update('selectedSubject')} defaultValue={'Select...'}>

@@ -1,7 +1,6 @@
 import {connect} from 'react-redux';
 import SchoolIndex from './school_index';
-import { requestSchools } from '../../actions/school_actions';
-import { requestSchoolRatings } from '../../actions/school_rating_actions';
+import { requestSchoolsWithRatings } from '../../actions/school_actions';
 
 const mSTP = state => {
     return {
@@ -11,8 +10,7 @@ const mSTP = state => {
 };
 
 const mDTP = dispatch => ({
-    requestSchools: () => dispatch(requestSchools()),
-    requestSchoolRatings: () => dispatch(requestSchoolRatings()),
+    requestSchoolsWithRatings: (schoolQuery) => dispatch(requestSchoolsWithRatings(schoolQuery)),
 });
 
 export default connect(mSTP, mDTP)(SchoolIndex);

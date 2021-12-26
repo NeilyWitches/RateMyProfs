@@ -2,12 +2,32 @@ class Api::ProfsController < ApplicationController
     before_action :set_prof, only: [:show]
 
     def index
-        if params[:onlyProfs]
+        if params[:onlyProfs] == 'true'
             @profs = Prof.all
             render 'api/profs/only_profs'
         else
-            @profs = Prof.includes(:prof_reviews).all
-            @schools = School.all
+            names = params[:profQuery].split()
+            first_name = names[0]
+            last_name = names[1]
+
+            if params[:schoolName] == "all schools"
+                @schools = School.all.includes(:profs)
+            else
+                @schools = School.where(name: params[:schoolName]).includes(:profs)
+            end
+            profs_1 = @schools[0].profs.where("lower(first_name) like ?", "%" + names[0].downcase() + "%").includes(:prof_reviews)
+            profs_2 = @schools[0].profs.where("lower(last_name) like ?", "%" + names[0].downcase() + "%").includes(:prof_reviews)
+
+            if last_name
+                profs_3 = @schools[0].profs.where("lower(first_name) like ?", "%" + names[1].downcase() + "%").includes(:prof_reviews)
+                profs_4 = @schools[0].profs.where("lower(last_name) like ?", "%" + names[1].downcase() + "%").includes(:prof_reviews)
+
+                @profs = profs_1 + profs_2 + profs_3 + profs_4
+            else
+                @profs = profs_1 + profs_2
+            end
+            
+            render :index
         end
     end
 

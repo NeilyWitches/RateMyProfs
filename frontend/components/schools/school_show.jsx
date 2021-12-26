@@ -25,8 +25,20 @@ class SchoolShow extends React.Component {
         return avgRatingSum / numRatings
     }
 
+    styleQuality(qual) {
+        if (qual < 3) {
+            return 'rgb(255, 156, 156)'
+        } else if (qual >= 4) {
+            return '#68ffbe'
+        } else {
+            return 'rgb(255, 254, 104)'
+        }
+    }
+
     render() {
         const {school, schoolRatings} = this.props;
+
+        if (!schoolRatings) return null
 
         let numRatings = schoolRatings.length
         let avgQual = this.getAvgQual(schoolRatings, numRatings)
@@ -35,7 +47,7 @@ class SchoolShow extends React.Component {
             <div className='school-show'>
                 <div className='school-show-rating-summary'>
                     <div id='school-show-quality-label'>QUALITY</div>
-                    <div id='school-show-quality'>{numRatings === 0 ? "N/A" : avgQual.toFixed(1)}</div>
+                    <div id='school-show-quality' style={{backgroundColor: this.styleQuality(avgQual)}}>{numRatings === 0 ? "N/A" : avgQual.toFixed(1)}</div>
                     <div id='school-show-num-ratings'>{numRatings} Ratings</div>
                 </div>
                 <div className='school-show-name'>
