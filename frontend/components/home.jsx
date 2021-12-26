@@ -65,6 +65,9 @@ class Home extends React.Component {
 
     selectAllSchools() {
         this.setState({selectedSchool: "all schools"})
+        let search = {...this.state.search}
+        search.schoolName = "all schools"
+        this.setState({search})
     }
 
     clickSchool(e) {
