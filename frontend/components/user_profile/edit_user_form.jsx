@@ -23,7 +23,12 @@ class EditUserForm extends React.Component {
 
         this.changeEmail = this.changeEmail.bind(this);
         this.changePassword = this.changePassword.bind(this);
+        this.clickCancel = this.clickCancel.bind(this);
     };
+
+    clickCancel() {
+        this.props.history.goBack()
+    }
 
     componentDidMount() {
         this.props.clearErrors();
@@ -116,10 +121,7 @@ class EditUserForm extends React.Component {
                                 className='edit-user-form-submit edit-user-button' 
                                 value='Update Email'>
                             </input>
-                            <Link 
-                                className='edit-user-form-cancel link'
-                                to={`/account/{user.id}`}>Cancel
-                            </Link>
+                            <div className="edit-user-form-cancel link cancel" onClick={this.clickCancel}>Cancel</div>
                         </div>
                     </div>
                     {this.renderEmailErrors()}
@@ -152,10 +154,7 @@ class EditUserForm extends React.Component {
                                 className='edit-user-form-submit edit-user-button' 
                                 value='Update Password'>
                             </input>
-                            <Link 
-                                className='edit-user-form-cancel link'
-                                to={`/account/{user.id}`}>Cancel
-                            </Link>
+                            <div className="edit-user-form-cancel link cancel" onClick={this.clickCancel}>Cancel</div>
                         </div>
                     </div>
                     {this.renderPasswordErrors()}

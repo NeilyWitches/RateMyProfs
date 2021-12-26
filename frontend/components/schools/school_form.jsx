@@ -8,6 +8,11 @@ class SchoolForm extends React.Component {
         this.state = this.props.school;
 
         this.submitSchoolForm = this.submitSchoolForm.bind(this);
+        this.clickCancel = this.clickCancel.bind(this);
+    }
+
+    clickCancel() {
+        this.props.history.goBack()
     }
 
     update(field) {
@@ -80,7 +85,7 @@ class SchoolForm extends React.Component {
                 <div className='school-prof-form-submit-cancel'>
                     <div className='school-prof-form-submit-cancel-column'>
                         <input type='submit' className='school-prof-form-submit'></input>
-                        <Link to='/schools' className='school-prof-form-cancel'>CANCEL</Link>
+                        <div className="school-prof-form-cancel" onClick={this.clickCancel}>CANCEL</div>
                     </div>
                 </div>
                 {this.renderErrors()}

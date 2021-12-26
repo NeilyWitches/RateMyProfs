@@ -15,9 +15,16 @@ class ProfReviewForm extends React.Component {
             "BEWARE OF POP QUIZZES", "AMAZING LECTURES", "LECTURE HEAVY",
             "CARING", "EXTRA CREDIT", "SO MANY PAPERS", "TOUGH GRADER", 'TESTS ARE TOUGH'
         ]
+
         this.tagStyles = [];
         this.populateTagStyles();
+
+        this.clickCancel = this.clickCancel.bind(this);
     };
+
+    clickCancel() {
+        this.props.history.goBack();
+    }
 
     populateTagStyles() {
         for (let i = 0; i < this.tags.length; i++) {
@@ -318,7 +325,8 @@ class ProfReviewForm extends React.Component {
                     <div id='prof-review-form-characters'>{this.state.characters} characters left</div>
                     <input id='prof-review-form-submit' type='submit'></input>
                 </form>
-                <Link to={`/profs/${this.props.match.params.profId}`} id='prof-review-form-cancel'>CANCEL</Link>
+                {/* <Link to={`/profs/${this.props.match.params.profId}`} id='prof-review-form-cancel'>CANCEL</Link> */}
+                <div id='prof-review-form-cancel' onClick={this.clickCancel}>CANCEL</div>
                 {this.renderErrors()}
             </div>
         );

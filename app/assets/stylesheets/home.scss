@@ -2,7 +2,6 @@
     max-width: 100%;
     height: auto;
     margin-top: 200px;
-    //   opacity: 0.30;
     filter: blur(4px);
     position: absolute;
 }
@@ -12,6 +11,7 @@
   max-width: 30%;
   z-index: 1;
   margin-top: 250px;
+  margin-bottom: 3%;
 }
 
 #on-books {
@@ -22,11 +22,28 @@
 }
 
 #get-started {
-    margin: 50px;
+    margin-bottom: 5%;
     color: white;
     font-size: 30px;
     opacity: 0.999;
     font-weight: 700px;
+}
+
+.home-diff-school {
+    z-index: 1;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19px;
+    margin-top: 5%;
+}
+
+.home-form {
+    z-index: 1;
+    width: 50%;
+    display: flex;
+    justify-content: center;
 }
 
 #pencil {
@@ -119,25 +136,6 @@
 
 #home-try > * {
     margin: 20px;
-}
-
-#explore-button {
-    background-color: black;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    font-size: 30px;
-    margin-top: 30px;
-    opacity: 0.9999;
-    cursor: pointer;
-    border-radius: 20px;
-    font-weight: 700;
-    transition-duration: 0.4s;
-}
-
-#explore-button:hover {
-    background-color: gray;
 }
 
 #home {

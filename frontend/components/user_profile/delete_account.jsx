@@ -13,6 +13,11 @@ class DeleteAccount extends React.Component {
 
         this.deleteAccount = this.deleteAccount.bind(this)
         this.update = this.update.bind(this)
+        this.clickCancel = this.clickCancel.bind(this)
+    }
+
+    clickCancel() {
+        this.props.history.goBack()
     }
 
     deleteAccount(e) {
@@ -69,10 +74,7 @@ class DeleteAccount extends React.Component {
                             value='Delete Account'
                             className='edit-user-button'>
                         </input>
-                        <Link 
-                            className='edit-user-form-cancel link'
-                            to={`/account/${user.id}`}>Cancel
-                        </Link>
+                        <div className='edit-user-form-cancel link cancel' onClick={this.clickCancel}>Cancel</div>
                     </div>
                 </div>
                 {this.renderErrors()}

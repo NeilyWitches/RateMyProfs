@@ -19,7 +19,6 @@ class Signup extends React.Component {
             onlyProfs: true
         };
 
-
         this.handleSubmit = this.handleSubmit.bind(this);
         this.clickLogIn = this.clickLogIn.bind(this);
         this.clickStudent = this.clickStudent.bind(this);
@@ -30,6 +29,11 @@ class Signup extends React.Component {
         this.displaySchoolSearch = this.displaySchoolSearch.bind(this);
         this.hideProfSearch = this.hideProfSearch.bind(this)
         this.hideSchoolSearch = this.hideSchoolSearch.bind(this)
+        this.clickCancel = this.clickCancel.bind(this)
+    }
+
+    clickCancel() {
+        this.props.history.goBack()
     }
 
     componentDidMount() {
@@ -143,7 +147,6 @@ class Signup extends React.Component {
         let accountTypeStyleProf;
 
         let filteredProfs = this.filterProfs(profs)
-
         let filteredSchools = this.filterSchools(schoolList)
 
         if (this.state.account.signingInAsProf) {
@@ -264,7 +267,7 @@ class Signup extends React.Component {
                         <input type='submit' value='Sign up' id='signup-button' className='school-prof-form-submit'></input>
                         <div id='signup-login-txt'>OR, ALREADY HAVE AN ACCOUNT?</div>
                         <button onClick={this.clickLogIn} id='signup-login-button'>Log in</button>
-                        <Link to='/' className='school-prof-form-cancel'>CANCEL</Link>
+                        <div className='school-prof-form-cancel' onClick={this.clickCancel}>CANCEL</div>
                     </div>
                 </div>
                 {this.renderErrors()}

@@ -9,6 +9,27 @@
     box-shadow: 5px 5px 10px lightgrey;
 }
 
+.home-search-input {
+    border: 0px;
+    font-size: 20px;
+    outline: none;
+    padding: 16px 60px;
+    z-index: 1;
+    border-radius: 43px;
+    width: 545px;
+}
+
+.home-search {
+    width: 635px;
+    z-index: 2;
+    background-color: white;
+    height: 200px;
+    overflow-y: auto;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px lightgrey;
+    margin-top: 1px;
+}
+
 .school {
     width: 100%;
 }

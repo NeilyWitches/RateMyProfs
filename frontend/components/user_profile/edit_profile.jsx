@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
 import {Link} from 'react-router-dom';
 import AccountLinks from './account_links';
 
@@ -23,6 +23,11 @@ class EditProfile extends React.Component {
         this.displaySearch = this.displaySearch.bind(this)
         this.hideSearch = this.hideSearch.bind(this)
         this.clickSchool = this.clickSchool.bind(this)
+        this.clickCancel = this.clickCancel.bind(this)
+    }
+
+    clickCancel() {
+        this.props.history.goBack()
     }
 
     componentDidMount() {
@@ -148,10 +153,7 @@ class EditProfile extends React.Component {
                                 className='edit-user-form-submit edit-user-button' 
                                 value='Save Changes'>
                             </input>
-                            <Link 
-                                className='edit-user-form-cancel link'
-                                to={`/account/profile/${user.id}`}>Cancel
-                            </Link>
+                            <div className='edit-user-form-cancel link cancel' onClick={this.clickCancel}>Cancel</div>
                         </div>
                     </div>
                     {this.renderErrors()}
