@@ -203,7 +203,8 @@ class Home extends React.Component {
                                     value={this.state.search.profName}
                                     onChange={this.update('profName')}
                                     onFocus={this.displayProfSearch}
-                                    onBlur={this.hideProfSearch}>
+                                    onBlur={this.hideProfSearch}
+                                    placeholder="Prof name">
                                 </input>
                             </form>
                             <ul className='home-search'
@@ -263,7 +264,8 @@ class Home extends React.Component {
                                     value={this.state.search.schoolName}
                                     onChange={this.update('schoolName')}
                                     onFocus={this.displaySchoolSearch}
-                                    onBlur={this.hideSchoolSearch}>
+                                    onBlur={this.hideSchoolSearch}
+                                    placeholder="School name">
                                 </input>
                             </form>
                             <ul className='home-search'
@@ -325,7 +327,8 @@ class Home extends React.Component {
                                     value={this.state.search.profName}
                                     onChange={this.update('profName')}
                                     onFocus={this.displayProfSearch}
-                                    onBlur={this.hideProfSearch}>
+                                    onBlur={this.hideProfSearch}
+                                    placeholder="Prof name">
                                 </input>
                             </form>
                             <ul className='home-search'
@@ -380,7 +383,8 @@ class Home extends React.Component {
                                     value={this.state.search.schoolName}
                                     onChange={this.update('schoolName')}
                                     onFocus={this.displaySchoolSearch}
-                                    onBlur={this.hideSchoolSearch}>
+                                    onBlur={this.hideSchoolSearch}
+                                    placeholder="School name">
                                 </input>
                             </form>
                             <ul className='home-search'

@@ -8,6 +8,7 @@
     position: fixed;
     width: 100%;
     z-index: 10;
+    height: 65px;
 }
 
 .logo {
@@ -43,11 +44,11 @@
 }
 
 #hey-button {
+    border: 0px;
     border-radius: 20px;
-    background: transparent;
+    background: none;
     color: white;
     font-weight: 700;
-    height: 100%;
     cursor: pointer;
     padding: 8px 16px;
     transition-duration: 0.4s;
@@ -57,4 +58,62 @@
 
 #hey-button:hover {
     background-color: gray;
+}
+
+.navbar-search {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-search-type {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-right: 40px;
+    font-size: 18px;
+}
+
+.navbar-search-type-current {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navbar-search-type-change {
+    align-items: center;
+    position: fixed;
+    z-index: 11;
+    background-color: white;
+    color: black;
+    top: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px lightgrey;
+}
+
+.navbar-search-type-change:hover {
+    cursor: pointer;
+    background-color: blue;
+    color: white;
+}
+
+.navbar-search-type-icon {
+    margin-right: 5px;
+}
+
+.navbar-search-type-current-label {
+    padding-right: 10px;
+}
+
+.navbar-input {
+    font-size: 16px;
+    line-height: 24px;
+    padding: 8px 20px;
+    width: 350px;
+    border: 0px;
+    border-radius: 43px;
+    outline: none;
 }

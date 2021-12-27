@@ -20,6 +20,13 @@ class SchoolIndex extends React.Component {
         this.props.requestSchoolsWithRatings(this.props.match.params.query);
     };
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.match.params.query != this.props.match.params.query) {
+            this.props.requestSchoolsWithRatings(this.props.match.params.query)
+            this.forceUpdate();
+        }
+    }
+
     groupRatings(schoolRatings) {
         let groupedRatings = {};
         for (let i = 0; i < schoolRatings.length; i++) {
