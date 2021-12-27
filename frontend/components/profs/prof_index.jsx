@@ -52,9 +52,17 @@ class ProfIndex extends React.Component {
     };
 
     componentDidUpdate(prevProps) {
+        console.log(prevProps)
         if (prevProps.currentUser !== this.props.currentUser) {
             this.props.requestProfSaves(this.props.currentUser?.id)
         }
+
+        if (prevProps.match.params.query != this.props.match.params.query) {
+            this.props.requestProfs(this.props.match.params.schoolName, this.props.match.params.query);
+            this.props.requestProfSaves(this.props.currentUser?.id)            
+            this.forceUpdate();
+        }
+
     }
 
     groupReviews(profs, profReviews) {
