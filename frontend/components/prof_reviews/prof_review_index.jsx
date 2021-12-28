@@ -1,5 +1,6 @@
 import React from 'react';
 import ProfReviewShow from './prof_review_show';
+import {Link} from 'react-router-dom';
 
 class ProfReviewIndex extends React.Component {
     constructor(props) {
@@ -223,7 +224,16 @@ class ProfReviewIndex extends React.Component {
                                     <div className='hint'>Save Prof</div>
                                 </div> }
                             </div>
-                            <div id='prof-in-dept'>Prof in the <strong>{prof.subject}</strong> Department at <strong>{school?.name}</strong></div>
+                            <div 
+                                id='prof-in-dept'>
+                                Prof in the 
+                                <strong>{prof.subject}</strong> 
+                                Department at &nbsp;
+                                <Link 
+                                    className="home-school-search-school-show-link"
+                                    to={`/schoolRatings/${school?.id}`}>{school?.name}
+                                </Link>                            
+                            </div>                       
                         </div>
                     </div>
                     <div id='prof-show-other-stats'>
