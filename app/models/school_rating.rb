@@ -6,4 +6,8 @@ class SchoolRating < ApplicationRecord
     belongs_to :school,
         foreign_key: :school_id,
         class_name: :School
+
+    has_many :school_rating_likes,
+        foreign_key: :school_rating_id,
+        class_name: :SchoolRatingLike
 end

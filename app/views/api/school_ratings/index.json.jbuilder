@@ -32,11 +32,21 @@ if @school.school_ratings != 0
     json.school_ratings do
         @school.school_ratings.each do |school_rating|
             json.set! school_rating.id do
-                json.extract! school_rating, :reputation, :location, :internet, :food, :opportunities, :facilities, :clubs, :social, :happiness, :safety, :comment, :school_id
+                json.extract! school_rating, :reputation, :location, :internet, :food, :opportunities, :facilities, :clubs, :social, :happiness, :safety, :comment, :school_id, :id
                 json.updatedOn school_rating.updated_at.strftime("%a, %d %b %Y")
             end
         end
     end
 else
     json.school_ratings ({})
+end
+
+if @school.school_rating_likes != 0
+    json.school_rating_likes do
+        @school.school_rating_likes.each do |school_rating_like|
+            json.set! school_rating_like.id do
+                json.extract! school_rating_like, :id, :like_type, :liker_id, :school_rating_id
+            end
+        end
+    end
 end

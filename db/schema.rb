@@ -10,9 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_25_160253) do
+ActiveRecord::Schema.define(version: 2021_12_28_155559) do
 
-  # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "likes", force: :cascade do |t|
@@ -64,6 +63,16 @@ ActiveRecord::Schema.define(version: 2021_12_25_160253) do
     t.index ["first_name"], name: "index_profs_on_first_name"
     t.index ["last_name"], name: "index_profs_on_last_name"
     t.index ["school_id"], name: "index_profs_on_school_id"
+  end
+
+  create_table "school_rating_likes", force: :cascade do |t|
+    t.boolean "like_type", null: false
+    t.integer "liker_id", null: false
+    t.integer "school_rating_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["liker_id"], name: "index_school_rating_likes_on_liker_id"
+    t.index ["school_rating_id"], name: "index_school_rating_likes_on_school_rating_id"
   end
 
   create_table "school_ratings", force: :cascade do |t|

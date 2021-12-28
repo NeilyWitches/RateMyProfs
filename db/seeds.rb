@@ -240,10 +240,17 @@ demo_likes_neil_rev_1 = Like.create!(like_type: true, liker_id: demo_user.id, re
 demo_likes_neil_rev_2 = Like.create!(like_type: true, liker_id: demo_user.id, review_id: neil_review_2.id)
 demo_likes_neil_rev_3 = Like.create!(like_type: false, liker_id: demo_user.id, review_id: neil_review_5.id)
 
-neil_u_likes_neil_rev_1 = Like.create!(like_type: true, liker_id: neil_u.id, review_id: neil_review_1.id)
-neil_u_likes_neil_rev_2 = Like.create!(like_type: true, liker_id: neil_u.id, review_id: neil_review_4.id)
-neil_u_likes_neil_rev_3 = Like.create!(like_type: false, liker_id: neil_u.id, review_id: neil_review_5.id)
+demo_likes_harvard_rat_1 = SchoolRatingLike.create!(like_type: true, liker_id: demo_user.id, school_rating_id: harvard_rating_1.id)
+demo_likes_harvard_rat_2 = SchoolRatingLike.create!(like_type: true, liker_id: demo_user.id, school_rating_id: harvard_rating_2.id)
+demo_likes_harvard_rat_3 = SchoolRatingLike.create!(like_type: false, liker_id: demo_user.id, school_rating_id: harvard_rating_3.id)
 
+neil_u_likes_neil_rev_1 = Like.create!(like_type: true, liker_id: neil_u.id, review_id: neil_review_1.id)
+neil_u_likes_neil_rev_4 = Like.create!(like_type: true, liker_id: neil_u.id, review_id: neil_review_4.id)
+neil_u_likes_neil_rev_5 = Like.create!(like_type: false, liker_id: neil_u.id, review_id: neil_review_5.id)
+
+neil_u_likes_harvard_rat_1 = SchoolRatingLike.create!(like_type: true, liker_id: neil_u.id, school_rating_id: harvard_rating_1.id)
+neil_u_likes_harvard_rat_3 = SchoolRatingLike.create!(like_type: true, liker_id: neil_u.id, school_rating_id: harvard_rating_3.id)
+neil_u_likes_harvard_rat_4 = SchoolRatingLike.create!(like_type: false, liker_id: neil_u.id, school_rating_id: harvard_rating_4.id)
 
 demo_saves_neil = ProfSave.create!(saver_id: demo_user.id, prof_saved_id: neil_p.id)
 demo_saves_harvard_prof_1 = ProfSave.create!(saver_id: demo_user.id, prof_saved_id: harvard_prof_1.id)

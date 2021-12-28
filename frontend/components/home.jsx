@@ -33,7 +33,6 @@ class Home extends React.Component {
 
     searchProfs(e) {
         e.preventDefault();
-        console.log(this.state)
         if (this.state.search.profName.length > 0) {
             let path = `/profs/${this.state.search.schoolName}/${this.state.search.profName}`;
             this.props.history.push(path);
@@ -81,7 +80,6 @@ class Home extends React.Component {
 
     clickProf(prof) {
         return () => {
-            console.log('inside clickProf')
             let path = `/profs/${prof.id}`
             this.props.history.push(path);
         }

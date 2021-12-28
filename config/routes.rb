@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :update, :show, :destroy, :index]
     resources :likes, only: [:create, :destroy]
     resources :prof_saves, only: [:create, :destroy, :index]
+    resources :school_rating_likes, only: [:create, :destroy]
   end
 
   

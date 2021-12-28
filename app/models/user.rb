@@ -37,6 +37,10 @@ class User < ApplicationRecord
         through: :profs_saved,
         source: :school
 
+    has_many :school_rating_likes,
+        foreign_key: :liker_id,
+        class_name: :SchoolRatingLike
+
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import SchoolRatingLikes from '../school_rating_likes/school_rating_likes';
 
 class SchoolRatingShow extends React.Component {
     constructor(props) {
@@ -7,7 +8,7 @@ class SchoolRatingShow extends React.Component {
 
     getCategoryRatings(schoolRating) {
         let categories = Object.keys(schoolRating)
-        categories.splice(-3,3)
+        categories.splice(-4,4)
         let nums = Object.values(schoolRating)
         let ratings = [];
 
@@ -29,7 +30,7 @@ class SchoolRatingShow extends React.Component {
     }
 
     render() {
-        const {schoolRating} = this.props;
+        const {schoolRating, history, schoolRatingLikes} = this.props;
 
         let categoryRatings = this.getCategoryRatings(schoolRating)
 
@@ -59,6 +60,13 @@ class SchoolRatingShow extends React.Component {
                         <div className='school-rating-show-header'>COMMENT</div>
                     </div>
                     <div className='school-rating-show-comment'>{schoolRating.comment}</div>
+                    <SchoolRatingLikes
+                        createSchoolRatingLike={this.props.createSchoolRatingLike}
+                        deleteSchoolRatingLike={this.props.deleteSchoolRatingLike}
+                        currentUser={this.props.currentUser}
+                        schoolRating={schoolRating}
+                        history={history}
+                        schoolRatingLikes={schoolRatingLikes}/>
                 </div>
             </div>
         )

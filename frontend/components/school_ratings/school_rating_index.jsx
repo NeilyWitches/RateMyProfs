@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import SchoolRatingShow from './school_rating_show';
+import SchoolRatingLikes from '../school_rating_likes/school_rating_likes';
 
 class SchoolRatingIndex extends React.Component {
     constructor(props) {
@@ -12,7 +13,6 @@ class SchoolRatingIndex extends React.Component {
 
     componentDidMount() {
         this.props.requestSchoolRatings(this.props.match.params.schoolId)
-
     }
 
     componentDidUpdate(prevProps) {
@@ -30,6 +30,19 @@ class SchoolRatingIndex extends React.Component {
             sum += avgRatings[i].num
         }
         return sum / avgRatings.length
+    }
+
+    groupLikes(schoolRatings, likes) {
+        let groupedLikes = {}
+        for (let i = 0; i < schoolRatings.length; i++) {
+            if (!groupedLikes[schoolRatings[i].id]) {
+                groupedLikes[schoolRatings[i].id] = []
+            }
+        }
+        for (let i = 0; i < likes.length; i++) {
+            groupedLikes[likes[i].school_rating_id]?.push(likes[i])
+        }
+        return groupedLikes
     }
 
     // clickRateSchool() {
@@ -92,7 +105,7 @@ class SchoolRatingIndex extends React.Component {
 
     getAvgRatings(schoolRatings, categories) {
         let numRatings = schoolRatings.length;
-        categories.splice(-3, 3)
+        categories.splice(-4, 4)
         let avgRatings = [];
 
         for (let i = 0; i < categories.length; i++) {
@@ -111,12 +124,13 @@ class SchoolRatingIndex extends React.Component {
     }
 
     render() {
-        const {school, profs, profReviews, schoolRatings} = this.props;
+        const {school, profs, profReviews, schoolRatings, schoolRatingLikes, createSchoolRatingLike, deleteSchoolRatingLike, currentUser, history} = this.props;
 
         if (!school || !profs || !profReviews) return null
 
         let groupedReviews = this.groupReviews(profReviews);
         let topProfs = this.getTopProfs(profs, groupedReviews);
+        let groupedLikes = this.groupLikes(schoolRatings, schoolRatingLikes)
         
         return (
             <div className='page'>
@@ -185,7 +199,12 @@ class SchoolRatingIndex extends React.Component {
                     {schoolRatings.map((schoolRating, index) => 
                     <SchoolRatingShow
                         key={index}
-                        schoolRating={schoolRating}/>)}
+                        schoolRating={schoolRating}
+                        schoolRatingLikes={groupedLikes[schoolRating.id]}
+                        createSchoolRatingLike={createSchoolRatingLike}
+                        deleteSchoolRatingLike={deleteSchoolRatingLike}
+                        currentUser={currentUser}
+                        history={history}/>)}
                 </ul>
             </div>
         )
