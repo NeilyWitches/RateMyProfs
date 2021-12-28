@@ -10,4 +10,5 @@ class SchoolRating < ApplicationRecord
     has_many :school_rating_likes,
         foreign_key: :school_rating_id,
         class_name: :SchoolRatingLike
+        
 end

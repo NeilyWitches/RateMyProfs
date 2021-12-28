@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   namespace :api, defaults: { format: :json } do
     resources :schools, only: [:create, :index, :show]
-    resources :school_ratings, only: [:index]
+    resources :school_ratings, only: [:index, :create]
     resources :profs, except: [:new, :edit, :delete, :destroy]
     resources :prof_reviews, only: [:create, :update, :destroy, :index, :show]
     resource :session, only: [:create, :destroy]

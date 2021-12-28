@@ -4,7 +4,7 @@ json.schools do
     end
 end
 
-if @school.profs != 0
+if @school.profs.length != 0
     json.profs do
         @school.profs.each do |prof|
             json.set! prof.id do
@@ -16,7 +16,7 @@ else
     json.profs ({})
 end
 
-if @school.prof_reviews != 0
+if @school.prof_reviews.length != 0
     json.prof_reviews do
         @school.prof_reviews.each do |prof_review|
             json.set! prof_review.id do
@@ -28,7 +28,7 @@ else
     json.prof_reviews ({})
 end
 
-if @school.school_ratings != 0
+if @school.school_ratings.length != 0
     json.school_ratings do
         @school.school_ratings.each do |school_rating|
             json.set! school_rating.id do
@@ -41,7 +41,7 @@ else
     json.school_ratings ({})
 end
 
-if @school.school_rating_likes != 0
+if @school.school_rating_likes.length != 0
     json.school_rating_likes do
         @school.school_rating_likes.each do |school_rating_like|
             json.set! school_rating_like.id do
@@ -49,4 +49,6 @@ if @school.school_rating_likes != 0
             end
         end
     end
+else
+    json.school_rating_likes ({})
 end

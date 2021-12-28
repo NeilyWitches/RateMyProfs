@@ -10,16 +10,10 @@ const SchoolRatingLikesReducer = (oldState = {}, action) => {
             newState = action.payload.school_rating_likes;
             return newState;
         case RECEIVE_SCHOOL_RATING_LIKE:
-            // debugger
             newState[action.schoolRatingLike.id] = action.schoolRatingLike;
-            // debugger
             return newState;
         case REMOVE_SCHOOL_RATING_LIKE:
-            // debugger
-            // console.log(newState)
             delete newState[action.schoolRatingLikeId];
-            // debugger
-            // console.log(newState)
             return newState;
         default:
             return oldState;

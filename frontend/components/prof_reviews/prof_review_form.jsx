@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 
 class ProfReviewForm extends React.Component {
     constructor(props) {
@@ -325,7 +324,6 @@ class ProfReviewForm extends React.Component {
                     <div id='prof-review-form-characters'>{this.state.characters} characters left</div>
                     <input id='prof-review-form-submit' type='submit'></input>
                 </form>
-                {/* <Link to={`/profs/${this.props.match.params.profId}`} id='prof-review-form-cancel'>CANCEL</Link> */}
                 <div id='prof-review-form-cancel' onClick={this.clickCancel}>CANCEL</div>
                 {this.renderErrors()}
             </div>

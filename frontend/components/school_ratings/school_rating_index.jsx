@@ -1,13 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import SchoolRatingShow from './school_rating_show';
-import SchoolRatingLikes from '../school_rating_likes/school_rating_likes';
 
 class SchoolRatingIndex extends React.Component {
     constructor(props) {
         super(props);
 
-        // this.clickRateSchool = this.clickRateSchool.bind(this)
+        this.clickRateSchool = this.clickRateSchool.bind(this)
         this.clickAllProfs = this.clickAllProfs.bind(this);
     }
 
@@ -45,9 +44,10 @@ class SchoolRatingIndex extends React.Component {
         return groupedLikes
     }
 
-    // clickRateSchool() {
-
-    // }
+    clickRateSchool() {
+        let path = `/schoolRatings/new/${this.props.school.id}`
+        this.props.history.push(path)
+    }
 
     getTopProfs(profs, groupedProfReviews) {
         let profsArray = [];
@@ -143,7 +143,7 @@ class SchoolRatingIndex extends React.Component {
                     WEBSITE <i className="fas fa-external-link-alt"></i>
                 </a>
                 <button id='review-prof-button' 
-                // onClick={this.clickRateSchool}
+                onClick={this.clickRateSchool}
                 >Rate this campus</button>
                 <div className='school-rating-index-school-summary'>
                     <div className='top-profs' id='top-profs'>

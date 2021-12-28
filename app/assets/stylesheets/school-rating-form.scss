@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&family=Source+Sans+Pro:wght@300;600;900&display=swap');
+
+.school-rating-form {
+    display: flex;
+}
+
+.school-rating-form-nums {
+    display: flex;
+    flex-direction: column;
+    width: 40px;
+    gap: 30px;
+}
+
+.school-rating-form-labels {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    gap: 51px;
+    margin-top: 10px;
+}
+
+.school-rating-form-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 58px;
+    margin-top: 15px;
+}
+
+.school-rating-form-num {
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 32px;
+    color: #a6a6a2;
+}
+
+.school-rating-form-label {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 900;
+    font-size: 12px;
+    opacity: 0.6;
+    line-height: 27px;
+    letter-spacing: 0.14em;
+}
+
+.school-rating-form-rating-values {
+    display: flex;
+    flex-direction: column;
+    width: 40px;
+    gap: 30px;
+}
+
+.school-rating-form-input {
+    width: 300px;
+}
+
+.school-rating-form-comment-num-label {
+    display: flex;
+    width: 630px;
+    align-items: center;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.school-rating-body {
+    width: 550px;
+    height: 130px;
+    padding: 12px;
+    color: #505050;
+    font-size: 15px;
+    font-family: 'Source Sans Pro', sans-serif;
+    line-height: 21px;
+    outline: none;
+}
+
+.school-rating-form-characters-left {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 15px;
+    font-style: italic;
+    margin-top: 7px;
+    border-bottom: 1px solid black;
+    padding-bottom: 40px;
+    width: 650px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 70px;
+}
+
+.school-rating-form-submit {
+    background-color: #00adee;
+    border-radius: 0;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 28px;
+    margin-top: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    width: 313px;
+}
+
+.school-rating-form-submit:hover {
+    background-color: chartreuse;
+}
+
+.school-rating-form-cancel {
+    color: #00adee;
+    margin-top: 20px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 900;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    cursor: pointer;
+}

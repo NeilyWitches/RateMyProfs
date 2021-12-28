@@ -24,6 +24,7 @@ import ProfileInfoContainer from './user_profile/profile_info_container';
 import EditProfileContainer from './user_profile/edit_profile_container';
 import EditProfFormContainer from './profs/edit_prof_form_container';
 import SchoolRatingIndexContainer from './school_ratings/school_rating_index_container';
+import CreateSchoolRatingFormContainer from './school_ratings/create_school_rating_form_container';
 
 const App = ({ children }) => (
     <div>
@@ -33,6 +34,7 @@ const App = ({ children }) => (
         <Switch>
             <Route path='/schools/new' component={CreateSchoolFormContainer} />
             <Route path='/schools/:query' component={SchoolIndexContainer} />
+            <Route path='/schoolRatings/new/:schoolId' component={CreateSchoolRatingFormContainer} />
             <Route path='/schoolRatings/:schoolId' component={SchoolRatingIndexContainer} />
             <Route path='/profReviews/new/:profId' component={CreateProfReviewFormContainer} />
             <ExtraProtectedRoute path='/profReviews/edit/:userId/:profId/:profReviewId' component={EditProfReviewFormContainer} />

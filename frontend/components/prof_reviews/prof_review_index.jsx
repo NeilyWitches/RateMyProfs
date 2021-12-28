@@ -226,8 +226,8 @@ class ProfReviewIndex extends React.Component {
                             </div>
                             <div 
                                 id='prof-in-dept'>
-                                Prof in the 
-                                <strong>{prof.subject}</strong> 
+                                Prof in the
+                                <strong> {prof.subject} </strong> 
                                 Department at &nbsp;
                                 <Link 
                                     className="home-school-search-school-show-link"

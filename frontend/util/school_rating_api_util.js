@@ -3,4 +3,12 @@ export const fetchSchoolRatings = schoolId => (
         url: `/api/school_ratings`,
         data: {schoolId}
     })
+);
+
+export const createSchoolRating = schoolRating => (
+    $.ajax({
+        url: "/api/school_ratings",
+        data: {schoolRating},
+        method: "POST",
+    })
 )
