@@ -197,7 +197,7 @@ class ProfReviewForm extends React.Component {
                     <div id='prof-review-disclaimer-do-dont'>
                         <div className='do'>
                             <div className='do-header'>Do</div>
-                            <div className='do-body'>Discuss the professor’s professional abilities including teaching style and ability to convey the material clearly.</div>
+                            <div className='do-body'>Discuss the prof’s professional abilities including teaching style and ability to convey the material clearly.</div>
                         </div>
                         <div className='do'>
                             <div className='do-header'>Do</div>
@@ -205,7 +205,7 @@ class ProfReviewForm extends React.Component {
                         </div>
                         <div className='do'>
                             <div className='do-header'>Don't</div>
-                            <div className='do-body'>Use profanity, name-calling, or derogatory terms. And, don’t claim that the professor shows bias or favoritism for or against students.</div>
+                            <div className='do-body'>Use profanity, name-calling, or derogatory terms. And, don’t claim that the prof shows bias or favoritism for or against students.</div>
                         </div>
                     </div>
                 </div>
@@ -227,7 +227,7 @@ class ProfReviewForm extends React.Component {
                     </div>
                     <div id='prof-review-form-2' className='prof-review-form-row'>
                         <div className='prof-review-form-number'>2</div>
-                        <div className='prof-review-form-label'><strong>RATE YOUR PROFESSOR</strong></div>
+                        <div className='prof-review-form-label'><strong>RATE YOUR PROF</strong></div>
                         <div className='after-label'>
                             <div className='prof-review-form-state-qual'>{this.state.quality}</div>
                             <input

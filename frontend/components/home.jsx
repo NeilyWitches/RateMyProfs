@@ -279,7 +279,7 @@ class Home extends React.Component {
                                 }
                                 <Link to='/schools/new' className='school-search-add-school'>DON'T SEE YOUR SCHOOL? CLICK HERE TO ADD IT TO RMP!</Link>
                             </ul>
-                            <div onClick={this.selectAllSchools} className='home-diff-school'>I'd like to look up a professor by name</div>
+                            <div onClick={this.selectAllSchools} className='home-diff-school'>I'd like to look up a prof by name</div>
                         </div>
                         <div id='love-rmp-text'>
                             <div id='join-rmp'>Join the RMP Family</div>
@@ -403,7 +403,7 @@ class Home extends React.Component {
                                 }
                                 <Link to='/schools/new' className='school-search-add-school'>DON'T SEE YOUR SCHOOL? CLICK HERE TO ADD IT TO RMP!</Link>
                             </ul>
-                            <div onClick={this.selectAllSchools} className='home-diff-school'>I'd like to look up a professor by name</div>
+                            <div onClick={this.selectAllSchools} className='home-diff-school'>I'd like to look up a prof by name</div>
                         </div>
                         <div id='love-rmp-text'>
                             <div id='join-rmp'>Welcome back!</div>

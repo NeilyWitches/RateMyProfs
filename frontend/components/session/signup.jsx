@@ -162,14 +162,14 @@ class Signup extends React.Component {
                 <div className='session-header'>Create an Account</div>
                 <div className='anonymity-txt-row'>
                     <div className='anonymity-txt-col'>
-                        <div className='anonymity-txt'>Signing up will still preserve anonymity! Although anybody can create and view professor ratings, signed in users can edit and delete the reviews they wrote.</div>
+                        <div className='anonymity-txt'>Signing up will still preserve anonymity! Although anybody can create and view prof and school ratings, signed in users can edit and delete the reviews they wrote.</div>
                     </div>
                 </div>
                 <div className='school-prof-form-row'>
                     <div className='school-prof-form-label'>ACCOUNT TYPE</div>
                     <div className='account-type-buttons'>
                         <input type='button' className="boolean-button" style={accountTypeStyleStudent} onClick={this.clickStudent} value='STUDENT' />
-                        <input type='button' className="boolean-button" style={accountTypeStyleProf} onClick={this.clickProfButton} value='PROFESSOR' />
+                        <input type='button' className="boolean-button" style={accountTypeStyleProf} onClick={this.clickProfButton} value='PROF' />
                     </div>
                 </div>
                 <div className='school-prof-form-row'>

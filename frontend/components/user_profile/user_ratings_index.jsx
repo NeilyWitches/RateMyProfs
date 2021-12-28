@@ -21,8 +21,8 @@ class UserRatingsIndex extends React.Component {
                     <AccountLinks 
                     location={this.props.match.path}
                     user={user}/>
-                    <div id='no-authored-reviews'>You haven’t rated any professors yet.</div>
-                    <div id='no-authored-reviews-subtext'>Find your favorite professor and let them know what a difference they’ve made!</div>
+                    <div id='no-authored-reviews'>You haven’t rated any profs yet.</div>
+                    <div id='no-authored-reviews-subtext'>Find your favorite prof and let them know what a difference they’ve made!</div>
                 </div>
             )
         }
