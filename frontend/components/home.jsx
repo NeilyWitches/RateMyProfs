@@ -18,23 +18,22 @@ class Home extends React.Component {
 
         this.clickSignUp = this.clickSignUp.bind(this);
         this.clickDemo = this.clickDemo.bind(this);
-        this.clickExploreProfs = this.clickExploreProfs.bind(this);
-        this.clickExploreSchools = this.clickExploreSchools.bind(this);
         this.clickMyRatings = this.clickMyRatings.bind(this);
         this.displaySchoolSearch = this.displaySchoolSearch.bind(this);
         this.hideSchoolSearch = this.hideSchoolSearch.bind(this)
         this.clickSchool = this.clickSchool.bind(this);
-        this.clickProf = this.clickProf.bind(this);
         this.clickDiffSchool = this.clickDiffSchool.bind(this);
         this.displayProfSearch = this.displayProfSearch.bind(this);
         this.hideProfSearch = this.hideProfSearch.bind(this)
         this.searchProfs = this.searchProfs.bind(this)
         this.searchSchools = this.searchSchools.bind(this)
         this.selectAllSchools = this.selectAllSchools.bind(this)
+        this.clickProf = this.clickProf.bind(this)
     }
 
     searchProfs(e) {
         e.preventDefault();
+        console.log(this.state)
         if (this.state.search.profName.length > 0) {
             let path = `/profs/${this.state.search.schoolName}/${this.state.search.profName}`;
             this.props.history.push(path);
@@ -52,6 +51,9 @@ class Home extends React.Component {
     componentDidUpdate(prevProps) {
         if (prevProps.schools !== this.props.schools && this.props.current_user) {
             this.setState({selectedSchool: this.props.schools[this.props.current_user.school_id].name})
+            let search = {...this.state.search}
+            search.schoolName = this.props.schools[this.props.current_user.school_id].name
+            this.setState({search})
         }
 
         if (prevProps.current_user !== this.props.current_user) {
@@ -77,10 +79,12 @@ class Home extends React.Component {
         this.setState({search})
     }
 
-    clickProf(e) {
-        let search = {...this.state.search}
-        search.profName = e.currentTarget.children[0].innerText;
-        this.setState({search})
+    clickProf(prof) {
+        return () => {
+            console.log('inside clickProf')
+            let path = `/profs/${prof.id}`
+            this.props.history.push(path);
+        }
     }
 
     clickSignUp() {
@@ -96,16 +100,6 @@ class Home extends React.Component {
                 password: 'cupcake',
             })
         .then(() => this.props.history.push('/'));
-    }
-
-    clickExploreProfs() {
-        let path = '/profs';
-        this.props.history.push(path);
-    }
-
-    clickExploreSchools() {
-        let path = '/schools';
-        this.props.history.push(path);
     }
 
     clickMyRatings() {
@@ -149,7 +143,7 @@ class Home extends React.Component {
     filterSchools(schools) {
         let filterdSchools = []
         for (let i = 0; i < schools.length; i++) {
-            if (schools[i].name.toLowerCase().includes(this.state.search.schoolName.toLowerCase())) {
+            if (schools[i].name?.toLowerCase().includes(this.state.search.schoolName?.toLowerCase())) {
                 filterdSchools.push(schools[i])
             }
         }
@@ -161,7 +155,7 @@ class Home extends React.Component {
         let filterdProfs = []
         if (this.state.selectedSchool === 'all schools') {
             for (let i = 0; i < profs.length; i++) {
-                if (profs[i].name.toLowerCase().includes(this.state.search.profName.toLowerCase())) {
+                if (profs[i].name?.toLowerCase().includes(this.state.search.profName?.toLowerCase())) {
                     filterdProfs.push(profs[i])
                 }
             }
@@ -214,7 +208,7 @@ class Home extends React.Component {
                                     <li 
                                         key={index}
                                         className='school-li'
-                                        onClick={this.clickProf}>
+                                        onClick={this.clickProf(prof)}>
                                         <div className='school-li-name'>{prof?.name}</div>
                                         <div className='school-li-location'>{schools[prof.school_id]?.name}</div>
                                     </li>)
@@ -338,7 +332,7 @@ class Home extends React.Component {
                                     <li 
                                         key={index}
                                         className='school-li'
-                                        onClick={this.clickProf}>
+                                        onClick={this.clickProf(prof)}>
                                         <div className='school-li-name'>{prof?.name}</div>
                                         <div className='school-li-location'>{schools[prof.school_id]?.name}</div>
                                     </li>)

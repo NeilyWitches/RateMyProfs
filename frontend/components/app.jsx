@@ -23,7 +23,7 @@ import SchoolIndexContainer from './schools/school_index_container';
 import ProfileInfoContainer from './user_profile/profile_info_container';
 import EditProfileContainer from './user_profile/edit_profile_container';
 import EditProfFormContainer from './profs/edit_prof_form_container';
-// import SchoolRatingIndexContainer from './school_ratings/school_ratings_index_container';
+import SchoolRatingIndexContainer from './school_ratings/school_rating_index_container';
 
 const App = ({ children }) => (
     <div>
@@ -33,13 +33,13 @@ const App = ({ children }) => (
         <Switch>
             <Route path='/schools/new' component={CreateSchoolFormContainer} />
             <Route path='/schools/:query' component={SchoolIndexContainer} />
+            <Route path='/schoolRatings/:schoolId' component={SchoolRatingIndexContainer} />
             <Route path='/profReviews/new/:profId' component={CreateProfReviewFormContainer} />
             <ExtraProtectedRoute path='/profReviews/edit/:userId/:profId/:profReviewId' component={EditProfReviewFormContainer} />
             <ProfEditRoute path='/profs/edit/:profId' component={EditProfFormContainer} />
             <Route path='/profs/new' component={CreateProfFormContainer} />
             <Route path='/profs/:schoolName/:query' component={ProfIndexContainer} />
             <Route path='/profs/:profId' component={ProfReviewIndexContainer} />
-            {/* <Route path='/profs/' component={ProfIndexContainer} /> */}
             <ExtraProtectedRoute path='/account/profile/edit/:userId' component={EditProfileContainer} />
             <ExtraProtectedRoute path='/account/ratings/:userId' component={UserRatingsIndexContainer} />
             <ExtraProtectedRoute path='/account/edit/:userId' component={EditUserContainer} />

@@ -3,6 +3,7 @@ import { RECEIVE_PROF_REVIEW, REMOVE_PROF_REVIEW, RECEIVE_PROF_REVIEWS } from '.
 import { RECEIVE_USER } from '../actions/user_actions';
 import { merge } from 'lodash'
 import { RECEIVE_SAVED_PROFS } from '../actions/prof_save_actions';
+import {RECEIVE_SCHOOL_RATINGS} from '../actions/school_rating_actions';
 
 const ProfReviewsReducer = (oldState = {}, action) => {
     Object.freeze(oldState);
@@ -24,6 +25,9 @@ const ProfReviewsReducer = (oldState = {}, action) => {
             newState = action.payload.prof_reviews
             return newState
         case RECEIVE_SAVED_PROFS:
+            newState = action.payload.prof_reviews
+            return newState;
+        case RECEIVE_SCHOOL_RATINGS:
             newState = action.payload.prof_reviews
             return newState;
         default:

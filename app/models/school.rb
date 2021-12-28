@@ -9,4 +9,8 @@ class School < ApplicationRecord
     has_many :school_ratings,
         foreign_key: :school_id,
         class_name: :SchoolRating
+
+    has_many :prof_reviews,
+        through: :profs,
+        source: :prof_reviews
 end

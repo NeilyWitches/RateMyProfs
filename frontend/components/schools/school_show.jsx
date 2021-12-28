@@ -4,13 +4,13 @@ class SchoolShow extends React.Component {
     constructor(props) {
         super(props);
 
-        // this.clickSchool = this.clickSchool.bind(this);
+        this.clickSchool = this.clickSchool.bind(this);
     }
 
-    // clickSchool() {
-    //     let path = `/school/${this.props.school.id}`;
-    //     return () => this.props.history.push(path);    
-    // }
+    clickSchool() {
+        let path = `/schoolRatings/${this.props.school.id}`;
+        this.props.history.push(path);    
+    }
 
     getAvgQual(schoolRatings, numRatings) {
         let avgRatingSum = 0;
@@ -44,7 +44,7 @@ class SchoolShow extends React.Component {
         let avgQual = this.getAvgQual(schoolRatings, numRatings)
 
         return (
-            <div className='school-show'>
+            <div className='school-show' onClick={this.clickSchool}>
                 <div className='school-show-rating-summary'>
                     <div id='school-show-quality-label'>QUALITY</div>
                     <div id='school-show-quality' style={{backgroundColor: this.styleQuality(avgQual)}}>{numRatings === 0 ? "N/A" : avgQual.toFixed(1)}</div>

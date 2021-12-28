@@ -52,7 +52,6 @@ class ProfIndex extends React.Component {
     };
 
     componentDidUpdate(prevProps) {
-        console.log(prevProps)
         if (prevProps.currentUser !== this.props.currentUser) {
             this.props.requestProfSaves(this.props.currentUser?.id)
         }

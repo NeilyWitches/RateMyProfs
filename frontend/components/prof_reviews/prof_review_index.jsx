@@ -41,7 +41,7 @@ class ProfReviewIndex extends React.Component {
     }
 
     clickEditProf() {
-        if (this.props.currentUser.prof_id == this.props.prof.id) {
+        if (this.props.currentUser?.prof_id == this.props.prof.id) {
             let path = `/profs/edit/${this.props.prof.id}`
             this.props.history.push(path);
         } else {

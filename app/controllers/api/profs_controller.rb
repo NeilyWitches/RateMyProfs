@@ -12,6 +12,13 @@ class Api::ProfsController < ApplicationController
 
             if params[:schoolName] == "all schools"
                 @schools = School.all.includes(:profs)
+
+                if !first_name
+                    @profs = Prof.all.includes(:prof_reviews)
+                    render :index
+                    return
+                end
+
                 profs_1 = Prof.where("lower(first_name) like ?", "%" + names[0].downcase() + "%").includes(:prof_reviews)
                 profs_2 = Prof.where("lower(last_name) like ?", "%" + names[0].downcase() + "%").includes(:prof_reviews)
 
@@ -25,6 +32,13 @@ class Api::ProfsController < ApplicationController
                 end
             else
                 @schools = School.where(name: params[:schoolName]).includes(:profs)
+
+                if !first_name
+                    @profs = @schools[0].profs.includes(:prof_reviews)
+                    render :index
+                    return
+                end
+
                 profs_1 = @schools[0].profs.where("lower(first_name) like ?", "%" + names[0].downcase() + "%").includes(:prof_reviews)
                 profs_2 = @schools[0].profs.where("lower(last_name) like ?", "%" + names[0].downcase() + "%").includes(:prof_reviews)
 

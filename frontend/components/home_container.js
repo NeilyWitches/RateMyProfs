@@ -9,7 +9,7 @@ const mSTP = state => {
         current_user: state.session.current_user,
         schools: state.entities.schools,
         schoolList: Object.values(state.entities.schools),
-        profs: Object.values(state.entities.profs).map(prof => ({name: prof.first_name + " " + prof.last_name, school_id: prof.school_id})),
+        profs: Object.values(state.entities.profs).map(prof => ({name: prof.first_name + " " + prof.last_name, school_id: prof.school_id, id: prof.id})),
     };
 };
 

@@ -26,8 +26,8 @@ class ProfReviewShow extends React.Component {
             <div className='may-edit-header'>
                 <div className='prof-review-show-prof-school'>
                     <strong className='prof-review-show-prof-name'>
-                        {this.props.profWrittenAbout.first_name} &nbsp;
-                        {this.props.profWrittenAbout.last_name}
+                        {this.props.profWrittenAbout?.first_name} &nbsp;
+                        {this.props.profWrittenAbout?.last_name}
                     </strong>
                     <div>•</div>
                     <div className='prof-review-show-prof-name'>{this.props.school?.name}</div>
@@ -48,6 +48,8 @@ class ProfReviewShow extends React.Component {
 
     render() {
         let { attendance, grade, quality, difficulty, klass, updatedOn, for_credit, take_again, txt_book, body, tag1, tag2, tag3, } = this.props.profReview;
+
+        if (!this.props.profReview) return null
 
         let attendanceDisplay;
         let gradeDisplay;

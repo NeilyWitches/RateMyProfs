@@ -39,10 +39,10 @@ class UserRatingsIndex extends React.Component {
                             <ProfReviewShow 
                             profReview={profReview}
                             mayEdit={true}
-                            userId={this.props.match.params.userId}
+                            userId={this.props.match.params?.userId}
                             deleteProfReview={deleteProfReview}
-                            profWrittenAbout={profs[profReview.prof_id]}
-                            school={schools[profs[profReview.prof_id].school_id]}/>
+                            profWrittenAbout={profs[profReview?.prof_id]}
+                            school={schools[profs[profReview.prof_id]?.school_id]}/>
                         </div>)
                     }
                 </ul>
