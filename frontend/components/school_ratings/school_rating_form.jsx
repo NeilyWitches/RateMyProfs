@@ -29,7 +29,8 @@ class SchoolRatingForm extends React.Component {
     }
 
     componentDidMount() {
-        this.props.requestSchool(this.props.match.params.schoolId)
+        this.props.requestSchool(this.props.match.params.schoolId);
+        this.props.clearErrors();
     }
 
     update(field) {
@@ -51,6 +52,18 @@ class SchoolRatingForm extends React.Component {
     submitSchoolRating(e) {
         e.preventDefault();
         this.props.createSchoolRating({...this.state.categories, comment: this.state.body, school_id: this.props.school.id})
+    }
+
+    renderErrors() {
+        return (
+            <ul>
+                {this.props.school_rating_errors.map((error, i) => (
+                    <li key={`error-${i}`}>
+                        {error}
+                    </li>
+                ))}
+            </ul>
+        )
     }
 
     render() {
@@ -130,6 +143,7 @@ class SchoolRatingForm extends React.Component {
                     form='school-rating-form'>
                 </input>
                 <div className='school-rating-form-cancel' onClick={this.clickCancel}>CANCEL</div>
+                {this.renderErrors()}
             </div>
         )
     }

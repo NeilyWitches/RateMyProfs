@@ -6,7 +6,8 @@ import {createSchoolRating} from '../../actions/school_rating_actions';
 
 const mSTP = (state, ownProps) => {
     return {
-        school: state.entities.schools[ownProps.match.params.schoolId]
+        school: state.entities.schools[ownProps.match.params.schoolId],
+        school_rating_errors: state.errors.school_rating,
     }
 };
 
