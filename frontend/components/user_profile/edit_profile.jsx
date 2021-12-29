@@ -61,18 +61,6 @@ class EditProfile extends React.Component {
         this.setState({profile})
     }
 
-    renderErrors() {
-        return (
-            <ul>
-                {this.props.profileErrors.map((error, i) => (
-                    <li key={`error-${i}`}>
-                        {error}
-                    </li>
-                ))}
-            </ul>
-        )
-    }
-
     displaySearch() {
         this.setState({searchDisplay: 'block'})
     }
@@ -119,6 +107,7 @@ class EditProfile extends React.Component {
                             onChange={this.updateName}
                             className="edit-user-form-input">
                         </input>
+                        {this.props.profileErrors.includes("Name cannot be blank") ? <div className='prof-form-school-name-error error'>Name cannot be blank</div> : null }
                     </div>
                     <div className='edit-user-form-input-row'>
                         <div className='edit-user-form-label'>School</div>
@@ -130,6 +119,7 @@ class EditProfile extends React.Component {
                             onChange={this.updateSchool}
                             className="edit-user-form-input">
                         </input>
+                        {this.props.profileErrors.includes("School not found") ? <div className='prof-form-school-name-error error'>School not found</div> : null }
                     </div>
                     <div className='edit-profile-school-search-container'>
                         <ul className='edit-profile-school-search'
@@ -156,7 +146,6 @@ class EditProfile extends React.Component {
                             <div className='edit-user-form-cancel link cancel' onClick={this.clickCancel}>Cancel</div>
                         </div>
                     </div>
-                    {this.renderErrors()}
                 </form>
             </div>
         )

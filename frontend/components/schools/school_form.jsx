@@ -29,18 +29,6 @@ class SchoolForm extends React.Component {
         this.props.clearErrors();
     }
 
-    renderErrors() {
-        return (
-            <ul>
-                {this.props.school_errors.map((error, i) => (
-                    <li key={`error-${i}`}>
-                        {error}
-                    </li>
-                ))}
-            </ul>
-        )
-    }
-
     render() {
         return (
             <form onSubmit={this.submitSchoolForm} className='page school-prof-form'>
@@ -54,6 +42,7 @@ class SchoolForm extends React.Component {
                         value={this.state.name}
                         onChange={this.update('name')}>
                     </input>
+                    {this.props.school_errors.includes("Name can't be blank") ? <div className='prof-form-school-name-error error'>School name cannot be blank.</div> : null }
                 </div>
                 <div className='school-prof-form-row'>
                     <div className='school-prof-form-label'>STATE</div>
@@ -63,6 +52,7 @@ class SchoolForm extends React.Component {
                         value={this.state.state}
                         onChange={this.update('state')}>
                     </input>
+                    {this.props.school_errors.includes("State can't be blank") ? <div className='prof-form-school-name-error error'>State cannot be blank.</div> : null }
                 </div>
                 <div className='school-prof-form-row'>
                     <div className='school-prof-form-label'>CITY</div>
@@ -72,6 +62,7 @@ class SchoolForm extends React.Component {
                         value={this.state.city}
                         onChange={this.update('city')}>
                     </input>
+                    {this.props.school_errors.includes("City can't be blank") ? <div className='prof-form-school-name-error error'>City cannot be blank.</div> : null }
                 </div>
                 <div className='school-prof-form-row'>
                     <div className='school-prof-form-label'>WEBSITE</div>
@@ -81,6 +72,7 @@ class SchoolForm extends React.Component {
                         value={this.state.website}
                         onChange={this.update('website')}>
                     </input>
+                    {this.props.school_errors.includes("Website can't be blank") ? <div className='prof-form-school-name-error error'>Website cannot be blank.</div> : null }
                 </div>
                 <div className='school-prof-form-submit-cancel'>
                     <div className='school-prof-form-submit-cancel-column'>
@@ -88,7 +80,6 @@ class SchoolForm extends React.Component {
                         <div className="school-prof-form-cancel" onClick={this.clickCancel}>CANCEL</div>
                     </div>
                 </div>
-                {this.renderErrors()}
             </form>
         )
     }

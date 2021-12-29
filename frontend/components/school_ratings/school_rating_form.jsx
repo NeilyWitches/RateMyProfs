@@ -54,18 +54,6 @@ class SchoolRatingForm extends React.Component {
         this.props.createSchoolRating({...this.state.categories, comment: this.state.body, school_id: this.props.school.id})
     }
 
-    renderErrors() {
-        return (
-            <ul>
-                {this.props.school_rating_errors.map((error, i) => (
-                    <li key={`error-${i}`}>
-                        {error}
-                    </li>
-                ))}
-            </ul>
-        )
-    }
-
     render() {
 
         const {school} = this.props;
@@ -136,14 +124,16 @@ class SchoolRatingForm extends React.Component {
                     value={this.state.body}
                     onChange={this.update('body')}>
                 </textarea>
-                <div className='school-rating-form-characters-left'>{this.state.characters} characters left</div>
+                {this.props.school_rating_errors.includes("Comment can't be blank") ? <div className='prof-review-form-blank-body-error'>Comment can't be blank</div> : null }
+                {this.props.school_rating_errors.includes("Comment is too long (maximum is 350 characters)") ? <div className='prof-review-form-blank-body-error'>Comment is too long (maximum is 350 characters)</div> : null }
+                <div className='school-rating-form-characters-left'>{this.state.characters} characters left
+                </div>
                 <input 
                     className='school-rating-form-submit' 
                     type='submit'
                     form='school-rating-form'>
                 </input>
                 <div className='school-rating-form-cancel' onClick={this.clickCancel}>CANCEL</div>
-                {this.renderErrors()}
             </div>
         )
     }

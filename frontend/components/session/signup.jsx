@@ -85,18 +85,6 @@ class Signup extends React.Component {
         .then(() => this.props.history.push('/'));
     }
 
-    renderErrors() {
-        return(
-            <ul>
-                {this.props.signup_errors.map((error, i) => (
-                    <li key={`error-${i}`} id={`signup-error-${i}`} className='signup-errors'>
-                        {error}
-                    </li>
-                ))}
-            </ul>
-        );
-    }
-
     displayProfSearch() {
         if (this.state.account.signingInAsProf) {
             this.setState({searchProfDisplay: 'block'})
@@ -182,6 +170,7 @@ class Signup extends React.Component {
                         onFocus={this.displaySchoolSearch}
                         onBlur={this.hideSchoolSearch}>
                     </input>
+                    {this.props.signup_errors.includes("School not found.") ? <div className='prof-form-school-name-error error'>School not found</div> : null }
                 </div>
                 <div className='prof-form-school-search-container'>
                     <ul className='edit-profile-school-search'
@@ -209,6 +198,7 @@ class Signup extends React.Component {
                         onFocus={this.displayProfSearch}
                         onBlur={this.hideProfSearch}>
                     </input>
+                    {this.props.signup_errors.includes("Name cannot be blank") ? <div className='prof-form-school-name-error error'>Name cannot be blank</div> : null }
                 </div>
                 <div className='prof-form-school-search-container'>
                     <ul className='edit-profile-school-search'
@@ -234,6 +224,7 @@ class Signup extends React.Component {
                         value={this.state.email}
                         onChange={this.update('email')}>
                     </input>
+                    {this.props.signup_errors.includes("Email cannot be blank") ? <div className='prof-form-school-name-error error'>Email cannot be blank</div> : null }
                 </div>
                 <div className='school-prof-form-row'>
                     <div className='school-prof-form-label'>CONFIRM EMAIL</div>
@@ -243,6 +234,7 @@ class Signup extends React.Component {
                         value={this.state.email_confirm}
                         onChange={this.update('email_confirm')}>
                     </input>
+                    {this.props.signup_errors.includes("Email does not match") ? <div className='prof-form-school-name-error error'>Email does not match</div> : null }
                 </div>
                 <div className='school-prof-form-row'>
                     <div className='school-prof-form-label'>PASSWORD</div>
@@ -252,6 +244,7 @@ class Signup extends React.Component {
                         value={this.state.password}
                         onChange={this.update('password')}>
                     </input>
+                    {this.props.signup_errors.includes("Password must be a minimum of 6 characters") ? <div className='prof-form-school-name-error error'>Password must be a minimum of 6 characters</div> : null }
                 </div>
                 <div className='school-prof-form-row'>
                     <div className='school-prof-form-label'>CONFIRIM PASSWORD</div>
@@ -261,6 +254,7 @@ class Signup extends React.Component {
                         value={this.state.password_confirm}
                         onChange={this.update('password_confirm')}>
                     </input>
+                    {this.props.signup_errors.includes("Password does not match") ? <div className='prof-form-school-name-error error'>Password does not match</div> : null }
                 </div>
                 <div className='school-prof-form-submit-cancel'>
                     <div className='school-prof-form-submit-cancel-column'>
@@ -270,7 +264,6 @@ class Signup extends React.Component {
                         <div className='school-prof-form-cancel' onClick={this.clickCancel}>CANCEL</div>
                     </div>
                 </div>
-                {this.renderErrors()}
             </form>
         )
     }

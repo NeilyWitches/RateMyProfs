@@ -62,30 +62,6 @@ class EditUserForm extends React.Component {
         .then(() => this.props.history.push(`/account/${this.props.user.id}`));
     }
 
-    renderEmailErrors() {
-        return (
-            <ul>
-                {this.props.changeEmailErrors.map((error, i) => (
-                    <li key={`error-${i}`}>
-                        {error}
-                    </li>
-                ))}
-            </ul>
-        )
-    }
-
-    renderPasswordErrors() {
-        return (
-            <ul>
-                {this.props.changePasswordErrors.map((error, i) => (
-                    <li key={`error-${i}`}>
-                        {error}
-                    </li>
-                ))}
-            </ul>
-        )
-    }
-
     render() {
         const {user} = this.props;
         return (
@@ -104,6 +80,7 @@ class EditUserForm extends React.Component {
                             onChange={this.updateEmailForm('email')}
                             className="edit-user-form-input">
                         </input>
+                    {this.props.changeEmailErrors.includes("Email cannot be blank") ? <div className='prof-form-school-name-error error'>Email cannot be blank</div> : null }
                     </div>
                     <div className='edit-user-form-input-row'>
                         <div className='edit-user-form-label'>Password</div>
@@ -113,6 +90,7 @@ class EditUserForm extends React.Component {
                             onChange={this.updateEmailForm('password')}
                             className="edit-user-form-input">
                         </input>
+                        {this.props.changeEmailErrors.includes("Incorrect password") ? <div className='prof-form-school-name-error error'>Incorrect password</div> : null }
                     </div>
                     <div className='edit-user-form-submit-cancel-row'>
                         <div className='edit-user-form-submit-cancel-col'>
@@ -124,7 +102,6 @@ class EditUserForm extends React.Component {
                             <div className="edit-user-form-cancel link cancel" onClick={this.clickCancel}>Cancel</div>
                         </div>
                     </div>
-                    {this.renderEmailErrors()}
                     <div className='edit-user-form-border'></div>
                 </form>
                 <form onSubmit={this.changePassword} className='edit-user-form-proper'>
@@ -137,6 +114,7 @@ class EditUserForm extends React.Component {
                             onChange={this.updatePasswordForm('oldPassword')}
                             className="edit-user-form-input">
                         </input>
+                        {this.props.changePasswordErrors.includes("Incorrect passowrd") ? <div className='prof-form-school-name-error error'>Incorrect password</div> : null }
                     </div>
                     <div className="edit-user-form-input-row">
                         <div className="edit-user-form-label">New Password</div>
@@ -146,6 +124,7 @@ class EditUserForm extends React.Component {
                             onChange={this.updatePasswordForm('newPassword')}
                             className="edit-user-form-input">
                         </input>
+                        {this.props.changePasswordErrors.includes("Password is too short, must be at least 6 characters") ? <div className='prof-form-school-name-error error'>Password is too short, must be at least 6 characters</div> : null }
                     </div>
                     <div className='edit-user-form-submit-cancel-row'>
                         <div className='edit-user-form-submit-cancel-col'>
@@ -157,7 +136,6 @@ class EditUserForm extends React.Component {
                             <div className="edit-user-form-cancel link cancel" onClick={this.clickCancel}>Cancel</div>
                         </div>
                     </div>
-                    {this.renderPasswordErrors()}
                     <div className='edit-user-form-border'></div>
                     <div className="edit-user-form-header">Delete Account</div>
                     <Link 

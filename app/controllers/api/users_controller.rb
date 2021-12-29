@@ -1,7 +1,6 @@
 class Api::UsersController < ApplicationController
     def create
         errors = [];
-        errors << "School cannot be blank" if user_params[:school_name] == ""
         errors << "Name cannot be blank" if user_params[:user_name] == ""
         errors << "Email cannot be blank" if user_params[:email] == ""
         errors << "Email does not match" if user_params[:email] != user_params[:email_confirm]

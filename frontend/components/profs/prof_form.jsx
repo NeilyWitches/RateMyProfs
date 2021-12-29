@@ -59,18 +59,6 @@ class ProfForm extends React.Component {
         }
     }
 
-    renderErrors() {
-        return (
-            <ul>
-                {this.props.prof_errors.map((error, i) => (
-                    <li key={`error-${i}`}>
-                        {error}
-                    </li>
-                ))}
-            </ul>
-        )
-    }
-
     displaySearch() {
         this.setState({searchDisplay: 'block'})
     }
@@ -109,6 +97,7 @@ class ProfForm extends React.Component {
                         value={this.state.prof.school_name}
                         onChange={this.update('school_name')}>
                     </input>
+                    {this.props.prof_errors.includes("School not found") ? <div className='prof-form-school-name-error error'>School not found</div> : null }
                 </div>
                 <div className='prof-form-school-search-container'>
                     <ul className='edit-profile-school-search'
@@ -134,6 +123,7 @@ class ProfForm extends React.Component {
                         value={this.state.prof.first_name}
                         onChange={this.update('first_name')}>
                     </input>
+                    {this.props.prof_errors.includes("First name cannot be blank") ? <div className='prof-form-school-name-error error'>First name cannot be blank</div> : null }
                 </div>
                 <div className='school-prof-form-row'>
                     <div className='school-prof-form-label'>PROF'S LAST NAME</div>
@@ -143,6 +133,7 @@ class ProfForm extends React.Component {
                         value={this.state.prof.last_name}
                         onChange={this.update('last_name')}>
                     </input>
+                    {this.props.prof_errors.includes("Last name cannot be blank") ? <div className='prof-form-school-name-error error'>Last name cannot be blank</div> : null }
                 </div>
                 <div className='school-prof-form-row'>
                     <div className='school-prof-form-label'>DEPARTMENT</div>
@@ -152,6 +143,7 @@ class ProfForm extends React.Component {
                         value={this.state.prof.subject}
                         onChange={this.update('subject')}>
                     </input>
+                    {this.props.prof_errors.includes("Department cannot be blank") ? <div className='prof-form-school-name-error error'>Department cannot be blank</div> : null }
                 </div>
                 <div className='school-prof-form-submit-cancel'>
                     <div className='school-prof-form-submit-cancel-column'>
@@ -159,7 +151,6 @@ class ProfForm extends React.Component {
                         <div className='school-prof-form-cancel cancel' onClick={this.clickCancel}>CANCEL</div>
                     </div>
                 </div>
-                {this.renderErrors()}
             </form>
         )
     }

@@ -19,13 +19,9 @@ class Api::SchoolRatingLikesController < ApplicationController
     private
 
     def set_school_rating_like
-        # debugger
         @school_rating_like = SchoolRatingLike.find(params[:id])
-        # debugger
     rescue
-        # debugger
         render json: ['SchoolRatingLike not found'], status: :not_found
-        # debugger
     end
 
     def school_rating_like_params

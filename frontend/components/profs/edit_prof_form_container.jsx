@@ -5,8 +5,6 @@ import { clearErrors } from '../../actions/clear_errors';
 import { requestSchools } from '../../actions/school_actions';
 
 const mSTP = (state, ownProps) => {
-    // debugger
-
     return {
         prof: {
             id: ownProps.match.params.profId,

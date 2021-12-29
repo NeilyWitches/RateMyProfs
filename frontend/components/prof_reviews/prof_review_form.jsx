@@ -101,19 +101,6 @@ class ProfReviewForm extends React.Component {
         .then(() => this.props.history.push(`/profs/${this.state.prof_id}`));
     };
 
-    renderErrors() {
-        
-        return (
-            <ul id='prof-review-form-errors'>
-                {this.props.prof_review_errors.map((error, i) => (
-                    <li key={`error-${i}`}>
-                        {error}
-                    </li>
-                ))}
-            </ul>
-        )
-    }
-
     componentDidMount() {
         this.setState({ characters: 350 })
     }
@@ -224,10 +211,11 @@ class ProfReviewForm extends React.Component {
                             placeholder="Enter code"
                             onChange={this.update('klass')}>
                         </input>
+                        {this.props.prof_review_errors.includes("Klass can't be blank") ? <div className='blank-klass-error'>Course code cannot be blank.</div> : null }
                     </div>
                     <div id='prof-review-form-2' className='prof-review-form-row'>
                         <div className='prof-review-form-number'>2</div>
-                        <div className='prof-review-form-label'><strong>RATE YOUR PROF</strong></div>
+                        <div className='prof-review-form-label' id='prof-review-form-label-2'><strong>RATE YOUR PROF</strong></div>
                         <div className='after-label'>
                             <div className='prof-review-form-state-qual'>{this.state.quality}</div>
                             <input
@@ -321,11 +309,16 @@ class ProfReviewForm extends React.Component {
                         value={this.state.body}
                         onChange={this.update('body')}>
                     </textarea>
-                    <div id='prof-review-form-characters'>{this.state.characters} characters left</div>
+                    <div 
+                        id='prof-review-form-characters'>
+                        {this.state.characters} characters left
+                        {this.props.prof_review_errors.includes("Body can't be blank") ? <div className='prof-review-form-blank-body-error'>Comment cannot be blank.</div> : null }
+                        {this.props.prof_review_errors.includes("Body is too long (maximum is 350 characters)") ? <div className='prof-review-form-blank-body-error'>Body is too long (maximum is 350 characters)</div> : null }
+                    </div>
                     <input id='prof-review-form-submit' type='submit'></input>
                 </form>
                 <div id='prof-review-form-cancel' onClick={this.clickCancel}>CANCEL</div>
-                {this.renderErrors()}
+                {this.props.prof_review_errors}
             </div>
         );
     };
