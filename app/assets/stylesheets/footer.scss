@@ -14,19 +14,28 @@
 
 #github {
     height: auto;
-    width: 150%;
+    width: 40px;
 }
 
 #linkedin {
     height: auto;
-    width: 35%;
-    margin-left: 50px;
+    width: 50px;
 }
 
 #socials {
-    width: 150px;
+    width: 250px;
     height: 40px;
     margin-right: 150px;
     display: flex;
     justify-content: space-between;
+}
+
+#angel-list {
+    height: auto;
+    width: 30px;
+}
+
+#portfolio {
+    height: auto;
+    width: 60px;
 }

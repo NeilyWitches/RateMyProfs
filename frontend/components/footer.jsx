@@ -16,6 +16,8 @@ class Footer extends React.Component {
                 <div id='socials'>
                     <a href='https://www.linkedin.com/in/neil-pandya-610588187/' target='_blank' rel='nonreferrer noopener'><img src={window.linkedin} alt="LinkedIn" id='linkedin' /></a>
                     <a href='https://github.com/NeilyWitches' target='_blank' rel='nonreferrer noopener'><img src={window.github} alt="Github" id='github' /></a>
+                    <a href='https://angel.co/u/neil-pandya-1' target='_blank' rel='nonreferrer noopener'><img src={window.angel_list} alt="AngleList" id='angel-list' /></a>
+                    <a href='https://frosty-fermi-9f5bdd.netlify.app/index.html' target='_blank' rel='nonreferrer noopener'><img src={window.portfolio} alt="Portfolio" id='portfolio' /></a>
                 </div>
             </div>
         )
