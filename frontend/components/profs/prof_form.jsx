@@ -42,7 +42,7 @@ class ProfForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.action(this.state.prof)
-        .then(() => this.props.history.push(`/profs`));
+        .then((res) => this.props.history.push(`/profs/${Object.values(res.payload.profs)[0].id}`));
     };
 
     componentDidMount() {
