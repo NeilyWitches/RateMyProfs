@@ -38,16 +38,14 @@ class SchoolShow extends React.Component {
     render() {
         const {school, schoolRatings} = this.props;
 
-        if (!schoolRatings) return null
-
-        let numRatings = schoolRatings.length
+        let numRatings = schoolRatings?.length
         let avgQual = this.getAvgQual(schoolRatings, numRatings)
 
         return (
             <div className='school-show' onClick={this.clickSchool}>
                 <div className='school-show-rating-summary'>
                     <div id='school-show-quality-label'>QUALITY</div>
-                    <div id='school-show-quality' style={{backgroundColor: this.styleQuality(avgQual)}}>{numRatings === 0 ? "N/A" : avgQual.toFixed(1)}</div>
+                    <div id='school-show-quality' style={{backgroundColor: this.styleQuality(avgQual)}}>{!numRatings ? "N/A" : avgQual.toFixed(1)}</div>
                     <div id='school-show-num-ratings'>{numRatings} Ratings</div>
                 </div>
                 <div className='school-show-name'>

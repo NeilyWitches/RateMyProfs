@@ -22,7 +22,9 @@ class SchoolForm extends React.Component {
     submitSchoolForm(e) {
         e.preventDefault();
         this.props.createSchool(this.state)
-        .then(() => this.props.history.push(`/schools`));
+        .then((res) => {
+            this.props.history.push(`/schoolRatings/${Object.values(res.payload.schools)[0].id}`)
+        });
     };
 
     componentDidMount() {
@@ -50,7 +52,8 @@ class SchoolForm extends React.Component {
                         className='school-prof-form-input'
                         type='text'
                         value={this.state.state}
-                        onChange={this.update('state')}>
+                        onChange={this.update('state')}
+                        placeholder="two letter postal abbreviation">
                     </input>
                     {this.props.school_errors.includes("State can't be blank") ? <div className='prof-form-school-name-error error'>State cannot be blank.</div> : null }
                 </div>
@@ -70,9 +73,11 @@ class SchoolForm extends React.Component {
                         className='school-prof-form-input'
                         type='text'
                         value={this.state.website}
-                        onChange={this.update('website')}>
+                        onChange={this.update('website')}
+                        placeholder="copy and paste the url">
                     </input>
                     {this.props.school_errors.includes("Website can't be blank") ? <div className='prof-form-school-name-error error'>Website cannot be blank.</div> : null }
+                    {this.props.school_errors.includes("Website has already been taken") ? <div className='prof-form-school-name-error error'>Website has already been taken</div> : null }
                 </div>
                 <div className='school-prof-form-submit-cancel'>
                     <div className='school-prof-form-submit-cancel-column'>

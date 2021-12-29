@@ -52,6 +52,7 @@ class SchoolRatingForm extends React.Component {
     submitSchoolRating(e) {
         e.preventDefault();
         this.props.createSchoolRating({...this.state.categories, comment: this.state.body, school_id: this.props.school.id})
+        .then(() => this.props.history.push(`/schoolRatings/${this.props.school.id}`))
     }
 
     render() {
