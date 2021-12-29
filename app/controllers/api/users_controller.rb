@@ -27,7 +27,7 @@ class Api::UsersController < ApplicationController
                 errors << "Must include last name" if !last_name
                 prof = Prof.find_by({first_name: first_name, last_name: last_name, school_id: school.id})
                 errors << "Prof not found" if !prof
-                errors << "This prof already has an account with Rate My Profs." if User.find_by({prof_id: prof.id})
+                errors << "This prof already has an account with Rate My Profs." if prof && User.find_by({prof_id: prof.id})
                 if errors.length == 0
                     @user = User.new({email: user_params[:email], first_name: first_name, school_id: school.id, prof_id: prof.id})
                     @user.password=(user_params[:password])

@@ -318,7 +318,6 @@ class ProfReviewForm extends React.Component {
                     <input id='prof-review-form-submit' type='submit'></input>
                 </form>
                 <div id='prof-review-form-cancel' onClick={this.clickCancel}>CANCEL</div>
-                {this.props.prof_review_errors}
             </div>
         );
     };

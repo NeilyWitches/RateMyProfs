@@ -199,6 +199,7 @@ class Signup extends React.Component {
                         onBlur={this.hideProfSearch}>
                     </input>
                     {this.props.signup_errors.includes("Name cannot be blank") ? <div className='prof-form-school-name-error error'>Name cannot be blank</div> : null }
+                    {this.props.signup_errors.includes("Prof not found") ? <div className='prof-form-school-name-error error'>Prof not found</div> : null }
                 </div>
                 <div className='prof-form-school-search-container'>
                     <ul className='edit-profile-school-search'
