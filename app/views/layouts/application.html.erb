@@ -6,6 +6,14 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <meta property="og:title" content="Rate My Profs" />
+    <meta property='og:image' content="<%= image_url('home.png') %>"/>
+    <meta property="og:description"
+      content="Rate My Profs is a complete clone of Rate My Professors, a site where users go to review professors and schools in order to better inform prospecting students. This clone has all of the features of the original site and more."
+    />
+    <meta property="og:url"
+      content="https://rate-my-profs.herokuapp.com/#/"
+    />
     <% if current_user %>
       <script>
         window.current_user = {
