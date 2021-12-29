@@ -49,7 +49,7 @@ Rate My Profs is a complete clone of Rate My Professors, a site where users go t
 
 <img width="1440" alt="edit prof" src="https://user-images.githubusercontent.com/59269773/147618131-f9dcfe02-69cd-4bb6-8c39-94cf8933e88c.png">
 
-+ Prof saves: users can save and unsave profs and view the profs they saved conviently in one page
++ Prof saves: users can save and unsave profs and view the profs they saved conveniently in one page
 
 ![prof_save_gif](https://user-images.githubusercontent.com/59269773/147618141-17e83015-0d48-4607-aadb-38faafffe6af.gif)
 
@@ -70,7 +70,7 @@ Rate My Profs is a complete clone of Rate My Professors, a site where users go t
 
 ### UI features
 
-+ Search: users can search for a school or prof from the home page or from anypage using the navbar
++ Search: users can search for a school or prof from the home page or from any page using the navbar
 
 <img width="1440" alt="school search results" src="https://user-images.githubusercontent.com/59269773/147618422-1c0fe502-754b-4846-ad20-4d5fc478d0fa.png">
 
