@@ -15,15 +15,10 @@ class SchoolRatingIndex extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        // debugger
         if (prevProps.schoolRatings !== this.props.schoolRatings && this.props.schoolRatings[0]){
-            // debugger
             this.categories = Object.keys(this.props.schoolRatings[0])
-            // debugger
             this.avgRatings = this.getAvgRatings(this.props.schoolRatings, this.categories);
-            // debugger
             this.overallRating = this.getOverallRating(this.avgRatings)
-            // debugger
             this.forceUpdate()
         }
     }
