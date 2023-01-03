@@ -189,3 +189,33 @@ groupLikes(profReviews, likes) {
     history={history}
     likes={groupedLikes[profReview.id]}/>)
 ```
+
+## Local Setup
+### Install Ruby 2.5.1
+#### Install Homebrew
+- open terminal and run
+```/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"```
+#### Install rbenv
+```brew install rbenv```
+#### Install Ruby
+```rbenv install 2.5.1```
+```rbenv global 2.5.1```
+#### Install the Bundler version
+```gem install bundler 2.2.28```
+### Install the required gems
+```bundle install```
+### Install JavaScript packages
+```brew install node```
+```npm install```
+### Set up database
+```bundle e rails db:setup```
+```bundle e rails db:migrate```
+#### Install PostgreSQL
+```brew install postgresql```
+```brew services start postgresql```
+### Run the Rails server
+```bundle e rails s```
+### go to http://localhost:3000
+
+## Testing
+- to run tests type  ```rspec``` in the terminal and hit enter
